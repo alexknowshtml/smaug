@@ -74,7 +74,7 @@ If you don't want to use the wizard to make it easy, you can manually put your s
 }
 ```
 
-## What It Does
+## What Smaug Actually Does
 
 1. **Fetches bookmarks** from Twitter/X using the bird CLI
 2. **Expands t.co links** to reveal actual URLs
@@ -83,7 +83,7 @@ If you don't want to use the wizard to make it easy, you can manually put your s
 5. **Saves to markdown** organized by date with rich context
 6. **Files to knowledge library** - GitHub repos to `knowledge/tools/`, articles to `knowledge/articles/`
 
-## Running
+## Running Manually
 
 ```bash
 # Full job (fetch + process with Claude)
@@ -110,12 +110,11 @@ Categories define how different bookmark types are handled. Smaug comes with sen
 
 | Category | Matches | Action | Destination |
 |----------|---------|--------|-------------|
+| **article** | blogs, news sites, papers, medium.com, substack, etc | file | `./knowledge/articles/` |
 | **github** | github.com | file | `./knowledge/tools/` |
-| **article** | medium.com, substack.com, dev.to, blog | file | `./knowledge/articles/` |
-| **podcast** | podcasts.apple.com, spotify.com/episode, overcast.fm | transcribe | `./knowledge/podcasts/` |
-| **youtube** | youtube.com, youtu.be | transcribe | `./knowledge/videos/` |
-| **video** | vimeo.com, loom.com | transcribe | `./knowledge/videos/` |
 | **tweet** | (fallback) | capture | bookmarks.md only |
+
+_transcription coming soon for podcasts, videos, etc_
 
 ### Actions
 
