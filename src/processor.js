@@ -448,6 +448,9 @@ export async function fetchAndPrepareBookmarks(options = {}) {
         };
       }
 
+      // Capture media attachments (photos, videos, GIFs)
+      const media = bookmark.media || [];
+
       prepared.push({
         id: bookmark.id,
         author,
@@ -456,6 +459,7 @@ export async function fetchAndPrepareBookmarks(options = {}) {
         tweetUrl: `https://x.com/${author}/status/${bookmark.id}`,
         createdAt: bookmark.createdAt,
         links,
+        media,
         date,
         isReply: !!bookmark.inReplyToStatusId,
         replyContext,
@@ -463,7 +467,8 @@ export async function fetchAndPrepareBookmarks(options = {}) {
         quoteContext
       });
 
-      console.log(`  Prepared: @${author} with ${links.length} links${replyContext ? ' (reply)' : ''}${quoteContext ? ' (quote)' : ''}`);
+      const mediaInfo = media.length > 0 ? ` (${media.length} media)` : '';
+      console.log(`  Prepared: @${author} with ${links.length} links${mediaInfo}${replyContext ? ' (reply)' : ''}${quoteContext ? ' (quote)' : ''}`);
 
     } catch (error) {
       console.error(`  Error processing bookmark ${bookmark.id}: ${error.message}`);
