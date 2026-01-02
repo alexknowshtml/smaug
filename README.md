@@ -295,7 +295,9 @@ When enabled, the `media[]` array is included in the pending JSON with:
 - `width`, `height`: Dimensions
 - `videoUrl`, `durationMs`: For videos only
 
-⚠️ **Why experimental?** Media handling adds complexity to Claude processing. Short screengrabs (< 30s) don't need transcripts, but longer videos might. We're still refining the workflow.
+⚠️ **Why experimental?**
+1. **Requires bird with media support** - PR [#14](https://github.com/steipete/bird/pull/14) adds media extraction. Until merged, you'll need a fork with this PR or wait for an upstream release. Without it, `--media` is a no-op (empty array).
+2. **Workflow still being refined** - Short screengrabs (< 30s) don't need transcripts, but longer videos might. We're still figuring out the best handling.
 
 ## Claude Code Integration
 
