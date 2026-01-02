@@ -52,9 +52,11 @@ The setup wizard will:
 - Guide you through getting Twitter credentials
 - Create your config file
 
-## Getting Twitter Credentials
+## Manually Getting Twitter Credentials
 
-Smaug uses the bird CLI which needs your Twitter session cookies:
+Smaug uses the bird CLI which needs your Twitter session cookies. 
+
+If you don't want to use the wizard to make it easy, you can manually put your seession info into the config. 
 
 1. Open Twitter/X in your browser
 2. Open Developer Tools → Application → Cookies
