@@ -57,17 +57,20 @@ export function saveState(config, state) {
   fs.writeFileSync(config.stateFile, JSON.stringify(state, null, 2) + '\n');
 }
 
+function buildBirdEnv(config) {
+  const env = { ...process.env };
+  if (config.twitter?.authToken) {
+    env.AUTH_TOKEN = config.twitter.authToken;
+  }
+  if (config.twitter?.ct0) {
+    env.CT0 = config.twitter.ct0;
+  }
+  return env;
+}
+
 export function fetchBookmarks(config, count = 10) {
   try {
-    // Build environment with Twitter credentials
-    const env = { ...process.env };
-    if (config.twitter?.authToken) {
-      env.AUTH_TOKEN = config.twitter.authToken;
-    }
-    if (config.twitter?.ct0) {
-      env.CT0 = config.twitter.ct0;
-    }
-
+    const env = buildBirdEnv(config);
     const birdCmd = config.birdPath || 'bird';
     const output = execSync(`${birdCmd} bookmarks -n ${count} --json`, {
       encoding: 'utf8',
@@ -80,16 +83,49 @@ export function fetchBookmarks(config, count = 10) {
   }
 }
 
+export function fetchLikes(config, count = 10) {
+  try {
+    const env = buildBirdEnv(config);
+    const birdCmd = config.birdPath || 'bird';
+    const output = execSync(`${birdCmd} likes -n ${count} --json`, {
+      encoding: 'utf8',
+      timeout: 30000,
+      env
+    });
+    return JSON.parse(output);
+  } catch (error) {
+    throw new Error(`Failed to fetch likes: ${error.message}`);
+  }
+}
+
+export function fetchFromSource(config, count = 10) {
+  const source = config.source || 'bookmarks';
+
+  if (source === 'bookmarks') {
+    return fetchBookmarks(config, count);
+  } else if (source === 'likes') {
+    return fetchLikes(config, count);
+  } else if (source === 'both') {
+    const bookmarks = fetchBookmarks(config, count);
+    const likes = fetchLikes(config, count);
+    // Merge and dedupe by ID
+    const seen = new Set();
+    const merged = [];
+    for (const item of [...bookmarks, ...likes]) {
+      if (!seen.has(item.id)) {
+        seen.add(item.id);
+        merged.push(item);
+      }
+    }
+    return merged;
+  } else {
+    throw new Error(`Invalid source: ${source}. Must be 'bookmarks', 'likes', or 'both'.`);
+  }
+}
+
 export function fetchTweet(config, tweetId) {
   try {
-    const env = { ...process.env };
-    if (config.twitter?.authToken) {
-      env.AUTH_TOKEN = config.twitter.authToken;
-    }
-    if (config.twitter?.ct0) {
-      env.CT0 = config.twitter.ct0;
-    }
-
+    const env = buildBirdEnv(config);
     const birdCmd = config.birdPath || 'bird';
     const output = execSync(`${birdCmd} read ${tweetId} --json`, {
       encoding: 'utf8',
@@ -247,10 +283,14 @@ export async function fetchAndPrepareBookmarks(options = {}) {
   console.log(`[${now.format()}] Fetching and preparing bookmarks...`);
 
   const state = loadState(config);
-  const bookmarks = fetchBookmarks(config, options.count || 20);
+  const source = options.source || config.source || 'bookmarks';
+  const configWithSource = { ...config, source };
 
-  if (!bookmarks || bookmarks.length === 0) {
-    console.log('No bookmarks found');
+  console.log(`Fetching from source: ${source}`);
+  const tweets = fetchFromSource(configWithSource, options.count || 20);
+
+  if (!tweets || tweets.length === 0) {
+    console.log(`No ${source} found`);
     return { bookmarks: [], count: 0 };
   }
 
@@ -264,26 +304,26 @@ export async function fetchAndPrepareBookmarks(options = {}) {
     }
   } catch (e) {}
 
-  // Determine which bookmarks to process
+  // Determine which tweets to process
   let toProcess;
   if (options.specificIds) {
-    toProcess = bookmarks.filter(b => options.specificIds.includes(b.id.toString()));
+    toProcess = tweets.filter(b => options.specificIds.includes(b.id.toString()));
   } else if (options.force) {
-    // Force mode: skip duplicate checking, process all fetched bookmarks
-    toProcess = bookmarks;
+    // Force mode: skip duplicate checking, process all fetched tweets
+    toProcess = tweets;
   } else {
-    toProcess = bookmarks.filter(b => {
+    toProcess = tweets.filter(b => {
       const id = b.id.toString();
       return !existingIds.has(id) && !pendingIds.has(id);
     });
   }
 
   if (toProcess.length === 0) {
-    console.log('No new bookmarks to process');
+    console.log('No new tweets to process');
     return { bookmarks: [], count: 0 };
   }
 
-  console.log(`Preparing ${toProcess.length} bookmarks...`);
+  console.log(`Preparing ${toProcess.length} tweets...`);
 
   const prepared = [];
   const date = now.format('dddd, MMMM D, YYYY');

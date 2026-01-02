@@ -223,18 +223,30 @@ async function main() {
       const specificIds = args.filter(a => a.match(/^\d{10,}$/));
       const force = args.includes('--force') || args.includes('-f');
 
+      // Parse --source flag
+      const sourceIdx = args.findIndex(a => a === '--source' || a === '-s');
+      let source = null;
+      if (sourceIdx !== -1 && args[sourceIdx + 1]) {
+        source = args[sourceIdx + 1];
+        if (!['bookmarks', 'likes', 'both'].includes(source)) {
+          console.error(`Invalid source: ${source}. Must be 'bookmarks', 'likes', or 'both'.`);
+          process.exit(1);
+        }
+      }
+
       const result = await fetchAndPrepareBookmarks({
         count,
         specificIds: specificIds.length > 0 ? specificIds : null,
-        force
+        force,
+        source
       });
 
       if (result.count > 0) {
-        console.log(`\n✓ Prepared ${result.count} bookmarks.`);
+        console.log(`\n✓ Prepared ${result.count} tweets.`);
         console.log(`  Output: ${result.pendingFile}`);
         console.log('\nNext: Run `npx smaug run` to process with Claude');
       } else {
-        console.log('\nNo new bookmarks to process.');
+        console.log('\nNo new tweets to process.');
       }
       break;
     }
@@ -273,6 +285,7 @@ async function main() {
 
       console.log('Smaug Status\n');
       console.log(`Archive:     ${config.archiveFile}`);
+      console.log(`Source:      ${config.source || 'bookmarks'}`);
       console.log(`Twitter:     ${config.twitter?.authToken ? '✓ configured' : '✗ not configured'}`);
       console.log(`Auto-Claude: ${config.autoInvokeClaude ? 'enabled' : 'disabled'}`);
 
@@ -301,22 +314,28 @@ async function main() {
     case '-h':
     default:
       console.log(`
-🐉 Smaug - Twitter Bookmarks Archiver
+🐉 Smaug - Twitter Bookmarks & Likes Archiver
 
 Commands:
   setup          Interactive setup wizard (start here!)
   run            Run the full job (fetch + process with Claude)
-  fetch [n]      Fetch n bookmarks (default: 20)
+  fetch [n]      Fetch n tweets (default: 20)
   fetch --force  Re-fetch even if already archived
-  process        Show pending bookmarks
+  fetch --source <source>  Fetch from: bookmarks, likes, or both
+  process        Show pending tweets
   status         Show current status
 
 Examples:
-  smaug setup              # First-time setup
-  smaug run                # Run full automation
-  smaug fetch              # Fetch latest bookmarks
-  smaug fetch 50           # Fetch 50 bookmarks
-  smaug fetch --force      # Re-process archived bookmarks
+  smaug setup                    # First-time setup
+  smaug run                      # Run full automation
+  smaug fetch                    # Fetch latest (uses config source)
+  smaug fetch 50                 # Fetch 50 tweets
+  smaug fetch --source likes     # Fetch from likes only
+  smaug fetch --source both      # Fetch from bookmarks AND likes
+  smaug fetch --force            # Re-process archived tweets
+
+Config (smaug.config.json):
+  "source": "bookmarks"   Default source (bookmarks, likes, or both)
 
 More info: https://github.com/alexknowshtml/smaug
 `);

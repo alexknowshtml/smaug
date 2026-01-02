@@ -1,8 +1,8 @@
 # Smaug 🐉
 
-Archive your Twitter/X bookmarks to markdown. Automatically.
+Archive your Twitter/X bookmarks and likes to markdown. Automatically.
 
-*Like a dragon hoarding treasure, Smaug collects the valuable things you bookmark.*
+*Like a dragon hoarding treasure, Smaug collects the valuable things you bookmark and like.*
 
 ## Contents
 
@@ -76,10 +76,10 @@ If you don't want to use the wizard to make it easy, you can manually put your s
 
 ## What Smaug Actually Does
 
-1. **Fetches bookmarks** from Twitter/X using the bird CLI
+1. **Fetches bookmarks and/or likes** from Twitter/X using the bird CLI
 2. **Expands t.co links** to reveal actual URLs
 3. **Extracts content** from linked pages (GitHub repos, articles, quote tweets)
-4. **Invokes Claude Code** to analyze and categorize each bookmark
+4. **Invokes Claude Code** to analyze and categorize each tweet
 5. **Saves to markdown** organized by date with rich context
 6. **Files to knowledge library** - GitHub repos to `knowledge/tools/`, articles to `knowledge/articles/`
 
@@ -89,10 +89,16 @@ If you don't want to use the wizard to make it easy, you can manually put your s
 # Full job (fetch + process with Claude)
 npx smaug run
 
-# Just fetch bookmarks (no Claude processing)
+# Fetch from bookmarks (default)
 npx smaug fetch 20
 
-# Process already-fetched bookmarks
+# Fetch from likes instead
+npx smaug fetch --source likes
+
+# Fetch from both bookmarks AND likes
+npx smaug fetch --source both
+
+# Process already-fetched tweets
 npx smaug process
 
 # Force re-process (ignore duplicates)
@@ -237,6 +243,7 @@ Create `smaug.config.json`:
 
 ```json
 {
+  "source": "bookmarks",
   "archiveFile": "./bookmarks.md",
   "pendingFile": "./.state/pending-bookmarks.json",
   "stateFile": "./.state/bookmarks-state.json",
@@ -256,14 +263,15 @@ Create `smaug.config.json`:
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `archiveFile` | `./bookmarks.md` | Main bookmark archive |
+| `source` | `bookmarks` | What to fetch: `bookmarks`, `likes`, or `both` |
+| `archiveFile` | `./bookmarks.md` | Main archive file |
 | `timezone` | `America/New_York` | For date formatting |
 | `autoInvokeClaude` | `true` | Auto-run Claude Code for analysis |
 | `claudeModel` | `sonnet` | Model to use (`sonnet`, `haiku`, or `opus`) |
 | `claudeTimeout` | `900000` | Max processing time (15 min) |
 | `webhookUrl` | `null` | Discord/Slack webhook for notifications |
 
-Environment variables also work: `AUTH_TOKEN`, `CT0`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
+Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
 
 ## Claude Code Integration
 

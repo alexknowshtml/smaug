@@ -12,6 +12,9 @@ import path from 'path';
 import os from 'os';
 
 const DEFAULT_CONFIG = {
+  // Source to fetch from: 'bookmarks', 'likes', or 'both'
+  source: 'bookmarks',
+
   // Where to store the markdown archive
   archiveFile: './bookmarks.md',
 
@@ -169,6 +172,9 @@ export function loadConfig(configPath) {
   if (process.env.BIRD_PATH) {
     config.birdPath = process.env.BIRD_PATH;
   }
+  if (process.env.SOURCE) {
+    config.source = process.env.SOURCE;
+  }
   if (process.env.AUTH_TOKEN) {
     config.twitter.authToken = process.env.AUTH_TOKEN;
   }
@@ -204,6 +210,8 @@ export function loadConfig(configPath) {
  */
 export function initConfig(targetPath = './smaug.config.json') {
   const exampleConfig = {
+    // Source: 'bookmarks' (default), 'likes', or 'both'
+    source: 'bookmarks',
     archiveFile: './bookmarks.md',
     pendingFile: './.state/pending-bookmarks.json',
     stateFile: './.state/bookmarks-state.json',
