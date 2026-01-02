@@ -114,7 +114,7 @@ Categories define how different bookmark types are handled. Smaug comes with sen
 | **github** | github.com | file | `./knowledge/tools/` |
 | **tweet** | (fallback) | capture | bookmarks.md only |
 
-🔜 _Note: Transcription coming soon for podcasts, videos, etc_
+🔜 _Note: Transcription coming soon for podcasts, videos, etc but feel free to edit your own and submit back suggestions!_
 
 ### Actions
 
