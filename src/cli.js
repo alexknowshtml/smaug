@@ -18,6 +18,7 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import readline from 'readline';
+import { fileURLToPath, pathToFileURL } from 'url';
 
 const args = process.argv.slice(2);
 const command = args[0];
@@ -205,9 +206,9 @@ async function main() {
 
     case 'run': {
       // Run the full job (same as node src/job.js)
-      const jobPath = path.join(path.dirname(new URL(import.meta.url).pathname), 'job.js');
+      const jobPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'job.js');
       try {
-        const jobModule = await import(jobPath);
+        const jobModule = await import(pathToFileURL(jobPath).href);
         const result = await jobModule.default.run();
         process.exit(result.success ? 0 : 1);
       } catch (err) {

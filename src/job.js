@@ -15,11 +15,12 @@
 import { execSync, spawn } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import os from 'os';
 import { fetchAndPrepareBookmarks } from './processor.js';
 import { loadConfig } from './config.js';
 
 const JOB_NAME = 'smaug';
-const LOCK_FILE = '/tmp/smaug.lock';
+const LOCK_FILE = path.join(os.tmpdir(), 'smaug.lock');
 
 // ============================================================================
 // Lock Management - Prevents overlapping runs
