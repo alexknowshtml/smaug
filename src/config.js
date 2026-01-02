@@ -15,6 +15,10 @@ const DEFAULT_CONFIG = {
   // Source to fetch from: 'bookmarks', 'likes', or 'both'
   source: 'bookmarks',
 
+  // EXPERIMENTAL: Include media attachments (photos, videos, GIFs)
+  // Off by default - enable with --media flag or config
+  includeMedia: false,
+
   // Where to store the markdown archive
   archiveFile: './bookmarks.md',
 
@@ -175,6 +179,9 @@ export function loadConfig(configPath) {
   if (process.env.SOURCE) {
     config.source = process.env.SOURCE;
   }
+  if (process.env.INCLUDE_MEDIA !== undefined) {
+    config.includeMedia = process.env.INCLUDE_MEDIA === 'true';
+  }
   if (process.env.AUTH_TOKEN) {
     config.twitter.authToken = process.env.AUTH_TOKEN;
   }
@@ -212,6 +219,8 @@ export function initConfig(targetPath = './smaug.config.json') {
   const exampleConfig = {
     // Source: 'bookmarks' (default), 'likes', or 'both'
     source: 'bookmarks',
+    // EXPERIMENTAL: Include media attachments (photos, videos, GIFs)
+    // includeMedia: false,
     archiveFile: './bookmarks.md',
     pendingFile: './.state/pending-bookmarks.json',
     stateFile: './.state/bookmarks-state.json',

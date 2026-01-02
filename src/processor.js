@@ -284,10 +284,11 @@ export async function fetchAndPrepareBookmarks(options = {}) {
 
   const state = loadState(config);
   const source = options.source || config.source || 'bookmarks';
-  const configWithSource = { ...config, source };
+  const includeMedia = options.includeMedia ?? config.includeMedia ?? false;
+  const configWithOptions = { ...config, source, includeMedia };
 
-  console.log(`Fetching from source: ${source}`);
-  const tweets = fetchFromSource(configWithSource, options.count || 20);
+  console.log(`Fetching from source: ${source}${includeMedia ? ' (with media)' : ''}`);
+  const tweets = fetchFromSource(configWithOptions, options.count || 20);
 
   if (!tweets || tweets.length === 0) {
     console.log(`No ${source} found`);
@@ -448,8 +449,9 @@ export async function fetchAndPrepareBookmarks(options = {}) {
         };
       }
 
-      // Capture media attachments (photos, videos, GIFs)
-      const media = bookmark.media || [];
+      // Capture media attachments (photos, videos, GIFs) - EXPERIMENTAL
+      // Only included if includeMedia is true (--media flag)
+      const media = configWithOptions.includeMedia ? (bookmark.media || []) : [];
 
       prepared.push({
         id: bookmark.id,

@@ -264,6 +264,7 @@ Create `smaug.config.json`:
 | Option | Default | Description |
 |--------|---------|-------------|
 | `source` | `bookmarks` | What to fetch: `bookmarks` (default), `likes`, or `both` |
+| `includeMedia` | `false` | **EXPERIMENTAL**: Include media attachments (photos, videos, GIFs) |
 | `archiveFile` | `./bookmarks.md` | Main archive file |
 | `timezone` | `America/New_York` | For date formatting |
 | `autoInvokeClaude` | `true` | Auto-run Claude Code for analysis |
@@ -271,7 +272,30 @@ Create `smaug.config.json`:
 | `claudeTimeout` | `900000` | Max processing time (15 min) |
 | `webhookUrl` | `null` | Discord/Slack webhook for notifications |
 
-Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
+Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
+
+### Experimental: Media Attachments
+
+Media extraction (photos, videos, GIFs) is available but disabled by default. To enable:
+
+```bash
+# One-time with flag
+npx smaug fetch --media
+
+# Or in config
+{
+  "includeMedia": true
+}
+```
+
+When enabled, the `media[]` array is included in the pending JSON with:
+- `type`: "photo", "video", or "animated_gif"
+- `url`: Full-size media URL
+- `previewUrl`: Thumbnail (smaller, faster)
+- `width`, `height`: Dimensions
+- `videoUrl`, `durationMs`: For videos only
+
+⚠️ **Why experimental?** Media handling adds complexity to Claude processing. Short screengrabs (< 30s) don't need transcripts, but longer videos might. We're still refining the workflow.
 
 ## Claude Code Integration
 

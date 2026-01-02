@@ -222,6 +222,7 @@ async function main() {
       const count = parseInt(args.find(a => a.match(/^\d+$/)) || '20', 10);
       const specificIds = args.filter(a => a.match(/^\d{10,}$/));
       const force = args.includes('--force') || args.includes('-f');
+      const includeMedia = args.includes('--media') || args.includes('-m');
 
       // Parse --source flag
       const sourceIdx = args.findIndex(a => a === '--source' || a === '-s');
@@ -238,7 +239,8 @@ async function main() {
         count,
         specificIds: specificIds.length > 0 ? specificIds : null,
         force,
-        source
+        source,
+        includeMedia
       });
 
       if (result.count > 0) {
@@ -286,6 +288,7 @@ async function main() {
       console.log('Smaug Status\n');
       console.log(`Archive:     ${config.archiveFile}`);
       console.log(`Source:      ${config.source || 'bookmarks'}`);
+      console.log(`Media:       ${config.includeMedia ? '✓ enabled (experimental)' : 'disabled (use --media to enable)'}`);
       console.log(`Twitter:     ${config.twitter?.authToken ? '✓ configured' : '✗ not configured'}`);
       console.log(`Auto-Claude: ${config.autoInvokeClaude ? 'enabled' : 'disabled'}`);
 
@@ -322,6 +325,7 @@ Commands:
   fetch [n]      Fetch n tweets (default: 20)
   fetch --force  Re-fetch even if already archived
   fetch --source <source>  Fetch from: bookmarks, likes, or both
+  fetch --media  EXPERIMENTAL: Include media attachments
   process        Show pending tweets
   status         Show current status
 
@@ -332,10 +336,12 @@ Examples:
   smaug fetch 50                 # Fetch 50 tweets
   smaug fetch --source likes     # Fetch from likes only
   smaug fetch --source both      # Fetch from bookmarks AND likes
+  smaug fetch --media            # Include photos/videos/GIFs (experimental)
   smaug fetch --force            # Re-process archived tweets
 
 Config (smaug.config.json):
-  "source": "bookmarks"   Default source (bookmarks, likes, or both)
+  "source": "bookmarks"    Default source (bookmarks, likes, or both)
+  "includeMedia": false    EXPERIMENTAL: Include media (default: off)
 
 More info: https://github.com/alexknowshtml/smaug
 `);
