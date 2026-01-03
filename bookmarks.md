@@ -1,3 +1,181 @@
+# Friday, December 19, 2025
+
+## @petergyang - Teresa Torres using Claude Code for productivity and business management
+> Teresa Torres runs her entire life and business using two Claude Code terminals and a note taking app @obsdmd.
+>
+> It was genuinely mind blowing watching her demo using Claude Code to manage her to do list, write content, and much more.
+>
+> 📝 Subscribe to get our full episode in 2 days: https://t.co/Ggqaa3F11Z
+
+- **Tweet:** https://x.com/petergyang/status/2002016119981478375
+- **Link:** https://www.youtube.com/@peteryangyt?sub_confirmation=1
+- **Tags:** [[Coding]]
+- **Status:** Needs transcript
+- **What:** A discussion about how Teresa Torres uses Claude Code as a core productivity tool for managing her entire business and personal life.
+
+---
+
+# Wednesday, December 17, 2025
+
+## @Riftwalkergame - Riftwalker: Indie Sci-Fi Action RPG by Solo Developer
+> I don't have millions in funding.
+> I'm a solo dev. A dad. A husband.
+> I'm building this with everything I have.
+>
+> If you love The Mandalorian, Dune, and Max Payne,
+> I'm making this game for you.
+>
+> Wishlist on Steam
+> https://t.co/sZQkNOzZ3K
+>
+> Support the journey https://t.co/ie9882KNB4
+>
+> #wishlistwednesday #gamedev #indiedev
+
+- **Tweet:** https://x.com/Riftwalkergame/status/2001322313048842635
+- **Link:** https://store.steampowered.com/app/4109980/Riftwalker/
+- **Tags:** [[Coding]]
+- **What:** Solo game developer creating an indie sci-fi action RPG called Riftwalker, inspired by The Mandalorian, Dune, and Max Payne.
+
+---
+
+# Tuesday, December 9, 2025
+
+## @Prathkum - The Nature of Coding: Thinking vs. Typing in the AI Era
+> Most of coding was never about writing code.
+>
+> AI is just making this more obvious.
+>
+> You no longer need to recall syntax, function structure, boilerplate code, or even API endpoints.
+>
+> That's the easy part and AI is very good at it.
+>
+> The hard part was never typing. It was always thinking.
+>
+> And it still is.
+
+- **Tweet:** https://x.com/Prathkum/status/1998304627243057363
+- **Tags:** [[Coding]]
+- **What:** Reflection on how the nature of coding has shifted in the AI era—the real challenge was always thinking, not typing.
+
+---
+
+# Thursday, December 4, 2025
+
+## @Scobleizer - Ariana: Platform for Running AI Agents on Cloud Infrastructure
+> How software development is changing in the AI age.
+>
+> He spins up many Linux servers in seconds and runs AI agents on them.
+>
+> Nuts.
+>
+> Introducing @AniC_dev and his https://t.co/poT62oN1S4 system that lets AI agents do much deeper work on the cloud.
+>
+> He can spin up thousands of virtual machines in seconds. Insane, isn't it?
+
+- **Tweet:** https://x.com/Scobleizer/status/1996773715040985562
+- **Link:** https://ariana.dev/
+- **Tags:** [[Coding]]
+- **What:** Introduction to Ariana, a platform that enables AI agents to spin up thousands of virtual machines in seconds for cloud-based development work.
+
+---
+
+# Monday, December 1, 2025
+
+## @MisterSpace3 - Linus Torvalds on Hardware Reliability and Windows Stability (LTT)
+> In today's LTT video, Linus Torvalds, @Linux creator, states the importance of reliable hardware. In this case, ram, and says the following about @Windows stability: https://t.co/REbVDAgfIs
+
+- **Tweet:** https://x.com/MisterSpace3/status/1995362984605184270
+- **Link:** https://x.com/MisterSpace3/status/1995362984605184270/video/1
+- **Tags:** [[Coding]]
+- **Status:** Needs transcript
+- **What:** Linus Torvalds discussing the importance of reliable hardware and commenting on Windows stability during a Linus Tech Tips episode.
+
+---
+
+# Friday, January 2, 2026
+
+## @skooookum - Claude-Powered Workflow Transformation
+> I barely write code anymore. I catch when Claude makes an architectural mistake or tiny inefficiency here and there.
+>
+> I barely type anymore. I mostly just use my voice.
+>
+> I barely download apps anymore. If I want an app I have Claude make it.
+>
+> Big changes coming.
+
+- **Tweet:** https://x.com/skooookum/status/2007159615415525432
+- **Tags:** [[AI]]
+- **What:** Observation about how AI-assisted development is fundamentally changing the workflow - from code writing to architectural review, voice-based interaction, and on-demand app generation with Claude.
+
+---
+
+## @alexhillman - Smaug: Twitter Bookmark Archiver
+> its late so i'll probably regret posting this but...
+>
+> enter the dragon 🔥🐲
+>
+> say hi to Smaug, the helpful hoarding dragon that roams your Twitter bookmarks and helps you organize them into your personal knowledge system of choice.
+
+- **Tweet:** https://x.com/alexhillman/status/2006968571268661423
+- **Tags:** [[AI]]
+- **Filed:** [Smaug](./knowledge/tools/smaug.md)
+- **What:** A Twitter bookmark archiver that automatically fetches bookmarks, expands links, extracts content, and uses Claude Code for intelligent categorization and filing to a personal knowledge system.
+
+---
+
+# Tuesday, February 11, 2025
+
+## @rohanpaul_ai - Scrapling: Adaptive Web Scraping for Python
+> Github 👨‍🔧: 🕷️ Undetectable, Lightning-Fast, and Adaptive Web Scraping for Python
+>
+> Helps you build web scrapers in Python that resist website changes and anti-bot measures. It provides adaptive scraping to automatically adjust to website modifications using smart element tracking.
+>
+> As per repo developers, Scrapling is faster than alternatives like BeautifulSoup4 and AutoScraper, as shown in benchmarks: text extraction is up to 240x faster than BS4 and extraction by text is 4.5x faster than AutoScraper.
+>
+> It offers stealthy fetching capabilities and a developer-friendly API inspired by Scrapy and BeautifulSoup.
+
+- **Tweet:** https://x.com/rohanpaul_ai/status/1889469174738722890
+- **Tags:** [[Coding]]
+- **What:** A high-performance Python web scraping library that adapts to website changes, bypasses anti-bot protections, and dramatically outperforms BeautifulSoup4 in speed while providing an intuitive API for DOM navigation.
+
+---
+
+# Sunday, December 28, 2025
+
+## @demishassabis - The Thinking Game Documentary
+> *Replying to @demishassabis:* 'The Thinking Game' documentary has just passed 200M views on YouTube in just 4 weeks! 🤯Perfect holiday viewing if you're interested in a behind-the-scenes look at how an AGI lab works, or what goes into making a Nobel Prize winning project like AlphaFold happen.🧬🚀
+>
+> Amazing work from the incredibly talented Director Greg Kohs, Producers Gary Kreig & Jonathan Fildes, and a wonderful score from the maestro Dan Deacon - enjoy!
+
+- **Tweet:** https://x.com/demishassabis/status/2005358760047562802
+- **Parent:** https://x.com/demishassabis/status/2005358757203845592
+- **Tags:** [[AI]]
+- **Needs transcript:** [The Thinking Game](https://www.youtube.com/watch?v=d95J8yzvjbQ&feature=youtu.be)
+- **What:** Documentary about an AGI lab featuring the creation of AlphaFold, directed by Greg Kohs with a score by Dan Deacon. Bookmark flagged for transcription.
+
+---
+
+## @Midnight_Captl - NVIDIA Kyber Power Infrastructure
+> *Quoting @Midnight_Captl:* NVIDIA next gen Kyber rack Switch & Compute Blades 🤤 $NVDA
+>
+> $NVDA - Kyber NVL576
+>
+> Rubin Ultra NVL 576 racks will require ~5x more power than Blackwell NVL 72 racks (which required 3x more power than H100 racks) 🤯.
+>
+> 'Sidecars', designed in partnership with Schneider Electric, will be added as power conversion + delivery so power density can keep climbing without damaging the racks.
+>
+> We can expect the sidecar system to be loaded with specialized software that helps balance and manage the overall system. Another opportunity for NV to differentiate itself and sink its hooks deeper into the data center.
+>
+> From 2022 to 2028, NV will have 20X'd the power density of its system on a footprint adjusted basis.
+
+- **Tweet:** https://x.com/Midnight_Captl/status/2005431398254145993
+- **Quoted:** https://x.com/Midnight_Captl/status/2005075009140916478
+- **Tags:** [[AI]]
+- **What:** Deep technical analysis of NVIDIA's next-generation Kyber infrastructure roadmap, detailing power scaling from 2022-2028 and the sidecar power management system enabling 20x density improvements.
+
+---
+
 # Thursday, July 31, 2025
 
 ## @GoogleDesign - Google Sans Code Font
