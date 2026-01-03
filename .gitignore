@@ -6,9 +6,11 @@ node_modules/
 
 # Config with credentials
 bookmarks-archiver.config.json
+smaug.config.json
 
 # Output (optional - you may want to track this)
-# bookmarks.md
+bookmarks.md
+knowledge/
 
 # OS files
 .DS_Store
