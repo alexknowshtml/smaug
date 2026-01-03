@@ -1,5 +1,139 @@
 # Saturday, January 3, 2026
 
+## @satyanadella - Microsoft Quantum Computing Breakthrough with Majorana 1
+
+> A couple reflections on the quantum computing breakthrough we just announced...
+>
+> Most of us grew up learning there are three main types of matter that matter: solid, liquid, and gas. Today, that changed.
+>
+> After a nearly 20 year pursuit, we've created an entirely new state of matter, unlocked by a new class of materials, topoconductors, that enable a fundamental leap in computing.
+>
+> It powers Majorana 1, the first quantum processing unit built on a topological core.
+>
+> We believe this breakthrough will allow us to create a truly meaningful quantum computer not in decades, as some have predicted, but in years.
+>
+> The qubits created with topoconductors are faster, more reliable, and smaller.
+>
+> They are 1/100th of a millimeter, meaning we now have a clear path to a million-qubit processor.
+>
+> Imagine a chip that can fit in the palm of your hand yet is capable of solving problems that even all the computers on Earth today combined could not!
+
+- **Tweet:** https://x.com/satyanadella/status/1892242895094313420
+- **Tags:** Quantum
+- **What:** Satya Nadella announces Microsoft's major quantum computing breakthrough. After 20 years of research, they've created a new state of matter using topoconductors, enabling Majorana 1—the first quantum processor built on a topological core. The breakthrough promises quantum computers in years rather than decades. Topological qubits are faster, more reliable, and smaller (1/100th of a millimeter), with a clear path to million-qubit processors that could fit in your hand yet solve intractable problems.
+
+---
+
+## @DavidDeutschOxf - Quantum Theory Research Obsolescence
+
+> Exactly. I was flabbergasted when I saw this result. It renders obsolete a substantial proportion of all past research in the foundations of quantum theory. Bizarrely, some of that research is still happening regardless.
+
+Quoted tweet from @PaulRRobichaud: "It took me years of my life to formally prove this little sentence. To the uninitiated, the statement is obviously true. To an orthodox quantum physicist, it is oblivious false. To those who understand the underlying mathematics, it is simply beautiful."
+
+- **Tweet:** https://x.com/DavidDeutschOxf/status/1985280904109977915
+- **Tags:** Quantum
+- **What:** David Deutsch responds to a mathematical breakthrough in quantum theory, expressing astonishment that the result renders obsolete a large body of existing research in quantum foundations. He notes the irony that some of that superseded research continues despite being invalidated, and amplifies Paul Raymond-Robichaud's comment about proving a foundational statement that appears obvious to non-experts but contradicts orthodox quantum physics to specialists.
+
+---
+
+## @paulg - Gene Editing Future Prediction
+
+> Prediction: Gene editing will be huge. This is just Internet stocks in 2000.
+
+Quoted tweet from @johnarnold: "Not long ago CRISPR was sold as a tool to cure all disease. Here is the current market sentiment. via @statnews"
+
+- **Tweet:** https://x.com/paulg/status/1887811934466056679
+- **Tags:** Biomics
+- **What:** Paul Graham makes a bold prediction that gene editing will be transformative, comparing the current stage to Internet stocks in 2000—a period of massive growth before major consolidation. He responds to John Arnold's observation about CRISPR's overhyped promises, suggesting that despite setbacks and overcorrected sentiment, the underlying technology still has enormous potential.
+
+---
+
+## @GeneInvesting - Gene Editing Stock Recommendations
+
+> @WSB_redditor NTLA, PRME, BEAM
+
+Reply to @WSB_redditor's question: "If you had to pick 1 or 2. Which ones will survive?"
+
+- **Tweet:** https://x.com/GeneInvesting/status/1887888457466528157
+- **Tags:** Biomics
+- **What:** Gene Investing recommends three gene-editing company tickers (NTLA—Intellia, PRME—Premark, BEAM—Beam Therapeutics) in response to a WallStreetBets question about which gene editing companies will survive. Suggests these three represent the strongest candidates among gene therapy/editing firms.
+
+---
+
+## @getjonwithit - Black Holes Don't Exist, Only Wormholes
+
+> "General relativity doesn't admit black hole solutions. It only admits *wormhole* solutions."
+>
+> I have previously made this statement and had people get confused by it. So let me try to clarify precisely what this means, using a neat analogy to real/complex analysis. (1/17)
+
+- **Tweet:** https://x.com/getjonwithit/status/1887136743977046203
+- **Tags:** Space
+- **What:** Jonathan Gorard clarifies a provocative statement about general relativity, arguing that the theory doesn't actually admit black hole solutions—only wormhole solutions. He explains this apparent paradox using an analogy to real/complex analysis to help clarify what is a technically correct but frequently misunderstood distinction in theoretical physics. This appears to be the first tweet in a longer thread explaining the mathematical subtleties.
+
+---
+
+
+## @JohnStossel - Astronauts Return from 9-Month Space Station Mission
+
+> The 2 astronauts stranded on the Space Station for 9 months just returned to Earth.
+>
+> They were rescued by @SpaceX.
+>
+> @elonmusk massively improved rocket technology by innovating OUTSIDE of government.
+
+- **Tweet:** https://x.com/JohnStossel/status/1902117196869824519
+- **Media:** Video of astronauts' return
+- **Tags:** Space
+- **What:** John Stossel reports on the successful rescue of two astronauts stranded on the International Space Station for 9 months, highlighting SpaceX's commercial innovation in rocket technology outside government programs as the enabling factor for their safe return.
+
+---
+
+## @NorcrossUSA - Starship 8 Test Flight Explosion
+
+> Just saw Starship 8 blow up in the Bahamas
+>
+> @SpaceX @elonmusk
+
+- **Tweet:** https://x.com/NorcrossUSA/status/1897796234502349117
+- **Media:** Video of Starship explosion
+- **Tags:** Space
+- **What:** Eyewitness account from Jonathon Norcross of Starship 8's explosive failure during test flight in the Bahamas, documenting SpaceX's continued iterative testing approach.
+
+---
+
+## @XorDev - Blackhole GLSL Shader Visualization
+
+> Blackhole in 350 characters of #GLSL:
+>
+> vec2 p=(FC.xy*2.-r)/r.y/.7,d=vec2(-1,1),c=p*mat2(1,1,d/(.1+5./dot(5.*p-d,5.*p-d))),v=c;v*=mat2(cos(log(length(v))+t*.2+vec4(0,33,11,0)))*5.;for(float i;i++<9.;o+=sin(v.xyyx)+1.)v+=.7*sin(v.yx*i+t)/i+.5;o=1.-exp(-exp(c.x*vec4(.6,-.4,-1,0))/o/(.1+.1*pow(length(sin(v/.3)*.2+c*vec2(1,2))-1.,2.))/(1.+7.*exp(.3*c.y-dot(c,c)))/(.03+abs(length(p)-.7))*.2);
+
+- **Tweet:** https://x.com/XorDev/status/1897669357934608590
+- **Tags:** Space
+- **What:** Xor shares an ultra-compact GLSL shader that renders a blackhole visualization in just 350 characters, demonstrating advanced graphics programming techniques for astrophysics visualization.
+
+---
+
+## @FireflySpace - Blue Ghost Lunar Lander Reaches Moon Transit
+
+> Blue Ghost has "merged" onto the highway to the Moon! After a successful Trans Lunar Injection burn, our lander has left Earth's orbit and begun its 4 day transit to the Moon's orbit. We'll then spend approximately 16 days in lunar orbit before we begin Blue Ghost's descent. This gives us plenty of time to calibrate our navigation system and continue payload science operations for @NASA. #BGM1
+
+- **Tweet:** https://x.com/FireflySpace/status/1888593216158457857
+- **Tags:** Space
+- **What:** Firefly Aerospace announces Blue Ghost lunar lander's successful Trans Lunar Injection burn and departure from Earth orbit. The lander begins its 4-day transit to lunar orbit, followed by 16 days of orbital calibration and science operations before attempting descent. Mission carries NASA payloads.
+
+---
+
+## @AJamesMcCarthy - Astrophotography Observation Session
+
+> In 20 minutes I either get the shot of a lifetime or have a long depressing drive home… this is what it's all about.
+
+- **Tweet:** https://x.com/AJamesMcCarthy/status/1887284066413617192
+- **Media:** Photograph documenting observation setup
+- **Tags:** Space
+- **What:** Astrophotographer Andrew McCarthy captures the high-stakes moment of an observation session, expressing the all-or-nothing intensity of capturing rare astronomical phenomena and the emotional investment in space photography.
+
+---
+
 ## @MarylandHODL21 - BitBonds: Structural Innovation for Sovereign Debt
 
 > While the piece I posted yesterday is a stand-alone article responding to recent events, it also ties directly into the broader thesis I've been developing through a series on my Substack.
@@ -168,6 +302,83 @@
 - **What:** Boston Red Sox share an exciting play video of an inside-the-park home run, one of baseball's rarest and most thrilling offensive achievements.
 
 ---
+
+## @TheBTCTherapist - Raoul Pal's Elongated Debt Cycle and Bitcoin Drawdown Prediction
+
+> 6 months ago, Raoul Pal said we are in an elongated business/debt cycle and that bitcoin would climb higher and then we would see a -35% drawdown and "everyone will be sure that it is over… and it won't be over."
+>
+> You need to watch this again.
+
+- **Tweet:** https://x.com/TheBTCTherapist/status/1991853674587685240
+- **Video:** https://x.com/Vivek4real_/status/1919417578692198438/video/1
+- **Tags:** Bitcoin
+- **Flagged for:** Video transcription
+- **What:** The Bitcoin Therapist references Raoul Pal's analysis from 6 months prior regarding elongated business/debt cycles. Pal predicted Bitcoin would climb significantly before experiencing a -35% drawdown that would convince most observers the bull market was over, though he emphasized the cycle would continue. Positioned as essential viewing for understanding macro context and managing psychology during inevitable corrections.
+
+---
+
+## @sminston_with - 2026 Bitcoin Macro Outlook: $200k-$300k Target Range
+
+> The top models haven't changed; but all the Macro (see my posts, see Julien Bittel's, many others') tells us the environment won't allow a full FOMO/parabolic/blow-off top.
+>
+> Decay Channel Oscillator now shows 14.75%; we the last time we were this low was Q4 of last year.
+>
+> Provided a rebound coming from Yen carry trade, trillions in spending, QT ending, stimmy checks, tariffs changing... 2026 is very feasibly 'the year' of the next major run, as in a $200k - $300k range.
+>
+> Until then, look for support values of mid-50ks to mid-60ks, and HODL.
+>
+> NFA
+
+- **Tweet:** https://x.com/sminston_with/status/1991914883609477597
+- **Tags:** Bitcoin
+- **What:** Sminston provides macro analysis suggesting 2026 is positioned to be "the year" for Bitcoin's next major bull run, targeting $200k-$300k range. Uses Decay Channel Oscillator (currently at 14.75%, matching Q4 2025 levels) as technical confirmation. Cites favorable macro conditions: Yen carry trade rebound, government spending, quantitative tightening ending, stimulus checks, and tariff changes. Identifies support levels in mid-50ks to mid-60ks. Notes that current models suggest environment won't support a full FOMO/parabolic top.
+
+---
+
+## @TheBTCTherapist - Bitcoin and JP Morgan Macro Analysis
+
+> If you're wondering what is going on with $Bitcoin, $MSTR and JP Morgan, you need to listen to this👇
+>
+> It's probably the most important thing you're going to read today.
+>
+> H/t: @HodlMaryland
+
+- **Tweet:** https://x.com/TheBTCTherapist/status/1992272581614043138
+- **Video:** https://x.com/HodlMaryland/status/1992075094349500433/video/1
+- **Tags:** Bitcoin
+- **Flagged for:** Video transcription
+- **What:** The Bitcoin Therapist highlights critical interconnections between Bitcoin, MicroStrategy, and JPMorgan. Frames the analysis as essential reading/viewing for understanding current market dynamics. References @HodlMaryland as source.
+
+---
+
+## @MarylandHODL21 - Trump's Gambit: The Quiet War Between the White House and JPMorgan
+
+> Trump's Gambit: The Quiet War Between the White House and JPMorgan
+
+- **Tweet:** https://x.com/MarylandHODL21/status/1991962431191490574
+- **Tags:** Bitcoin
+- **What:** Maryland HODL's headline-only tweet suggests political tensions between the Trump administration and JPMorgan, likely referencing the broader crypto vs. traditional finance conflict shaping 2025-2026 policy. The cryptic nature hints at deeper structural conflict.
+
+---
+
+## @TheRealPlanC - Bitcoin Cost of Production Support Level Analysis
+
+> One of the most important Bitcoin charts you have most likely never seen.
+>
+> Notice how many times Bitcoin has found support at this estimated cost of production red line.
+>
+> The line currently sits at $70,000.
+>
+> This is not just on-chain data—this is a cost of production model for Bitcoin, which is a commodity, and commodities almost never trade below their cost of production.
+>
+> Shout out to (@)paulewaulpaul for creating this chart.
+>
+> Make sure you give him a follow—he does unique and great work.
+
+- **Tweet:** https://x.com/TheRealPlanC/status/1992245302456193100
+- **Tags:** Bitcoin
+- **What:** Plan C shares analysis of a cost of production (ASIC hardware + electricity) support level for Bitcoin, currently estimated at $70,000. Highlights historical pattern of Bitcoin finding support at this level multiple times. Frames Bitcoin as a commodity that fundamentally respects cost of production economics, with commodities rarely trading below production costs. Credits @paulewaulpaul for chart creation. Emphasizes this analysis combines on-chain data with production economics for more reliable support identification.
+
 
 ## @saylor - Death to the Blue Lines
 
@@ -2609,9 +2820,59 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 > *Replying to @alexhillman:* Feed them to the content operating system I'm building, sort them, save them, and from there create all manner of content from the insights in each post. Ideally automatically.
 >
 > Also want to track trends, have ideas automatically researched and saved.
->
-> The list goes on.
 
+---
+
+## Saturday, January 3, 2026
+
+## @kinetic_finance - Bitcoin Exit at $87,000 After 9 Years
+
+> After 9 years in Bitcoin, I sold all my BTC over the last 3 days at $87,000 and here's why.
+
+- **Tweet:** https://x.com/kinetic_finance/status/2004196623443021936
+- **Tags:** Bitcoin
+- **What:** Julian Figueroa shares his reasoning for exiting a 9-year Bitcoin position at $87,000 with video content explaining his detailed rationale.
+
+---
+
+## @theswansjr - Money as Human Consensus vs. Bitcoin's Engineered Nature
+
+> Money does not exist in nature. Bitcoin isn't "real" because it's natural. It's real because we made it that way.
+
+- **Tweet:** https://x.com/theswansjr/status/2003458131829932233
+- **Tags:** Bitcoin
+- **What:** Jeff Swanson explores money as a "shared hallucination" based on human consensus rather than natural law. Traces evolution: seashells → gold → paper → digital. Bitcoin stands apart through deliberate engineering: 21M hard cap, no authority, no counterparty risk, immutable through mathematics rather than politics.
+
+---
+
+## @shanaka86 - Bitcoin ETF Inflows vs. Gold During Correction
+
+> $IBIT: $25 billion in INFLOWS while BTC down 10%. Opposite of 2013 gold panic. Institutions choosing Bitcoin. 60/40 portfolio becoming 55/35/5/5.
+
+- **Tweet:** https://x.com/shanaka86/status/2002163699185037483
+- **Quoted:** https://x.com/EricBalchunas/status/2002074602739060946
+- **Tags:** Bitcoin
+- **What:** Institutional behavioral inflection point: during Bitcoin's 10% correction, $IBIT pulled $25B (same amount that caused 2013 gold redemption panic), yet opposite behavior—institutions buying weakness. $IBIT ranked 6th in 2025 ETF flows despite negative returns while gold ran best year since 1979. Predicts 60/40 rebalancing to include Bitcoin allocations, forecasting $150B AUM for $IBIT faster than any fund in history if BTC appreciates 30% in 2026.
+
+---
+
+## @cz_binance - Market Conviction Through Crypto Cycles
+
+> If you were ever jealous of people buying crypto on the cheap, think about what they did in moments like this.
+
+- **Tweet:** https://x.com/cz_binance/status/2000835198985101501
+- **Tags:** Bitcoin
+- **What:** CZ reflects on emotional discipline during crypto cycles: wealth comes from buying at maximum fear/doubt when prices depress, then holding conviction. December 2025 weakness separates future winners from the perpetually late.
+
+---
+
+## @TrendingBitcoin - Chamath Palihapitiya's $1.14M Bitcoin Target
+
+> Billionaire Chamath Palihapitiya explains why Bitcoin is going to $1,140,000 this cycle.
+
+- **Tweet:** https://x.com/TrendingBitcoin/status/1999573722068303935
+- **Tags:** Bitcoin
+- **What:** Chamath provides detailed analysis predicting Bitcoin reaching $1.14M this cycle with reasoning covering macroeconomic conditions, adoption curves, and institutional inflows.
 - **Tweet:** https://x.com/adamkillam/status/2006894238446002261
 - **Parent:** https://x.com/alexhillman/status/2006881998456164772
 - **What:** Adam shares his vision for a content operating system that aggregates, sorts, and automatically generates content insights from bookmarked posts while tracking trends.
@@ -2747,3 +3008,66 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **Tweet:** https://x.com/BOSSportsGordo/status/1889887867897520371
 - **Tags:** Baseball
 - **What:** Gordo proposes a projected opening day lineup for the Red Sox with detailed position assignments, showcasing the team's expected roster configuration with key players including Devers, Bregman, and Abreu.
+
+---
+
+## @AJamesMcCarthy - Falcon 9 Transit Across the Sun
+
+> I'm proud of this one.
+>
+> I brought a solar telescope to Florida to capture a Falcon 9 rocket launch transiting the sun. While these have been captured before, never with the details of the sun's chromosphere, which makes this one the first!
+>
+> See the video or get the print below 👇
+
+- **Tweet:** https://x.com/AJamesMcCarthy/status/1968658340679921925
+- **Tags:** Space
+- **What:** Andrew McCarthy captures unprecedented solar imaging of a Falcon 9 rocket transiting the sun using a solar telescope. First-ever documentation of rocket transit against the sun's chromosphere, representing a unique intersection of space exploration and astronomical photography.
+
+---
+
+## @andyweirauthor - And So It Begins
+
+> And so it begins!
+
+- **Tweet:** https://x.com/andyweirauthor/status/1940263574150291968
+- **Video:** https://www.youtube.com/watch?v=m08TxIsFTRI
+- **Tags:** Space
+- **Flagged for:** Video transcription
+- **What:** Andy Weir shares cryptic announcement with video link. Likely teasing upcoming space-related project or announcement related to his work with space themes.
+
+---
+
+## @AJamesMcCarthy - ISS Solar Flare Capture
+
+> On Sunday I traveled to the middle of the desert to capture this: The ISS against our sun. What I didn't expect: the sun producing a magnificent flare at the same time
+>
+> A once-in-a-lifetime shot I'm thrilled to share with you. See the uncropped shot or get the print in the reply
+
+- **Tweet:** https://x.com/AJamesMcCarthy/status/1935723657432904131
+- **Tags:** Space
+- **What:** Andrew McCarthy documents the International Space Station passing in front of the sun, coinciding with a solar flare event. Remarkable astronomical photography capturing two rare celestial phenomena simultaneously—ISS transit and active solar activity.
+
+---
+
+## @elonmusk - Starship Launch Announcement
+
+> Starship launch in ~17 minutes!
+
+- **Tweet:** https://x.com/elonmusk/status/1927503235255796089
+- **Tags:** Space
+- **Quote:** SpaceX - "Watch Starship's ninth flight test"
+- **What:** Elon Musk announces imminent Starship ninth flight test launch. Timestamped announcement from approximately May 27, 2025, marking continuation of SpaceX's Starship development program.
+
+---
+
+## @wintonARK - Mars Development Economics
+
+> on a productivity per mass basis
+> we would be ~5x better off building roads with optimi equipped with shovels
+> rather than lofting heavy grading equipment to Mars
+>
+> back on Earth, interesting to think about capital equipment optimizations where the optimization is actually a response to the difficultly/friction of labor mobilization and coordination, rather than an optimization against the raw underlying physics
+
+- **Tweet:** https://x.com/wintonARK/status/1924937480052367626
+- **Tags:** Space
+- **What:** Brett Winton from Ark Invest discusses Mars colonization economics. Argues that human labor optimized with simple tools (shovels) would be more cost-effective than shipping heavy grading equipment to Mars when measured by productivity per unit mass. Extends analysis to Earth-based capital equipment optimization, noting that many equipment choices are driven by labor coordination challenges rather than raw physics constraints.
