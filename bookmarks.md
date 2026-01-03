@@ -1,5 +1,134 @@
 # Saturday, January 3, 2026
-## @Tesladvisor - FSD Summon Saves $400 Towing Bill
+
+## @simonw - OpenAI Quietly Adopting Skills Mechanism in ChatGPT and Codex
+
+> OpenAI aren't talking about it yet, but it turns out they've adopted Anthropic's brilliant "skills" mechanism in a big way
+>
+> Skills are now live in both ChatGPT and their Codex CLI tool
+
+- **Tweet:** https://x.com/simonw/status/1999623295046664294
+- **Link:** https://simonwillison.net/2025/Dec/12/openai-skills/
+- **Tags:** AI
+- **What:** Simon Willison documents OpenAI's adoption of Anthropic's Skills mechanism. Skills are now available in ChatGPT Code Interpreter (in /home/oai/skills) and Codex CLI. Currently covers spreadsheets, PDFs, and docs—using vision-enabled models on rendered PNG pages to preserve layout information. Includes detailed analysis of skill architecture and comparison with Anthropic's implementation.
+
+---
+
+## @lennysan - Surge AI: Edwin Chen on How Claude Got Good at Coding (Podcast)
+
+> The fastest company in history to $1B did it with no VC money and fewer than 100 people.
+>
+> @HelloSurgeAI has become the secret weapon behind Anthropic and Google's best models. Founder Edwin Chen (@echen) built it without playing the Silicon Valley game.
+
+- **Tweet:** https://x.com/lennysan/status/1997781716036125126
+- **Tags:** AI
+- **Source:** Lenny's Podcast: Product | Career | Growth
+- **What:** Lenny Rachitsky interviews Edwin Chen, founder of Surge AI, about how the 100-person company reached $1B in revenue (bootstrapped). Discussion covers: how Surge powers Claude's coding/writing capabilities, AI benchmarks vs. real quality, RL environments as frontier in training, AGI timelines (decade away), and why taste/human judgment determine model winners. Highlights data quality over benchmarks and contrarian approach to company building.
+
+---
+
+## @karpathy - Think of LLMs as Simulators, Not Entities with Thoughts
+
+> Don't think of LLMs as entities but as simulators. For example, when exploring a topic, don't ask:
+>
+> "What do you think about xyz"?
+>
+> There is no "you". The LLM can channel/simulate many perspectives but it hasn't "thought about" xyz for a while and formed its own opinions. If you force it via the use of "you", it will give you something by adopting a personality embedding vector.
+
+- **Tweet:** https://x.com/karpathy/status/1997731268969304070
+- **Tags:** AI
+- **What:** Andrej Karpathy clarifies the conceptual distinction between LLMs as simulators vs. entities with agency. Recommends reframing prompts from "What do you think?" to "What would X experts say?" to access the LLM's actual capability to simulate perspectives rather than a mystical "opinion" borrowed from finetuning statistics.
+
+---
+
+## @Teslarati - Tesla FSD Follow Mode Feature Request (Quote Tweet)
+
+> Hey @elonmusk, do you think we could get a "Follow Mode," where you can still use FSD but follow a car when you're going to the same destination?
+>
+> *Quoting original FSD v14.2.2 review:* One thing I noticed today that would be a great feature would be to follow a car. I followed my parents home after meeting them and there wasn't a Speed Profile that allowed me to keep up. It either wanted to pass them or would not keep up. A follow mode would be a great touch if it could be refined.
+
+- **Tweet:** https://x.com/Teslarati/status/2003890878939877872
+- **Quoted:** https://x.com/Teslarati/status/2003696090491634124
+- **Tags:** Tesla
+- **What:** Feature request for Tesla's Full Self-Driving: a "Follow Mode" that maintains safe distance behind another vehicle when heading to the same destination. Based on user experiences with FSD v14.2.2 where existing speed profiles either wanted to overtake or couldn't maintain pace with a lead vehicle, this addresses a real user need for convoy-like driving scenarios.
+
+---
+
+## @farzyness - Tesla Cybercab Hidden as Unsupervised FSD Sub-$30k Hatchback Strategy
+
+> Using Cybercab to hide a sub $30k Tesla that has unsupervised FSD + steering wheel and pedals will go down as one of the greatest misdirections of all time.
+>
+> "Hey yeah so that Cybercab thing, we actually started building them and we're using them in Austin and other places, but we're actually at a point that we can make way more of them than places we can put them in because of places not letting us operate without a steering wheel and pedal...
+>
+> So yeah here's one with a steering wheel and pedal for $29k. Oh and it can drive itself without you having to pay attention. You can also do this monthly thing where you pay like $500 a month and payment, insurance, maintenance, charging, self-driving is included."
+
+- **Tweet:** https://x.com/farzyness/status/2001897713097380300
+- **Tags:** Tesla
+- **What:** Analysis of Tesla's Cybercab strategy as a brilliant product positioning move. Rather than just launching the autonomous Cybercab, Elon introduced a hybrid sub-$30k hatchback with unsupervised FSD + steering wheel/pedals as a regulatory workaround. Includes monthly subscription model ($500/mo all-inclusive: payment, insurance, maintenance, charging, FSD) for jurisdictions that don't allow autonomous operation. Framed as unexpected product launch strategy that catches the market off-guard.
+
+---
+
+## @pbeisel - Optimus: AI's Killer App and the Future of Embodied Intelligence
+
+> Tesla's AI team has been grinding for years on one of the hardest technical problems of our time: vehicle autonomy. It's the little team that could— while everyone else chased prestige, giant paychecks, and the chance to bask in the presence of the supposed "AI gods" at the likes of Google and Meta, this group stayed focused and solved autonomy the unglamorous way: pixel by pixel, version by version.
+>
+> But what they've built isn't just for driving. It's the foundation for Optimus.
+>
+> Embodied AI is that next interface. It is the interface of AI.
+>
+> A humanoid robot, Optimus, will be the breakthrough. A natural voice interface, a physical human-like presence, and the ability to manipulate the real world as we do. It's AI you don't just talk to; it's AI that does things. This will be how most people on Earth interact with artificial intelligence: not through a screen, but through a physical assistant that feels as natural as interacting with another person.
+>
+> This is the killer app of AI.
+
+- **Tweet:** https://x.com/pbeisel/status/1990167809952006593
+- **Tags:** Tesla
+- **Type:** Quote Tweet (quoted "The Magic of Tesla FSD, part 8 (Optimus edition)")
+- **What:** Phil Beisel argues that Optimus (Tesla's humanoid robot) represents the next evolution of AI interfaces, analogous to how the iPhone revolutionized computing. Emphasizes Tesla's autonomous driving team as uniquely positioned to deliver embodied AI by leveraging their unmatched real-world data engine and perception-action architecture. Contrasts embodied AI with current chatbot interfaces, positioning physical robotics as how most humans will eventually interact with AI.
+
+---
+
+## @aelluswamy - Tesla's Autonomy Approach at ICCV 2025
+
+- **Tweet:** https://x.com/aelluswamy/status/1981760576591393203
+- **Tags:** Tesla
+- **Type:** Reply with video link
+- **Context:** Ashok Elluswamy presenting Tesla's ICCV 2025 paper on autonomy approach
+- **What:** Video of Tesla AI team lead's presentation on Tesla's end-to-end neural network approach to autonomous driving. Discusses the architecture that processes camera, kinematic, audio, and map data to generate driving controls. Covers key innovations: Tesla's data curation pipeline, neural world simulator for evaluation, 3D Gaussian Splatting for interpretability, and the architecture's applicability to Optimus robotics.
+
+---
+
+## @SawyerMerritt - FSD Safety Achievement Milestone
+
+> Tesla has revealed that owners using FSD experience just one crash per 4.92 million miles vs one crash per 700k miles for the US average.
+
+- **Tweet:** https://x.com/SawyerMerritt/status/1986559719251808330
+- **Tags:** Tesla
+- **What:** Safety metrics showing FSD effectiveness: crash rate of 1 per 4.92M miles compared to US average of 1 per 700K miles (7x safer). Represents significant validation of Tesla's autonomous driving approach in real-world conditions.
+
+---
+
+## @elonmusk - Lunar Economic Independence Through Closed-Loop Manufacturing
+
+> Once there are lunar factories, robots and mass drivers on the Moon, such that the entire loop is closed, the system probably decouples from conventional currencies and operates autogenously in watts and tonnage
+
+- **Tweet:** https://x.com/elonmusk/status/1997794076570300616
+- **Tags:** Society
+- **Type:** Reply to Brett Winton (ARK Invest)
+- **Context:** Discussion about compute infrastructure, with Winton noting SpaceX would operate compute arrays, Tesla as chip supplier, and xAI as customer
+- **What:** Elon Musk's vision of closed-loop lunar manufacturing ecosystem independent from Earth currencies. Proposes that with on-Moon factories, robots, and mass drivers, the economic system would operate on physical metrics (watts of energy, tonnage of materials) rather than conventional currency, representing a radically different economic model for space-based operations.
+
+---
+
+## @jack - A Cypherpunk's Manifesto by Eric Hughes
+
+> Privacy is necessary for an open society in the electronic age. Privacy is not secrecy. A private matter is something one doesn't want the whole world to know, but a secret matter is something one doesn't want anybody to know.
+
+- **Article:** A Cypherpunk's Manifesto (1993)
+- **Source:** https://www.activism.net/cypherpunk/manifesto.html
+- **Tags:** Society
+- **What:** Foundational crypto-anarchist document arguing privacy as essential infrastructure for open societies. Hughes defines cryptography and anonymous transaction systems as tools for defending privacy against extraction by governments and corporations. Proposes that privacy-enabling technologies are inevitable and that "cypherpunks write code" to build systems (anonymous mail, digital signatures, encrypted money) that mathematically guarantee privacy without reliance on institutional trust.
+
+---
+
 
 > FSD just saved me $400 and a trip to the tow yard this morning!
 >
