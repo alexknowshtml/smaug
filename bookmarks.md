@@ -441,6 +441,53 @@
 
 ---
 
+# Monday, February 10, 2025
+
+## @bscholl - Boom Supersonic Boomless Cruise technology breakthrough
+> Boom! We cracked it! Today we are introducing Boomless Cruise—supersonic flights up to 50% faster with no audible sonic boom. We quietly (har har) demo'd this on XB-1's first supersonic flight—three times actually.
+
+- **Tweet:** https://x.com/bscholl/status/1888939430833975765
+- **Tags:** [[Investing]]
+- **What:** Announcement of Boom Supersonic's major breakthrough technology that achieves supersonic flight speeds at up to 50% faster performance while eliminating the audible sonic boom problem that has historically prevented commercial supersonic aviation.
+
+## @saylor - Strategy acquires 7,633 BTC, now holds 478,740 BTC
+> $MSTR has acquired 7,633 BTC for ~$742.4 million at ~$97,255 per bitcoin and has achieved BTC Yield of 4.1% YTD 2025. As of 2/09/2025, @Strategy holds 478,740 $BTC acquired for ~$31.1 billion at ~$65,033 per bitcoin.
+
+- **Tweet:** https://x.com/saylor/status/1888933096424177829
+- **Link:** https://www.strategy.com/press/strategy-acquires-7633-btc-and-now-holds-478740-btc_02-10-2025
+- **Tags:** [[Bitcoin]]
+- **Filed:** [MicroStrategy Acquires 7,633 BTC](./knowledge/articles/microstrategy-acquires-7633-btc.md)
+- **What:** Microstrategy press release detailing their latest Bitcoin acquisition of 7,633 BTC, bringing their total holdings to 478,740 BTC worth approximately $31.1 billion with a 4.1% YTD yield in 2025.
+
+## @Vivek4real_ - Whale Bitcoin accumulation accelerating
+> WHALES ARE BUYING #BITCOIN LIKE NEVER SEEN BEFORE
+
+- **Tweet:** https://x.com/Vivek4real_/status/1888901039568351560
+- **Tags:** [[Bitcoin]]
+- **What:** Commentary on accelerating large-scale Bitcoin accumulation activity by whale investors at unprecedented levels.
+
+---
+
+# Sunday, February 9, 2025
+
+## @AdamBLiv - Corporate exodus to Bitcoin standard: GameStop meets Strategy blueprint
+> In 1637, a tulip bulb could buy a mansion. In 1971, gold became a relic. In 2008, trust in the financial system was shattered. And in 2025, an over-shorted relic of Wall Street's own excesses, GameStop, stands poised to become a Bitcoin treasury company...
+>
+> This moment is not coincidence; it is succession.
+
+- **Tweet:** https://x.com/AdamBLiv/status/1888779036337278995
+- **Tags:** [[Bitcoin]]
+- **What:** Comprehensive analysis of how GameStop's potential Bitcoin treasury adoption completes an arc begun by Microstrategy, arguing this triggers a corporate exodus from fiat to Bitcoin standard. Covers the meeting between Cohen and Saylor as the pivotal moment when Bitcoin strategy becomes inevitable for corporations worldwide.
+
+## @ericzakariasson - Cursor AI Agent improvements with developer autonomy
+> We've been hard at work improving @cursor_ai Agent, allowing you to delegate more tasks and let it work alongside you. Agent works just like a human developer, with access to your tools, codebase context, and the ability to take actions.
+
+- **Tweet:** https://x.com/ericzakariasson/status/1888744337103782308
+- **Tags:** [[AI]]
+- **What:** Product update on Cursor's improved Agent capabilities for autonomous AI-assisted development with full access to developer tools, codebase context, and action execution.
+
+---
+
 # Wednesday, February 12, 2025
 
 ## @karpathy - Smuggling arbitrary data through an emoji
