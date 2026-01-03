@@ -1,3 +1,78 @@
+# Thursday, July 31, 2025
+
+## @GoogleDesign - Google Sans Code Font
+> Meet Google Sans Code — the new font meticulously crafted for coders, made by @Google! It blends geometric precision with a touch of calligraphic flair in a fixed-width design that's super easy to read, even at tiny code editor sizes. Say goodbye to squinting and hello to clear, beautiful code! ✨
+
+- **Tweet:** https://x.com/GoogleDesign/status/1950966219592605730
+- **Tags:** [[Coding]]
+- **What:** Google announces Google Sans Code, a new monospace font designed specifically for code editors with focus on readability at small sizes.
+
+---
+
+# Wednesday, July 9, 2025
+
+## @Scobleizer - Apple Vision Pro Hardware Advancement
+> I hear the next Apple Vision Pro is still heavy and expensive, but has a way faster chip, with a lot better hardware for running AI workloads, which makes it way better positioned for the Holodeck that I keep talking about. That said, this isn't glasses, and it isn't the "iPhone moment" for the Holodeck.
+>
+> *Quoting @DeItaone:* *APPLE READYING VISION PRO WITH NEW CHIP, MORE COMFORTABLE STRAP *APPLE IS PLANNING LIGHTER, REDESIGNED HEADSET MODEL FOR 2027
+
+- **Tweet:** https://x.com/Scobleizer/status/1942997611352592480
+- **Quoted:** https://x.com/DeItaone/status/1942994997499891920
+- **What:** Analysis of next-generation Apple Vision Pro improvements focusing on faster AI-capable chip and hardware advancements for immersive computing.
+
+---
+
+# Sunday, July 6, 2025
+
+## @jack - bitchat: Bluetooth Mesh Chat
+> my weekend project to learn about bluetooth mesh networks, relays and store and forward models, message encryption models, and a few other things.
+>
+> bitchat: bluetooth mesh chat...IRC vibes.
+>
+> TestFlight: https://t.co/P5zRRX0TB3
+> GitHub: https://t.co/Yphb3Izm0P https://t.co/yxZxiMfMH2
+
+- **Tweet:** https://x.com/jack/status/1941989435962212728
+- **Tags:** [[Coding]]
+- **Filed:** [bitchat](./knowledge/tools/bitchat.md)
+- **What:** A decentralized peer-to-peer messaging app combining Bluetooth mesh for offline communication with Nostr protocol for global internet-based reach, emphasizing privacy and no-account design.
+
+---
+
+# Saturday, July 5, 2025
+
+## @karpathy - Building Open Source Communities Like Bacteria
+> How to build a thriving open source community by writing code like bacteria do 🦠. Bacterial code (genomes) are:
+>
+> - small (each line of code costs energy)
+> - modular (organized into groups of swappable operons)
+> - self-contained (easily "copy paste-able" via horizontal gene transfer)
+>
+> If chunks of code are small, modular, self-contained and trivial to copy-and-paste, the community can thrive via horizontal gene transfer. For any function (gene) or class (operon) that you write: can you imagine someone going "yoink" without knowing the rest of your code or having to import anything new, to gain a benefit? Could your code be a trending GitHub gist?
+>
+> This coding style guide has allowed bacteria to colonize every ecological nook from cold to hot to acidic or alkaline in the depths of the Earth and the vacuum of space, along with an insane diversity of carbon anabolism, energy metabolism, etc. It excels at rapid prototyping but... it can't build complex life. By comparison, the eukaryotic genome is a significantly larger, more complex, organized and coupled monorepo. Significantly less inventive but necessary for complex life - for building entire organs and coordinating their activity. With our advantage of intelligent design, it should possible to take advantage of both. Build a eukaryotic monorepo backbone if you have to, but maximize bacterial DNA.
+
+- **Tweet:** https://x.com/karpathy/status/1941616674094170287
+- **Tags:** [[Coding]]
+- **What:** Philosophy on open-source code design comparing bacterial genomes (small, modular, copy-paste-able) to eukaryotic genomes (complex, coupled), advocating for balancing both approaches.
+
+---
+
+# Wednesday, February 12, 2025
+
+## @karpathy - Smuggling arbitrary data through an emoji
+> UTF-8 🤦‍♂️
+>
+> I already knew about the "confusables", e.g.: e vs. е. Which look ~same but are different.
+>
+> But you can also smuggle arbitrary byte streams in any character via "variation selectors". So this emoji: 😀​​​​​​​​​​​​​​​​​​​​​​ is 53 tokens. Yay
+
+- **Tweet:** https://x.com/karpathy/status/1889714240878940659
+- **Filed:** [Smuggling arbitrary data through an emoji](./knowledge/articles/smuggling-data-emoji.md)
+- **What:** Technical deep-dive on using Unicode variation selectors to encode arbitrary data invisibly within Unicode characters and emojis.
+
+---
+
 # Friday, November 28, 2025
 
 ## @_avichawla - Strix AI Pentesting Framework
