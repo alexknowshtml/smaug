@@ -1,3 +1,97 @@
+# Saturday, January 3, 2026
+
+## @adocomplete - Sandbox Mode Security Pattern with Boundaries
+> Advent of Claude Day 27 - Sandbox Mode
+>
+> "Can I run npm install?" [Allow]
+> "Can I run npm test?" [Allow]
+> "Can I cat this file?" [Allow]
+> ×100
+>
+> /sandbox → boundaries set → Claude gets to work.
+>
+> Define boundaries once. Claude works freely inside them.
+>
+> YOLO speed. Actual security.
+
+- **Tweet:** https://x.com/adocomplete/status/2004977723429847380
+- **Tags:** [[Coding]]
+- **What:** Describes a sandbox pattern for Claude where users define security boundaries once, then Claude can work freely within them - combining speed with actual security controls.
+
+---
+
+## @karpathy - Using Claude Code to Control Lutron Home Automation System
+> *Quoting @cyp_ll:* claude figured out how to control my oven
+>
+> I was inspired by this so I wanted to see if Claude Code can get into my Lutron home automation system.
+>
+> - it found my Lutron controllers on the local wifi network
+> - checked for open ports, connected, got some metadata and identified the devices and their firmware
+> - searched the internet, found the pdf for my system
+> - instructed me on what button to press to pair and get the certificates
+> - it connected to the system and found all the home devices (lights, shades, HVAC temperature control, motion sensors etc.)
+> - it turned on and off my kitchen lights to check that things are working (lol!)
+>
+> I am now vibe coding the home automation master command center, the potential is 🔥.And I'm throwing away the crappy, janky, slow Lutron iOS app I've been using so far. Insanely fun :D :D
+
+- **Tweet:** https://x.com/karpathy/status/2005067301511630926
+- **Quoted:** https://x.com/cyp_ll/status/2002506706622767573
+- **Tags:** [[Coding]]
+- **What:** Andrej Karpathy demonstrates Claude Code integrating with and controlling a Lutron home automation system - discovering devices, finding documentation, setting up certificates, and controlling lights without needing the official app.
+
+---
+
+## @bcherny - Claude Code Growth: 259 PRs and 497 Commits in 30 Days
+> When I created Claude Code as a side project back in September 2024, I had no idea it would grow to be what it is today. It is humbling to see how Claude Code has become a core dev tool for so many engineers, how enthusiastic the community is, and how people are using it for all sorts of things from coding, to devops, to research, to non-technical use cases. This technology is alien and magical, and it makes it so much easier for people to build and create. Increasingly, code is no longer the bottleneck.
+>
+> A year ago, Claude struggled to generate bash commands without escaping issues. It worked for seconds or minutes at a time. We saw early signs that it may become broadly useful for coding one day.
+>
+> Fast forward to today. In the last thirty days, I landed 259 PRs -- 497 commits, 40k lines added, 38k lines removed. Every single line was written by Claude Code + Opus 4.5. Claude consistently runs for minutes, hours, and days at a time (using Stop hooks). Software engineering is changing, and we are entering a new period in coding history. And we're still just getting started..
+
+- **Tweet:** https://x.com/bcherny/status/2004887829252317325
+- **Tags:** [[Coding]]
+- **What:** Boris Cherny reflects on Claude Code's evolution from a September 2024 side project to a core development tool, noting 259 PRs and 497 commits in 30 days with every line written by Claude Code + Opus 4.5, demonstrating how code is no longer the bottleneck.
+
+---
+
+## @esrtweet - 50 Years of Programming: From Punched Cards to AI Coding Assistants
+> I was writing some code the new-school way yesterday, prompting gpt-4.1 through aider, and for whatever reason my mind flashed back 50 years and the utter freaking enormity of it all crashed in on me like a tidal wave.
+>
+> And now I want to make you feel that, too.
+>
+> In 1975 I ran programs by feeding punched cards into a programmable calculator. Actual computers were still giant creatures that lived in glass-walled rooms, though there were rumors from afar of a thing called an Altair.
+>
+> Unix and C had not yet broken containment from Bell Lab; DOS and the first IBM PC were six years away. The aggregated digital computing capacity of the entire planet was roughly equivalent to a single modern smartphone. We still used Teletypes as production gear because even video character terminals barely existed yet; pixel-addressable color displays on computers were a science-fiction dream.
+>
+> We didn't have version control. Public forge sites wouldn't be a thing for 25 years yet. The number of computer games that existed in the world could probably be counted on the fingers of two hands.
+>
+> Because of all this, I learned to program over the next ten years with tools so primitive that when I talk about them today it sounds like uphill-both-ways sketch comedy.
+>
+> You may not even be able to imagine what a slow and laborious process programming was then, and how tiny the volume of code we could produce per month was; I have to work to remember it, myself.
+>
+> Today I call spirits from the vasty deep, conversing with unhuman intelligences and belting out finished programs I would once have considered prohibitively complex to attempt within a single working day.
+>
+> Fifty years, many generations of hardware technology, from punched cards to AIs that can pass the Turing test...and I'm still here, still coding, still on top of what a software engineer needs to know to get useful work done in the current day. Gotta admit I feel some pride in that!
+>
+> This meditation isn't supposed to be about me, though. It's about the dizzying, almost unbelievable progress I've lived through and been a part of. If you had told me to predict when I would have a device in my pocket that would give me instant real-time access to most of the world's knowledge, with my own pet homunculi to sift through it for me, I would have been one of the few that wouldn't have said "never" (because I was already a science-fiction fan), but I wouldn't have predicted a date fewer than multiple centuries in the future either.
+>
+> We've come a hell of a long way, baby. And the fastest part of the ride is only beginning. The Singularity is upon us. Everything I've lived through and learned was just prologue.
+
+- **Tweet:** https://x.com/esrtweet/status/2004829013068444050
+- **Tags:** [[Coding]]
+- **What:** Eric S. Raymond reflects on 50 years of programming evolution from punched cards in 1975 to modern AI coding assistants, contrasting the primitive tools of the past with the current ability to have AIs write complex programs in a single day.
+
+---
+
+## @BeLikeBumblebee - gh-dash - Rich Terminal UI for GitHub
+> *Replying to @steipete:* I think have you tried dash it is gh cli plugin but super intuitive
+
+- **Tweet:** https://x.com/BeLikeBumblebee/status/2004215481948045561
+- **Filed:** [gh-dash](./knowledge/tools/gh-dash.md)
+- **What:** gh-dash is a rich terminal UI for GitHub that provides an intuitive interface for managing PRs and issues without breaking your workflow - implements a TUI using Bubbletea with vim-style keybindings and customizable actions.
+
+---
+
 # Friday, December 26, 2025
 
 ## @karpathy - Programmer skill issue in AI era
@@ -728,3 +822,72 @@
 
 - **Tweet:** https://x.com/ennycodes/status/2001949930538328248
 - **What:** Brief take on vibe coding culture, asserting that it still requires foundational coding knowledge despite the casual approach.
+
+---
+
+# Saturday, November 8, 2025
+
+## @bengold - Physical Intelligence: AI for Robotics and General-Purpose Robots
+
+> One of the best startup websites I've seen in a while https://t.co/V6zSRrwBnm
+
+- **Tweet:** https://x.com/bengold/status/1987278164679139676
+- **Link:** https://www.pi.website/
+- **Tags:** [[AI]]
+- **Filed:** [Physical Intelligence](./knowledge/articles/physical-intelligence.md)
+- **What:** Company website for Physical Intelligence, a robotics and AI startup focused on bringing foundation models and learning algorithms to physical robots and actuated devices. Well-designed site showcasing their latest research on vision-language-action (VLA) models.
+
+---
+
+# Wednesday, November 5, 2025
+
+## @SGRodriques - Kosmos: AI Scientist for Automated Scientific Research Discovery
+
+> Today, we're announcing Kosmos, our newest AI Scientist, available to use now. Users estimate Kosmos does 6 months of work in a single day. One run can read 1,500 papers and write 42,000 lines of code. At least 79% of its findings are reproducible. Kosmos has made 7 discoveries so far, which we are releasing today, in areas ranging from neuroscience to material science and clinical genetics...
+
+- **Tweet:** https://x.com/SGRodriques/status/1986086198004072772
+- **Tags:** [[AI]]
+- **What:** Announcement of Kosmos, an AI-powered research agent from FutureHouse that can process massive amounts of scientific literature and code to make research discoveries. Includes 7 validated discoveries in neuroscience, materials science, and clinical genetics.
+
+---
+
+# Wednesday, October 29, 2025
+
+## @Scobleizer - Cognitive Architectures: 20-Year-Old's AI System Beats Major Models
+
+> How did a 20-year-old beat Grok. And ChatGPT. And Perplexity. And Gemini? In part one @blevlabs laid out how: he built a very different architecture to take AI to a new human level. Cognitive architectures, he calls them. I call them AI's with consciousness. Ones that learn, evolve, build themselves, and do so like we do.
+
+> *Quoting @Scobleizer:* Every once in a while I meet someone who comes out of nowhere to bring a real breakthrough. @blevlabs is the latest that I've found. His AI is way more advanced than any I've seen that are publicly available.
+
+- **Tweet:** https://x.com/Scobleizer/status/1983645577067036733
+- **Quoted:** https://x.com/Scobleizer/status/1983251942089658823
+- **Tags:** [[AI]]
+- **What:** Two-part interview with @blevlabs about cognitive architectures - a novel AI architecture approach that reportedly outperforms major AI models and demonstrates continuous learning capabilities.
+
+---
+
+# Tuesday, October 28, 2025
+
+## @heyalexfriedman - How to Get ChatGPT to Stop Agreeing with Everything
+
+> How to get ChatGPT to stop agreeing with everything you say: https://t.co/IQvApUdFtc
+
+> *Quoting @heyalexfriedman:* @JamesonCamp Go to your settings and tell it "You are an expert who double checks things, you are skeptical and you do research. I am not always right. Neither are you, but we both strive for accuracy." That's the only way I've gotten it to tell me I'm wrong lol
+
+- **Tweet:** https://x.com/heyalexfriedman/status/1983256768525279330
+- **Tags:** [[AI]]
+- **What:** Quick tip for improving ChatGPT interactions by setting a system prompt that encourages the model to be skeptical and fact-check rather than uncritically agree with the user.
+
+---
+
+# Friday, October 24, 2025
+
+## @karpathy - nanochat: Training Small LLMs with Spelling Tasks
+
+> Last night I taught nanochat d32 how to count 'r' in strawberry (or similar variations). I thought this would be a good/fun example of how to add capabilities to nanochat and I wrote up a full guide here: https://t.co/fz1AMI5kqk
+
+- **Tweet:** https://x.com/karpathy/status/1981746327995465816
+- **Link:** https://github.com/karpathy/nanochat
+- **Tags:** [[AI]] [[Coding]]
+- **Filed:** [nanochat](./knowledge/tools/nanochat.md)
+- **What:** Andrej Karpathy's minimal ChatGPT implementation for training small language models on consumer hardware (~$100). Includes detailed guide on adding capabilities like spelling tasks through synthetic data and fine-tuning techniques.
