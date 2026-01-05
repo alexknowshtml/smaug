@@ -79,6 +79,7 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
   const possiblePaths = [
     '/usr/local/bin/claude',
     '/opt/homebrew/bin/claude',
+    path.join(process.env.HOME || '', '.claude/local/claude'),
     path.join(process.env.HOME || '', '.local/bin/claude'),
     path.join(process.env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin/claude'),
   ];
@@ -140,6 +141,7 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
     const nodePaths = [
       '/usr/local/bin',
       '/opt/homebrew/bin',
+      process.env.NVM_BIN,
       path.join(process.env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin'),
       path.join(process.env.HOME || '', '.local/bin'),
       path.join(process.env.HOME || '', '.bun/bin'),
