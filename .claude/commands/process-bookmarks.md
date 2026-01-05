@@ -11,7 +11,7 @@ Process prepared Twitter bookmarks into a markdown archive with rich analysis an
 **Check parallelThreshold from config** (default: 8). Use parallel processing only when bookmark count >= threshold. For smaller batches, sequential processing is faster due to subagent overhead.
 
 ```bash
-cat ./smaug.config.json | jq '.parallelThreshold // 8'
+node -e "console.log(require('./smaug.config.json').parallelThreshold ?? 8)"
 ```
 
 **For bookmarks below threshold (sequential):**
@@ -75,7 +75,7 @@ Use this format for date section headers (e.g., "Thursday, January 2, 2026").
 
 **Load paths and categories from config:**
 ```bash
-cat ./smaug.config.json | jq '{archiveFile, pendingFile, stateFile, categories}'
+node -e "const c=require('./smaug.config.json'); console.log(JSON.stringify({archiveFile:c.archiveFile, pendingFile:c.pendingFile, stateFile:c.stateFile, categories:c.categories}, null, 2))"
 ```
 
 This gives you:
@@ -125,10 +125,10 @@ Categories define how different bookmark types are handled. Each category has:
 
 ### 1. Read the Prepared Data
 
-Read from the `pendingFile` path specified in config. If the path starts with `~`, expand it to `$HOME`:
+Read from the `pendingFile` path specified in config. If the path starts with `~`, expand it to the home directory:
 ```bash
-# Get pendingFile from config and expand ~
-PENDING_FILE=$(cat ./smaug.config.json | jq -r '.pendingFile' | sed "s|^~|$HOME|")
+# Get pendingFile from config and expand ~ (cross-platform)
+PENDING_FILE=$(node -e "const p=require('./smaug.config.json').pendingFile; console.log(p.replace(/^~/, process.env.HOME || process.env.USERPROFILE))")
 cat "$PENDING_FILE"
 ```
 
