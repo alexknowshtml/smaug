@@ -109,7 +109,7 @@ npx smaug process
 npx smaug process --force
 
 # Check what's pending
-cat .state/pending-bookmarks.json | jq '.count'
+node -e "console.log(require('./.state/pending-bookmarks.json').count)"
 ```
 
 ### Fetching All Bookmarks
@@ -319,6 +319,7 @@ Create `smaug.config.json`:
 | `autoInvokeClaude` | `true` | Auto-run Claude Code for analysis |
 | `claudeModel` | `sonnet` | Model to use (`sonnet`, `haiku`, or `opus`) |
 | `claudeTimeout` | `900000` | Max processing time (15 min) |
+| `parallelThreshold` | `8` | Min bookmarks before parallel processing kicks in |
 | `webhookUrl` | `null` | Discord/Slack webhook for notifications |
 
 Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
@@ -357,7 +358,7 @@ Smaug uses Claude Code for intelligent bookmark processing. The `.claude/command
 - Filing articles to `knowledge/articles/`
 - Handling quote tweets with full context
 - Processing reply threads with parent context
-- Parallel processing for 3+ bookmarks (using Haiku subagents for cost efficiency)
+- Parallel processing for large batches (configurable threshold, default 8 bookmarks)
 
 You can also run processing manually:
 
@@ -395,7 +396,7 @@ Main (sonnet):
 
 ### Cost Optimization: Haiku Subagents
 
-For batches of 3+ bookmarks, Smaug spawns parallel subagents. By default, these use Haiku instead of Sonnet, which cuts costs nearly in half:
+For large batches (8+ bookmarks by default), Smaug spawns parallel subagents. By default, these use Haiku instead of Sonnet, which cuts costs nearly in half:
 
 | Configuration | 20 Bookmarks | Time |
 |---------------|--------------|------|
