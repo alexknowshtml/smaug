@@ -102,7 +102,10 @@ export function fetchBookmarks(config, count = 10, options = {}) {
     });
     const output = fs.readFileSync(tmpFile, 'utf8');
     fs.unlinkSync(tmpFile);
-    return JSON.parse(output);
+    const parsed = JSON.parse(output);
+    // bird CLI wraps paginated output in { tweets: [...], nextCursor: ... }
+    // but returns a plain array for non-paginated requests
+    return Array.isArray(parsed) ? parsed : (parsed.tweets || []);
   } catch (error) {
     throw new Error(`Failed to fetch bookmarks: ${error.message}`);
   }
