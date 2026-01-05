@@ -9,5 +9,8 @@
     "ct0": "YOUR_CT0_HERE"
   },
   "autoInvokeClaude": true,
-  "claudeModel": "sonnet"
+  "claudeModel": "sonnet",
+  "autoInvokeOpencode": true,
+  "opencodeModel": "opencode/grok-code",
+  "cliTool": "opencode"
 }
