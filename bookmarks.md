@@ -1,4 +1,70 @@
+# Sunday, January 4, 2026
+
+## @trq212 - AI alignment and interpretability resources
+> If you started using Claude Code over the holidays, you might be curious about how AI actually works, the benefits and risks, and where it's headed. Here are some of my favorite papers on alignment, interpretability, and societal impacts
+
+- **Tweet:** https://x.com/trq212/status/2007903193158881323
+- **What:** Curated collection of papers on AI alignment, interpretability, and societal impact for those exploring Claude Code.
+
+---
+
+## @andyorsow - Claude Code use case uncertainty
+> Feeling like I should be using Claude Code but have no idea exactly what I should be using it for. Just a bundle of non-technical FOMO over here.
+
+- **Tweet:** https://x.com/andyorsow/status/2007931911847719290
+- **What:** Expression of uncertainty about practical applications for Claude Code despite wanting to use it.
+
+---
+
+# Saturday, January 3, 2026
+
+## @_kaitodev - Lovable for videos gaining traction
+> lovable for videos gets better everyday with new creators joining
+>
+> check it out:
+>
+> *Quoting @sbsamuelbitenco:* we found a better way to do daniel dalen style captions
+
+- **Tweet:** https://x.com/_kaitodev/status/2007553892968706134
+- **Link:** https://odysser.com/
+- **Quoted:** https://x.com/sbsamuelbitenco/status/2007549416450978065
+- **What:** Lovable's video capabilities expanding with new creators. References improved caption generation approach.
+
+---
+
+## @nummanali - CC Mirror release announcement
+> Announcing the release of CC Mirror
+>
+> The best way to use @Zai_org (GLM 4.7) and @MiniMax__AI (M2.1) Coding Plans
+>
+> - Full Model Support
+> - All tools preconfigured
+> - Custom themes
+> - Isolated from CC
+> - Enhanced prompts
+>
+> Start now: npx cc-mirror
+
+- **Tweet:** https://x.com/nummanali/status/2007586417094844517
+- **What:** CC Mirror tool launch enabling usage of GLM 4.7 and MiniMax M2.1 models with preconfigured tooling and custom themes.
+
+---
+
 # Friday, January 2, 2026
+
+## @alexhillman - Git safety hooks for destructive command prevention
+> been here, this never feels good.
+>
+> this lil set of hooks lets me rest easy it won't happen again
+>
+> *Quoting @nummanali:* Lmao I accidentally deleted everything I worked on today. Now I'm tasking codex to reconstruct it using cass (coding_agent_session_search). Probably going to take all night, lets see what happens
+
+- **Tweet:** https://x.com/alexhillman/status/2006881325849129246
+- **Link:** https://github.com/Dicklesworthstone/misc_coding_agent_tips_and_scripts/blob/main/DESTRUCTIVE_GIT_COMMAND_CLAUDE_HOOKS_SETUP.md
+- **Quoted:** https://x.com/nummanali/status/2006875686846476556
+- **What:** Git hooks setup to prevent accidental deletion of work. Responding to a cautionary tale about losing a day's work.
+
+---
 
 ## @parcadei - Continuous Claude v2 Context Management
 > @yuzu_4ever https://t.co/PwioZUVYkD
