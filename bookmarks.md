@@ -465,3 +465,230 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 - **Tweet:** https://x.com/donvito/status/2006743894147711370
 - **What:** Follow-up endorsement emphasizing the value proposition of GLM 4.7 at $3/month subscription rate. Reflects developer sentiment about the model's capabilities relative to pricing.
+
+---
+
+# Tuesday, December 30, 2025
+
+## @koylanai - Digital Brain skill for Claude Code
+> Agent Skills for Context Engineering - digital brain implementation
+
+- **Tweet:** https://x.com/koylanai/status/2005857134311854480
+- **Link:** https://github.com/muratcankoylan/Agent-Skills-for-Context-Engineering
+- **What:** GitHub repository containing a digital brain skill implementation for Claude Code, enabling advanced context engineering and knowledge management capabilities.
+
+---
+
+# Monday, December 29, 2025
+
+## @aakashgupta - Smartphone addiction and dopamine regulation
+> Discussion about how smartphone addiction affects dopamine levels and causes brain fog
+
+- **Tweet:** https://x.com/aakashgupta/status/2005552148218851769
+- **What:** Explores the connection between smartphone dependency and dopamine dysregulation as a root cause of cognitive impairment and brain fog.
+
+---
+
+## @pk_iv - Browserbase cloud browser plugin for Claude Code
+> Cloud browser plugin enabling Claude Code to interact with web applications
+
+- **Tweet:** https://x.com/pk_iv/status/2005694099123478579
+- **What:** Browserbase cloud-based browser solution that extends Claude Code's capabilities for web automation and interaction.
+
+---
+
+## @CasJam - Claude Code for video post-production
+> Building a custom Claude Code app that handles ~80% of post-production in a single command
+
+- **Tweet:** https://x.com/CasJam/status/2005765644394844261
+- **What:** Demonstrates practical applications of Claude Code for automating video post-production: transcription, analysis, clip cutting, and script writing.
+
+---
+
+## @steipete - Shipping at Inference Speed
+> Confession: I ship code I never read. Here's my 2025 workflow.
+
+- **Tweet:** https://x.com/steipete/status/2005451576971043097
+- **Link:** https://steipete.me/posts/2025/shipping-at-inference-speed
+- **What:** Blog post discussing shipping software at inference speed, embracing rapid AI-assisted development cycles.
+
+---
+
+## @michael_chomsky - ResponsiveDialog Component Pattern
+> I do this for every project (quote of @jordienr about drawer on mobile, dialog on desktop)
+
+- **Tweet:** https://x.com/michael_chomsky/status/2005454822083076172
+- **What:** Endorsement of the responsive dialog component pattern that adapts between drawer and dialog based on viewport.
+
+---
+
+# Sunday, December 28, 2025
+
+## @rudrank - Awesome Claude Code Plugins List
+> I want to make the most out of Claude Code... One thing to explore more are plugins
+
+- **Tweet:** https://x.com/rudrank/status/2005215898593034525
+- **Link:** https://github.com/ccplugins/awesome-claude-code-plugins
+- **What:** Comprehensive registry of Claude Code plugins: slash commands, subagents, MCP servers, and hooks across multiple specializations.
+
+---
+
+## @mattpocockuk - PRD with Passing Tests Approach
+> Tired: PRD + Multi-phase plan. Wired: PRD with 'passing' status on each test case
+
+- **Tweet:** https://x.com/mattpocockuk/status/2005232347374141888
+- **What:** Development methodology that combines PRDs with test-driven specification, each feature is one context window large.
+
+---
+
+## @0xSero - Docker MCP Toolkit for Token Savings
+> This is how you should use MCPs if you can. Instead of loading all MCPs, load 1 which discovers the rest.
+
+- **Tweet:** https://x.com/0xSero/status/2005355435570958553
+- **Link:** https://docs.docker.com/ai/mcp-catalog-and-toolkit/toolkit/
+- **What:** Docker MCP toolkit for dynamic MCP discovery, saving 20k tokens by loading one MCP that discovers others.
+
+---
+
+# Saturday, December 27, 2025
+
+## @aakashgupta - Karpathy "dramatically behind" commentary
+> Andrej Karpathy literally built the neural networks running inside coding assistants... If he feels "dramatically behind" as a programmer, that tells you everything.
+
+- **Tweet:** https://x.com/aakashgupta/status/2004713516930855284
+- **What:** Commentary on Karpathy's confession about feeling behind, noting the new stack of agents, subagents, prompts, contexts, memory, modes, etc.
+
+---
+
+## @adocomplete - Claude Code sandboxing docs link
+> Learn more about Claude Code Sandboxing
+
+- **Tweet:** https://x.com/adocomplete/status/2004977725136888287
+- **Link:** https://code.claude.com/docs/en/sandboxing
+- **What:** Link to Claude Code sandboxing documentation covering security and isolation features.
+
+---
+
+## @bcherny - Reply with screenshot/image
+> Visual content reply
+
+- **Tweet:** https://x.com/bcherny/status/2004947522889162834
+- **What:** Visual reference or example shared in reply format.
+
+---
+
+# Friday, December 26, 2025
+
+## @tom_doerr - StenoAI local meeting transcription
+> Transcribes and summarizes meetings locally using small language models
+
+- **Tweet:** https://x.com/tom_doerr/status/2004452266640634056
+- **Link:** https://github.com/ruzin/stenoai
+- **What:** Privacy-focused AI meeting transcription and summarization using locally hosted small language models.
+
+---
+
+## @trq212 - Claude Code prompt template for non-technical users
+> Full template for asking Claude Code to onboard a non-technical user
+
+- **Tweet:** https://x.com/trq212/status/2004575721235141115
+- **What:** Comprehensive prompt template to help non-technical users interact with Claude Code effectively.
+
+---
+
+## @tom_doerr - AppScreen 3D screenshot mockups
+> Generates screenshots with 3D device mockups
+
+- **Tweet:** https://x.com/tom_doerr/status/2004616272844087678
+- **Link:** https://github.com/YUZU-Hub/appscreen
+- **What:** Tool to create beautiful 3D device mockups and screenshot presentations for iOS App Store.
+
+---
+
+## @tom_doerr - Unwatched RSS YouTube player
+> RSS YouTube player for Apple devices with chapter skipping and no ads
+
+- **Tweet:** https://x.com/tom_doerr/status/2004627732148232504
+- **Link:** https://github.com/fer0n/Unwatched
+- **What:** RSS feed based YouTube video player for iOS, macOS, tvOS with chapter support and no ads.
+
+---
+
+## @cameronpetitti - Crosspost app launch
+> Years of work is finally ready. Introducing Crosspost.
+
+- **Tweet:** https://x.com/cameronpetitti/status/2004631941782667685
+- **Link:** https://www.crosspost.app/
+- **What:** Application for managing and crossposting content across multiple social media platforms.
+
+---
+
+## @calebporzio - Chrome game changer addition
+> woah...game changer addition to chrome
+
+- **Tweet:** https://x.com/calebporzio/status/2004651797533917261
+- **What:** Media post highlighting a significant Chrome feature or addition.
+
+---
+
+## @seconds_0 - Claude Code onboarding prompt for non-technical users
+> Here's my "ask claude code to onboard a nontechnical user" prompt
+
+- **Tweet:** https://x.com/seconds_0/status/2004684813773799543
+- **Link:** https://code.claude.com/docs/
+- **What:** Comprehensive interview-based onboarding prompt for non-technical users with communication rules and quality standards.
+
+---
+
+## @ryanvogel - Video post
+> Video demonstration
+
+- **Tweet:** https://x.com/ryanvogel/status/2004729931943870612
+- **What:** Video content post.
+
+---
+
+# Thursday, December 25, 2025
+
+## @hdjirdeh - streamdown vs react-markdown
+> Moved away from react-markdown to streamdown and although its not perfect, its so much better.
+
+- **Tweet:** https://x.com/hdjirdeh/status/2004020171808428520
+- **What:** Comparison between streamdown and react-markdown for rendering markdown in React with improved formatting and interactive code blocks.
+
+---
+
+## @PovilasKorop - AI Adoption Quote
+> How to adopt AI in your company (or personally). Main point: There is no AI course you can "finish."
+
+- **Tweet:** https://x.com/PovilasKorop/status/2004099293389463793
+- **What:** Quote highlighting key insight from Steve Ike's AI adoption playbook thread about constant experimentation.
+
+---
+
+## @tom_doerr - BreakFree iOS Sideloading Tool
+> Sideloads apps on iOS using DNS and certificates
+
+- **Tweet:** https://x.com/tom_doerr/status/2004208111532335470
+- **Link:** https://github.com/FrizzleM/BreakFree
+- **What:** Free iOS shortcut for sideloading unlimited apps using DNS and public certificates exploit.
+
+---
+
+# Tuesday, December 23, 2025
+
+## @steve_ike_ - AI Adoption Playbook
+> This might be the cleanest AI adoption playbook inside a real product org I've seen.
+
+- **Tweet:** https://x.com/steve_ike_/status/2003497265495785523
+- **What:** 15-point comprehensive playbook covering practical approaches to implementing AI across organizations, from "How I AI" podcast.
+
+---
+
+# Saturday, November 22, 2025
+
+## @alexhillman - Always Do (11 Imperatives)
+> Always Keep Humans at the Center - use AI to remove drudgery and free up time for real, authentic relationships
+
+- **Tweet:** https://x.com/alexhillman/status/1992252350812270856
+- **What:** Personal reflection on core imperatives with emphasis on keeping humans central to all technology decisions.
