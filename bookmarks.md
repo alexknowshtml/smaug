@@ -2298,3 +2298,571 @@ DATE: Wednesday, October 15, 2025
 - **What:** Comprehensive superthread collecting all resources on advanced Claude Code usage, research-plan-implement methodology, and context engineering techniques for coding agents.
 
 ---
+
+
+---
+
+
+# Wednesday, December 17, 2025
+
+## @JackPosobiec - Christian Alternative Learning Content for Children
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+>
+> https://t.co/gkfuc6fVjQ
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** Recommendation for a Christian children's educational video as an alternative to secular toddler learning content.
+
+---
+
+## @RapidResponse47 - Trump Accounts Government Portal Update
+> JUST UPDATED: https://t.co/FKL1oV36R4 https://t.co/YYG4diAEni
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **Link:** https://trumpaccounts.gov/
+- **What:** Announcement of an update to the Trump accounts government portal with accompanying screenshot.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 Release
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://t.co/czN80tHvAY
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Strong recommendation to update Claude Code to version 2.0.71, indicating a significant or notable release with positive features.
+
+---
+
+## @JackPosobiec - Christian Toddler Learning Video Alternative
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+> https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** Christian-themed toddler educational content featuring Silly Miss Lily, positioned as a faith-based alternative to Ms Rachel videos.
+
+---
+
+## @RapidResponse47 - Trump Accounts Portal Update
+> JUST UPDATED: https://trumpaccounts.gov/
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **Link:** https://trumpaccounts.gov/
+- **What:** Update notification for Trump Accounts portal website (currently behind Cloudflare challenge, content unavailable).
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 Release
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://x.com/Yampeleg/status/2001360661700596119/photo/1
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Recommendation to update Claude Code to v2.0.71, suggesting significant improvements or features in the latest release.
+
+---
+
+## @JackPosobiec - Silly Miss Lily Christian toddler education content
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+>
+> https://t.co/gkfuc6fVjQ
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** Educational content for Christian toddlers featuring Silly Miss Lily as an alternative to secular education channels like Ms. Rachel.
+
+---
+
+## @RapidResponse47 - Trump accounts government update
+> JUST UPDATED: https://t.co/FKL1oV36R4 https://t.co/YYG4diAEni
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **What:** Update notice regarding Trump accounts with government website reference.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 release
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://t.co/czN80tHvAY
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Enthusiastic recommendation to update Claude Code to v2.0.71, indicating significant improvements in the release.
+
+---
+
+## @JackPosobiec - Christian Learning Content for Toddlers
+> Want a Christian alternative to Ms Rachel that your kids will love? Here you go: The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE
+- **What:** Jack recommends a Christian toddler learning video as an alternative to secular educational content for young children.
+
+---
+
+## @RapidResponse47 - Government Accounts Update
+> JUST UPDATED: https://trumpaccounts.gov/
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **What:** Brief announcement regarding an update to government accounts information with accompanying image.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 Release Update
+> Stop what u do and update Claude Code to v2.0.71. They cooked. https://x.com/Yampeleg/status/2001360661700596119/photo/1
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **Tags:** [[claude-code]] [[developer-tools]]
+- **What:** Enthusiastic recommendation to update to Claude Code version 2.0.71, suggesting significant improvements or new features have been released.
+
+---
+
+## @JackPosobiec - Christian alternative to Ms Rachel toddler content
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+>
+> https://t.co/gkfuc6fVjQ
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** Recommendation for a Christian-themed toddler learning video as an alternative to Ms Rachel, featuring Silly Miss Lily teaching about Baby Jesus and Christmas.
+
+---
+
+## @RapidResponse47 - Trump accounts site update
+> JUST UPDATED: https://t.co/FKL1oV36R4 https://t.co/YYG4diAEni
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **What:** Announcement of an update to trumpaccounts.gov with accompanying image documentation.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 release
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://t.co/czN80tHvAY
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Enthusiastic announcement of Claude Code v2.0.71 release with a photo showing the update is available.
+
+---
+
+## @JackPosobiec - Christian alternative to Ms Rachel for toddler learning
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+>
+> https://t.co/gkfuc6fVjQ
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** YouTube video recommendation for Christian-themed educational content for toddlers as an alternative to Ms Rachel.
+
+---
+
+## @RapidResponse47 - Trump accounts update
+> JUST UPDATED: https://t.co/FKL1oV36R4 https://t.co/YYG4diAEni
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **Link:** https://trumpaccounts.gov/
+- **What:** Update notification with links to Trump accounts government resource and associated media.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 release
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://t.co/czN80tHvAY
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Enthusiastic recommendation to update Claude Code to version 2.0.71 with accompanying media preview.
+
+---
+
+## @JackPosobiec - Christian Toddler Learning Alternative
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+> https://www.youtube.com/watch?v=5egr1nOI4SE
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE
+- **What:** YouTube video recommendation for Christian-themed toddler educational content as an alternative to secular learning programs.
+
+---
+
+## @RapidResponse47 - Trump Accounts Government Portal Update
+> JUST UPDATED: https://trumpaccounts.gov/
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **Link:** https://trumpaccounts.gov/
+- **What:** Brief announcement of updates to the Trump accounts government portal.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 Release
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://x.com/Yampeleg/status/2001360661700596119/photo/1
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Enthusiastic announcement about Claude Code v2.0.71 release with strong approval.
+
+---
+
+## @JackPosobiec - Christian alternative to Ms Rachel for toddlers
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+>
+> https://t.co/gkfuc6fVjQ
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** Promotional recommendation for Christian-focused toddler educational content featuring Baby Jesus story and Christmas themes.
+
+---
+
+## @RapidResponse47 - Trump accounts government website update
+> JUST UPDATED: https://t.co/FKL1oV36R4 https://t.co/YYG4diAEni
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **What:** Announcement of updated Trump accounts government website with accompanying visual content.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 major update
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://t.co/czN80tHvAY
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Enthusiastic endorsement of Claude Code v2.0.71 update, suggesting significant improvements in the latest release.
+
+---
+
+## @JackPosobiec - Christian Alternative to Ms Rachel Educational Content
+> Want a Christian alternative to Ms Rachel that your kids will love?
+>
+> Here you go:
+>
+> The Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+>
+> https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** Recommendation for Christian-themed toddler learning content featuring Silly Miss Lily as an alternative to mainstream educational resources.
+
+---
+
+## @RapidResponse47 - Trump Accounts Portal Update
+> JUST UPDATED: https://trumpaccounts.gov/
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **Link:** https://trumpaccounts.gov/
+- **What:** Brief update notification about a portal related to Trump accounts and official government information.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 Release Update
+> Stop what u do and update Claude Code to v2.0.71.
+>
+> They cooked. https://x.com/Yampeleg/status/2001360661700596119/photo/1
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Enthusiastic announcement about a new Claude Code release (v2.0.71) with positive sentiment about the update quality.
+
+---
+
+## @JackPosobiec - Christian Alternative Educational Content
+> Want a Christian alternative to Ms Rachel that your kids will love? \n\nHere you go: \n\nThe Story of Baby Jesus & The First Christmas with Silly Miss Lily | Christian Toddler Learning
+
+- **Tweet:** https://x.com/JackPosobiec/status/2001298327342633418
+- **Link:** https://www.youtube.com/watch?v=5egr1nOI4SE&feature=youtu.be
+- **What:** YouTube video recommendation for Christian toddler educational content as an alternative to mainstream programs.
+
+---
+
+## @RapidResponse47 - News Update
+> JUST UPDATED: https://trumpaccounts.gov/
+
+- **Tweet:** https://x.com/RapidResponse47/status/2001314232210465267
+- **What:** Notification of an update to trumpaccounts.gov with associated media/image content.
+
+---
+
+## @Yampeleg - Claude Code v2.0.71 Release
+> Stop what u do and update Claude Code to v2.0.71.\n\nThey cooked.
+
+- **Tweet:** https://x.com/Yampeleg/status/2001360661700596119
+- **What:** Enthusiastic announcement about Claude Code v2.0.71 release with an attached image/media.
+
+---
+
+
+# Tuesday, December 16, 2025
+
+---
+## @nicolaygerold - Tool Search and Discovery in LLM Agents
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+>
+> https://t.co/QOiUXSrKXb
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Technical analysis on why deferred tool loading in LLM agents requires discovery mechanisms beyond simple search.
+
+---
+
+## @QwQiao - Coinbase's Evolution Into a Banking Platform
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Investment perspective on Coinbase's shift from a crypto exchange to a bank-like institution with bundled financial products and loyalty programs.
+
+---
+
+---
+## @nicolaygerold - Tool Search as Discovery Not Just Search
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+> https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Nicolay Gerold discusses tool search and discovery in LLM agents, exploring why deferred tool loading with context management challenges isn't as simple as it sounds.
+
+---
+
+## @QwQiao - Coinbase's Bank Strategy with Premium Loyalty Program
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Analysis of Coinbase's strategic pivot from cryptocurrency exchange to full-service bank with premium loyalty tier (similar to Amazon Prime or Costco Black Card), creating high customer lock-in.
+
+---
+
+---
+## @nicolaygerold - Tool search and discovery in LLM agents
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+>
+> https://t.co/QOiUXSrKXb
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Analysis of why deferred tool loading in LLM agents requires discovery mechanisms rather than simple search. Addresses context management and tool availability in agent systems.
+
+---
+
+## @QwQiao - Coinbase's transformation to bancorp with loyalty programs
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Analysis of Coinbase's strategic pivot from exchange to bancorp using premium tier loyalty program model similar to Amazon Prime and Costco.
+
+---
+
+---
+## @nicolaygerold - Tool Search in LLM Agents: From Discovery to Implementation
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search: https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **Tags:** [[ai-agents]] [[tools]] [[context-management]]
+- **What:** Nicolay discusses deferred tool loading in LLM agents and why tool discovery should be more sophisticated than simple search, addressing the challenge of managing context windows effectively.
+
+---
+
+## @QwQiao - Coinbase's Strategic Pivot: From Exchange to Banking Platform
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank. ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading. they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program. bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **Tags:** [[crypto]] [[coinbase]] [[fintech]] [[banking]]
+- **What:** QwQiao analyzes Coinbase's long-term strategy of transitioning from an exchange to a banking platform through loyalty programs and bundled financial products, similar to Amazon Prime and Costco's models.
+
+---
+
+---
+## @nicolaygerold - Tool search should be discovery, not just search
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+> https://t.co/QOiUXSrKXb
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Nicolay explores tool discovery mechanisms in LLM agents, arguing that deferred tool loading should prioritize discovery over simple search to maintain context efficiency.
+
+---
+
+## @QwQiao - Coinbase's long-term strategy of becoming a bank
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Analysis of Coinbase's pivot from an exchange to a bank-like platform with a loyalty program, using their premium Amex card and fee structures to build defensibility similar to Amazon Prime.
+
+---
+
+---
+## @nicolaygerold - Tool search should not be search but discovery
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+>
+> https://t.co/QOiUXSrKXb
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Article about deferred tool loading in LLM agents and why tool search should focus on discovery rather than just search in context management.
+
+---
+
+## @QwQiao - Coinbase's strategy to become a banking platform
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Analysis of Coinbase's transition from a crypto exchange to a full-service banking platform with loyalty programs similar to Amazon Prime or Costco.
+
+---
+
+---
+## @nicolaygerold - Tool Search: Discovery vs Search in LLM Agents
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+> https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Explores deferred tool loading in LLM agents and why tool discovery should prioritize context management over simple search mechanisms.
+
+---
+
+## @QwQiao - Coinbase's Evolution: From Exchange to Digital Bank
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Analysis of Coinbase's strategic pivot from cryptocurrency exchange to full-service digital bank with premium loyalty program, creating stickier business model.
+
+---
+
+---
+## @nicolaygerold - Tool search should not be search but discovery
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+>
+> https://t.co/QOiUXSrKXb
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Deep dive into context management and tool discovery mechanisms in LLM agents. Explores why deferred tool loading is more complex than it appears.
+
+---
+
+## @QwQiao - Coinbase transforming from exchange to bank
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Analysis of Coinbase's strategic shift from pure exchange to banking services through premium membership tiers and integrated financial products. Predicts significant long-term growth potential.
+
+---
+
+---
+## @nicolaygerold - Tool Search Should Be Discovery Not Search
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search:
+>
+> https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Nicolay explores how deferred tool loading in LLM agents requires rethinking tool discovery mechanisms rather than traditional search patterns.
+
+---
+
+## @QwQiao - Coinbase's Long-Term Strategy: From Exchange to Bank
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.
+>
+> ive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.
+>
+> they r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.
+>
+> bullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Analysis of Coinbase's shift from an exchange business model to a bank-like model with loyalty programs similar to Amazon Prime, positioning for long-term customer stickiness and growth.
+
+---
+
+---
+## @nicolaygerold - Tool Search and Agent Context Management
+> If you are one of the ones who cares about context management and wants to have tools and a clean context window, here is me blabbing about tool search: https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+
+- **Tweet:** https://x.com/nicolaygerold/status/2000963680570368089
+- **Link:** https://nicolaygerold.com/posts/tool-search-should-not-be-just-search-but-discovery
+- **What:** Technical essay on tool search and discovery in LLM agents, exploring why deferred tool loading is more complex than it initially appears.
+
+---
+
+## @QwQiao - Coinbase's Long-term Strategy as a Bank
+> i might be a bit late to realize this, but after being a "coinbase one" customer and their amex card i kinda get where coinbase is going long term — they want to become a bank.\n\nive already switched from other credit cards to the coinbase amex card cuz its nice to get 4% cashback in btc. i also get a big discount on my trading fees. but to get these benefits i need to pay an annual fee and lock in $200k. this is akin to amazon prime and costco black card, creating enormous customer loyalty. later they'll probably bundle it with other financial products like stock trading.\n\nthey r moving from a "goddamn exchange business" with little defensibility (munger's voice) to something much stickier — a bank with a loyalty program.\n\nbullish $coin, probably another 10x left over 1-2 decades.
+
+- **Tweet:** https://x.com/QwQiao/status/2001051586932396257
+- **What:** Investment thesis on Coinbase's shift from exchange to banking business model through premium membership and customer loyalty programs.
