@@ -738,12 +738,57 @@ export async function run(options = {}) {
     if (config.autoInvokeClaude !== false) {
       console.log(`[${now}] Phase 2: Invoking Claude Code for analysis...`);
 
+      // Capture bookmarks.md state before Claude runs (to detect if work was done)
+      const archiveFile = config.archiveFile || './bookmarks.md';
+      const archivePath = archiveFile.replace(/^~/, process.env.HOME || '');
+      let archiveMtimeBefore = null;
+      try {
+        if (fs.existsSync(archivePath)) {
+          archiveMtimeBefore = fs.statSync(archivePath).mtimeMs;
+        }
+      } catch (e) {
+        // Ignore - file may not exist yet
+      }
+
       const claudeResult = await invokeClaudeCode(config, bookmarkCount, {
-        trackTokens: options.trackTokens
+        trackTokens: options.trackTokens,
+        debug: options.debug
       });
 
-      if (claudeResult.success) {
-        console.log(`[${now}] Analysis complete`);
+      // Check if bookmarks.md was modified (work was actually done)
+      let workWasDone = false;
+      try {
+        if (fs.existsSync(archivePath)) {
+          const archiveMtimeAfter = fs.statSync(archivePath).mtimeMs;
+          workWasDone = archiveMtimeBefore === null || archiveMtimeAfter > archiveMtimeBefore;
+        }
+      } catch (e) {
+        // Ignore
+      }
+
+      // Clean up batch files deterministically (don't rely on Claude)
+      const stateDir = path.dirname(config.pendingFile);
+      try {
+        const batchFiles = fs.readdirSync(stateDir).filter(f => f.startsWith('batch-') && f.endsWith('.md'));
+        if (batchFiles.length > 0) {
+          for (const batchFile of batchFiles) {
+            fs.unlinkSync(path.join(stateDir, batchFile));
+          }
+          console.log(`[${now}] Cleaned up ${batchFiles.length} batch files`);
+        }
+      } catch (e) {
+        // Ignore - state dir may not exist
+      }
+
+      // If work was done, clean up pending bookmarks even if Claude exited non-zero
+      const shouldCleanup = claudeResult.success || workWasDone;
+
+      if (shouldCleanup) {
+        if (!claudeResult.success && workWasDone) {
+          console.log(`[${now}] Claude exited with error but bookmarks.md was modified - cleaning up anyway`);
+        } else {
+          console.log(`[${now}] Analysis complete`);
+        }
 
         // Remove processed IDs from pending file
         // If we used --limit, restore from .full file first
@@ -786,7 +831,7 @@ export async function run(options = {}) {
         };
 
       } else {
-        // Claude failed - restore full pending file for retry
+        // Claude failed AND no work was done - restore full pending file for retry
         const fullFile = config.pendingFile + '.full';
         if (fs.existsSync(fullFile)) {
           fs.copyFileSync(fullFile, config.pendingFile);

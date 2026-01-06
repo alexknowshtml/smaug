@@ -2,12 +2,13 @@
   "archiveFile": "./bookmarks.md",
   "pendingFile": "./.state/pending-bookmarks.json",
   "stateFile": "./.state/bookmarks-state.json",
+  "timezone": "America/Los_Angeles",
   "parallelThreshold": 8,
-  "timezone": "UTC",
   "twitter": {
-    "authToken": "888e979d1b9bf0d0890710dcfca5cf2266292d8d",
-    "ct0": "f30e2fca72d55b96e517388064eba7f5def70442a71ba24b466a5e1f7d099a898582c696b9a2f4720ac465bd7453187b9363ee88bd90db58015be9cdcdcd4316a69dcbe01e500a9e6c59dd6aa93531b9"
+    "authToken": "d7730fb33cc5395036e30452bb21c69147206e72",
+    "ct0": "d710b4fe88a7ebd6b18d772b39d41dfef42c061de06cc69d599fab3f075c21f5e1732f5c692d94c48fe1a17ceea867f5b191b1fad8f1ac14fa06610e8dc9ed6753a04f59ca7f2a8bf396aaebf022b347"
   },
   "autoInvokeClaude": true,
-  "claudeModel": "sonnet"
+  "claudeModel": "sonnet",
+  "claudeTimeout": 9000000
 }
