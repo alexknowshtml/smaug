@@ -490,7 +490,163 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 ---
 
 
+# Wednesday, December 31, 2025
+
+## ## @0xRaduan - Claude Code Internal Documentation Reference
+
+> @nummanali @jarrodwatts https://t.co/6EbR6UUCxd
+>
+> It's been out for quite a bit at this point. There are some docs around it, but those are internal.
+
+- **Tweet:** https://x.com/0xRaduan/status/2006326743473267052
+- **Link:** https://github.com/anthropics/claude-code/issues/12836#issuecomment-3656762362
+- **What:** A reply referencing Claude Code documentation and an issue discussion, suggesting that certain features have been available but lack public documentation.
+
+---
+
+## ## @ankurnagpal - Tax-Advantaged Money Market Fund Yields
+
+> PSA for anyone in a high tax bracket:
+>
+> You can potentially save a lot of money by investing in tax-advantaged money market funds vs a high-yield savings account
+>
+> VYFXX is paying me a tax-equivalent yield of ~5.72% right now, my bank account is at 3.25%
+>
+> Will save me thousands https://t.co/5xGYvWxdp7
+
+- **Tweet:** https://x.com/ankurnagpal/status/2006373258439082092
+- **What:** Financial advice comparing tax-efficient investment strategies for high earners, showing how Vanguard money market funds (VYFXX) can provide better after-tax returns than traditional high-yield savings accounts.
+
+---
+
+## ## @alexhillman - Automated Bookmark Processing with Bird CLI
+
+> New workflow thanks to @steipete's awesome Twitter CLI, bird
+>
+> 1 - bookmark a tweet
+> 2 - bird grabs new bookmarks every 60 seconds
+> 3 - agent reads the tweet and depending on contents adds to a queue of things to review, try, or simply add to my knowledge base.
+>
+> Auto saves links, podcasts, YouTube vids, etc. Including transcripts and quotes that would be useful or interesting to me.
+>
+> Auto suggests ways to integrate ideas and open source projects into the JFDI system.
+>
+> Pretty excited to see this one compound.
+
+- **Tweet:** https://x.com/alexhillman/status/2006420618091094104
+- **What:** Description of an automated workflow using the bird Twitter CLI that periodically fetches bookmarks, processes them with an AI agent, and intelligently categorizes content for later review or knowledge base integration.
+
+---
+
+
+---
+
+
 # Tuesday, December 30, 2025
+
+## ## @nosilverv - Glass Airfryer for Frozen Meat Cooking
+> This is an incredible product. Take frozen meat -> Put there 10 min -> Delicious meal. No pans, no smoke, no black stuff that gives you cancer, no oils, no cleaning
+
+- **Tweet:** https://x.com/nosilverv/status/2005972663475527751
+- **What:** A quote-tweet praising a Ninja glass airfryer, highlighting its convenience for cooking frozen meat without oils, smoke, or cleanup.
+
+---
+
+## ## @Yampeleg - Essential Claude Code Tools and Plugins
+> Tools I actually use myself got Claude Code:
+
+1. WhatsApp bridge for Claude Code:
+
+• warelay by @steipete
+• https://t.co/S5rxuEvtgs
+
+2. The best browser control plugin:
+(i tried them all, this is the most reliable)
+
+• dev-browser by @sawyerhood
+• https://t.co/2G0oLKSqzD
+
+3. An incredible collection of tools built to work with one another for everything code related:
+(with emphasis on session continuity)
+
+• Continuous-Claude-v2 by @parcadei
+• https://t.co/G1U8iytn9s
+
+I use them all by myself, highly recommend trying them out.
+
+Thx for shipping!!
+
+- **Tweet:** https://x.com/Yampeleg/status/2006032038772584885
+- **Link:** https://github.com/clawdbot/clawdbot
+- **What:** A comprehensive recommendation of three essential Claude Code tools including clawdbot (WhatsApp bridge), dev-browser (browser automation), and Continuous-Claude-v2 for enhanced development workflows.
+
+---
+
+## ## @adocomplete - LSP Integration in Claude Code
+> Learn how to integrate LSP into Claude Code: https://t.co/VXvWkCnyqg
+
+- **Tweet:** https://x.com/adocomplete/status/2006050516758073647
+- **Link:** https://code.claude.com/docs/en/plugins-reference#lsp-servers
+- **What:** A guide on integrating Language Server Protocol (LSP) into Claude Code to enable IDE-level code intelligence features like diagnostics and navigation.
+
+---
+
+## ## @giffmana - AI Video Generation Quality Surprise
+> This was surprisingly good O.O
+
+From the replies: Claude + Kling, and my guess is Nano Banana for each shot's first image?
+
+I haven't really kept up with the 2025 video model progress, I've mostly been busy with coding, vlm's, and imagens. So this was a mini-shock to me.
+
+- **Tweet:** https://x.com/giffmana/status/2006106603557187693
+- **What:** A reaction to impressive AI-generated video content created with Claude and Kling, noting the significant progress in video generation models during 2025.
+
+---
+
+## ## @jarrodwatts - Custom Claude Code Interview Command for Specs
+> I built a custom Claude Code command, /interview, to create bulletproof specs.
+
+• Create a plan using plan mode
+• Run the /interview command
+• Claude asks 20-50 clarifying questions
+• Claude updates the plan file based on your answers
+
+Great for removing any ambiguity! https://t.co/xHrT2fpo8y
+
+- **Tweet:** https://x.com/jarrodwatts/status/2006138974834716993
+- **What:** A custom Claude Code command that automates specification creation by asking clarifying questions and updating plan files, helping to eliminate ambiguity in project requirements.
+
+---
+
+## ## @bull_genius - Prepping for the Megaquake DIY Edition
+
+> prepping for the megaquake, DIY gmi edition
+>
+> >set up phone alerts on all earthquakes
+> >on m5+ in text, any m7+ wake me up at night
+> >autoshort everything on max leverage on m9+ across multiple perp dex and tradfi venues
+> >otm put options on everything japan expiring mar 26
+> >garage stocked with ram sticks, vintage nintendo, rare pokemon cards + hentai books
+> >you gonna make it anon, now all we have to do is wait
+> >chill cozy in my blanket watching the 2024 monroe robertson classic 'planetquake' in director's cut
+> >fill out felt reports on significant quakes to advance science at usgs
+>
+> life is good
+
+- **Tweet:** https://x.com/bull_genius/status/2006154714220519854
+- **What:** A humorous take on earthquake hedging strategies that combines financial hedging (shorting on leverage, put options) with earthquake preparedness activities, quoting discussion of elevated megaquake risk in the Pacific region.
+
+---
+
+## ## @kieranklaassen - Claude Code Plugin for 2026 Planning
+
+> Want to use your 2x Claude credits? Use my plugin to plan 2026: https://t.co/BCDTiLlR3t
+
+- **Tweet:** https://x.com/kieranklaassen/status/2006226703467864325
+- **Link:** https://github.com/EveryInc/compound-engineering-plugin
+- **What:** A promotional tweet for Kieran Klaassen's Compound Engineering Plugin that helps with planning and workflow optimization, enabling developers to make each unit of engineering work easier through improved planning, review, and documentation cycles.
+
+---
 
 ## @koylanai - Digital Brain skill for Claude Code
 > Agent Skills for Context Engineering - digital brain implementation
@@ -509,6 +665,17 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 
 # Monday, December 29, 2025
+
+## ## @ClaudeCodeLog - Comparing Claude Code Versions with Flag and Prompt Changes
+> Reminder: You can compare any two versions like this https://t.co/DJreLUDDsl
+This will now show both changes in flags and prompts.
+
+- **Tweet:** https://x.com/ClaudeCodeLog/status/2005750479205327284
+- **Link:** https://github.com/marckrenn/claude-code-changelog/compare/v2.0.70...v2.0.76
+
+- **What:** A tool for comparing Claude Code versions that now tracks both feature flag changes and system prompt modifications, enabling deep analysis of what's changed between releases.
+
+---
 
 ## @aakashgupta - Smartphone addiction and dopamine regulation
 > Discussion about how smartphone addiction affects dopamine levels and causes brain fog
@@ -560,6 +727,100 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 # Sunday, December 28, 2025
 
+## ## @LouisKnightWebb - Shipping 1M+ Lines of Code with AI Agents
+> After shipping 1M+ lines of code with AI coding agents, I've started writing up what I've learned: https://t.co/WcB60XEkMn https://t.co/wEhsd3MWgo
+
+- **Tweet:** https://x.com/LouisKnightWebb/status/2005221059491229846
+- **Link:** https://www.vibekanban.com/vibe-guide
+
+---
+
+## ## @dejavucoder - Claude Code 2.0 Guide and Best Practices
+> claude code is having it's cursor moment after karpathy sensei's post. never been a better time to try it.
+
+my latest blog on how to get the most out of claude code 2.0  and other agents in general is up now. grab a chai and have fun reading!
+
+https://t.co/cQpvo0xocY https://t.co/gzKCEMfEG6
+
+- **Tweet:** https://x.com/dejavucoder/status/2005285904420843892
+- **Link:** https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/
+
+---
+
+## ## @trq212 - Spec-Based Feature Building with Claude Code
+> my favorite way to use Claude Code to build large features is spec based
+
+start with a minimal spec or prompt and ask Claude to interview you using the AskUserQuestionTool
+
+then make a new session to execute the spec https://t.co/Lwejskje4a
+
+- **Tweet:** https://x.com/trq212/status/2005315275026260309
+
+---
+
+## ## @trq212 - Interview-Driven Specification Writing
+> the prompt I've been using is:
+
+read this @SPEC.md and interview me in detail using the AskUserQuestionTool about literally anything: technical implementation, UI & UX, concerns, tradeoffs, etc. but make sure the questions are not obvious
+
+be very in-depth and continue interviewing me continually until it's complete, then write the spec to the file
+
+- **Tweet:** https://x.com/trq212/status/2005315279455142243
+
+---
+
+## ## @trq212 - Minimal Spec Strategy
+> @shafu_xyz Honestly could just be a prompt instead, its just the minimal amount of info you have about the feature imo
+
+- **Tweet:** https://x.com/trq212/status/2005350313574953030
+
+---
+
+## ## @ryancarson - Everyone Needs to See This AI Resource
+> Send this to anyone you know who is
+
+1) AI doubter
+2) AI casual user
+3) nvm … just send it to all your friends
+
+- **Tweet:** https://x.com/ryancarson/status/2005440708677980520
+
+- **What:** A shareable resource about AI that appeals to skeptics, casual users, and everyone in between.
+
+---
+
+## ## @steipete - Shipping at Inference Speed
+> 📢 Confession: I ship code I never read. Here's my 2025 workflow. https://t.co/tmxxPowzcR
+
+- **Tweet:** https://x.com/steipete/status/2005451576971043097
+- **Link:** https://steipete.me/posts/2025/shipping-at-inference-speed
+
+- **What:** Peter Steinberger shares his workflow for shipping code quickly in 2025 using AI, exploring why watching code stream by is faster than reading it.
+
+---
+
+## ## @hubermanlab - New Stimulants Enhancing REM Sleep and Focus
+> Important paper, also for adults who "enjoy" stimulants. A new class of actual focus enhancing stimulants is emerging too— and they seem to enhance REM duration that night. Most are for narcolepsy and no, not Modafinil. 2026 is going to be a banner year for Rx stimulants.
+
+- **Tweet:** https://x.com/hubermanlab/status/2005461253968556096
+
+- **What:** Discussion of emerging stimulant medications that enhance focus and REM sleep, mostly targeting narcolepsy, marking 2026 as significant for prescription stimulant developments.
+
+---
+
+## ## @jonnydels - 49ers Offensive Excellence Reaching Historic Levels
+> They just showed a graphic on SNF that this 3-game stretch for the 49ers is their highest 3-game point total since 1994......
+
+People really need to take a step back and realize how crazy what we've seen the past 3 weeks is.
+
+Can we stop talking about what they aren't, what Brock isn't, and talk about how this is the best offensive football we've seen in 30 years? That some have seen from the 49ers in their entire life?
+
+- **Tweet:** https://x.com/jonnydels/status/2005504814738772312
+
+- **What:** A passionate take on the 49ers' historic 3-game scoring stretch, arguing their current offensive performance is the best in 30 years and deserves recognition beyond criticism.
+
+---
+
 ## @rudrank - Awesome Claude Code Plugins List
 > I want to make the most out of Claude Code... One thing to explore more are plugins
 
@@ -595,6 +856,31 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 # Saturday, December 27, 2025
 
+## ## @zhangjintao9020 - Claude Code Ralph Wiggum Plugin Guide
+> 如果你想实现的需求相对确定/可验证，并且你不在意 token 消耗或是订阅制，那么可以在 Claude Code 中使用这个官方插件 Ralph Wiggum。
+
+- **Tweet:** https://x.com/zhangjintao9020/status/2005061204121972748
+- **Link:** https://github.com/anthropics/claude-plugins-official/blob/main/plugins%2Fralph-wiggum%2FREADME.md
+- **What:** Jintao Zhang shares information about the Ralph Wiggum official plugin for Claude Code, which uses a Stop hook to repeatedly drive Claude to work and verify until requirements are met.
+
+---
+
+## ## @arctotherium42 - Immigration Policy Critique
+> Somalis really are the reductio ad absurdum of the lib position on immigration. Highest welfare use and lowest incomes and horrifying cultural practices (FGM) and openly hate America and funnel money to overseas terrorists on top of the billions of dollars in fraud.
+
+- **Tweet:** https://x.com/arctotherium42/status/2005091171148943654
+- **What:** A critical commentary on immigration policy and alleged issues related to Somali communities in the United States, quoting Nick Shirley's fraud investigation.
+
+---
+
+## ## @koylanai - Permission Framework for Creative Work
+> try this: You don't have to be agreeable right now. You don't have to be comprehensive. You don't have to cover your bases or hedge your bets. The goal isn't to be unkillable—it's to be alive.
+
+- **Tweet:** https://x.com/koylanai/status/2005195637432750523
+- **What:** Muratcan Koylan shares a philosophical framework about taste, permission-giving, and the importance of being authentic and alive in creative work over being polished or consensus-approved.
+
+---
+
 ## @aakashgupta - Karpathy "dramatically behind" commentary
 > Andrej Karpathy literally built the neural networks running inside coding assistants... If he feels "dramatically behind" as a programmer, that tells you everything.
 
@@ -628,6 +914,14 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 
 # Friday, December 26, 2025
+
+## ## @nickshirleyy - Minnesota Fraud Investigation Exposé
+> 🚨 Here is the full 42 minutes of my crew and I exposing Minnesota fraud, this might be my most important work yet. We uncovered over $110,000,000 in ONE day. Like it and share it around like wildfire! Its time to hold these corrupt politicians and fraudsters accountable
+
+- **Tweet:** https://x.com/nickshirleyy/status/2004642794862961123
+- **What:** Nick Shirley released a 42-minute investigation documenting alleged fraud cases totaling over $110 million discovered in a single day, focusing on corruption and government accountability.
+
+---
 
 ## @tom_doerr - StenoAI local meeting transcription
 > Transcribes and summarizes meetings locally using small language models
@@ -707,6 +1001,15 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 # Thursday, December 25, 2025
 
+## ## @doodlestein - Agent Flywheel Learning Hub Launch
+> I added a whole "Learning Hub" to https://t.co/TKaKxRJ3V5 for after you've finished setting up your cloud machine with all the tools and aren't sure what to do next or how to best leverage the tools
+
+- **Tweet:** https://x.com/doodlestein/status/2004333644484374707
+- **Link:** https://agent-flywheel.com/learn
+- **What:** Jeffrey Emanuel released a Learning Hub for Agent Flywheel, providing guided lessons and tutorials for developers who have set up their agentic coding environment and need guidance on next steps.
+
+---
+
 ## @hdjirdeh - streamdown vs react-markdown
 > Moved away from react-markdown to streamdown and although its not perfect, its so much better.
 
@@ -739,7 +1042,174 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 ---
 
 
+# Wednesday, December 24, 2025
+
+## ## @ServoWealth - Asset Class Diversification Impact on Retirement Success
+> The most shocking retirement investing stat you'll ever read!?!
+>
+> If you retired in 2000 (similar stock valuations to today) with $1M, needing $50k/yr plus inflation:
+>
+> 1. If you put it in S&P 500, you RAN OUT OF $ in 2016
+>
+> 2. If you put it into 60/40 S&P 500/Total Bond, you are down to $199K (about to go broke)
+>
+> 3. If you put it into an all-stock asset class portfolio diversified across U.S. & Int'l large & small value, you have over $2.9M left (tripled your wealth)
+>
+> If you're retiring on anything other than a diversified asset class portfolio you're taking a huge risk of running out of $
+
+- **Tweet:** https://x.com/ServoWealth/status/2003853807881437506
+- **What:** A comparison of retirement outcomes using $1M with $50k annual withdrawals, showing that diversified asset class portfolios significantly outperform traditional S&P 500 or 60/40 allocations over a 25-year period.
+
+---
+
+## ## @koylanai - Agent Skills for Context Engineering Gaining Traction on Replicate
+> This is incredible. Three days. ~1500 GitHub stars.
+
+Agent Skills for Context Engineering #1 on @replicate Hype today 🧙
+
+AI community is hungry for operational knowledge about agents. Not another framework release. Not another benchmark. Practical skills for building systems that work.
+
+Context engineering is becoming the discipline that separates agents that demo well from agents that run in production.
+
+This repo is essentially my notebook from the past year. Next: I'm adding more skills soon.
+
+Thank you to everyone who starred, forked, and shared. This is just the beginning.
+
+- **Tweet:** https://x.com/koylanai/status/2003948029661893093
+- **Link:** https://hype.replicate.dev/
+- **What:** A discussion of the rapid growth and community reception of an Agent Skills for Context Engineering repository that's trending on Replicate's Hype platform. The author reflects on how AI developers are seeking practical, operational knowledge for building production-ready agents rather than new frameworks.
+
+---
+
+## ## @ChangJonathanC - Running Claude Code as a Separate User for Safety
+> @trq212 I do it but let Claude run as a separate user
+https://t.co/tX6QKsPLDr
+
+- **Tweet:** https://x.com/ChangJonathanC/status/2004006928335409362
+- **Link:** https://jonathanc.net/blog/claude-daemon
+- **What:** A practical security approach for running Claude Code safely using macOS user isolation and ACLs to limit permissions, avoiding the risks of running with dangerous flag overrides in the home directory.
+
+---
+
+## ## @thenarrator - Why Prediction Markets Force Accountability Into Beliefs
+> this is one of the clearest explanations of why prediction markets matter that I've seen.
+
+Vitalik is basically saying:
+
+> prediction markets aren't about gambling, they're about forcing accountability into beliefs.
+
+> on social media, people get rewarded for being loud, extreme, and wrong.
+
+whereas on prediction markets, you get punished for being wrong  and that flips incentives completely.
+
+> what's powerful here is the idea that markets discipline narratives.
+
+you can scream "this will definitely happen" on X and get likes, but the moment you have to put money behind it, uncertainty suddenly matters.
+
+that's why prediction markets feel healthier than most info ecosystems:
+
+> lies are costly
+> confidence has a price
+> reality settles arguments
+
+they don't eliminate misinformation, but they price and that alone makes them one of the most honest coordination tools we've ever built.
+
+- **Tweet:** https://x.com/thenarrator/status/2004038759843496300
+- **What:** An analysis of how prediction markets create better information ecosystems by punishing incorrect predictions and forcing believers to put economic skin in the game, contrasting with social media's incentives for extreme claims without accountability.
+
+---
+
+## ## @steipete - Dash - Amazing Terminal UI for GitHub
+> God damn. Dash is amazing!  https://t.co/YfsZmfNOar
+
+- **Tweet:** https://x.com/steipete/status/2004217462049702230
+- **Link:** https://www.gh-dash.dev/
+- **What:** A brief endorsement of DASH, a rich terminal UI tool that allows developers to navigate and manage their GitHub repositories without leaving the command line.
+
+---
+
+
+---
+
+
 # Tuesday, December 23, 2025
+
+## ## @EnoReyes - Agent-Ready Codebases
+> AI Agents require verification loops to succeed, and software is incredibly verifiable. Most codebases don't actually provide these signals to agents.
+
+Companies that invest in agents + agent readiness will see 5-10x the return of those who don't.
+
+- **Tweet:** https://x.com/EnoReyes/status/2003483475157127650
+- **What:** Argues that AI agents succeed when codebases provide clear verification signals through good specs and validation, and companies investing in "agent readiness" will gain significant competitive advantage.
+
+---
+
+## ## @vvhuang_ - AI Paper on Proactive User Assistance
+> 7mo late but i think i found my favorite AI paper of 2025!
+
+tldr: secure, local (V)LMs observe computer activity, learn a natural-language model of the user, & use the model to proactively assist the user in completing tasks
+
+very simple idea, very thoughtfully implemented https://t.co/LLjr163Kb7
+
+- **Tweet:** https://x.com/vvhuang_/status/2003506217415770473
+- **Link:** https://x.com/vvhuang_/status/2003506217415770473/photo/1
+- **What:** Highlights an AI paper that uses local vision language models to observe user behavior, learn their patterns, and proactively assist with tasks—balancing simplicity with thoughtful implementation.
+
+---
+
+## ## @JayaGup10 - Article or Thread Share
+> https://t.co/uPXcTUEsnc
+
+- **Tweet:** https://x.com/JayaGup10/status/2003525933534179480
+- **Link:** https://x.com/i/article/2003525085420744704
+- **What:** A shared article or thread from Jaya Gupta (content details not available in bookmark metadata).
+
+---
+
+## ## @benhylak - Structured Prompts as Functions at Raindrop
+> at @raindrop_ai, we like to treat every prompt as a function: structured inputs, structured outputs
+>
+> every function used to prepare the input for the model lives in the same prompt file, and we have an extension for iterating on the prompt right inside our codebase. https://t.co/EHELJQBJDo
+
+- **Tweet:** https://x.com/benhylak/status/2003536316080828455
+- **Link:** https://x.com/benhylak/status/2003536316080828455/video/1
+- **What:** A technique at Raindrop AI for treating prompts as functions with structured inputs/outputs and maintaining them alongside code with extensions for iteration.
+
+---
+
+## ## @YuxiangWei9 - Self-Play SWE-RL for Agent Self-Improvement
+> Software agents can self-improve via self-play RL
+>
+> Introducing Self-play SWE-RL (SSR): training a single LLM agent to self-play between bug-injection and bug-repair, grounded in real-world repositories, no human-labeled issues or tests. 🧵
+
+- **Tweet:** https://x.com/YuxiangWei9/status/2003541373853524347
+- **What:** A method for training LLM agents to self-improve through self-play reinforcement learning, alternating between bug injection and repair tasks using real-world code repositories.
+
+---
+
+## ## @aiDotEngineer - Amp Code: Next Generation AI Coding Agent
+> 🆕 Amp Code: Next Generation AI Coding
+>
+> https://t.co/xjKvgUnhId
+>
+> @AmpCode recently spun out as an independent agent lab from @Sourcegraph. 4x (!) returning champion @beyang returns to discuss the journey of building Amp, and explore 8 of the strong opinions they have developed in building their nextgen coding agent... including rejecting MCP slop!
+
+- **Tweet:** https://x.com/aiDotEngineer/status/2003558055875944822
+- **Link:** https://www.youtube.com/watch?v=gvIAkmZUEZY
+- **What:** A video discussion about Amp Code, a new AI coding agent spun out from Sourcegraph, featuring insights from the team about their development philosophy and opinions on AI coding tools.
+
+---
+
+## ## @badlogicgames - Claude for Chrome Privacy Analysis
+> Just quicky, I'm tired. It appears the the sidepanel frontend is actually making all the requests. The background service doesn't make any requestr (so far).
+>
+> Every time the url changes in a tab, the sidepanel sends that info to the mothership. They also send telemetry to https://t.co/PlcdIGZCWd, basically a browser/machine fingerprint.
+
+- **Tweet:** https://x.com/badlogicgames/status/2003586083729162484
+- **Link:** https://www.honeycomb.io/
+- **What:** A reverse engineering analysis showing that Claude for Chrome sends browser/machine fingerprint telemetry to Honeycomb every time the URL changes.
+
+---
 
 ## @steve_ike_ - AI Adoption Playbook
 > This might be the cleanest AI adoption playbook inside a real product org I've seen.
@@ -749,6 +1219,155 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
+---
+
+
+# Monday, December 22, 2025
+
+## ## @rrhoover - Personal Peptide Experimentation and Health Optimization
+> Reading this overview on the peptide boom (with some cautions).
+>
+> BPC-157 was my gateway after some knee issues.
+>
+> I've used peptides on and off for a few years, including CJC+Ipa, Sermorelin, Melanotan II (wildly affective but I don't recommend for most), GHK-Cu (caused aches), and others.
+
+- **Tweet:** https://x.com/rrhoover/status/2003136459021181435
+- **What:** Ryan Hoover sharing personal experience with peptide-based health optimization treatments and their varying effectiveness.
+
+---
+
+## ## @irl_danB - Context Windows and Agent Architecture
+> context window won't be "solved" as long as attention is quadratic
+
+and presumably Suhail is thinking about the compaction problem as it occurs in long running agents like claude code
+
+but this is downstream from an architectural problem with standard agent implementations (claude code among them) that use a linear "chat-like" history
+
+we all work through coding tasks linearly, but any seasoned software engineer's mental model of their progress looks more like a call stack: pushing tasks on and popping them off when complete
+
+when the claude code harness organizes the context more like a call stack (think flame graph) than a linear chat log, compaction will not even be necessary in many cases and less lossy in the cases where it is
+
+for the familiar, think: loom
+
+- **Tweet:** https://x.com/irl_danB/status/2003223600195625356
+- **What:** Technical analysis of how context window limitations in AI systems are fundamentally tied to quadratic attention complexity, and proposing a call-stack-based architecture instead of linear chat histories could better model how developers actually think through problems.
+
+---
+
+## ## @kodisha - Rust Tooling Performance Wins
+> I am currently migrating some old repos:
+
+typecheck: tsc -> tsgo  => at least 5-10x speedup
+lint: eslint -> oxlint => insane, 15-20 sec to 25ms
+format: prettier -> oxformat => 4s to 500ms
+build: vite to rolldown-vite => 110s to ~4s 💀
+
+Insane work @OxcProject  @youyuxi  🔥
+
+- **Tweet:** https://x.com/kodisha/status/2003272433386795293
+- **What:** Demonstrates massive performance improvements (5-20x speedups) by migrating TypeScript tooling from JavaScript-based tools to Rust-based alternatives like oxlint and rolldown.
+
+---
+
+
+---
+
+
+# Sunday, December 21, 2025
+
+## ## @sweatystartup - Hidden Heart Disease Risk in Young Healthy Adults
+> It starts in your 20s. In nearly everyone.
+>
+> Go get an angiogram if you make real money.
+>
+> A CAC score doesn't show widow maker plaque. Or soft plaque.
+
+- **Tweet:** https://x.com/sweatystartup/status/2002939161633047002
+- **What:** Nick Huber advocating for angiograms as essential heart health screening, noting limitations of CAC scores for detecting dangerous plaque.
+
+---
+
+
+---
+
+
+# Saturday, December 20, 2025
+
+## ## @badlogicgames - Mario Zechner Discovers Zagi Project
+> @mattzcarey So, I was just googling zagi and came up short. Hunted it down on your GH account. You need to work on that self-promotion :)
+>
+> This looks super cool!
+
+- **Tweet:** https://x.com/badlogicgames/status/2002462374088053232
+- **Link:** https://github.com/mattzcarey/zagi
+- **What:** Mario Zechner discovering and endorsing Matt Carey's zagi project while encouraging better self-promotion.
+
+---
+
+
+---
+
+
+# Friday, December 19, 2025
+
+## ## @GrageDustin - Voter Fraud Investigation in Minnesota Somali Community
+> 🚨 BREAKING EXCLUSIVE: We have uncovered records outlining an organized voter fraud scheme in the Somali Community here in Minnesota.
+>
+> The county prosecutor declined to charge the case, but the Trump Administration needs step in to clean up Minnesota's elections. 🧵
+
+- **Tweet:** https://x.com/GrageDustin/status/2002071157382787372
+- **What:** Allegations of organized voter fraud involving the Somali community in Minnesota with details presented on alleged lack of prosecution.
+
+---
+
+## ## @theo - Open Source OCR Solution olmOCR Cost Breakdown
+> If you want a competent, actually open solution, highly recommend olmOCR. Costs under $200 to process a million pages. Fully open source as well :)
+
+- **Tweet:** https://x.com/theo/status/2002178958196895782
+- **What:** Recommendation for olmOCR as a cost-effective and fully open source alternative for OCR processing at significant scale.
+
+---
+
+
+---
+
+
+# Thursday, December 18, 2025
+
+## ## @simonw - Engineering Accountability: Submitting Proven Code
+> I see a lot of complaints about untested AI slop in pull requests. Submitting those is a dereliction of duty as a software engineer:  Your job is to deliver code you have proven to work https://t.co/Eso7BWaTtF
+
+- **Tweet:** https://x.com/simonw/status/2001668038664593493
+- **Link:** https://simonwillison.net/2025/Dec/18/code-proven-to-work/
+- **What:** Simon Willison argues that software engineers must demonstrate tested, working code in PRs rather than submitting untested AI-generated code for others to review and validate.
+
+---
+
+## ## @doodlestein - ElevenLabs Audio Narration for Information Consumption
+> One side effect of my alarming addition to coding agents is that I work every single day until my eyes are too tired to read anything.
+>
+> And so even though I've always been dismissive of audiobooks and listening as an inferior, slower way to absorb information, with dramatically worse comprehension and retention (all of which is unfortunately still true in my case), it's now the only way I can realistically consume certain kinds of content, since I can do it with my eyes closed in bed.
+>
+> And so, surprisingly to me, one of my most-used apps now is the Eleven Labs reader app. You can paste in a link to an article or book or just some random text and have it read to you in a pretty natural, inoffensive way.
+>
+> I'm partial to the "George" voice, but they have so many to choose from that you can surely find one that you don't find annoying.
+>
+> At $5/month, my Eleven subscription is probably the single best value proposition across all my many AI service subscriptions.
+
+- **Tweet:** https://x.com/doodlestein/status/2001755881441226922
+- **What:** Personal reflection on using ElevenLabs text-to-speech narration as a practical solution for consuming content when visual reading becomes impractical, highlighting it as an excellent value among AI service subscriptions.
+
+---
+
+## ## @trq212 - Claude Code Chrome Extension for Browser Testing
+> Claude Code can now control your browser for testing, getting data, etc. using our chrome extension!
+
+- **Tweet:** https://x.com/trq212/status/2001764339506909270
+- **What:** Announcement that Claude Code now supports browser control via a Chrome extension, enabling direct testing and data extraction capabilities within the browser environment.
 
 ---
 
@@ -2304,6 +2923,31 @@ DATE: Wednesday, October 15, 2025
 
 
 # Wednesday, December 17, 2025
+
+## ## @ExaAILabs - Semantic People Search with 1 Billion Profiles
+> Introducing state-of-the-art People Search:
+>
+> You can now semantically search over 1 billion people using a hybrid retrieval system backed by finetuned Exa embeddings.
+>
+> Try it: https://t.co/cQ6UlWHnKY
+> We also created an eval: https://t.co/2OIAryN7MT https://t.co/12BdYDWJU1
+
+- **Tweet:** https://x.com/ExaAILabs/status/2001373897154007390
+- **Link:** https://exa.ai/
+- **What:** Exa released a semantic people search feature enabling searches across 1 billion profiles using finetuned embeddings and hybrid retrieval, along with a benchmark evaluation.
+
+---
+
+## ## @JDVance - DEI as Systemic Discrimination Against White Men
+> A lot of people think "DEI" is lame diversity seminars or racial slogans at NFL games. In reality, it was a deliberate program of discrimination primarily against white men. This is an incredible piece that describes the evil of DEI and its consequences:
+>
+> https://t.co/fMiIfvz0qz
+
+- **Tweet:** https://x.com/JDVance/status/2001404279517478927
+- **Link:** https://www.compactmag.com/article/the-lost-generation/
+- **What:** Opinion piece arguing that DEI initiatives represent systemic discrimination, with analysis of the generational impacts and consequences of these programs.
+
+---
 
 ## @JackPosobiec - Christian Alternative Learning Content for Children
 > Want a Christian alternative to Ms Rachel that your kids will love?
