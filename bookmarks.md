@@ -1,4 +1,3 @@
-# Twitter Bookmarks
 
 # Sunday, January 4, 2026
 
@@ -20,6 +19,10 @@
 
 
 ---
+
+
+---
+
 
 # Saturday, January 3, 2026
 
@@ -57,6 +60,10 @@
 
 
 ---
+
+
+---
+
 
 # Friday, January 2, 2026
 
@@ -479,6 +486,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
 # Tuesday, December 30, 2025
 
 ## @koylanai - Digital Brain skill for Claude Code
@@ -492,6 +503,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 
 ---
+
+
+---
+
 
 # Monday, December 29, 2025
 
@@ -539,6 +554,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
 # Sunday, December 28, 2025
 
 ## @rudrank - Awesome Claude Code Plugins List
@@ -570,6 +589,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
 # Saturday, December 27, 2025
 
 ## @aakashgupta - Karpathy "dramatically behind" commentary
@@ -599,6 +622,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 
 ---
+
+
+---
+
 
 # Friday, December 26, 2025
 
@@ -674,6 +701,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
 # Thursday, December 25, 2025
 
 ## @hdjirdeh - streamdown vs react-markdown
@@ -704,6 +735,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
 # Tuesday, December 23, 2025
 
 ## @steve_ike_ - AI Adoption Playbook
@@ -717,7 +752,723 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
+# Thursday, December 4, 2025
+
+## @OnlyXuanwo - AGENTS Framework for GPT-5.1-Codex
+> Here is my AGENTS md which works great on gpt-5.1-codex-max, especially on high reasoning level.
+>
+> This should make you a MAX 200x developer, try it and let me know what you think.
+>
+> https://gist.github.com/Xuanwo/fa5162ed3548ae4f962dcc8b8e256bed
+
+- **Tweet:** https://x.com/OnlyXuanwo/status/1996572217266811196
+- **Link:** https://gist.github.com/Xuanwo/fa5162ed3548ae4f962dcc8b8e256bed
+- **What:** An AGENTS markdown framework optimized for GPT-5.1-Codex-Max that claims to increase developer productivity up to 200x, particularly effective for high reasoning-level tasks.
+
+---
+
+## @ericzakariasson - Preventing Agent Hallucinations with Contextual Prompting
+> append this prompt to prevent agent hallucinations:
+>
+> > ask more questions until you have enough context to give an accurate & confident answer
+>
+> it also helps you discover edge cases you might not have thought about. it's not a silver bullet, but it's a step in the right direction
+
+- **Tweet:** https://x.com/ericzakariasson/status/1996618759105376554
+- **What:** A simple prompt injection technique that reduces AI agent hallucinations by requiring the model to ask clarifying questions until it has sufficient context. Helps identify edge cases while being a pragmatic mitigation (not a complete solution) to hallucination problems.
+
+---
+
+## @aidenybai - React Grab: Parallel Coding Agents in Browser
+> run parallel coding agents in the browser
+>
+> Introducing React Grab: https://x.com/aidenybai/status/1996625600073908313/video/1
+
+- **Tweet:** https://x.com/aidenybai/status/1996625600073908313
+- **Link:** https://x.com/aidenybai/status/1996625600073908313/video/1
+- **What:** Introduction to React Grab, a tool that enables running multiple coding agents in parallel within the browser, expanding the possibilities for collaborative AI development workflows.
+
+---
+
+## @AnthropicAI - Anthropic Interviewer Tool Launch
+> We're launching Anthropic Interviewer, a new tool to help us understand people's perspectives on AI.
+>
+> It's now available at https://claude.ai/interviewer for a week-long pilot.
+
+- **Tweet:** https://x.com/AnthropicAI/status/1996627123021426919
+- **Link:** https://claude.ai/interviewer
+- **What:** Anthropic launches a new interview tool to gather user perspectives on AI systems, available for a limited pilot period.
+
+---
+
+## @Coach_Yac - Rise of the 49ers Documentary Series
+> The players. The coach. The city. The team that changed football forever
+>
+> #RiseOfThe49ers, a limited series event February 1 and February 2 on AMC and AMC+
+>
+> Here's the official trailer
+
+- **Tweet:** https://x.com/Coach_Yac/status/1996703037490937864
+- **Link:** https://x.com/Coach_Yac/status/1996703037490937864/video/1
+- **What:** AMC and AMC+ announce a limited documentary series about the 49ers franchise, premiering February 1-2 with an official trailer.
+
+---
+
+## @fvguima - Premium Paper Towel Recommendation
+> My biggest splurge is spending US$600 or so a year on Kimberly-Clark Professional Kleenex Supreme multi-fold towels (S-6868 on ULINE). Have used them for everything from blood (my own) to solvent spills (when I still ran a production wood shop). Cannot remember life before them.
+>
+> *Quoting @usgraphics:* ULINE Model No. H-1595W and S-6866.
+>
+> Regardless of the contraption, instead of you spending the energy it takes to tear the roll every single time; we can do it upstream on a massive industrial scale and what you get is a std 9" multifold towel that's precut and folded. Way better than any of this bullshit.
+
+- **Tweet:** https://x.com/fvguima/status/1996743434590142806
+- **Quoted:** https://x.com/usgraphics/status/1996742232116977911
+- **What:** User enthusiastically recommends industrial-grade pre-folded paper towels, highlighting their durability for various applications from household to workshop use.
+
+---
+
+## @koylanai - Multi-Agent AI Interview System Architecture
+> Your best people can't document their expertise because they don't know what they know until they're asked.
+>
+> We built an interviewer that achieves peer status, so experts reveal the judgment patterns they'd only share with a colleague.
+>
+> I wrote a blog about how we architected the multi-agent system behind this, how we extract expert thinking, and build digital personas that feel like talking to a peer.
+
+- **Tweet:** https://x.com/koylanai/status/1996757974610559171
+- **Link:** https://www.99ravens.agency/resources/blogs/your-experts-wont-train-your-ai-you-have-to-interview-them/
+- **What:** Technical deep-dive on designing a multi-agent AI system that interviews experts at a peer level to extract tacit knowledge and build digital personas for knowledge transfer.
+
+---
+
+## @jasonzhou1993 - AI Designer Tool Demo
+> No reason to go to Upwork to hire designers anymore
+>
+> Here I just finished 2 jobs within one min with AI designer
+
+- **Tweet:** https://x.com/jasonzhou1993/status/1996814607512752621
+- **Link:** https://x.com/jasonzhou1993/status/1996814607512752621/video/1
+- **What:** Demonstration of an AI design tool that completes design work in seconds, suggesting it could replace freelance designer hiring on platforms like Upwork.
+
+---
+
+
+---
+
+
+# Tuesday, December 2, 2025
+
+## @doodlestein - CASS: Cross-Tool Coding Agent Session Search
+> I'm very pleased to introduce my latest tool for both humans and coding agents: the coding agent session search, or "cass" for short.
+>
+> This tool solves a direct pain point I've been experiencing for months as a heavy user of coding agents, with tons of sessions across many tools (Claude Code, codex, cursor, and now gemini-cli) and projects: I'll know that I talked about something, but be unable to find it or even remember where to try to look for it.
+>
+> [Full description of tool capabilities, installation, and agent integration guide included]
+>
+> Making this tool was a real labor of love. Even though I did it all in less than a week, it took a lot of hours and a ridiculous number of tokens and agents. I heavily used all the workflows and tricks I've been posting about recently.
+
+- **Tweet:** https://x.com/doodlestein/status/1995863013987868954
+- **Link:** https://github.com/Dicklesworthstone/coding_agent_session_search/blob/main/README.md
+- **What:** High-performance Rust tool that enables unified search across coding agent session histories (Claude Code, Cursor, Codex, Gemini, etc.). Includes a robot mode specifically designed for agents to access their own history and peer agent conversations without configuration overhead.
+
+---
+
+## @Altimor - Civilization vs. Violence First Principles
+> This was one of my top philosophical realizations this year and biggest break with libertarianism: the realization that the laws of civilization aren't first principles; that the only first principles are that of violence (which are straightforwardly derived from the laws of physics); and that "you can't let your ideals for what ought to happen inside a civilization come before what it takes to have a civilization in the first place" (grateful to @Devon_Eriksen_ for sparking the insight).
+>
+> *Quoting @Will_Tanner_1:* "Your artificial meritocracy of Excel spreadsheets is propped up by millions of Americans with guns protecting you from the natural meritocracy of extreme violence" might be one of the best tweets ever
+
+- **Tweet:** https://x.com/Altimor/status/1995893516162257284
+- **Quoted:** https://x.com/Will_Tanner_1/status/1995657978071142684
+- **What:** A philosophical reflection on how civilization's laws are not first principles but rest on the fundamental principle of violence, challenging libertarian ideals about the primacy of abstract rules over the prerequisites for civilization itself.
+
+---
+
+## @hsu_steve - AI-Assisted Quantum Field Theory Research
+> I think I've published the first research article in theoretical physics in which the main idea came from an AI - GPT5 in this case. The physics research paper itself (on QFT and state-dependent quantum mechanics) has been published in Physics Letters B.
+>
+> I've written an accompanying AI paper describing the Generator - Verifier method I used to obtain useful research results from frontier LLMs. It may be of interest to other physicists and to AI researchers.
+>
+> From the AI paper:
+>
+> ... models sometimes make very simple mistakes (e.g. in calculation) and also even make incorrect conceptual leaps that are superficially plausible. The second type of error can lead even expert researchers astray, consuming large amounts of effort to detect and correct. Research with an LLM might be compared to collaboration with a brilliant but unreliable human genius who is capable of deep insights but also of errors both simple and profound.
+>
+> Fortunately, both types of errors can be strongly suppressed by using structured orchestration of multiple model instances, greatly improving reliability. A Generate - Verify protocol, in which one model produces a step forward and another model instance independently checks it, reduces hallucination errors significantly compared to single-pass generation. ...
+>
+> The physics paper (abstract below) derives new operator integrability conditions required for foliation independence (necessary for integrability of quantum field theory; cf Tomonaga-Schwinger) that are very difficult to satisfy in any modifcation of quantum mechanics that is "state dependent" - i.e., deviates from linear Schrodinger evolution.
+>
+> Whether quantum evolution is EXACTLY linear is one of the most fundamental questions in all of science. It has implications for quantum computing and quantum foundations - i.e., whether we live in an Everettian multiverse!
+
+- **Tweet:** https://x.com/hsu_steve/status/1996034522308026435
+- **What:** First theoretical physics research article where the main contribution originated from GPT-5, published in Physics Letters B. Describes the Generator-Verifier orchestration method for reliably using frontier LLMs in physics research while mitigating hallucination and error risks.
+
+---
+
+
+---
+
+
+# Monday, December 1, 2025
+
+## @zekramu - On Becoming Competitive in New Corporate Roles
+> *Replying to @zekramu:* sold my soul to big tech, first day back in the corporate grind. read Ludwig's article on this. good read. lots of code reading ahead of me.
+>
+> https://ludwigabap.com/posts/on-becoming-competitive-when-joining-a-new-company/
+
+- **Tweet:** https://x.com/zekramu/status/1995514062546034971
+- **Parent:** https://x.com/zekramu/status/1995514060109173210
+- **Link:** https://ludwigabap.com/posts/on-becoming-competitive-when-joining-a-new-company/
+- **What:** Ludwig's comprehensive guide on how to rapidly become competitive and gain influence when joining a new company. Covers building relationships, maximizing knowledge acquisition, shipping fast, and navigating social dynamics to establish credibility among engineers and leadership.
+
+---
+
+## @jbhuang0604 - DeepSeek v3.2 Attention Mechanisms Deep Dive
+> Wondering how DeepSeek v3.2 rivals SOTA models (e.g., GPT5/Gemini 3 pro) while being ~30x cheaper? 🤔
+>
+> Let's learn how the base model works!
+>
+> We'll focus on attention, the need for KV caching, and key ideas for improving attention (MQA/GQA/MLA/DSA).
+
+- **Tweet:** https://x.com/jbhuang0604/status/1995559075900522772
+- **Link:** https://www.youtube.com/watch?v=Y-o545eYjXM&feature=youtu.be
+- **What:** Technical video explaining DeepSeek v3.2's architecture, particularly its attention mechanisms and efficiency improvements. Covers KV caching optimization and various attention variants (MQA, GQA, MLA, DSA) that enable competitive performance at 30x lower cost.
+
+---
+
+## @MaxNordau - Gaza Ministry of Health Death Count Methodology Analysis
+> Holy sh1t.
+>
+> The Gaza Ministry of Health hasn't reported a single natural death since October 2023.
+>
+> Every single death since October 2023 has been counted as a war death.
+>
+> In other words: When the news reports "70,000 people have died in Ghazza since October 7, 2023," they mean 70,000 people have died FOR ANY REASON.
+>
+> The Gaza death count might as well be completely fabricated.
+
+- **Tweet:** https://x.com/MaxNordau/status/1995645070544961681
+- **What:** Analysis questioning the methodology of Gaza Ministry of Health death reporting, claiming all deaths since October 2023 are classified as war-related regardless of actual cause. Raises critical questions about data categorization and death count statistics.
+
+---
+
+
+---
+
+
+# Sunday, November 30, 2025
+
+## @Real_RobN - Biden-Harris Immigration Scheme Allegations
+> CONSPIRACY THEORY NO MORE:
+>
+> Stephen Miller: "The Democrat Party, via the Biden-Harris Terrorist Administration devised a scheme to import illegal aliens into the country by the millions — granting them 'parole,' which gives them work permits, which gives them Social Security numbers, which gives them access to the voting booth — and finally hooking them on welfare like Hunter Biden hooked on drugs, all with the sole purpose of participating in U.S. elections and ultimately overthrowing the Constitutional Republic of the United States."
+>
+> The whole f**king is seditious,
+
+- **Tweet:** https://x.com/Real_RobN/status/1995220965874434546
+- **What:** Political commentary on immigration policy with strong allegations about alleged government intentions, attributed to Stephen Miller.
+
+---
+
+## @ElijahKurien - Best Software Engineering Blogs Collection
+> Probably one of the best collection of blogs I've found for software engineering https://t.co/sMtNQbeYEg https://t.co/BCebqUAJSQ
+
+- **Tweet:** https://x.com/ElijahKurien/status/1995269089472991273
+- **Link:** https://www.seangoedecke.com/popular/
+- **What:** Recommendation of a curated collection of software engineering blogs, suggesting high quality technical content.
+
+---
+
+## @badlogicgames - Writing Good CLAUDE.md and AGENTS.md Guides
+> Recommended reading by @dexhorthy
+>
+> https://t.co/ODo7VGr1MQ
+>
+> Applies to https://t.co/hvtrEjYOAp just as well. Progressive disclosure in https://t.co/hvtrEjYOAp is great for big mono-repos. Here's my pi-mono https://t.co/hvtrEjYOAp. It's actually a little text adventure :)
+
+- **Tweet:** https://x.com/badlogicgames/status/1995299115438362951
+- **Link:** https://www.humanlayer.dev/blog/writing-a-good-claude-md
+- **Link:** https://agents.md/
+- **What:** Mario Zechner discusses the importance of CLAUDE.md and AGENTS.md files for agent-guided development, with practical insights on progressive disclosure in monorepos.
+
+---
+
+## @buccocapital - 13-Point Company Analysis Framework
+> I've found this Deep Research prompt to be a decent way to get up to speed on any company.
+>
+> Very little focused on valuation, more of a holistic overview
+>
+> I can't for the life of me remember where I found the original seven-point framework/template but I fleshed it out to 13 to hit the areas I felt were important. If anyone recognizes it, please link/tag the creator
+> —————
+>
+> [Detailed 13-point framework for analyzing companies covering: what they sell, revenue models, revenue quality, cost structure, capital intensity, growth drivers, competitive edge, industry position, unit economics, capital allocation, risks, valuation, and catalysts]
+
+- **Tweet:** https://x.com/buccocapital/status/1995310794339176558
+- **What:** Comprehensive 13-point framework for fundamental company analysis, designed to assess business quality, economic moat, and valuation attractiveness without heavy focus on valuation multiples.
+
+---
+
+## @tobi - LLM-Driven Language Cross-Compilation with Agent Specs
+> Fun weekend project:
+>
+> I ported try from Ruby to C as a challenge to agentic workflows.
+>
+> Steps:
+> 1. Extract a directory of spec files for all features of try
+> 2. Create automated tests for each spec, executing against the Ruby reference implementation
+> 3. Teach the agent to refer to the written specs when a test fails
+> 4. Set up an empty directory with basic C libraries (zstr.h, zvec.h- thanks @zuhaitz_dev)
+> 5. Instruct Claude to write the C code using those libraries and not stop until all specs pass
+>
+> Took a bit of fine-tuning, but now I have matching Ruby and C versions. I can add features to both just by updating the spec. It also successfully generated experimental Go and Zig versions.
+>
+> Published the C version with proper releases: https://github.com/tobi/try-cli
+>
+> Also packaged it in AUR. Arch users can just run `yay -S try-cli`
+>
+> This feels like a big part of the future: write once in a high-level language like Ruby, then LLM-compile to any low-level target. Developing high-quality specs like these is totally tractable for agents.
+>
+> Full specs: https://github.com/tobi/try/tree/main/spec
+
+- **Tweet:** https://x.com/tobi/status/1995316357060063684
+- **Link:** https://github.com/tobi/try-cli
+- **What:** Demonstrates using Claude agents with comprehensive spec files to automatically port Ruby code to C, Go, and Zig. Shows a practical approach to LLM-based code generation where clear specifications enable reliable multi-language targeting.
+
+---
+
+
+---
+
+
+# Saturday, November 29, 2025
+
+## @thebeautyofsaas - Designer Suit Shopping Strategy
+> What no one tells you is that you can get a 10/10 quality suit (Canali, Loro, Zegna) with a bit of maneuvering and effort for 20-30% of the original price
+>
+> *Quoting @arlinmoore_:* Owning a $12,000 tailored prada suit will change your life forever. Better investment than any watch.
+
+- **Tweet:** https://x.com/thebeautyofsaas/status/1994794721089393144
+- **Quoted:** https://x.com/arlinmoore_/status/1993838585913778283
+- **What:** A practical counterpoint to luxury suit investments, showing how to acquire high-quality designer suits at significant discounts through strategic shopping.
+
+---
+
+## @sovereignbrah - Immigration Policy Commentary
+> There are millions of people in our country like this. They all need to be deported.
+
+- **Tweet:** https://x.com/sovereignbrah/status/1994852600181846025
+- **What:** Political commentary on immigration policy and deportation.
+
+---
+
+## @joelhooks - Claude Code Quality Prompt Engineering
+> i tell claude that @mattpocockuk will be reviewing this code so stop with the hack lazy TS bullshit and it literally works lmao
+
+- **Tweet:** https://x.com/joelhooks/status/1994853555807850869
+- **What:** A humorous observation about using social pressure and code quality standards as a prompt engineering technique to elicit better TypeScript code from Claude AI.
+
+---
+
+## @kenchangh - X Article Shared
+> https://t.co/fgb0IxMWe7
+
+- **Tweet:** https://x.com/kenchangh/status/1994854381267947640
+- **Link:** https://x.com/i/article/1968433033637494784
+- **What:** A brief share of an X article with minimal context, posted on Saturday evening.
+
+---
+
+
+---
+
+
+# Friday, November 28, 2025
+
+## @DevilsLA23 - Athletic trainer negligence during player injury
+> @mistiiprod Am I tripping or was he literally never attended to by an athletic trainer during this whole incident? This vid pissed me off so much man wtf
+
+- **Tweet:** https://x.com/DevilsLA23/status/1994355149645762959
+- **Parent:** https://x.com/mistiiprod/status/1994236185468620898
+- **What:** Devs questions why an injured player who took an elbow to the head was left unattended by medical staff during a basketball game, expressing frustration at the apparent lack of care.
+
+---
+
+## @morphllm - WarpGrep: Context Retrieval for Coding Agents
+> Introducing WarpGrep, a fast context subagent that improves coding agent performance.
+>
+> WarpGrep speeds up coding tasks 40% and reduces context rot by 70% on long horizon tasks by treating context retrieval as its own RL trained system.
+>
+> Inspired by Cognition's SWE-Grep - we're opening access to Claude Code, Codex, OpenCode or any coding agent via MCP (or through our SDK)
+
+- **Tweet:** https://x.com/morphllm/status/1994484969050444103
+- **What:** WarpGrep is a specialized context retrieval subagent that significantly improves coding task performance by reducing context drift and accelerating task completion through reinforcement learning.
+
+---
+
+## @buccocapital - Meta's AI-Powered Ad Creation TAM Expansion
+> Probably the most important part of the META call
+>
+> "Advertisers are increasingly going to be able to give us a business objective and a credit card and the Al system [will] basically figure out everything else that's necessary."
+>
+> Everyone's hunting for the direct beneficiaries of AI, but selling off the one right in front of their face
+>
+> Massive TAM expansion going on for META. How many people weren't advertising beforehand because of all the work/expertise/money required to build the creative. The less this is a constraint, the greater the TAM
+
+- **Tweet:** https://x.com/buccocapital/status/1994513889619578949
+- **What:** Meta's AI ad creation system dramatically expands the total addressable market for advertising by eliminating creative development friction, enabling businesses that previously lacked advertising expertise or resources to participate.
+
+---
+
+
+---
+
+
+# Thursday, November 27, 2025
+
+## @mattshumer_ - AI Model Stack Comparison After GPT-5 Release
+> My Model Stack After the Wildest 8 Days in AI: Opus 4.5 for most daily code tasks (fast and reliable but measures once cuts twice). Codex-Max for larger code tasks where I don't prescribe the solution (measures twice cuts once). GPT-5.1 Pro for deep planning and high-stakes work where accuracy is critical (gets it right first time but slow). Gemini 3 Pro for writing, reasoning, and UI design (best at polished frontends, less reliable on general code).
+
+- **Tweet:** https://x.com/mattshumer_/status/1994113631680950579
+- **What:** Comparative analysis of different AI models for various coding tasks following the recent release of GPT-5.1 Pro, establishing clear use case guidelines based on speed, reliability, and specialization.
+
+---
+
+## @YossiBenYakar - Religious justification for child abuse
+> This is a Muslim cleric in the United States. Listen carefully to what he says:
+>
+> "Having sex with a nine-year-old girl, if she can get pregnant, is not considered sexual harassment and is permissible in Islam."
+>
+> Read that again.
+>
+> This isn't some fringe outlier. This is a religious justification for pedophilia, preached openly in America.
+>
+> How is this even allowed on U.S. soil?
+> How is this not the national conversation right now?
+>
+> Share this, people need to hear the truth.
+
+- **Tweet:** https://x.com/YossiBenYakar/status/1994130523736711547
+- **Link:** https://x.com/Salwan_Momika1/status/1868342722379272363/video/1
+- **What:** Yossi shares a disturbing clip of a Muslim cleric in the US openly claiming that sexual intercourse with prepubescent girls is permissible in Islam, questioning how such teachings are allowed in the country.
+
+---
+
+## @badlogicgames - Passion project in reverse engineering
+> The things we do out of love for reverse engineering. https://t.co/kV6RmfdqRm
+
+- **Tweet:** https://x.com/badlogicgames/status/1994138262802477299
+- **Link:** https://x.com/badlogicgames/status/1994138262802477299/photo/1
+- **What:** Mario Zechner shares a humorous reflection on the lengths developers go to for the sake of reverse engineering projects.
+
+---
+
+## @JackEllis - Balanced perspective on AI capabilities
+> This is the most compelling take I've heard on AI. It's from a top software engineer, Adam Wathan, not a grandstanding 17 year old with their big lies. We have huge challenges that AI can't solve, but also a bunch of stuff which it can code faster than me.
+> https://t.co/aNWjNMOLZl
+
+- **Tweet:** https://x.com/JackEllis/status/1994141462653751755
+- **Link:** https://adams-morning-walk.transistor.fm/episodes/what-should-we-build-with-ai
+- **What:** Jack Ellis recommends Adam Wathan's thoughtful podcast episode about realistic AI applications, balancing the hype with practical use cases in software development.
+
+---
+
+## @robbystarbuck - Immigration and national security concerns
+> "Today's the day, you f*cking dumb*ss White people" is what he said right before shooting at the police. Importing people who hate your citizens is treason and should be treated as such. Just like the guy who shot the National Guard this week, this man never should've been here.
+>
+> *Quoting @ProjectConstitu:* 🚨 ALERT: Afghan National Involved in Fairfax Police Shooting Linked to Recent DC Incident Involving National Guard Members
+>
+> Yesterday, November 26, two National Guard members—Pfc. Andrew Wolfe, 24, and Spc. Sarah Beckstrom, 20—were critically injured in a shooting near the White House in Washington, DC. The suspect, Rahmanullah Lakanwal, an Afghan national who entered the U.S. in 2021, reportedly drove from across the country before the incident. Both service members, who had just been sworn in less than 24 hours prior as part of enhanced security measures under President Trump, are receiving medical treatment.
+>
+> Looking back to April 23 in Fairfax, VA: A routine traffic stop escalated when Jamal Wali, 36, another Afghan national, expressed frustration and mentioned the Taliban before firing at officers. One bullet injured two officers in their arms, but they were treated and released. Wali was fatally shot in the exchange. Body camera footage captured the event, showing his anger toward the U.S.
+>
+> These incidents raise questions about vetting processes. Both individuals entered the U.S. under programs from the Obama and Biden administrations—Wali in 2014 as a translator, and Lakanwal through asylum pathways amid the Afghanistan withdrawal. Concerns have been voiced about border security and immigration policies that may have allowed unvetted entries.
+>
+> President Trump is addressing this by deploying 500 additional Guardsmen, but many are calling for stronger measures to secure the border. Share if you support accountability and safer policies!
+
+- **Tweet:** https://x.com/robbystarbuck/status/1994243668039880756
+- **Quoted:** https://x.com/ProjectConstitu/status/1994156290378027102
+- **What:** Robby Starbuck criticizes immigration policies following violent incidents involving Afghan nationals, linking recent shootings of National Guard members and police to broader border security concerns.
+
+---
+
+
+---
+
+
+# Wednesday, November 26, 2025
+
+## @badlogicgames - Agent in Messaging App as Computer God Mode
+> Seriously, a an agent with a computer in your messaging app, including group chat, is basically computer god mode. It can just do things and add new capabilities to itself ad-hoc. https://t.co/HR1iiQ1HVi
+
+- **Tweet:** https://x.com/badlogicgames/status/1993614141094076744
+- **Link:** https://x.com/badlogicgames/status/1993614141094076744/photo/1
+- **What:** Highlights the transformative power of having a coding agent with full system access embedded in messaging apps, enabling ad-hoc capability expansion and autonomous action execution.
+
+---
+
+## @ambricken - Anthropic Applied AI Agent Harness Blog Post
+> One of the coolest Applied AI experiments ran internally now shared with the world.
+>
+> It demonstrates the true power of a harness and filesystem, combined with the intelligence of Claude. This blogpost is so good it almost feels like we're giving away IP 😂
+
+- **Tweet:** https://x.com/ambricken/status/1993756993337627034
+- **Quoted:** https://x.com/AnthropicAI/status/1993733817849303409
+- **What:** Commentary on Anthropic's engineering blog post about long-running AI agents using human-inspired harness designs, covering challenges in cross-context-window agent operation and filesystem integration.
+
+---
+
+## @sprice - Compound Engineering Plugin Excellence
+> *Quoting @kieranklaassen:* Opus 4.5 is insane. Just shipped v2 of my compounding engineering plugin—watch the video for my full thoughts on the model.
+>
+> I thought I had a good /plan custom Claude Code command.
+>
+> I'm at a loss for words for how good @kieranklaassen's Compound Engineering plugin is.
+>
+> Stop what you're doing.
+>
+> Install this.
+
+- **Tweet:** https://x.com/sprice/status/1993768546191724609
+- **Quoted:** https://x.com/kieranklaassen/status/1993054059520217395
+- **What:** Enthusiastic endorsement of Kieran Klaassen's Compound Engineering plugin v2, highlighting its exceptional quality and utility for Claude Code workflows.
+
+---
+
+## @QwQiao - Investment Portfolio Update with Amazon
+> *Quoting own analysis:* Current stonk holdings: goog, eli lilly, baba, tencent, and previously xiaomi.
+>
+> Small update: still hold first 4 of the 5, but added amzn and removed xiaomi. Amazon story is simple: their retail margin is going to substantially increase thanks to industrial robots + AWS benefits from a strong AI compute tailwind. Xiaomi: I became enamored with EVs and self-driving but the industry is cutthroat and I don't believe it's a Munger-style "wonderful business" I can hold for 10 years.
+
+- **Tweet:** https://x.com/QwQiao/status/1993779938852249964
+- **Quoted:** https://x.com/QwQiao/status/1940725404945277336
+- **What:** Portfolio rebalancing decision replacing Xiaomi with Amazon due to industrial robotics margin improvement and AWS AI tailwinds, while maintaining core positions in tech and biotech.
+
+---
+
+## @EricBuess - Claude Opus Setup with Frontend Design Skill
+> *Quoting @trq212:* Opus 4.5 is our best model yet for design & vision.
+>
+> Claude update: /model -> opus, /plugin marketplace add anthropics/claude-code, /plugin install frontend-design@claude-code-plugins, shift+tab until you see plan mode, "Use the frontend-design skill to [describe what you want to build]"
+
+- **Tweet:** https://x.com/EricBuess/status/1993803743733928214
+- **Quoted:** https://x.com/trq212/status/1993786550656897491
+- **What:** Quick reference guide for setting up Claude Opus with the frontend-design plugin in Claude Code, highlighting the plan mode integration for UI building workflows.
+
+---
+
+## @doodlestein - Beads Viewer: Terminal UI for Agent Task Management
+> I'm a huge fan of Steve Yegge's great beads project, which is a task management system for use by coding agents. I use beads hundreds of times daily across projects. I wished I had a better way to browse beads, so I created beads_viewer (bv) this morning. It's a performant Golang tool with graph theoretic calculations to extract insights. Press F1 for commands, try "i" for insights, "g" for graph, "b" for kanban board. Includes AI-friendly robot flags like --robot-insights, --robot-plan, --robot-priority for agents to use without hand-rolling graph logic.
+
+- **Tweet:** https://x.com/doodlestein/status/1993911933272019175
+- **Link:** https://github.com/Dicklesworthstone/beads_viewer
+- **What:** Announcement of beads_viewer, a performant terminal UI tool for managing and visualizing task dependency graphs created with Steve Yegge's beads system, featuring AI-optimized robot commands.
+
+---
+
+
+---
+
+
+# Tuesday, November 25, 2025
+
+## @iamsahaj_xyz - Agent-Assisted Development Workflow
+> recent workflow I've started to adopt:
+
+step 1
+- ask agent to implement something.
+- test if it works
+
+loop this until you get a working version
+
+step 2
+in a new chat, in plan mode, ask the agent to check the current diff with main branch and refactor the changes
+- as if it was being written from scratch,
+- goal is to minimize tech debt,
+- don't aim for the shortest way possible
+
+step 3
+iterate on plan and let it rip when you're happy.
+
+tbf this is nothing new, this is also how most people work regardless of the agent being there, just observed myself doing this more often recently
+
+- **Tweet:** https://x.com/iamsahaj_xyz/status/1993315270648307941
+- **What:** A three-step development workflow for agent-assisted coding: implement and test iteratively, then refactor with focus on tech debt minimization, finally execute refined plan.
+
+---
+
+## @alexalbert__ - Claude Opus 4.5 Prompting Guide
+> We put together a prompting guide for Claude Opus 4.5 based on extensive internal testing by our research and applied AI teams.
+
+Here's what we've learned so far about getting the best results:
+
+- **Tweet:** https://x.com/alexalbert__/status/1993365963706913257
+- **What:** Announcement of an official prompting guide for Claude Opus 4.5 with best practices learned from extensive internal testing by Anthropic teams.
+
+---
+
+## @nityeshaga - Claude Opus 4.5 Prompting Guide
+> *Quoting @alexalbert__:* We put together a prompting guide for Claude Opus 4.5 based on extensive internal testing by our research and applied AI teams.
+
+Here's what we've learned so far about getting the best results:
+
+- **Tweet:** https://x.com/nityeshaga/status/1993382486567756042
+- **Link:** https://github.com/anthropics/claude-code/blob/main/plugins/claude-opus-4-5-migration/skills/claude-opus-4-5-migration/references/prompt-snippets.md
+- **Quoted:** https://x.com/alexalbert__/status/1993365963706913257
+- **What:** Anthropic's internal testing team compiled a comprehensive prompting guide for Claude Opus 4.5. Key optimization snippets available in their official repository.
+
+---
+
+## @ryancarson - Beads Task Management Tool
+> Beads by @Steve_Yegge is SO good.
+
+Perfect when you're in the flow and you notice another bug or a task you need to tackle another time. I just type
+
+`bd: add task to cleanup design of /efile-submission. not top priority`
+
+No need to break out Linear or do something complex.
+
+Now I can keep going and come back easily to the task with just this ...
+
+`bd list -s open`
+
+- **Tweet:** https://x.com/ryancarson/status/1993382714599162206
+- **Link:** https://github.com/steveyegge/beads
+- **What:** Beads is a lightweight task management tool by Steve Yegge that lets developers quickly capture tasks without context switching. Perfect for noting bugs and follow-up work while in flow state.
+
+---
+
+## @rseroter - Spotify's Background Coding Agents Context Engineering
+> The @SpotifyEng team built background coding agents that can edit code, run tests, and such. But how do they give them instructions?
+
+Here's a look at what they do for context engineering ...
+
+- **Tweet:** https://x.com/rseroter/status/1993428229009588321
+- **Link:** https://engineering.atspotify.com/2025/11/context-engineering-background-coding-agents-part-2
+- **What:** Spotify engineering shares how they use context engineering to instruct background coding agents. The agents can edit code, run builds and tests, and open PRs. Understanding how to give agents proper instructions is essential for reliable results.
+
+---
+
+## @thebirdabides - Sohu AI Chip Performance vs Nvidia
+> *Replying to @bubbleboi:* If you actually understand how computers work, you will make a ton of money in this market .
+
+Nobody in Silicon Valley or Wall Street knows how chips work anymore. Google is taking half of Nvidia's market share and market cap. But the real winner won't be Google it's going to be a startup that makes a better TPU and sells it to everyone..
+
+- **Tweet:** https://x.com/thebirdabides/status/1993431760743670208
+- **Parent:** https://x.com/bubbleboi/status/1993431039272767685
+- **Link:** https://www.tomshardware.com/tech-industry/artificial-intelligence/sohu-ai-chip-claimed-to-run-models-20x-faster-and-cheaper-than-nvidia-h100-gpus
+- **What:** Tom's Hardware covers Etched's Sohu AI chip, claiming 20x faster performance and lower cost than Nvidia H100 GPUs. Relevant to discussion of specialized AI hardware startups disrupting the market.
+
+---
+
+## @notnotstorm - Running 24x Claude Code Instances Workflow
+> when running 24x claude code instances makes sense:
+
+1. an initial agent scanned my repo looking for general improvements. it flagged 20 things. I liked 12 of them and told it to create a github issue for each
+
+2. I opened up 12 tmux panes and ran `/fix <issue_number>` in each one. this is a slash command that fixes a gh issue in a new worktree and submits a pr
+
+3. I split each of those panes in half and ran `/review <pr_number>` on each of the 12 prs
+
+4. I ran `/respond` in each of the 12 original panes, to respond to the reviews and update the pr's with any necessary fixes
+
+5. I ran `/summarize_prs` to figure out the best merge order and flag PR's that might have bad concerns or tradeoffs
+
+next step is decide which PR's I want to merge and merge them
+
+it's still a very manual process but every week I feel like I'm getting a lot faster
+
+- **Tweet:** https://x.com/notnotstorm/status/1993443281846649209
+- **What:** Developer demonstrates parallelized workflow using 24 Claude Code instances with tmux panes for issue scanning, fixing, reviewing, and PR management. Shows emerging patterns for scaling AI-assisted development across multiple concurrent tasks.
+
+---
+
+## @pdrmnvd - Using AskUserQuestion in Claude Commands
+> Do you love Claude's plan-mode question asker and wish you could bring it with you everywhere?
+>
+> Add `AskUserQuestion` to allowed-tools in a .claude/command then explicitly tell Claude to use it.
+>
+> > Use the AskUserQuestion tool to ask the user...
+>
+> Here's me using it for a PR review slash command.
+
+- **Tweet:** https://x.com/pdrmnvd/status/1993451295152484409
+- **What:** Demonstrates how to use the AskUserQuestion tool in Claude Code commands by configuring it in .claude/command files, enabling interactive question-asking in custom slash commands like PR reviews.
+
+---
+
+## @0xblacklight - Writing a Good CLAUDE.md
+> Full post here, summary below:
+> https://t.co/Mo1aSrKXx9
+
+- **Tweet:** https://x.com/0xblacklight/status/1993463350395912233
+- **Link:** https://www.humanlayer.dev/blog/writing-a-good-claude-md
+- **Parent:** https://x.com/0xblacklight/status/1993463348155859360
+- **What:** Article explaining best practices for writing CLAUDE.md configuration files, which are critical for onboarding LLM agents to codebases since LLMs are stateless and must be told codebase context on each session.
+
+---
+
+## @badlogicgames - Slack Bot Coding Agent with Docker Isolation
+> Ok, I think this is going somewhere! Built a Slack bot that's basically a coding agent which has:
+>
+> 1. Access to the channel history (jsonl file it can grep)
+> 2. File read/write/edit tools
+> 3. Bash
+>
+> Bash tool operates inside a Docker container, into which channel history JSONL and channel attachments are mounted.
+>
+> Bot can do whatever it wants inside the Docker container. Install tools like GH CLI, Node, Python, etc, clone repositories, compile stuff, fetch stuff from the web.
+>
+> Bot is invoked by mentioning it in the channel, which will trigger an agentic run. Bot posts a message to the slack channel, which gets updated with new outputs from the agent run. For debugging, a thread is attached to the message, which shows all tool invocations chronologically.
+>
+> And it has a tool that lets it attach one or more files from the Docker container to its Slack message. So it can create stuff for me in the container, and ship the result as a plain old Slack attachment. Very nice!
+>
+> This is super nice to work with. And through the Docker isolation, I might actually not shoot myself in the foot.
+
+- **Tweet:** https://x.com/badlogicgames/status/1993479329586499890
+- **What:** Building a Slack-integrated coding agent that runs inside Docker containers with file/edit tools and bash access, allowing the bot to install tools, clone repos, and attach results directly to Slack messages with full isolation.
+
+---
+
+
+---
+
+
 # Monday, November 24, 2025
+
+## @simonw - Opus 4.5 Token Efficiency Economics
+> *Quoting @alexalbert__:* It's also dramatically more efficient. On SWE-bench Verified at medium effort, Opus 4.5 beats Sonnet 4.5 while using 76% fewer output tokens. The new effort parameter lets you trade off intelligence for cost/latency with a single dial.
+
+This is notable: Opus 4.5 is ~60% more expensive than Sonnet ($25/million output compared to $15/million) but if it can use 76% fewer output reasoning tokens for the same complex task it may end up cheaper!
+
+- **Tweet:** https://x.com/simonw/status/1993070568435073135
+- **Quoted:** https://x.com/alexalbert__/status/1993030687881080944
+- **What:** Analysis of Opus 4.5's cost-effectiveness compared to Sonnet despite higher per-token pricing, thanks to dramatically reduced output token usage.
+
+---
+
+## @pvncher - OpenAI Reasoning Context Pollution
+> *Replying to @sacino:* why do you think gpt-5.1-low is second?
+
+@bitofseo I wrote about this elsewhere but I firmly believe it's because OpenAI reasoning traces pollute the context window and, gpt models are more sensitive to noise in the context window than Claude models.
+
+- **Tweet:** https://x.com/pvncher/status/1993113207892758580
+- **Parent:** https://x.com/sacino/status/1993112377261539843
+- **What:** Explanation for why GPT-5.1-low underperforms: OpenAI's reasoning traces pollute the context window, and GPT models are more sensitive to context noise than Claude.
+
+---
+
+## @pvncher - Reasoning Trade-offs for Coding Tasks
+> *Replying to @joelwashington:* @pvncher @bitofseo Cool finding, surprising and very interesting. Why do you think other evals are generally showing xhigh better, is there something about yours that are testing long context in a way others aren't? I've generally been defaulting to xhigh b/c it's fast, but I'm now going to try low
+
+Actually surprisingly, codex max xhigh decently on repo bench, but not as good as vanilla 5.1 low. It's not on the leaderboard, but it's in the explorer. I would say, for coding intelligence, more reasoning is better, but that's also why I split planning / discovery, from execution. Execution needs less reasoning
+
+- **Tweet:** https://x.com/pvncher/status/1993124628059799604
+- **Parent:** https://x.com/joelwashington/status/1993123487687622774
+- **What:** Discussion of reasoning levels for coding tasks - proposing a strategy to split planning/discovery (needs more reasoning) from execution (needs less reasoning).
+
+---
 
 ## @MatthewBerman - Opus 4.5 Outperforms All Humans on Anthropic Interview Exam
 > Absolutely insane stat.
@@ -728,6 +1479,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 - **What:** Remarkable benchmark showing that Claude Opus 4.5 has outperformed every single human candidate in Anthropic's challenging take-home exam for performance engineering positions.
 
 ---
+
+
+---
+
 
 # Sunday, November 23, 2025
 
@@ -756,6 +1511,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 ---
 
+
+---
+
+
 # Saturday, November 22, 2025
 
 ## @kieranklaassen - New Sub-Agent for Compounding Engineering
@@ -782,6 +1541,10 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 
 ---
+
+
+---
+
 
 # Friday, November 21, 2025
 
@@ -814,6 +1577,10 @@ DATE: Friday, November 21, 2025
 
 ---
 
+
+---
+
+
 # Thursday, November 20, 2025
 
 ## @tnm - MIT-Licensed Code Search and CLI Tool
@@ -841,6 +1608,10 @@ just by giving it a better grep https://t.co/GUf1dS9e8B
 
 ---
 
+
+---
+
+
 # Wednesday, November 19, 2025
 
 ---
@@ -861,6 +1632,10 @@ Remarkably, this self-lubrication mechanism works even at temperatures approachi
 - **What:** Travis Fischer shares a Feynman discussion about the surprising complexity of why ice is slippery, relating to new research about electrical charges and molecular dipoles rather than traditional pressure-melting theories.
 
 ---
+
+
+---
+
 
 # Tuesday, November 18, 2025
 
@@ -980,6 +1755,10 @@ Remarkably, this self-lubrication mechanism works even at temperatures approachi
 
 ---
 
+
+---
+
+
 # Monday, November 17, 2025
 
 ## @mitsuhiko - AI discourse: Why JSON beats TOON for token efficiency
@@ -1018,6 +1797,10 @@ DATE: Monday, November 17, 2025
 
 ---
 
+
+---
+
+
 # Sunday, November 16, 2025
 
 ## @coderabbitai - Open Source Git Worktree Manager for AI Coding Agents
@@ -1032,6 +1815,10 @@ DATE: Monday, November 17, 2025
 - **What:** CodeRabbit releases a CLI tool for managing Git worktrees, specifically designed for AI coding agents. Enables efficient isolation of work across multiple worktrees for concurrent agent operations.
 
 ---
+
+
+---
+
 
 # Saturday, November 15, 2025
 
@@ -1065,6 +1852,10 @@ DATE: Monday, November 17, 2025
 
 ---
 
+
+---
+
+
 # Friday, November 14, 2025
 
 ---
@@ -1089,6 +1880,10 @@ DATE: Friday, November 14, 2025
 - **What:** Investment thesis covering major tech stocks (Mag 7), semiconductor leaders, Warren Buffett-style quality companies, Chinese tech plays, DeFi protocols, fintech platforms, and robotics companies suitable for 5-10 year holds.
 
 ---
+
+
+---
+
 
 # Wednesday, November 12, 2025
 
@@ -1148,6 +1943,10 @@ DATE: Friday, November 14, 2025
 
 ---
 
+
+---
+
+
 # Tuesday, November 11, 2025
 
 ---
@@ -1160,6 +1959,10 @@ DATE: Tuesday, November 11, 2025
 
 ---
 
+
+---
+
+
 # Sunday, November 9, 2025
 
 ## @thekitze - Claude Code Infrastructure Showcase
@@ -1170,6 +1973,10 @@ DATE: Tuesday, November 11, 2025
 - **What:** An impressive showcase of Claude Code infrastructure and "vibe engineering" practices that demonstrates advanced implementation patterns.
 
 ---
+
+
+---
+
 
 # Saturday, November 8, 2025
 
@@ -1196,6 +2003,10 @@ Parent context:
 - **What:** A Claude skill enabling Claude Code to reverse-engineer itself using mitmproxy to inspect system prompts, tool definitions, and debug commands with included guided setup and utilities.
 
 ---
+
+
+---
+
 
 # Friday, November 7, 2025
 
@@ -1250,6 +2061,10 @@ DATE: Friday, November 7, 2025
 
 ---
 
+
+---
+
+
 # Thursday, November 6, 2025
 
 ## @ericzakariasson - Code Review Bottlenecks and Diff Viewer Improvements
@@ -1280,6 +2095,10 @@ DATE: Thursday, November 6, 2025
 - **What:** Evalite is a testing framework for AI-powered applications built in TypeScript. It provides a local dev server for running evaluations and testing AI behaviors, simplifying the evals process for developers.
 
 ---
+
+
+---
+
 
 # Wednesday, November 5, 2025
 
@@ -1329,6 +2148,10 @@ DATE: Wednesday, November 5, 2025
 - **What:** Tool that generates self-contained Bun CLIs from Model Context Protocol (MCP) servers. Enables packaging MCP implementations as standalone command-line tools with compilation support.
 
 ---
+
+
+---
+
 
 # Tuesday, November 4, 2025
 
@@ -1420,6 +2243,10 @@ DATE: Tuesday, November 4, 2025
 
 ---
 
+
+---
+
+
 # Monday, November 3, 2025
 
 ## @JadeAtrophis - Quote Tweet Comment
@@ -1432,6 +2259,10 @@ DATE: Tuesday, November 4, 2025
 - **What:** Quote tweet responding to a social media discussion.
 
 ---
+
+
+---
+
 
 # Thursday, October 30, 2025
 
@@ -1450,6 +2281,10 @@ DATE: Tuesday, November 4, 2025
 
 ---
 
+
+---
+
+
 # Wednesday, October 15, 2025
 
 ---
@@ -1461,3 +2296,5 @@ DATE: Wednesday, October 15, 2025
 
 - **Tweet:** https://x.com/dexhorthy/status/1978676162495688719
 - **What:** Comprehensive superthread collecting all resources on advanced Claude Code usage, research-plan-implement methodology, and context engineering techniques for coding agents.
+
+---
