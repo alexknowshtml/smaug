@@ -485,3 +485,42 @@ Paper: "Do Sparse Autoencoders Identify Reasoning Features in Language Models?"
 - @teortaxesTex: "Everything was in Gemma-3n" - framing was the problem
 - @living_energy: EMF exposure research (off-topic but bookmarked)
 
+
+---
+
+# Backlog: Jan 8-12, 2026
+
+## 🔧 Claude Code Ecosystem Drama & Tools
+**@steipete, @parcadei, @alexhillman, @kieranklaassen** | Jan 8-9, 2026 | `#ClaudeCode #Tools`
+
+- Anthropic restricted Claude Code OAuth for only Claude Code use (not other API calls)
+- @steipete: "I smell drama" - credential restrictions causing friction
+- @parcadei: New code intelligence layer with 92% token reduction
+- @alexhillman: Can't use Claude Code without Kuato
+- @kieranklaassen: Composable slash commands that call other slash commands
+- C-3PO debug agent created by Clawd
+
+**Sentiment:** Community frustrated with Anthropic's credential restrictions.
+
+---
+
+## 🔬 Hyper-Connections & Model Architecture
+**@torchcompiled** | Jan 9, 2026 | `#Architecture #Research`
+
+"Hyper-Connections was foretold by the ancients" - reference to emerging architecture patterns.
+
+---
+
+## 📱 MiniMax & Alternative Models
+**@steipete** | Jan 9, 2026 | `#Models #Alternatives`
+
+"Might just stick with @MiniMax_AI, their model slays" - exploring alternatives after Anthropic restrictions.
+
+---
+
+## 🔗 Misc Jan 8-9
+- @danshipper: Link share
+- @eliebakouch: Excited about something ("christmas again?")
+- @s_scardapane: Some link
+- @Sajwani: SA Starlink/BEE discussion (off-topic)
+
