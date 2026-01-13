@@ -414,3 +414,74 @@ Key insight: 43% of the NanoGPT speedrun improvement comes from **Value Residual
 
 **Why it matters:** Simple architectural change with significant speedup. Relevant for efficient transformer design.
 
+
+---
+
+## 🧠 DeepSeek Engram - Conditional Memory via Scalable Lookup
+**@tokenbender, @scaling01, @eliebakouch, @_arohan_** | Jan 13, 2026 | `#LLM #Sparsity #DeepSeek`
+
+DeepSeek dropped "Engram" - a new architecture introducing conditional memory via scalable lookup as a new sparsity axis for LLMs.
+
+- Paper: https://github.com/deepseek-ai/Engram/blob/main/Engram_paper.pdf
+- Builds on: Over-tokenized Transformer, Per-Layer Embeddings, Ngrammer (from Gemma-3n)
+- Connection: MHC → AltUp, Engram → Per Layer Embedding + Ngrammer
+
+**Why it matters:** New efficiency technique from DeepSeek. Worth tracking for TabM/TRM work.
+
+---
+
+## 🤖 Claude Cowork - Claude Code for Non-Technical Work  
+**@claudeai, @alexalbert__, @emollick** | Jan 13, 2026 | `#Anthropic #Agents #ProductLaunch`
+
+Anthropic launched "Cowork" - Claude Code but for non-coders/knowledge work.
+
+- Complete non-technical tasks like Claude Code does for coding
+- Foundation for future of knowledge work
+- @emollick notes: doesn't yet have all useful features of Claude Code
+
+**Why it matters:** Major product launch. Watch for enterprise adoption patterns.
+
+---
+
+## 📊 ShortSWA - Next-Gen N-gram Embeddings
+**@yifan_zhang_** | Jan 13, 2026 | `#Embeddings #Attention #NLP`
+
+Short Sliding Window Attention (ShortSWA) - elegant solution to positional embedding messiness for long context.
+
+- Project: https://yifanzhang-pro.github.io/ShortSWA-Ngram-Embedding/
+- Next-generation N-gram embedding approach
+
+---
+
+## 🚀 NanoGPT Speedruns Continue + RLM Space
+**@konstmish, @DaveShapi** | Jan 13, 2026 | `#NanoGPT #RLM #Training`
+
+- NanoGPT speedruns still seeing improvements - soon anyone can train 8B models
+- RLM (Reasoning Language Models) space heating up - already solving some of the biggest technical challenges
+
+---
+
+## 🐚 "Bash is All You Need" - Claude Code Architecture
+**@hanouticelina** | Jan 13, 2026 | `#Anthropic #Agents #Architecture`
+
+Anthropic's secret sauce behind Claude Code: "Bash is all you need" to build powerful agents.
+
+- Low context overhead
+- Simple but effective
+
+---
+
+## 🔬 Sparse Autoencoders & Reasoning Features
+**@fly51fly** | Jan 13, 2026 | `#Interpretability #SAE #Research`
+
+Paper: "Do Sparse Autoencoders Identify Reasoning Features in Language Models?"
+- Authors: G Ma, Z Liang, I Y. Chen, S Sojoudi (UC Berkeley)
+- arXiv: https://arxiv.org/abs/2601.05679
+
+---
+
+## 📱 Misc Bookmarks
+- @kieranklaassen: Using Claude for daily plans on TRMNL device
+- @teortaxesTex: "Everything was in Gemma-3n" - framing was the problem
+- @living_energy: EMF exposure research (off-topic but bookmarked)
+
