@@ -1,0 +1,17 @@
+{
+  "twitter": {
+    "authToken": "f28af2aa0e7de9051762e9377d894f89506716ec",
+    "ct0": "3a0aebc129460c8ce58c5033a6266f440210cb02ba466b308822437459fb664bb0a2a765554fc8b15cae92d02582327b63e6673394bdd307b2b51b6487fb231b296c480d13994ee0245cb30d68fe9445"
+  },
+  "output": {
+    "bookmarksFile": "bookmarks.md",
+    "knowledgeDir": "knowledge"
+  },
+  "fetch": {
+    "source": "bookmarks",
+    "count": 20
+  },
+  "timezone": "Africa/Johannesburg",
+  "autoInvokeClaude": true,
+  "claudeModel": "sonnet"
+}

@@ -399,3 +399,18 @@ it's live now do check it out and would appreciate your feedback https://t.co/DO
 
 - **Tweet:** https://x.com/donvito/status/2006743894147711370
 - **What:** Follow-up endorsement emphasizing the value proposition of GLM 4.7 at $3/month subscription rate. Reflects developer sentiment about the model's capabilities relative to pricing.
+
+---
+
+## 🚀 NanoGPT Speedrun Value Residual Learning
+**@Grad62304977, @kellerjordan0** | Nov 2024 | `#ML #NanoGPT #ValueResidual`
+
+Key insight: 43% of the NanoGPT speedrun improvement comes from **Value Residual Learning** - a variant of value residual that applies to transformer attention.
+
+- New record: 3.28 FineWeb
+- Code: https://github.com/Grad62304977/modded-nanogpt-hpc
+- Data-dependent lambda helps but adds complexity
+- Per-head vs per-model lambda tradeoffs discussed
+
+**Why it matters:** Simple architectural change with significant speedup. Relevant for efficient transformer design.
+
