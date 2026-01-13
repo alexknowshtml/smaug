@@ -137,7 +137,9 @@ This will set up Smaug to automatically archive your Twitter bookmarks.
   };
 
   fs.writeFileSync('./smaug.config.json', JSON.stringify(config, null, 2) + '\n');
-  console.log('  ✓ Created smaug.config.json\n');
+  console.log('  ✓ Created smaug.config.json');
+  console.log('  ⚠️  This file contains your credentials and is gitignored.');
+  console.log('     Never commit it or share it publicly.\n');
 
   // Step 5: Ask about automation
   console.log('Step 5: Automation Setup\n');

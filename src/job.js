@@ -153,14 +153,20 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
     // incorrectly stored there and would override valid OAuth credentials
     const apiKey = config.anthropicApiKey || process.env.ANTHROPIC_API_KEY;
 
+    // Build clean environment, removing nested Claude detection vars
+    // These vars can cause issues when Claude is spawned from within another Claude session
+    const cleanEnv = { ...process.env };
+    delete cleanEnv.CLAUDECODE;
+    delete cleanEnv.CLAUDE_CODE_ENTRYPOINT;
+
     const proc = spawn(claudePath, args, {
       cwd: config.projectRoot || process.cwd(),
       env: {
-        ...process.env,
+        ...cleanEnv,
         PATH: enhancedPath,
         ...(apiKey ? { ANTHROPIC_API_KEY: apiKey } : {})
       },
-      stdio: ['pipe', 'pipe', 'pipe']
+      stdio: ['ignore', 'pipe', 'pipe']
     });
 
     let stdout = '';
@@ -326,7 +332,7 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
                 lastText = block.text;
               }
 
-              // Track tool usage
+              // Track tool usage for progress messages
               if (block.type === 'tool_use') {
                 const toolName = block.name;
                 const input = block.input || {};

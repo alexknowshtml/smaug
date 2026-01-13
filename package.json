@@ -1,6 +1,6 @@
 {
   "name": "smaug",
-  "version": "0.1.0",
+  "version": "0.3.1",
   "description": "Archive Twitter/X bookmarks to markdown with link expansion, content extraction, and AI-powered categorization",
   "type": "module",
   "main": "src/index.js",

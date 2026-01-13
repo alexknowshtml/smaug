@@ -54,16 +54,20 @@ The setup wizard will:
 
 ## Manually Getting Twitter Credentials
 
-Smaug uses the bird CLI which needs your Twitter session cookies. 
+Smaug uses the bird CLI which needs your Twitter session cookies.
 
-If you don't want to use the wizard to make it easy, you can manually put your seession info into the config. 
+If you don't want to use the wizard to make it easy, you can manually put your session info into the config.
 
-1. Open Twitter/X in your browser
-2. Open Developer Tools → Application → Cookies
-3. Find and copy these values:
+1. Copy the example config:
+   ```bash
+   cp smaug.config.example.json smaug.config.json
+   ```
+2. Open Twitter/X in your browser
+3. Open Developer Tools → Application → Cookies
+4. Find and copy these values:
    - `auth_token`
    - `ct0`
-4. Add them to `smaug.config.json`:
+5. Add them to your `smaug.config.json`:
 
 ```json
 {
@@ -73,6 +77,8 @@ If you don't want to use the wizard to make it easy, you can manually put your s
   }
 }
 ```
+
+> **Note:** `smaug.config.json` is gitignored to prevent accidentally committing credentials. The example file is tracked instead.
 
 ## What Smaug Actually Does
 
@@ -109,7 +115,7 @@ npx smaug process
 npx smaug process --force
 
 # Check what's pending
-cat .state/pending-bookmarks.json | jq '.count'
+node -e "console.log(require('./.state/pending-bookmarks.json').count)"
 ```
 
 ### Fetching All Bookmarks
@@ -288,7 +294,13 @@ Real-time speech-to-text transcription using OpenAI Whisper...
 
 ## Configuration
 
-Create `smaug.config.json`:
+Copy the example config and customize:
+
+```bash
+cp smaug.config.example.json smaug.config.json
+```
+
+Example `smaug.config.json`:
 
 ```json
 {
@@ -319,6 +331,7 @@ Create `smaug.config.json`:
 | `autoInvokeClaude` | `true` | Auto-run Claude Code for analysis |
 | `claudeModel` | `sonnet` | Model to use (`sonnet`, `haiku`, or `opus`) |
 | `claudeTimeout` | `900000` | Max processing time (15 min) |
+| `parallelThreshold` | `8` | Min bookmarks before parallel processing kicks in |
 | `webhookUrl` | `null` | Discord/Slack webhook for notifications |
 
 Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
@@ -357,7 +370,7 @@ Smaug uses Claude Code for intelligent bookmark processing. The `.claude/command
 - Filing articles to `knowledge/articles/`
 - Handling quote tweets with full context
 - Processing reply threads with parent context
-- Parallel processing for 3+ bookmarks (using Haiku subagents for cost efficiency)
+- Parallel processing for large batches (configurable threshold, default 8 bookmarks)
 
 You can also run processing manually:
 
@@ -395,7 +408,7 @@ Main (sonnet):
 
 ### Cost Optimization: Haiku Subagents
 
-For batches of 3+ bookmarks, Smaug spawns parallel subagents. By default, these use Haiku instead of Sonnet, which cuts costs nearly in half:
+For large batches (8+ bookmarks by default), Smaug spawns parallel subagents. By default, these use Haiku instead of Sonnet, which cuts costs nearly in half:
 
 | Configuration | 20 Bookmarks | Time |
 |---------------|--------------|------|

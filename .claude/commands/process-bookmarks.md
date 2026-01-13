@@ -8,7 +8,13 @@ Process prepared Twitter bookmarks into a markdown archive with rich analysis an
 
 **Create todo list IMMEDIATELY after reading bookmark count.** This ensures final steps never get skipped.
 
-**For 1-2 bookmarks (sequential):**
+**Check parallelThreshold from config** (default: 8). Use parallel processing only when bookmark count >= threshold. For smaller batches, sequential processing is faster due to subagent overhead.
+
+```bash
+node -e "console.log(require('./smaug.config.json').parallelThreshold ?? 8)"
+```
+
+**For bookmarks below threshold (sequential):**
 ```javascript
 TodoWrite({ todos: [
   {content: "Read pending bookmarks", status: "pending", activeForm: "Reading pending bookmarks"},
@@ -20,7 +26,7 @@ TodoWrite({ todos: [
 ]})
 ```
 
-**For 3+ bookmarks (MUST use parallel subagents with batch files):**
+**For bookmarks at or above threshold (MUST use parallel subagents with batch files):**
 ```javascript
 TodoWrite({ todos: [
   {content: "Read pending bookmarks", status: "pending", activeForm: "Reading pending bookmarks"},
@@ -39,7 +45,7 @@ TodoWrite({ todos: [
 - Only ONE task `in_progress` at a time
 - Never skip final steps (commit, summary)
 
-**CRITICAL for 3+ bookmarks:** Spawn ALL subagents in ONE message, each writing to a batch file:
+**CRITICAL for parallel processing:** Spawn ALL subagents in ONE message, each writing to a batch file:
 ```javascript
 // Send ONE message with multiple Task calls - they run in parallel
 // Use model="haiku" for cost-efficient parallel processing (~50% cost savings)
@@ -54,7 +60,7 @@ After ALL subagents complete, merge batch files into bookmarks.md in chronologic
 
 **DO NOT:**
 - Have subagents write directly to bookmarks.md (race conditions!)
-- Process 3+ bookmarks sequentially (too slow)
+- Process bookmarks above threshold sequentially (too slow)
 - Send Task calls in separate messages (defeats parallelism)
 - Skip the merge step
 
@@ -69,7 +75,7 @@ Use this format for date section headers (e.g., "Thursday, January 2, 2026").
 
 **Load paths and categories from config:**
 ```bash
-cat ./smaug.config.json | jq '{archiveFile, pendingFile, stateFile, categories}'
+node -e "const c=require('./smaug.config.json'); console.log(JSON.stringify({archiveFile:c.archiveFile, pendingFile:c.pendingFile, stateFile:c.stateFile, categories:c.categories}, null, 2))"
 ```
 
 This gives you:
@@ -119,16 +125,16 @@ Categories define how different bookmark types are handled. Each category has:
 
 ### 1. Read the Prepared Data
 
-Read from the `pendingFile` path specified in config. If the path starts with `~`, expand it to `$HOME`:
+Read from the `pendingFile` path specified in config. If the path starts with `~`, expand it to the home directory:
 ```bash
-# Get pendingFile from config and expand ~
-PENDING_FILE=$(cat ./smaug.config.json | jq -r '.pendingFile' | sed "s|^~|$HOME|")
+# Get pendingFile from config and expand ~ (cross-platform)
+PENDING_FILE=$(node -e "const p=require('./smaug.config.json').pendingFile; console.log(p.replace(/^~/, process.env.HOME || process.env.USERPROFILE))")
 cat "$PENDING_FILE"
 ```
 
-### 2. Process Bookmarks (Parallel for 3+)
+### 2. Process Bookmarks (Parallel when above threshold)
 
-**IMPORTANT: If there are 3 or more bookmarks, you MUST use parallel processing:**
+**IMPORTANT: If bookmark count >= parallelThreshold (default 8), you MUST use parallel processing:**
 
 ```
 Use the Task tool to spawn multiple subagents simultaneously.
@@ -136,7 +142,7 @@ Each subagent processes a batch of ~5 bookmarks.
 Example: 20 bookmarks → spawn 4 subagents (5 each) in ONE message with multiple Task calls.
 ```
 
-This is critical for performance. Do NOT process bookmarks sequentially when there are 3+.
+This is critical for performance. Do NOT process bookmarks sequentially when above threshold.
 
 For each bookmark (or batch):
 
@@ -398,7 +404,7 @@ status: needs_transcript
 - [Original Tweet]({tweet_url})
 ```
 
-## Parallel Processing (REQUIRED for 3+ bookmarks)
+## Parallel Processing (REQUIRED when above threshold)
 
 **CRITICAL: Subagents must NOT write directly to bookmarks.md** - this causes race conditions and scrambled ordering.
 

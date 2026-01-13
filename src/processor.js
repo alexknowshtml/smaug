@@ -102,7 +102,10 @@ export function fetchBookmarks(config, count = 10, options = {}) {
     });
     const output = fs.readFileSync(tmpFile, 'utf8');
     fs.unlinkSync(tmpFile);
-    return JSON.parse(output);
+    const parsed = JSON.parse(output);
+    // bird CLI v0.6.0+ returns { tweets: [...], nextCursor: ... } for paginated requests
+    // but plain arrays for non-paginated. Handle both formats.
+    return Array.isArray(parsed) ? parsed : (parsed.tweets || []);
   } catch (error) {
     throw new Error(`Failed to fetch bookmarks: ${error.message}`);
   }
@@ -121,7 +124,9 @@ export function fetchLikes(config, count = 10) {
     });
     const output = fs.readFileSync(tmpFile, 'utf8');
     fs.unlinkSync(tmpFile);
-    return JSON.parse(output);
+    const parsed = JSON.parse(output);
+    // Handle both array and object formats for consistency
+    return Array.isArray(parsed) ? parsed : (parsed.tweets || []);
   } catch (error) {
     throw new Error(`Failed to fetch likes: ${error.message}`);
   }
@@ -212,13 +217,19 @@ export function fetchTweet(config, tweetId) {
   }
 }
 
-export function expandTcoLink(url, timeout = 10000) {
+export async function expandTcoLink(url, timeout = 10000) {
   try {
-    const result = execSync(
-      `curl -Ls -o /dev/null -w '%{url_effective}' '${url}'`,
-      { encoding: 'utf8', timeout }
-    );
-    return result.trim();
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), timeout);
+
+    const response = await fetch(url, {
+      method: 'HEAD',
+      redirect: 'follow',
+      signal: controller.signal
+    });
+    clearTimeout(timeoutId);
+
+    return response.url || url;
   } catch (error) {
     console.error(`Failed to expand ${url}: ${error.message}`);
     return url;
@@ -254,21 +265,19 @@ export async function fetchGitHubContent(url) {
 
   try {
     const apiUrl = `https://api.github.com/repos/${owner}/${repo}`;
-    const repoData = execSync(
-      `curl -sL -H "Accept: application/vnd.github.v3+json" "${apiUrl}"`,
-      { encoding: 'utf8', timeout: 15000 }
-    );
-    const repoJson = JSON.parse(repoData);
+    const repoResponse = await fetch(apiUrl, {
+      headers: { 'Accept': 'application/vnd.github.v3+json' }
+    });
+    const repoJson = await repoResponse.json();
 
     // Fetch README content
     let readme = '';
     try {
       const readmeUrl = `https://api.github.com/repos/${owner}/${repo}/readme`;
-      const readmeData = execSync(
-        `curl -sL -H "Accept: application/vnd.github.v3+json" "${readmeUrl}"`,
-        { encoding: 'utf8', timeout: 15000 }
-      );
-      const readmeJson = JSON.parse(readmeData);
+      const readmeResponse = await fetch(readmeUrl, {
+        headers: { 'Accept': 'application/vnd.github.v3+json' }
+      });
+      const readmeJson = await readmeResponse.json();
       if (readmeJson.content) {
         readme = Buffer.from(readmeJson.content, 'base64').toString('utf8');
         if (readme.length > 5000) {
@@ -297,10 +306,21 @@ export async function fetchGitHubContent(url) {
 
 export async function fetchArticleContent(url) {
   try {
-    const result = execSync(
-      `curl -sL -m 30 -A "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)" "${url}" | head -c 50000`,
-      { encoding: 'utf8', timeout: 35000 }
-    );
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 30000);
+
+    const response = await fetch(url, {
+      headers: {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36'
+      },
+      signal: controller.signal,
+      redirect: 'follow'
+    });
+    clearTimeout(timeout);
+
+    const text = await response.text();
+    // Limit to 50KB like the old curl | head -c 50000
+    const result = text.slice(0, 50000);
 
     // Check for paywall indicators
     if (result.includes('Subscribe') && result.includes('sign in') ||
@@ -438,7 +458,7 @@ export async function fetchAndPrepareBookmarks(options = {}) {
       const links = [];
 
       for (const link of tcoLinks) {
-        const expanded = expandTcoLink(link);
+        const expanded = await expandTcoLink(link);
         console.log(`  Expanded: ${link} -> ${expanded}`);
 
         // Categorize the link
