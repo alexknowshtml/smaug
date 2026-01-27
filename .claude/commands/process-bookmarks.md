@@ -4,6 +4,17 @@ Process prepared Twitter bookmarks into a markdown archive with rich analysis an
 
 ## Before You Start
 
+### CRITICAL: Use Edit Tool for bookmarks.md (DATA LOSS PREVENTION)
+
+**NEVER use the Write tool on bookmarks.md.** The Write tool REPLACES the entire file, destroying all historical entries.
+
+**ALWAYS use the Edit tool** to insert new entries into bookmarks.md. The Edit tool preserves existing content while making targeted insertions.
+
+- `Write` = Replace entire file (DANGEROUS - causes data loss)
+- `Edit` = Insert/modify specific content (SAFE - preserves existing entries)
+
+This applies to BOTH sequential processing AND the merge step in parallel processing.
+
 ### Multi-Step Parallel Protocol (CRITICAL)
 
 **Create todo list IMMEDIATELY after reading bookmark count.** This ensures final steps never get skipped.
@@ -60,6 +71,7 @@ After ALL subagents complete, merge batch files into bookmarks.md in chronologic
 
 **DO NOT:**
 - Have subagents write directly to bookmarks.md (race conditions!)
+- Use the Write tool on bookmarks.md (DATA LOSS - destroys existing entries!)
 - Process bookmarks above threshold sequentially (too slow)
 - Send Task calls in separate messages (defeats parallelism)
 - Skip the merge step
@@ -169,9 +181,9 @@ Match each bookmark's links against category patterns (check `match` arrays). Us
 - Quote tweets: Include quoted tweet context in entry
 - Reply threads: Include parent context in entry
 
-#### c. Write bookmark entry
+#### c. Add bookmark entry to archive (USE EDIT TOOL)
 
-Add to the `archiveFile` path from config (expand `~` to home directory):
+**Use the Edit tool** to insert entries into the `archiveFile` (expand `~` to home directory). NEVER use Write - it will destroy existing entries.
 
 **CRITICAL ordering rules for bookmarks.md:**
 
@@ -442,13 +454,16 @@ Also create knowledge files (./knowledge/tools/*.md, ./knowledge/articles/*.md) 
 DO NOT touch bookmarks.md - only write to .state/batch-{N}.md
 ```
 
-**Phase 2: Sequential merge (main agent combines batches)**
+**Phase 2: Sequential merge (main agent combines batches) - USE EDIT TOOL**
 
 After ALL subagents complete:
-1. Read all .state/batch-*.md files in order (batch-0, batch-1, batch-2...)
-2. Parse each entry (separated by `---`) and extract the DATE line
-3. Insert each entry into bookmarks.md at the correct chronological position
-4. Delete the temp batch files
+1. Read the EXISTING bookmarks.md file first (preserve all current content!)
+2. Read all .state/batch-*.md files in order (batch-0, batch-1, batch-2...)
+3. Parse each entry (separated by `---`) and extract the DATE line
+4. **Use the Edit tool** to insert each entry into bookmarks.md at the correct chronological position
+5. Delete the temp batch files
+
+**CRITICAL:** Step 4 MUST use the Edit tool, not Write. Using Write will replace the entire file and destroy all historical entries.
 
 **Merge logic for bookmarks.md:**
 - File is descending order (newest dates at top)
@@ -459,6 +474,7 @@ After ALL subagents complete:
 
 **DO NOT:**
 - Have subagents write directly to bookmarks.md (causes race conditions)
+- Use the Write tool on bookmarks.md (causes DATA LOSS - destroys all existing entries)
 - Process all bookmarks sequentially (too slow)
 - Skip the merge step
 
