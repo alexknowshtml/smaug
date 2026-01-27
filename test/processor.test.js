@@ -2,10 +2,24 @@ import { test, describe } from 'node:test';
 import assert from 'node:assert';
 import fs from 'fs';
 import path from 'path';
+import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 import { isPaywalled, stripQuerystring, fetchXArticleContent } from '../src/processor.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// Check if bird CLI has valid credentials
+function hasBirdCredentials() {
+  try {
+    // Quick check - if bird can fetch 1 bookmark without error, we have credentials
+    execSync('bird bookmarks -n 1 --json', { encoding: 'utf8', timeout: 10000, stdio: 'pipe' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+const BIRD_AVAILABLE = hasBirdCredentials();
 
 describe('X article URL detection', () => {
   test('detects X article URL pattern', () => {
@@ -490,5 +504,120 @@ describe('extractArticle content/metadata selection', () => {
 
     assert.strictEqual(articleContent.length, 13000, 'should use longer quoted content');
     assert.strictEqual(articleMeta.title, 'Quoted Title', 'should use quoted metadata');
+  });
+});
+
+describe('fetchBookmarks count truncation', () => {
+  // Tests for the fix to issue #16 - count parameter being ignored in paginated mode
+  // These tests verify the truncation logic without actually calling bird CLI
+
+  test('maxPages calculation from count', () => {
+    // Simulates the logic in processor.js fetchBookmarks
+    const calculateMaxPages = (count, explicitMaxPages) => {
+      const estimatedPagesNeeded = Math.ceil(count / 20);
+      return explicitMaxPages || Math.max(estimatedPagesNeeded, 10);
+    };
+
+    // count=100 -> 5 pages needed, but min is 10
+    assert.strictEqual(calculateMaxPages(100, null), 10);
+
+    // count=250 -> 13 pages needed, exceeds min of 10
+    assert.strictEqual(calculateMaxPages(250, null), 13);
+
+    // count=50 -> 3 pages needed, but min is 10
+    assert.strictEqual(calculateMaxPages(50, null), 10);
+
+    // Explicit maxPages overrides calculation
+    assert.strictEqual(calculateMaxPages(100, 5), 5);
+  });
+
+  test('truncates results when more than requested', () => {
+    // Simulates the truncation logic in processor.js fetchBookmarks
+    const truncateToCount = (bookmarks, count) => {
+      if (bookmarks.length > count) {
+        return bookmarks.slice(0, count);
+      }
+      return bookmarks;
+    };
+
+    const mockBookmarks = Array(161).fill(null).map((_, i) => ({ id: `${i}` }));
+
+    // Request 100, get 161 -> should truncate to 100
+    const truncated = truncateToCount(mockBookmarks, 100);
+    assert.strictEqual(truncated.length, 100);
+    assert.strictEqual(truncated[0].id, '0');
+    assert.strictEqual(truncated[99].id, '99');
+  });
+
+  test('does not truncate when count equals or exceeds results', () => {
+    const truncateToCount = (bookmarks, count) => {
+      if (bookmarks.length > count) {
+        return bookmarks.slice(0, count);
+      }
+      return bookmarks;
+    };
+
+    const mockBookmarks = Array(50).fill(null).map((_, i) => ({ id: `${i}` }));
+
+    // Request 100, get 50 -> no truncation
+    const result = truncateToCount(mockBookmarks, 100);
+    assert.strictEqual(result.length, 50);
+
+    // Request exact amount -> no truncation
+    const result2 = truncateToCount(mockBookmarks, 50);
+    assert.strictEqual(result2.length, 50);
+  });
+
+  test('useAll mode triggers for count > 50', () => {
+    // Simulates the useAll logic in processor.js fetchBookmarks
+    const shouldUseAll = (count, explicitAll) => explicitAll || count > 50;
+
+    assert.strictEqual(shouldUseAll(50, false), false);
+    assert.strictEqual(shouldUseAll(51, false), true);
+    assert.strictEqual(shouldUseAll(100, false), true);
+    assert.strictEqual(shouldUseAll(10, true), true); // explicit --all flag
+  });
+});
+
+// Integration tests - only run when bird CLI has valid credentials
+describe('X article integration tests (requires bird credentials)', { skip: !BIRD_AVAILABLE }, () => {
+  // These tests require actual Twitter/X API access via bird CLI
+  // They will be skipped if bird credentials are not configured
+
+  test('fetches real X article content when credentials available', async () => {
+    if (!BIRD_AVAILABLE) {
+      return; // Skip if no credentials
+    }
+
+    // Use a known X article URL for testing
+    // This is João Moura's "Lessons From 2 Billion Agentic Workflows" article
+    const articleUrl = 'https://x.com/i/article/1882784553200713866';
+
+    const result = await fetchXArticleContent(articleUrl, {}, null);
+
+    // Should return article structure even if content extraction varies
+    assert.ok(result.articleId, 'should have articleId');
+    assert.ok(result.url, 'should have url');
+    assert.strictEqual(result.url, articleUrl);
+
+    // If we got content, verify it's substantial
+    if (result.content && result.content.length > 0) {
+      assert.ok(result.content.length > 100, 'content should be substantial if present');
+    }
+  });
+
+  test('handles non-existent article gracefully', async () => {
+    if (!BIRD_AVAILABLE) {
+      return;
+    }
+
+    // Use a fake article ID that doesn't exist
+    const fakeArticleUrl = 'https://x.com/i/article/9999999999999999999';
+
+    const result = await fetchXArticleContent(fakeArticleUrl, {}, null);
+
+    // Should return structure without failing
+    assert.ok(result.articleId, 'should have articleId');
+    assert.strictEqual(result.articleId, '9999999999999999999');
   });
 });

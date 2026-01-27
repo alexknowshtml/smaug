@@ -23,6 +23,79 @@ const JOB_NAME = 'smaug';
 const LOCK_FILE = path.join(os.tmpdir(), 'smaug.lock');
 
 // ============================================================================
+// Claude Binary Detection (exported for testing)
+// ============================================================================
+
+/**
+ * Find the claude binary path, with cross-platform support for Windows and Unix.
+ * @param {Object} options - Override options for testing
+ * @param {string} options.platform - Override process.platform (e.g., 'win32', 'darwin')
+ * @param {Object} options.env - Override environment variables
+ * @param {Function} options.existsSync - Override fs.existsSync for testing
+ * @param {Function} options.execSyncFn - Override execSync for testing
+ * @returns {string} Path to claude binary
+ */
+export function findClaude(options = {}) {
+  const platform = options.platform || process.platform;
+  const env = options.env || process.env;
+  const existsSync = options.existsSync || fs.existsSync;
+  const execSyncFn = options.execSyncFn || execSync;
+
+  const isWindows = platform === 'win32';
+  let claudePath = 'claude';
+
+  const possiblePaths = [
+    // Unix/macOS paths
+    '/usr/local/bin/claude',
+    '/opt/homebrew/bin/claude',
+    path.join(env.HOME || '', '.claude/local/claude'),
+    path.join(env.HOME || '', '.local/bin/claude'),
+    path.join(env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin/claude'),
+  ];
+
+  // Add Windows-specific paths
+  if (isWindows) {
+    possiblePaths.push(
+      path.join(env.APPDATA || '', 'npm', 'claude.cmd'),
+      path.join(env.LOCALAPPDATA || '', 'npm', 'claude.cmd'),
+      path.join(env.USERPROFILE || '', 'AppData', 'Roaming', 'npm', 'claude.cmd'),
+      path.join(env.PROGRAMFILES || '', 'Claude', 'claude.exe'),
+      path.join(env.LOCALAPPDATA || '', 'Programs', 'claude', 'claude.exe'),
+    );
+  }
+
+  for (const p of possiblePaths) {
+    if (existsSync(p)) {
+      claudePath = p;
+      break;
+    }
+  }
+
+  // Also check via which (Unix) or where (Windows) if we haven't found it
+  if (claudePath === 'claude') {
+    try {
+      const findCmd = isWindows ? 'where claude' : 'which claude';
+      const result = execSyncFn(findCmd, { encoding: 'utf8' }).trim();
+      // 'where' on Windows may return multiple lines, take the first
+      claudePath = result.split('\n')[0] || 'claude';
+    } catch {
+      // Command failed, stick with 'claude'
+    }
+  }
+
+  return claudePath;
+}
+
+/**
+ * Get the correct PATH separator for the current platform.
+ * @param {string} platform - Override process.platform for testing
+ * @returns {string} Path separator (';' for Windows, ':' for Unix)
+ */
+export function getPathSeparator(platform = process.platform) {
+  return platform === 'win32' ? ';' : ':';
+}
+
+// ============================================================================
 // Lock Management - Prevents overlapping runs
 // ============================================================================
 
@@ -74,44 +147,9 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
   // Task is needed for parallel subagent processing
   const allowedTools = config.allowedTools || 'Read,Write,Edit,Glob,Grep,Bash,Task,TodoWrite';
 
-  // Find claude binary - check common locations
-  let claudePath = 'claude';
+  // Find claude binary using cross-platform detection
+  const claudePath = findClaude();
   const isWindows = process.platform === 'win32';
-  const possiblePaths = [
-    // Unix/macOS paths
-    '/usr/local/bin/claude',
-    '/opt/homebrew/bin/claude',
-    path.join(process.env.HOME || '', '.claude/local/claude'),
-    path.join(process.env.HOME || '', '.local/bin/claude'),
-    path.join(process.env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin/claude'),
-  ];
-  // Add Windows-specific paths
-  if (isWindows) {
-    possiblePaths.push(
-      path.join(process.env.APPDATA || '', 'npm', 'claude.cmd'),
-      path.join(process.env.LOCALAPPDATA || '', 'npm', 'claude.cmd'),
-      path.join(process.env.USERPROFILE || '', 'AppData', 'Roaming', 'npm', 'claude.cmd'),
-      path.join(process.env.PROGRAMFILES || '', 'Claude', 'claude.exe'),
-      path.join(process.env.LOCALAPPDATA || '', 'Programs', 'claude', 'claude.exe'),
-    );
-  }
-  for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
-      claudePath = p;
-      break;
-    }
-  }
-  // Also check via which (Unix) or where (Windows) if we haven't found it
-  if (claudePath === 'claude') {
-    try {
-      const findCmd = isWindows ? 'where claude' : 'which claude';
-      const result = execSync(findCmd, { encoding: 'utf8' }).trim();
-      // 'where' on Windows may return multiple lines, take the first
-      claudePath = result.split('\n')[0] || 'claude';
-    } catch {
-      // Command failed, stick with 'claude'
-    }
-  }
 
   // Dramatic dragon reveal with fire animation
   const showDragonReveal = async (totalBookmarks) => {
