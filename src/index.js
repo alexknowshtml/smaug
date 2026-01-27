@@ -12,6 +12,7 @@ export {
   expandTcoLink,
   fetchGitHubContent,
   fetchArticleContent,
+  fetchXArticleContent,
   isPaywalled,
   loadState,
   saveState

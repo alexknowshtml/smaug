@@ -71,6 +71,13 @@ const DEFAULT_CONFIG = {
       template: 'article',
       description: 'Blog posts and articles'
     },
+    'x-article': {
+      match: ['/i/article/'],
+      action: 'file',
+      folder: './knowledge/articles',
+      template: 'x-article',
+      description: 'X/Twitter long-form articles - content may be limited due to JS rendering'
+    },
     podcast: {
       match: ['podcasts.apple.com', 'spotify.com/episode', 'overcast.fm', 'pocketcasts.com', 'castro.fm', 'podcast'],
       action: 'transcribe',

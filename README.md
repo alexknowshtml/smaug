@@ -84,7 +84,11 @@ If you don't want to use the wizard to make it easy, you can manually put your s
 
 1. **Fetches bookmarks** from Twitter/X using the bird CLI (can also fetch likes, or both)
 2. **Expands t.co links** to reveal actual URLs
-3. **Extracts content** from linked pages (GitHub repos, articles, quote tweets)
+3. **Extracts content** from linked pages:
+   - GitHub repos (via API: stars, description, README)
+   - External articles (title, author, content)
+   - X/Twitter long-form articles (full content via bird CLI)
+   - Quote tweets and reply threads (full context)
 4. **Invokes Claude Code** to analyze and categorize each tweet
 5. **Saves to markdown** organized by date with rich context
 6. **Files to knowledge library** - GitHub repos to `knowledge/tools/`, articles to `knowledge/articles/`
@@ -145,11 +149,31 @@ Categories define how different bookmark types are handled. Smaug comes with sen
 
 | Category | Matches | Action | Destination |
 |----------|---------|--------|-------------|
-| **article** | blogs, news sites, papers, medium.com, substack, etc | file | `./knowledge/articles/` |
 | **github** | github.com | file | `./knowledge/tools/` |
+| **article** | medium.com, substack.com, dev.to, blogs | file | `./knowledge/articles/` |
+| **x-article** | x.com/i/article/* | file | `./knowledge/articles/` |
 | **tweet** | (fallback) | capture | bookmarks.md only |
 
-🔜 _Note: Transcription coming soon for podcasts, videos, etc but feel free to edit your own and submit back suggestions!_
+🔜 _Note: Transcription is flagged but not yet automated. PRs welcome!_
+
+### X/Twitter Long-Form Articles
+
+X articles (`x.com/i/article/*`) are Twitter's native long-form content format. Smaug extracts the full article text using bird CLI:
+
+1. **Direct extraction**: If the bookmarked tweet is the article author's original post, content is extracted directly
+2. **Search fallback**: If you bookmark someone sharing/quoting an article, Smaug searches for the original author's tweet and extracts the full content from there
+3. **Metadata fallback**: If search fails, basic metadata (title, description) is captured
+
+Example X article bookmark:
+```markdown
+## @joaomdmoura - Lessons From 2 Billion Agentic Workflows
+> [Full article content extracted]
+
+- **Tweet:** https://x.com/joaomdmoura/status/123456789
+- **Link:** https://x.com/i/article/987654321
+- **Filed:** [lessons-from-2-billion-agentic-workflows.md](./knowledge/articles/lessons-from-2-billion-agentic-workflows.md)
+- **What:** Deep dive into patterns from scaling CrewAI to billions of agent executions.
+```
 
 ### Actions
 
