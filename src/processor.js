@@ -276,7 +276,9 @@ export function fetchBookmarks(config, count = 10, options = {}) {
     let cmd;
     if (useAll) {
       // Paginated fetch - use longer timeout
-      const maxPages = options.maxPages || 10; // Limit pages to prevent runaway
+      // Calculate maxPages from count (bird returns ~20 per page, use 25 as buffer)
+      const estimatedPagesNeeded = Math.ceil(count / 20);
+      const maxPages = options.maxPages || Math.max(estimatedPagesNeeded, 10);
       cmd = folderId
         ? `${birdCmd} bookmarks --folder-id ${folderId} --all --max-pages ${maxPages} --json`
         : `${birdCmd} bookmarks --all --max-pages ${maxPages} --json`;
@@ -300,7 +302,16 @@ export function fetchBookmarks(config, count = 10, options = {}) {
     const parsed = JSON.parse(output);
     // bird CLI v0.6.0+ returns { tweets: [...], nextCursor: ... } for paginated requests
     // but plain arrays for non-paginated. Handle both formats.
-    return Array.isArray(parsed) ? parsed : (parsed.tweets || []);
+    let bookmarks = Array.isArray(parsed) ? parsed : (parsed.tweets || []);
+
+    // Respect the count parameter - truncate if we fetched more than requested
+    // (paginated mode may return more bookmarks than asked for)
+    if (bookmarks.length > count) {
+      console.log(`  Fetched ${bookmarks.length} bookmarks, limiting to requested ${count}`);
+      bookmarks = bookmarks.slice(0, count);
+    }
+
+    return bookmarks;
   } catch (error) {
     throw new Error(`Failed to fetch bookmarks: ${error.message}`);
   }
