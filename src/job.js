@@ -76,25 +76,40 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
 
   // Find claude binary - check common locations
   let claudePath = 'claude';
+  const isWindows = process.platform === 'win32';
   const possiblePaths = [
+    // Unix/macOS paths
     '/usr/local/bin/claude',
     '/opt/homebrew/bin/claude',
     path.join(process.env.HOME || '', '.claude/local/claude'),
     path.join(process.env.HOME || '', '.local/bin/claude'),
     path.join(process.env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin/claude'),
   ];
+  // Add Windows-specific paths
+  if (isWindows) {
+    possiblePaths.push(
+      path.join(process.env.APPDATA || '', 'npm', 'claude.cmd'),
+      path.join(process.env.LOCALAPPDATA || '', 'npm', 'claude.cmd'),
+      path.join(process.env.USERPROFILE || '', 'AppData', 'Roaming', 'npm', 'claude.cmd'),
+      path.join(process.env.PROGRAMFILES || '', 'Claude', 'claude.exe'),
+      path.join(process.env.LOCALAPPDATA || '', 'Programs', 'claude', 'claude.exe'),
+    );
+  }
   for (const p of possiblePaths) {
     if (fs.existsSync(p)) {
       claudePath = p;
       break;
     }
   }
-  // Also check via which if we haven't found it
+  // Also check via which (Unix) or where (Windows) if we haven't found it
   if (claudePath === 'claude') {
     try {
-      claudePath = execSync('which claude', { encoding: 'utf8' }).trim() || 'claude';
+      const findCmd = isWindows ? 'where claude' : 'which claude';
+      const result = execSync(findCmd, { encoding: 'utf8' }).trim();
+      // 'where' on Windows may return multiple lines, take the first
+      claudePath = result.split('\n')[0] || 'claude';
     } catch {
-      // which failed, stick with 'claude'
+      // Command failed, stick with 'claude'
     }
   }
 
@@ -146,7 +161,9 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
       path.join(process.env.HOME || '', '.local/bin'),
       path.join(process.env.HOME || '', '.bun/bin'),
     ];
-    const enhancedPath = [...nodePaths, process.env.PATH || ''].join(':');
+    // Use correct PATH separator for platform (: for Unix, ; for Windows)
+    const pathSep = isWindows ? ';' : ':';
+    const enhancedPath = [...nodePaths.filter(Boolean), process.env.PATH || ''].join(pathSep);
 
     // Get ANTHROPIC_API_KEY from config or env only
     // Note: Don't parse from ~/.zshrc - OAuth tokens (sk-ant-oat01-*) might be
@@ -166,7 +183,9 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
         PATH: enhancedPath,
         ...(apiKey ? { ANTHROPIC_API_KEY: apiKey } : {})
       },
-      stdio: ['ignore', 'pipe', 'pipe']
+      stdio: ['ignore', 'pipe', 'pipe'],
+      // On Windows, use shell to resolve .cmd files properly
+      shell: isWindows
     });
 
     let stdout = '';
