@@ -3,7 +3,7 @@
  *
  * Full two-phase workflow:
  * 1. Fetch bookmarks, expand links, extract content
- * 2. Invoke Claude Code for analysis and filing
+ * 2. Invoke Claude Code or OpenCode CLI for analysis and filing
  *
  * Can be used with:
  * - Cron: "0,30 * * * *" (every 30 min) - node /path/to/smaug/src/job.js
@@ -21,6 +21,210 @@ import { loadConfig } from './config.js';
 
 const JOB_NAME = 'smaug';
 const LOCK_FILE = path.join(os.tmpdir(), 'smaug.lock');
+
+// ============================================================================
+// Shared Constants - Animation & Display
+// ============================================================================
+
+const FIRE_FRAMES = [
+  '  🔥    ',
+  ' 🔥🔥   ',
+  '🔥🔥🔥  ',
+  ' 🔥🔥🔥 ',
+  '  🔥🔥🔥',
+  '   🔥🔥 ',
+  '    🔥  ',
+  '   🔥   ',
+  '  🔥🔥  ',
+  ' 🔥 🔥  ',
+  '🔥  🔥  ',
+  '🔥   🔥 ',
+  ' 🔥  🔥 ',
+  '  🔥 🔥 ',
+  '   🔥🔥 ',
+];
+
+const SPINNER_MESSAGES = [
+  'Breathing fire on bookmarks',
+  'Examining the treasures',
+  'Sorting the hoard',
+  'Polishing the gold',
+  'Counting coins',
+  'Guarding the lair',
+  'Hunting for gems',
+  'Cataloging riches',
+];
+
+const DRAGON_SAYS = [
+  '🐉 *sniff sniff* Fresh bookmarks detected...',
+  '🔥 Breathing fire on these tweets...',
+  '💎 Adding treasures to the hoard...',
+  '🏔️ Guarding the mountain of knowledge...',
+  '⚔️ Vanquishing duplicate bookmarks...',
+  '🌋 The dragon\'s flames illuminate the data...',
+];
+
+const HOARD_DESCRIPTIONS = {
+  small: [
+    'A Few Coins',
+    'Sparse',
+    'Humble Beginnings',
+    'First Treasures',
+    'A Modest Start'
+  ],
+  medium: [
+    'Glittering',
+    'Growing Nicely',
+    'Respectable Pile',
+    'Gleaming Hoard',
+    'Handsome Collection'
+  ],
+  large: [
+    'Overflowing',
+    'Mountain of Gold',
+    'Legendary Hoard',
+    'Dragon\'s Fortune',
+    'Vast Riches'
+  ]
+};
+
+// Token pricing per million tokens (as of 2024)
+const PRICING = {
+  'sonnet': { input: 3.00, output: 15.00, cacheRead: 0.30, cacheWrite: 3.75 },
+  'haiku': { input: 0.25, output: 1.25, cacheRead: 0.025, cacheWrite: 0.30 },
+  'opus': { input: 15.00, output: 75.00, cacheRead: 1.50, cacheWrite: 18.75 }
+};
+
+// ============================================================================
+// Shared Helper Functions - Display & Progress
+// ============================================================================
+
+/**
+ * Create a progress bar string
+ * @param {number} current - Current progress
+ * @param {number} total - Total items
+ * @param {number} width - Bar width in characters
+ * @returns {string} Progress bar string like "[████░░░░] 3/10"
+ */
+function progressBar(current, total, width = 20) {
+  const pct = Math.min(current / total, 1);
+  const filled = Math.round(pct * width);
+  const empty = width - filled;
+  const bar = '█'.repeat(filled) + '░'.repeat(empty);
+  return `[${bar}] ${current}/${total}`;
+}
+
+/**
+ * Format elapsed time from startTime
+ * @param {number} startTime - Start timestamp from Date.now()
+ * @returns {string} Formatted time like "45s" or "2m 30s"
+ */
+function elapsed(startTime) {
+  const ms = Date.now() - startTime;
+  const secs = Math.floor(ms / 1000);
+  return secs < 60 ? `${secs}s` : `${Math.floor(secs/60)}m ${secs%60}s`;
+}
+
+/**
+ * Clear current line and print status message
+ * @param {string} msg - Message to print
+ */
+function printStatus(msg) {
+  process.stdout.write('\r' + ' '.repeat(60) + '\r');
+  process.stdout.write(msg);
+}
+
+/**
+ * Stop spinner intervals and clear the line
+ * @param {Object} intervals - Object with spinnerInterval and msgInterval
+ */
+function stopSpinner(intervals) {
+  intervals.active = false;
+  clearInterval(intervals.spinnerInterval);
+  clearInterval(intervals.msgInterval);
+  process.stdout.write('\r' + ' '.repeat(60) + '\r');
+}
+
+/**
+ * Display dramatic dragon reveal animation
+ * @param {number} totalBookmarks - Number of bookmarks to process
+ */
+async function showDragonReveal(totalBookmarks) {
+  process.stdout.write('\n');
+  const fireFramesIntro = ['🔥', '🔥🔥', '🔥🔥🔥', '🔥🔥🔥🔥', '🔥🔥🔥🔥🔥'];
+  for (let i = 0; i < 10; i++) {
+    const frame = fireFramesIntro[i % fireFramesIntro.length];
+    process.stdout.write(`\r  ${frame.padEnd(12)}`);
+    await new Promise(r => setTimeout(r, 150));
+  }
+
+  process.stdout.write('\r                    \r');
+  process.stdout.write(`  Wait... that's not Claude... it's
+
+  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥
+       _____ __  __   _   _   _  ____
+      / ____|  \\/  | / \\ | | | |/ ___|
+      \\___ \\| |\\/| |/ _ \\| | | | |  _
+       ___) | |  | / ___ \\ |_| | |_| |
+      |____/|_|  |_/_/  \\_\\___/ \\____|
+
+  🐉 The dragon stirs... ${totalBookmarks} treasure${totalBookmarks !== 1 ? 's' : ''} to hoard!
+`);
+}
+
+/**
+ * Build token usage display string for result output
+ * @param {Object} tokenUsage - Token usage tracking object
+ * @param {boolean} trackTokens - Whether to display tokens
+ * @returns {string} Formatted token display or empty string
+ */
+function buildTokenDisplay(tokenUsage, trackTokens) {
+  if (!trackTokens || (tokenUsage.input === 0 && tokenUsage.output === 0)) {
+    return '';
+  }
+
+  const mainPricing = PRICING[tokenUsage.model] || PRICING.sonnet;
+  const subPricing = PRICING[tokenUsage.subagentModel || tokenUsage.model] || mainPricing;
+
+  const mainInputCost = (tokenUsage.input / 1_000_000) * mainPricing.input;
+  const mainOutputCost = (tokenUsage.output / 1_000_000) * mainPricing.output;
+  const cacheReadCost = (tokenUsage.cacheRead / 1_000_000) * mainPricing.cacheRead;
+  const cacheWriteCost = (tokenUsage.cacheWrite / 1_000_000) * mainPricing.cacheWrite;
+  const subInputCost = (tokenUsage.subagentInput / 1_000_000) * subPricing.input;
+  const subOutputCost = (tokenUsage.subagentOutput / 1_000_000) * subPricing.output;
+
+  const totalCost = mainInputCost + mainOutputCost + cacheReadCost + cacheWriteCost + subInputCost + subOutputCost;
+
+  const formatNum = (n) => n.toLocaleString();
+  const formatCost = (c) => c < 0.01 ? '<$0.01' : `$${c.toFixed(2)}`;
+
+  let display = `
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  📊 TOKEN USAGE
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Main (${tokenUsage.model}):
+    Input:       ${formatNum(tokenUsage.input).padStart(10)} tokens  ${formatCost(mainInputCost)}
+    Output:      ${formatNum(tokenUsage.output).padStart(10)} tokens  ${formatCost(mainOutputCost)}
+    Cache Read:  ${formatNum(tokenUsage.cacheRead).padStart(10)} tokens  ${formatCost(cacheReadCost)}
+    Cache Write: ${formatNum(tokenUsage.cacheWrite).padStart(10)} tokens  ${formatCost(cacheWriteCost)}
+`;
+
+  if (tokenUsage.subagentInput > 0 || tokenUsage.subagentOutput > 0) {
+    display += `
+  Subagents (${tokenUsage.subagentModel || 'unknown'}):
+    Input:       ${formatNum(tokenUsage.subagentInput).padStart(10)} tokens  ${formatCost(subInputCost)}
+    Output:      ${formatNum(tokenUsage.subagentOutput).padStart(10)} tokens  ${formatCost(subOutputCost)}
+`;
+  }
+
+  display += `
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  💰 TOTAL COST: ${formatCost(totalCost)}
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+`;
+
+  return display;
+}
 
 // ============================================================================
 // Claude Binary Detection (exported for testing)
@@ -135,95 +339,102 @@ function releaseLock() {
 }
 
 // ============================================================================
-// Claude Code Invocation
+// Unified AI CLI Invocation
 // ============================================================================
 
-async function invokeClaudeCode(config, bookmarkCount, options = {}) {
-  const timeout = config.claudeTimeout || 900000; // 15 minutes default
-  const model = config.claudeModel || 'sonnet'; // or 'haiku' for faster/cheaper
-  const trackTokens = options.trackTokens || false;
+function findOpenCode() {
+  const possiblePaths = [
+    path.join(process.env.APPDATA || '', 'Roaming', 'npm', 'opencode.cmd'),
+    path.join(process.env.LOCALAPPDATA || '', 'npm', 'opencode.cmd'),
+    path.join(process.env.USERPROFILE || '', 'AppData', 'Roaming', 'npm', 'opencode.cmd'),
+    path.join(process.env.LOCALAPPDATA || '', 'Programs', 'opencode.exe'),
+    path.join(process.env.PROGRAMFILES || '', 'OpenCode', 'opencode.exe'),
+    path.join(process.env.USERPROFILE || '', 'AppData', 'Local', 'Programs', 'opencode.exe'),
+    '/usr/local/bin/opencode',
+    '/opt/homebrew/bin/opencode',
+    path.join(process.env.HOME || '', '.local/bin/opencode'),
+  ];
 
-  // Specific tool permissions instead of full YOLO mode
-  // Task is needed for parallel subagent processing
-  const allowedTools = config.allowedTools || 'Read,Write,Edit,Glob,Grep,Bash,Task,TodoWrite';
-
-  // Find claude binary using cross-platform detection
-  const claudePath = findClaude();
-  const isWindows = process.platform === 'win32';
-
-  // Dramatic dragon reveal with fire animation
-  const showDragonReveal = async (totalBookmarks) => {
-    // Fire animation for 1.5 seconds
-    process.stdout.write('\n');
-    const fireFramesIntro = ['🔥', '🔥🔥', '🔥🔥🔥', '🔥🔥🔥🔥', '🔥🔥🔥🔥🔥'];
-    for (let i = 0; i < 10; i++) {
-      const frame = fireFramesIntro[i % fireFramesIntro.length];
-      process.stdout.write(`\r  ${frame.padEnd(12)}`);
-      await new Promise(r => setTimeout(r, 150));
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      return p;
     }
+  }
 
-    // Clear and reveal
-    process.stdout.write('\r                    \r');
-    process.stdout.write(`  Wait... that's not Claude... it's
+  return 'opencode';
+}
 
-  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥
-       _____ __  __   _   _   _  ____
-      / ____|  \\/  | / \\ | | | |/ ___|
-      \\___ \\| |\\/| |/ _ \\| | | | |  _
-       ___) | |  | / ___ \\ |_| | |_| |
-      |____/|_|  |_/_/  \\_\\___/ \\____|
+function getCLISettings(cliType, config, bookmarkCount) {
+  const isWindows = process.platform === 'win32';
+  const pathSep = isWindows ? ';' : ':';
+  const prompt = `Process the ${bookmarkCount} bookmark(s) in ./.state/pending-bookmarks.json following the instructions in ./.claude/commands/process-bookmarks.md. Read that file first, then process each bookmark.`;
+  
+  const nodePaths = [
+    '/usr/local/bin',
+    '/opt/homebrew/bin',
+    process.env.NVM_BIN,
+    path.join(process.env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin'),
+    path.join(process.env.HOME || '', '.local/bin'),
+    path.join(process.env.HOME || '', '.bun/bin'),
+  ];
+  const enhancedPath = [...nodePaths.filter(Boolean), process.env.PATH || ''].join(pathSep);
+  const apiKey = config.anthropicApiKey || process.env.ANTHROPIC_API_KEY;
 
-  🐉 The dragon stirs... ${totalBookmarks} treasure${totalBookmarks !== 1 ? 's' : ''} to hoard!
-`);
+  if (cliType === 'opencode') {
+    const model = config.opencodeModel || 'opencode/glm-4.7-free';
+    return {
+      binary: findOpenCode(),
+      model,
+      args: ['run', '--format', 'json', '--model', model, prompt],
+      env: {
+        ...process.env,
+        PATH: enhancedPath,
+        ...(apiKey ? { ANTHROPIC_API_KEY: apiKey } : {}),
+        OPENCODE_MODEL: model
+      },
+      shell: false,
+      stdin: 'ignore'
+    };
+  }
+
+  const model = config.claudeModel || 'sonnet';
+  const allowedTools = config.allowedTools || 'Read,Write,Edit,Glob,Grep,Bash,Task,TodoWrite';
+  const cleanEnv = { ...process.env };
+  delete cleanEnv.CLAUDECODE;
+  delete cleanEnv.CLAUDE_CODE_ENTRYPOINT;
+
+  return {
+    binary: findClaude(),
+    model,
+    args: [
+      '--print', '--verbose', '--output-format', 'stream-json',
+      '--model', model, '--allowedTools', allowedTools, '--', prompt
+    ],
+    env: {
+      ...cleanEnv,
+      PATH: enhancedPath,
+      ...(apiKey ? { ANTHROPIC_API_KEY: apiKey } : {})
+    },
+    shell: isWindows,
+    stdin: 'ignore'
   };
+}
 
+async function invokeAICLI(config, bookmarkCount, options = {}) {
+  const timeout = config.claudeTimeout || 900000;
+  const trackTokens = options.trackTokens || false;
+  const cliType = config.cliTool || 'claude';
+  
+  const settings = getCLISettings(cliType, config, bookmarkCount);
+  
   await showDragonReveal(bookmarkCount);
 
   return new Promise((resolve) => {
-    const args = [
-      '--print',
-      '--verbose',
-      '--output-format', 'stream-json',
-      '--model', model,
-      '--allowedTools', allowedTools,
-      '--',
-      `Process the ${bookmarkCount} bookmark(s) in ./.state/pending-bookmarks.json following the instructions in ./.claude/commands/process-bookmarks.md. Read that file first, then process each bookmark.`
-    ];
-
-    // Ensure PATH includes common node locations for the claude shebang
-    const nodePaths = [
-      '/usr/local/bin',
-      '/opt/homebrew/bin',
-      process.env.NVM_BIN,
-      path.join(process.env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin'),
-      path.join(process.env.HOME || '', '.local/bin'),
-      path.join(process.env.HOME || '', '.bun/bin'),
-    ];
-    // Use correct PATH separator for platform (: for Unix, ; for Windows)
-    const pathSep = isWindows ? ';' : ':';
-    const enhancedPath = [...nodePaths.filter(Boolean), process.env.PATH || ''].join(pathSep);
-
-    // Get ANTHROPIC_API_KEY from config or env only
-    // Note: Don't parse from ~/.zshrc - OAuth tokens (sk-ant-oat01-*) might be
-    // incorrectly stored there and would override valid OAuth credentials
-    const apiKey = config.anthropicApiKey || process.env.ANTHROPIC_API_KEY;
-
-    // Build clean environment, removing nested Claude detection vars
-    // These vars can cause issues when Claude is spawned from within another Claude session
-    const cleanEnv = { ...process.env };
-    delete cleanEnv.CLAUDECODE;
-    delete cleanEnv.CLAUDE_CODE_ENTRYPOINT;
-
-    const proc = spawn(claudePath, args, {
+    const proc = spawn(settings.binary, settings.args, {
       cwd: config.projectRoot || process.cwd(),
-      env: {
-        ...cleanEnv,
-        PATH: enhancedPath,
-        ...(apiKey ? { ANTHROPIC_API_KEY: apiKey } : {})
-      },
-      stdio: ['ignore', 'pipe', 'pipe'],
-      // On Windows, use shell to resolve .cmd files properly
-      shell: isWindows
+      env: settings.env,
+      stdio: [settings.stdin, 'pipe', 'pipe'],
+      shell: settings.shell
     });
 
     let stdout = '';
@@ -231,14 +442,12 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
     let lastText = '';
     let filesWritten = [];
     let bookmarksProcessed = 0;
-    let totalBookmarks = bookmarkCount;
+    const totalBookmarks = bookmarkCount;
 
-    // Track parallel tasks
-    const parallelTasks = new Map(); // taskId -> { description, startTime, status }
+    const parallelTasks = new Map();
     let tasksSpawned = 0;
     let tasksCompleted = 0;
 
-    // Token usage tracking
     const tokenUsage = {
       input: 0,
       output: 0,
@@ -246,150 +455,62 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
       cacheWrite: 0,
       subagentInput: 0,
       subagentOutput: 0,
-      model: model,
+      model: settings.model,
       subagentModel: null
     };
 
-    // Helper to format time elapsed
     const startTime = Date.now();
-    const elapsed = () => {
-      const ms = Date.now() - startTime;
-      const secs = Math.floor(ms / 1000);
-      return secs < 60 ? `${secs}s` : `${Math.floor(secs/60)}m ${secs%60}s`;
-    };
-
-    // Progress bar helper
-    const progressBar = (current, total, width = 20) => {
-      const pct = Math.min(current / total, 1);
-      const filled = Math.round(pct * width);
-      const empty = width - filled;
-      const bar = '█'.repeat(filled) + '░'.repeat(empty);
-      return `[${bar}] ${current}/${total}`;
-    };
-
-    // Dragon status messages
-    const dragonSays = [
-      '🐉 *sniff sniff* Fresh bookmarks detected...',
-      '🔥 Breathing fire on these tweets...',
-      '💎 Adding treasures to the hoard...',
-      '🏔️ Guarding the mountain of knowledge...',
-      '⚔️ Vanquishing duplicate bookmarks...',
-      '🌋 The dragon\'s flames illuminate the data...',
-    ];
-    let dragonMsgIndex = 0;
-    const nextDragonMsg = () => dragonSays[dragonMsgIndex++ % dragonSays.length];
-
-    // Track one-time messages to avoid duplicates
     const shownMessages = new Set();
+    let dragonMsgIndex = 0;
+    const nextDragonMsg = () => DRAGON_SAYS[dragonMsgIndex++ % DRAGON_SAYS.length];
 
-    // Animated fire spinner with rotating dragon messages
-    const fireFrames = [
-      '  🔥    ',
-      ' 🔥🔥   ',
-      '🔥🔥🔥  ',
-      ' 🔥🔥🔥 ',
-      '  🔥🔥🔥',
-      '   🔥🔥 ',
-      '    🔥  ',
-      '   🔥   ',
-      '  🔥🔥  ',
-      ' 🔥 🔥  ',
-      '🔥  🔥  ',
-      '🔥   🔥 ',
-      ' 🔥  🔥 ',
-      '  🔥 🔥 ',
-      '   🔥🔥 ',
-    ];
-    const spinnerMessages = [
-      'Breathing fire on bookmarks',
-      'Examining the treasures',
-      'Sorting the hoard',
-      'Polishing the gold',
-      'Counting coins',
-      'Guarding the lair',
-      'Hunting for gems',
-      'Cataloging riches',
-    ];
     let fireFrame = 0;
     let spinnerMsgFrame = 0;
-    let lastSpinnerLine = '';
-    let spinnerActive = true;
-    let currentSpinnerMsg = spinnerMessages[0];
+    let currentSpinnerMsg = SPINNER_MESSAGES[0];
+    const intervals = { active: true, spinnerInterval: null, msgInterval: null };
 
-    // Change message every 10 seconds
-    const msgInterval = setInterval(() => {
-      if (!spinnerActive) return;
-      spinnerMsgFrame = (spinnerMsgFrame + 1) % spinnerMessages.length;
-      currentSpinnerMsg = spinnerMessages[spinnerMsgFrame];
+    intervals.msgInterval = setInterval(() => {
+      if (!intervals.active) return;
+      spinnerMsgFrame = (spinnerMsgFrame + 1) % SPINNER_MESSAGES.length;
+      currentSpinnerMsg = SPINNER_MESSAGES[spinnerMsgFrame];
     }, 10000);
 
-    const spinnerInterval = setInterval(() => {
-      if (!spinnerActive) return;
-      fireFrame = (fireFrame + 1) % fireFrames.length;
-      const flame = fireFrames[fireFrame];
-      const spinnerLine = `\r  ${flame} ${currentSpinnerMsg}... [${elapsed()}]`;
-      process.stdout.write(spinnerLine + '          '); // Extra spaces to clear previous longer messages
-      lastSpinnerLine = spinnerLine;
+    intervals.spinnerInterval = setInterval(() => {
+      if (!intervals.active) return;
+      fireFrame = (fireFrame + 1) % FIRE_FRAMES.length;
+      const flame = FIRE_FRAMES[fireFrame];
+      process.stdout.write(`\r  ${flame} ${currentSpinnerMsg}... [${elapsed(startTime)}]          `);
     }, 150);
 
-    // Start the spinner with a patience message
     process.stdout.write('\n  ⏳ Dragons are patient hunters... this may take a moment.\n');
-    lastSpinnerLine = '  🔥     Processing...';
-    process.stdout.write(lastSpinnerLine);
+    process.stdout.write('  🔥     Processing...');
 
-    // Helper to clear spinner and print a status line
-    const printStatus = (msg) => {
-      // Clear current line and print message
-      process.stdout.write('\r' + ' '.repeat(60) + '\r');
-      process.stdout.write(msg);
-    };
-
-    // Helper to stop spinner completely
-    const stopSpinner = () => {
-      spinnerActive = false;
-      clearInterval(spinnerInterval);
-      clearInterval(msgInterval);
-      process.stdout.write('\r' + ' '.repeat(60) + '\r');
-    };
-
-    // Buffer for incomplete JSON lines
     let lineBuffer = '';
 
     proc.stdout.on('data', (data) => {
       const text = data.toString();
       stdout += text;
 
-      // Handle streaming data that may split across chunks
       lineBuffer += text;
       const lines = lineBuffer.split('\n');
-      // Keep the last incomplete line in the buffer
       lineBuffer = lines.pop() || '';
 
-      // Parse streaming JSON and extract progress info
       for (const line of lines) {
-        if (!line.trim()) continue;
-
-        // Skip lines that don't look like JSON events
-        if (!line.startsWith('{')) continue;
+        if (!line.trim() || !line.startsWith('{')) continue;
 
         try {
           const event = JSON.parse(line);
 
-          // Show assistant text as it streams (filtered)
           if (event.type === 'assistant' && event.message?.content) {
             for (const block of event.message.content) {
               if (block.type === 'text' && block.text !== lastText) {
                 const newPart = block.text.slice(lastText.length);
-                if (newPart && newPart.length > 50) {
-                  // Only show final summaries
-                  if (newPart.includes('Processed') && newPart.includes('bookmark')) {
-                    process.stdout.write(`\n💬 ${newPart.trim().slice(0, 200)}${newPart.length > 200 ? '...' : ''}\n`);
-                  }
+                if (newPart && newPart.length > 50 && newPart.includes('Processed') && newPart.includes('bookmark')) {
+                  process.stdout.write(`\n💬 ${newPart.trim().slice(0, 200)}${newPart.length > 200 ? '...' : ''}\n`);
                 }
                 lastText = block.text;
               }
 
-              // Track tool usage for progress messages
               if (block.type === 'tool_use') {
                 const toolName = block.name;
                 const input = block.input || {};
@@ -404,7 +525,7 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
                   } else if (fileName === 'bookmarks.md') {
                     bookmarksProcessed++;
                     const fireIntensity = '🔥'.repeat(Math.min(Math.ceil(bookmarksProcessed / 2), 5));
-                    printStatus(`  ${fireIntensity} ${progressBar(bookmarksProcessed, totalBookmarks)} [${elapsed()}]`);
+                    printStatus(`  ${fireIntensity} ${progressBar(bookmarksProcessed, totalBookmarks)} [${elapsed(startTime)}]`);
                   } else {
                     printStatus(`    💎 ${fileName}\n`);
                   }
@@ -413,7 +534,7 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
                   if (fileName === 'bookmarks.md') {
                     bookmarksProcessed++;
                     const fireIntensity = '🔥'.repeat(Math.min(Math.ceil(bookmarksProcessed / 2), 5));
-                    printStatus(`  ${fireIntensity} ${progressBar(bookmarksProcessed, totalBookmarks)} [${elapsed()}]`);
+                    printStatus(`  ${fireIntensity} ${progressBar(bookmarksProcessed, totalBookmarks)} [${elapsed(startTime)}]`);
                   } else if (fileName === 'pending-bookmarks.json') {
                     printStatus(`  🐉 *licks claws clean* Tidying the lair...\n`);
                   }
@@ -428,15 +549,10 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
                   }
                 } else if (toolName === 'Task') {
                   const desc = input.description || `batch ${tasksSpawned + 1}`;
-                  // Only count if we haven't seen this task description
                   const taskKey = `task-${desc}`;
                   if (!parallelTasks.has(taskKey)) {
                     tasksSpawned++;
-                    parallelTasks.set(taskKey, {
-                      description: desc,
-                      startTime: Date.now(),
-                      status: 'running'
-                    });
+                    parallelTasks.set(taskKey, { description: desc, startTime: Date.now(), status: 'running' });
                     printStatus(`  🐲 Summoning dragon minion: ${desc}\n`);
                     if (tasksSpawned > 1) {
                       printStatus(`     🔥 ${tasksSpawned} dragons now circling the hoard\n`);
@@ -452,11 +568,9 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
             }
           }
 
-          // Track task completions from tool results
           if (event.type === 'user' && event.message?.content) {
             for (const block of event.message.content) {
               if (block.type === 'tool_result' && !block.is_error && block.tool_use_id) {
-                // Check if this looks like a Task completion and we haven't counted it
                 const content = typeof block.content === 'string' ? block.content : '';
                 const toolId = block.tool_use_id;
                 if ((content.includes('Processed') || content.includes('completed')) &&
@@ -473,7 +587,6 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
             }
           }
 
-          // Track token usage from result event
           if (event.type === 'result' && event.usage) {
             tokenUsage.input = event.usage.input_tokens || 0;
             tokenUsage.output = event.usage.output_tokens || 0;
@@ -481,18 +594,15 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
             tokenUsage.cacheWrite = event.usage.cache_creation_input_tokens || 0;
           }
 
-          // Track subagent token usage from Task results
           if (event.type === 'user' && event.message?.content) {
             for (const block of event.message.content) {
               if (block.type === 'tool_result' && block.content) {
-                // Try to parse subagent usage from result
                 const content = typeof block.content === 'string' ? block.content : JSON.stringify(block.content);
                 const usageMatch = content.match(/usage.*?input.*?(\d+).*?output.*?(\d+)/i);
                 if (usageMatch) {
                   tokenUsage.subagentInput += parseInt(usageMatch[1], 10);
                   tokenUsage.subagentOutput += parseInt(usageMatch[2], 10);
                 }
-                // Detect subagent model from content
                 if (!tokenUsage.subagentModel && content.includes('haiku')) {
                   tokenUsage.subagentModel = 'haiku';
                 } else if (!tokenUsage.subagentModel && content.includes('sonnet')) {
@@ -502,84 +612,13 @@ async function invokeClaudeCode(config, bookmarkCount, options = {}) {
             }
           }
 
-          // Show result summary
           if (event.type === 'result') {
-            stopSpinner();
-
-            // Randomized hoard descriptions by size tier
-            const hoardDescriptions = {
-              small: [
-                'A Few Coins',
-                'Sparse',
-                'Humble Beginnings',
-                'First Treasures',
-                'A Modest Start'
-              ],
-              medium: [
-                'Glittering',
-                'Growing Nicely',
-                'Respectable Pile',
-                'Gleaming Hoard',
-                'Handsome Collection'
-              ],
-              large: [
-                'Overflowing',
-                'Mountain of Gold',
-                'Legendary Hoard',
-                'Dragon\'s Fortune',
-                'Vast Riches'
-              ]
-            };
+            stopSpinner(intervals);
 
             const tier = totalBookmarks > 15 ? 'large' : totalBookmarks > 7 ? 'medium' : 'small';
-            const descriptions = hoardDescriptions[tier];
+            const descriptions = HOARD_DESCRIPTIONS[tier];
             const hoardStatus = descriptions[Math.floor(Math.random() * descriptions.length)];
-
-            // Build token usage display if tracking enabled
-            let tokenDisplay = '';
-            if (trackTokens && (tokenUsage.input > 0 || tokenUsage.output > 0)) {
-              // Pricing per million tokens (as of 2024)
-              const pricing = {
-                'sonnet': { input: 3.00, output: 15.00, cacheRead: 0.30, cacheWrite: 3.75 },
-                'haiku': { input: 0.25, output: 1.25, cacheRead: 0.025, cacheWrite: 0.30 },
-                'opus': { input: 15.00, output: 75.00, cacheRead: 1.50, cacheWrite: 18.75 }
-              };
-
-              const mainPricing = pricing[tokenUsage.model] || pricing.sonnet;
-              const subPricing = pricing[tokenUsage.subagentModel || tokenUsage.model] || mainPricing;
-
-              // Calculate costs
-              const mainInputCost = (tokenUsage.input / 1_000_000) * mainPricing.input;
-              const mainOutputCost = (tokenUsage.output / 1_000_000) * mainPricing.output;
-              const cacheReadCost = (tokenUsage.cacheRead / 1_000_000) * mainPricing.cacheRead;
-              const cacheWriteCost = (tokenUsage.cacheWrite / 1_000_000) * mainPricing.cacheWrite;
-              const subInputCost = (tokenUsage.subagentInput / 1_000_000) * subPricing.input;
-              const subOutputCost = (tokenUsage.subagentOutput / 1_000_000) * subPricing.output;
-
-              const totalCost = mainInputCost + mainOutputCost + cacheReadCost + cacheWriteCost + subInputCost + subOutputCost;
-
-              const formatNum = (n) => n.toLocaleString();
-              const formatCost = (c) => c < 0.01 ? '<$0.01' : `$${c.toFixed(2)}`;
-
-              tokenDisplay = `
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  📊 TOKEN USAGE
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  Main (${tokenUsage.model}):
-    Input:       ${formatNum(tokenUsage.input).padStart(10)} tokens  ${formatCost(mainInputCost)}
-    Output:      ${formatNum(tokenUsage.output).padStart(10)} tokens  ${formatCost(mainOutputCost)}
-    Cache Read:  ${formatNum(tokenUsage.cacheRead).padStart(10)} tokens  ${formatCost(cacheReadCost)}
-    Cache Write: ${formatNum(tokenUsage.cacheWrite).padStart(10)} tokens  ${formatCost(cacheWriteCost)}
-${tokenUsage.subagentInput > 0 || tokenUsage.subagentOutput > 0 ? `
-  Subagents (${tokenUsage.subagentModel || 'unknown'}):
-    Input:       ${formatNum(tokenUsage.subagentInput).padStart(10)} tokens  ${formatCost(subInputCost)}
-    Output:      ${formatNum(tokenUsage.subagentOutput).padStart(10)} tokens  ${formatCost(subOutputCost)}
-` : ''}
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  💰 TOTAL COST: ${formatCost(totalCost)}
-  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-`;
-            }
+            const tokenDisplay = buildTokenDisplay(tokenUsage, trackTokens);
 
             process.stdout.write(`
 
@@ -592,7 +631,7 @@ ${tokenUsage.subagentInput > 0 || tokenUsage.subagentOutput > 0 ? `
          /  /    \\  \\
         /__/  💰  \\__\\
 
-  ⏱️  Quest Duration:  ${elapsed()}
+  ⏱️  Quest Duration:  ${elapsed(startTime)}
   📦  Bookmarks:       ${totalBookmarks} processed
   🐲  Dragon Minions:  ${tasksSpawned > 0 ? tasksSpawned + ' summoned' : 'solo hunt'}
   🏔️  Hoard Status:    ${hoardStatus}
@@ -602,7 +641,7 @@ ${tokenDisplay}
 `);
           }
         } catch (e) {
-          // JSON parse failed - silently ignore (don't print raw JSON)
+          // JSON parse failed - silently ignore
         }
       }
     });
@@ -614,44 +653,25 @@ ${tokenDisplay}
     });
 
     const timeoutId = setTimeout(() => {
-      stopSpinner();
+      stopSpinner(intervals);
       proc.kill('SIGTERM');
-      resolve({
-        success: false,
-        error: `Timeout after ${timeout}ms`,
-        stdout,
-        stderr,
-        exitCode: -1
-      });
+      resolve({ success: false, error: `Timeout after ${timeout}ms`, stdout, stderr, exitCode: -1 });
     }, timeout);
 
     proc.on('close', (code) => {
-      stopSpinner();
+      stopSpinner(intervals);
       clearTimeout(timeoutId);
       if (code === 0) {
         resolve({ success: true, output: stdout, tokenUsage });
       } else {
-        resolve({
-          success: false,
-          error: `Exit code ${code}`,
-          stdout,
-          stderr,
-          exitCode: code,
-          tokenUsage
-        });
+        resolve({ success: false, error: `Exit code ${code}`, stdout, stderr, exitCode: code, tokenUsage });
       }
     });
 
     proc.on('error', (err) => {
-      stopSpinner();
+      stopSpinner(intervals);
       clearTimeout(timeoutId);
-      resolve({
-        success: false,
-        error: err.message,
-        stdout,
-        stderr,
-        exitCode: -1
-      });
+      resolve({ success: false, error: err.message, stdout, stderr, exitCode: -1 });
     });
   });
 }
@@ -791,15 +811,19 @@ export async function run(options = {}) {
     // Track IDs we're about to process
     const idsToProcess = pendingData.bookmarks.map(b => b.id);
 
-    // Phase 2: Claude Code analysis (if enabled)
-    if (config.autoInvokeClaude !== false) {
-      console.log(`[${now}] Phase 2: Invoking Claude Code for analysis...`);
+    // Phase 2: AI analysis (Claude or OpenCode based on cliTool config)
+    const shouldInvoke = config.cliTool === 'opencode'
+      ? config.autoInvokeOpencode !== false
+      : config.autoInvokeClaude !== false;
 
-      const claudeResult = await invokeClaudeCode(config, bookmarkCount, {
+    if (shouldInvoke) {
+      console.log(`[${now}] Phase 2: Invoking ${config.cliTool || 'Claude'} for analysis...`);
+
+      const aiResult = await invokeAICLI(config, bookmarkCount, {
         trackTokens: options.trackTokens
       });
 
-      if (claudeResult.success) {
+      if (aiResult.success) {
         console.log(`[${now}] Analysis complete`);
 
         // Remove processed IDs from pending file
@@ -838,12 +862,12 @@ export async function run(options = {}) {
           success: true,
           count: bookmarkCount,
           duration: Date.now() - startTime,
-          output: claudeResult.output,
-          tokenUsage: claudeResult.tokenUsage
+          output: aiResult.output,
+          tokenUsage: aiResult.tokenUsage
         };
 
       } else {
-        // Claude failed - restore full pending file for retry
+        // AI failed - restore full pending file for retry
         const fullFile = config.pendingFile + '.full';
         if (fs.existsSync(fullFile)) {
           fs.copyFileSync(fullFile, config.pendingFile);
@@ -851,12 +875,12 @@ export async function run(options = {}) {
           console.log(`[${now}] Restored full pending file for retry`);
         }
 
-        console.error(`[${now}] Claude Code failed:`, claudeResult.error);
+        console.error(`[${now}] ${config.cliTool || 'Claude'} failed:`, aiResult.error);
 
         await notify(
           config,
           'Bookmark Processing Failed',
-          `Prepared ${bookmarkCount} bookmarks but analysis failed:\n${claudeResult.error}`,
+          `Prepared ${bookmarkCount} bookmarks but analysis failed:\n${aiResult.error}`,
           false
         );
 
@@ -864,12 +888,12 @@ export async function run(options = {}) {
           success: false,
           count: bookmarkCount,
           duration: Date.now() - startTime,
-          error: claudeResult.error
+          error: aiResult.error
         };
       }
     } else {
       // Auto-invoke disabled - just fetch
-      console.log(`[${now}] Claude auto-invoke disabled. Run 'smaug process' or /process-bookmarks manually.`);
+      console.log(`[${now}] AI auto-invoke disabled. Run 'smaug process' or /process-bookmarks manually.`);
 
       return {
         success: true,

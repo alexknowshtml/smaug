@@ -14,7 +14,7 @@ Archive your Twitter/X bookmarks (and/or optionally, likes) to markdown. Automat
 - [Automation](#automation)
 - [Output](#output)
 - [Configuration](#configuration)
-- [Claude Code Integration](#claude-code-integration)
+- [AI CLI Integration](#ai-cli-integration)
 - [Troubleshooting](#troubleshooting)
 - [Credits](#credits)
 
@@ -352,13 +352,16 @@ Example `smaug.config.json`:
 | `includeMedia` | `false` | **EXPERIMENTAL**: Include media attachments (photos, videos, GIFs) |
 | `archiveFile` | `./bookmarks.md` | Main archive file |
 | `timezone` | `America/New_York` | For date formatting |
+| `cliTool` | `claude` | AI CLI to use: `claude` or `opencode` |
 | `autoInvokeClaude` | `true` | Auto-run Claude Code for analysis |
 | `claudeModel` | `sonnet` | Model to use (`sonnet`, `haiku`, or `opus`) |
+| `autoInvokeOpencode` | `true` | Auto-run OpenCode for analysis |
+| `opencodeModel` | `opencode/glm-4.7-free` | OpenCode model (see OpenCode docs) |
 | `claudeTimeout` | `900000` | Max processing time (15 min) |
 | `parallelThreshold` | `8` | Min bookmarks before parallel processing kicks in |
 | `webhookUrl` | `null` | Discord/Slack webhook for notifications |
 
-Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLAUDE_MODEL`, etc.
+Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLI_TOOL`, `CLAUDE_MODEL`, `OPENCODE_MODEL`, etc.
 
 ### Experimental: Media Attachments
 
@@ -385,9 +388,40 @@ When enabled, the `media[]` array is included in the pending JSON with:
 1. **Requires bird with media support** - PR [#14](https://github.com/steipete/bird/pull/14) adds media extraction. Until merged, you'll need a fork with this PR or wait for an upstream release. Without it, `--media` is a no-op (empty array).
 2. **Workflow still being refined** - Short screengrabs (< 30s) don't need transcripts, but longer videos might. We're still figuring out the best handling.
 
-## Claude Code Integration
+## AI CLI Integration
 
-Smaug uses Claude Code for intelligent bookmark processing. The `.claude/commands/process-bookmarks.md` file contains instructions for:
+Smaug supports multiple AI CLI tools for intelligent bookmark processing:
+
+- **Claude Code** (default) - Anthropic's Claude CLI
+- **OpenCode** - Alternative AI CLI with support for multiple models
+
+### Using OpenCode (Alternative to Claude)
+
+To use OpenCode instead of Claude Code:
+
+```json
+{
+  "cliTool": "opencode",
+  "opencodeModel": "opencode/glm-4.7-free",
+  "autoInvokeOpencode": true
+}
+```
+
+Available OpenCode models include:
+- `opencode/glm-4.7-free` (free tier)
+- `opencode/kimi-k2.5-free` (free tier)
+- `opencode/claude-sonnet-4-5` (Claude via OpenCode)
+- `opencode/gpt-5.2` (GPT via OpenCode)
+
+Set via environment variable:
+```bash
+export CLI_TOOL=opencode
+export OPENCODE_MODEL=opencode/kimi-k2.5-free
+```
+
+### Claude Code Integration
+
+Smaug uses Claude Code by default for intelligent bookmark processing. The `.claude/commands/process-bookmarks.md` file contains instructions for:
 
 - Generating descriptive titles (not generic "Article" or "Tweet")
 - Filing GitHub repos to `knowledge/tools/`
