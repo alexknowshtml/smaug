@@ -12,5 +12,5 @@
   "claudeModel": "sonnet",
   "autoInvokeOpencode": true,
   "opencodeModel": "opencode/glm-4.7-free",
-  "cliTool": "opencode"
+  "cliTool": "claude"
 }
