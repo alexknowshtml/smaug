@@ -4,6 +4,8 @@ Archive your Twitter/X bookmarks (and/or optionally, likes) to markdown. Automat
 
 *Like a dragon hoarding treasure, Smaug collects the valuable things you bookmark and like.*
 
+> **Multi-model support:** Smaug works with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (default) and [OpenCode](https://github.com/opencode-ai/opencode), giving you access to a wide range of AI models. Results may vary depending on the model you choose — test carefully and find what works best for your workflow. See [AI CLI Integration](#ai-cli-integration) for setup details.
+
 ## Contents
 
 - [Quick Start](#quick-start-5-minutes)
