@@ -18,6 +18,7 @@ import path from 'path';
 import os from 'os';
 import { fetchAndPrepareBookmarks } from './processor.js';
 import { loadConfig } from './config.js';
+import { validateBinaryPath, TIMEOUTS } from './validators.js';
 
 const JOB_NAME = 'smaug';
 const LOCK_FILE = path.join(os.tmpdir(), 'smaug.lock');
@@ -308,38 +309,86 @@ export function getPathSeparator(platform = process.platform) {
  */
 export function resolveZaiBinary(configZaiBin, finder = findZai) {
   const configured = typeof configZaiBin === 'string' ? configZaiBin.trim() : '';
-  if (!configured || configured === 'zai') {
-    return finder();
-  }
-  return configured;
+  const resolved = !configured || configured === 'zai' ? finder() : configured;
+  
+  // Validate the resolved path to prevent command injection
+  return validateBinaryPath(resolved, 'zaiBin');
 }
 
 // ============================================================================
 // Lock Management - Prevents overlapping runs
+// Uses atomic file operations to prevent TOCTOU race conditions
 // ============================================================================
 
 function acquireLock() {
-  if (fs.existsSync(LOCK_FILE)) {
+  const lockData = JSON.stringify({ 
+    pid: process.pid, 
+    timestamp: Date.now() 
+  });
+  
+  try {
+    // Try to create lock file exclusively (fails if exists)
+    // This is atomic and prevents race conditions
+    fs.writeFileSync(LOCK_FILE, lockData, { flag: 'wx' });
+    return true;
+  } catch (error) {
+    if (error.code !== 'EEXIST') {
+      // Unexpected error
+      console.error(`[${JOB_NAME}] Failed to acquire lock: ${error.message}`);
+      return false;
+    }
+    
+    // Lock file exists - check if it's stale
     try {
       const { pid, timestamp } = JSON.parse(fs.readFileSync(LOCK_FILE, 'utf8'));
+      const age = Date.now() - timestamp;
+      
+      // Check if the process is still running
       try {
-        process.kill(pid, 0); // Check if process exists
-        const age = Date.now() - timestamp;
-        if (age < 20 * 60 * 1000) { // 20 minute timeout
+        process.kill(pid, 0); // Signal 0 checks if process exists without killing it
+        
+        if (age < TIMEOUTS.LOCK_STALE) {
           console.log(`[${JOB_NAME}] Previous run still in progress (PID ${pid}). Skipping.`);
           return false;
         }
+        
         console.log(`[${JOB_NAME}] Stale lock found (${Math.round(age / 60000)}min old). Overwriting.`);
       } catch (e) {
+        // Process doesn't exist
         console.log(`[${JOB_NAME}] Removing stale lock (PID ${pid} no longer running)`);
       }
-    } catch (e) {
-      // Invalid lock file
+      
+      // Remove stale lock and try again
+      try {
+        fs.unlinkSync(LOCK_FILE);
+      } catch (e) {
+        // File might have been removed by another process
+      }
+      
+      // Try one more time to acquire the lock atomically
+      try {
+        fs.writeFileSync(LOCK_FILE, lockData, { flag: 'wx' });
+        return true;
+      } catch (retryError) {
+        if (retryError.code === 'EEXIST') {
+          console.log(`[${JOB_NAME}] Another process acquired the lock. Skipping.`);
+          return false;
+        }
+        throw retryError;
+      }
+    } catch (parseError) {
+      // Invalid or corrupted lock file - remove it
+      console.log(`[${JOB_NAME}] Removing invalid lock file`);
+      try {
+        fs.unlinkSync(LOCK_FILE);
+        fs.writeFileSync(LOCK_FILE, lockData, { flag: 'wx' });
+        return true;
+      } catch (e) {
+        console.error(`[${JOB_NAME}] Failed to recover from invalid lock: ${e.message}`);
+        return false;
+      }
     }
-    fs.unlinkSync(LOCK_FILE);
   }
-  fs.writeFileSync(LOCK_FILE, JSON.stringify({ pid: process.pid, timestamp: Date.now() }));
-  return true;
 }
 
 function releaseLock() {
