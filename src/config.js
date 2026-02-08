@@ -108,31 +108,21 @@ const DEFAULT_CONFIG = {
     }
   },
 
-  // Tools to use for different content types
-  // allowedTools: the Claude Code tools the processor can use
-  allowedTools: 'Read,Write,Edit,Glob,Grep,Bash,Task,TodoWrite',
-
   // ---- Automation settings (for scheduled jobs) ----
 
-  // Auto-invoke Claude Code after fetching bookmarks
-  autoInvokeClaude: true,
+  // Auto-invoke Z.ai (cc-mirror variant) after fetching bookmarks
+  autoInvokeZai: true,
 
-  // Auto-invoke OpenCode after fetching bookmarks
-  autoInvokeOpencode: true,
+  // Z.ai model to use
+  zaiModel: 'glm-4.7',
 
-  // CLI tool to use: 'claude' or 'opencode'
-  cliTool: 'claude',
+  // Z.ai invocation timeout in ms (default 15 min)
+  zaiTimeout: 900000,
 
-  // Claude model to use (sonnet, haiku, opus)
-  claudeModel: 'sonnet',
+  // Z.ai binary (usually installed by cc-mirror)
+  zaiBin: 'zai',
 
-  // OpenCode model to use (any OpenCode-compatible model)
-  opencodeModel: 'opencode/glm-4.7-free',
-
-  // Claude invocation timeout in ms (default 15 min)
-  claudeTimeout: 900000,
-
-  // Project root for Claude Code invocation
+  // Project root for Z.ai invocation
   projectRoot: null,
 
   // ---- Notifications (optional) ----
@@ -235,23 +225,17 @@ export function loadConfig(configPath) {
   }
 
   // Automation env vars
-  if (process.env.AUTO_INVOKE_CLAUDE !== undefined) {
-    config.autoInvokeClaude = process.env.AUTO_INVOKE_CLAUDE === 'true';
+  if (process.env.AUTO_INVOKE_ZAI !== undefined) {
+    config.autoInvokeZai = process.env.AUTO_INVOKE_ZAI === 'true';
   }
-  if (process.env.AUTO_INVOKE_OPENCODE !== undefined) {
-    config.autoInvokeOpencode = process.env.AUTO_INVOKE_OPENCODE === 'true';
+  if (process.env.ZAI_MODEL) {
+    config.zaiModel = process.env.ZAI_MODEL;
   }
-  if (process.env.CLI_TOOL) {
-    config.cliTool = process.env.CLI_TOOL;
+  if (process.env.ZAI_TIMEOUT) {
+    config.zaiTimeout = parseInt(process.env.ZAI_TIMEOUT, 10);
   }
-  if (process.env.OPENCODE_MODEL) {
-    config.opencodeModel = process.env.OPENCODE_MODEL;
-  }
-  if (process.env.CLAUDE_MODEL) {
-    config.claudeModel = process.env.CLAUDE_MODEL;
-  }
-  if (process.env.CLAUDE_TIMEOUT) {
-    config.claudeTimeout = parseInt(process.env.CLAUDE_TIMEOUT, 10);
+  if (process.env.ZAI_BIN) {
+    config.zaiBin = process.env.ZAI_BIN;
   }
   if (process.env.PROJECT_ROOT) {
     config.projectRoot = process.env.PROJECT_ROOT;
@@ -325,14 +309,10 @@ export function initConfig(targetPath = './smaug.config.json') {
     },
 
     // Automation (for scheduled jobs)
-    autoInvokeClaude: true,
-    autoInvokeOpencode: true,
-    // CLI tool: 'claude' or 'opencode'
-    cliTool: 'claude',
-    // Models for each CLI
-    claudeModel: 'sonnet',
-    opencodeModel: 'opencode/glm-4.7-free',
-    claudeTimeout: 900000,
+    autoInvokeZai: true,
+    zaiModel: 'glm-4.7',
+    zaiTimeout: 900000,
+    zaiBin: 'zai',
 
     // Notifications (optional)
     webhookUrl: null,

@@ -5,9 +5,9 @@
  *
  * Commands:
  *   setup    - Interactive setup wizard (recommended for first-time users)
- *   run      - Run the full job (fetch + process with Claude Code)
+ *   run      - Run the full job (fetch + process with Z.ai)
  *   fetch    - Fetch bookmarks and prepare them for processing
- *   process  - Process pending bookmarks with Claude Code
+ *   process  - Process pending bookmarks with Z.ai
  *   status   - Show current configuration and status
  *   init     - Create a config file (non-interactive)
  */
@@ -57,7 +57,7 @@ This will set up Smaug to automatically archive your Twitter bookmarks.
         console.log(`  ✗ bird CLI v${versionMatch[0]} found, but v0.5.0+ required for bookmarks support
 
   Update it:
-    npm install -g @steipete/bird@latest
+    bun add -g @steipete/bird@latest
 
   Or with Homebrew:
     brew upgrade steipete/tap/bird
@@ -74,7 +74,7 @@ This will set up Smaug to automatically archive your Twitter bookmarks.
     console.log(`  ✗ bird CLI not found
 
   Install it:
-    npm install -g @steipete/bird@latest
+    bun add -g @steipete/bird@latest
 
   Or with Homebrew:
     brew install steipete/tap/bird
@@ -132,8 +132,10 @@ This will set up Smaug to automatically archive your Twitter bookmarks.
       authToken,
       ct0
     },
-    autoInvokeClaude: true,
-    claudeModel: 'sonnet'
+    autoInvokeZai: true,
+    zaiModel: 'glm-4.7',
+    zaiTimeout: 900000,
+    zaiBin: 'zai'
   };
 
   fs.writeFileSync('./smaug.config.json', JSON.stringify(config, null, 2) + '\n');
@@ -147,7 +149,7 @@ This will set up Smaug to automatically archive your Twitter bookmarks.
 
   if (wantsCron.toLowerCase() === 'y') {
     const cwd = process.cwd();
-    const cronLine = `*/30 * * * * cd ${cwd} && npx smaug run >> ${cwd}/smaug.log 2>&1`;
+    const cronLine = `*/30 * * * * cd ${cwd} && bunx smaug run >> ${cwd}/smaug.log 2>&1`;
 
     console.log(`
   Add this line to your crontab:
@@ -158,8 +160,8 @@ This will set up Smaug to automatically archive your Twitter bookmarks.
     crontab -e
 
   Or use PM2 for a simpler setup:
-    npm install -g pm2
-    pm2 start "npx smaug run" --cron "*/30 * * * *" --name smaug
+    bun add -g pm2
+    pm2 start "bunx smaug run" --cron "*/30 * * * *" --name smaug
     pm2 save
 `);
   }
@@ -188,9 +190,9 @@ This will set up Smaug to automatically archive your Twitter bookmarks.
 Your bookmarks will be saved to: ./bookmarks.md
 
 Commands:
-  npx smaug run    Run full job (fetch + process with Claude)
-  npx smaug fetch  Fetch new bookmarks
-  npx smaug status Check status
+  bunx smaug run    Run full job (fetch + process with Z.ai)
+  bunx smaug fetch  Fetch new bookmarks
+  bunx smaug status Check status
 
 Happy hoarding! 🐉
 `);
@@ -207,7 +209,7 @@ async function main() {
       break;
 
     case 'run': {
-      // Run the full job (same as node src/job.js)
+      // Run the full job (same as bun src/job.js)
       const jobPath = path.join(path.dirname(fileURLToPath(import.meta.url)), 'job.js');
       const trackTokens = args.includes('--track-tokens') || args.includes('-t');
 
@@ -271,7 +273,7 @@ async function main() {
       if (result.count > 0) {
         console.log(`\n✓ Prepared ${result.count} tweets.`);
         console.log(`  Output: ${result.pendingFile}`);
-        console.log('\nNext: Run `npx smaug run` to process with Claude');
+        console.log('\nNext: Run `bunx smaug run` to process with Z.ai');
       } else {
         console.log('\nNo new tweets to process.');
       }
@@ -295,7 +297,7 @@ async function main() {
 
       console.log(`Found ${pending.bookmarks.length} pending bookmarks.\n`);
       console.log('To process them:');
-      console.log('  npx smaug run\n');
+      console.log('  bunx smaug run\n');
 
       console.log('Pending:');
       for (const b of pending.bookmarks.slice(0, 5)) {
@@ -315,7 +317,7 @@ async function main() {
       console.log(`Source:      ${config.source || 'bookmarks'}`);
       console.log(`Media:       ${config.includeMedia ? '✓ enabled (experimental)' : 'disabled (use --media to enable)'}`);
       console.log(`Twitter:     ${config.twitter?.authToken ? '✓ configured' : '✗ not configured'}`);
-      console.log(`Auto-Claude: ${config.autoInvokeClaude ? 'enabled' : 'disabled'}`);
+      console.log(`Auto-Zai:    ${config.autoInvokeZai ? 'enabled' : 'disabled'}`);
 
       if (fs.existsSync(config.pendingFile)) {
         const pending = JSON.parse(fs.readFileSync(config.pendingFile, 'utf8'));
@@ -346,7 +348,7 @@ async function main() {
 
 Commands:
   setup          Interactive setup wizard (start here!)
-  run            Run the full job (fetch + process with Claude)
+  run            Run the full job (fetch + process with Z.ai)
   run -t         Run with token usage tracking (--track-tokens)
   run --limit N  Process only N bookmarks (for large backlogs)
   fetch [n]      Fetch n tweets (default: 20)

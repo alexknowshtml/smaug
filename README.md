@@ -4,11 +4,12 @@ Archive your Twitter/X bookmarks (and/or optionally, likes) to markdown. Automat
 
 *Like a dragon hoarding treasure, Smaug collects the valuable things you bookmark and like.*
 
-> **Multi-model support:** Smaug works with [Claude Code](https://docs.anthropic.com/en/docs/claude-code) (default) and [OpenCode](https://github.com/anomalyco/opencode), giving you access to a wide range of AI models. Results may vary depending on the model you choose — test carefully and find what works best for your workflow. See [AI CLI Integration](#ai-cli-integration) for setup details.
+> **AI integration:** Smaug is configured for Z.ai (`zai`) via a single-provider workflow. See [Z.ai Integration](#zai-integration) for setup details.
 
 ## Contents
 
 - [Quick Start](#quick-start-5-minutes)
+- [Fork Workflow](#fork-workflow)
 - [Getting Twitter Credentials](#getting-twitter-credentials)
 - [What It Does](#what-it-does)
 - [Running](#running)
@@ -16,7 +17,7 @@ Archive your Twitter/X bookmarks (and/or optionally, likes) to markdown. Automat
 - [Automation](#automation)
 - [Output](#output)
 - [Configuration](#configuration)
-- [AI CLI Integration](#ai-cli-integration)
+- [Z.ai Integration](#zai-integration)
 - [Troubleshooting](#troubleshooting)
 - [Credits](#credits)
 
@@ -40,13 +41,13 @@ Archive your Twitter/X bookmarks (and/or optionally, likes) to markdown. Automat
 # 2. Clone and install Smaug
 git clone https://github.com/alexknowshtml/smaug
 cd smaug
-npm install
+bun install
 
 # 3. Run the setup wizard
-npx smaug setup
+bunx smaug setup
 
-# 4. Run the full job (fetch + process with Claude)
-npx smaug run
+# 4. Run the full job (fetch + process with Z.ai)
+bunx smaug run
 ```
 
 The setup wizard will:
@@ -54,7 +55,18 @@ The setup wizard will:
 - Guide you through getting Twitter credentials
 - Create your config file
 
-## Manually Getting Twitter Credentials
+## Fork Workflow
+
+If you are running a custom fork that intentionally differs from upstream, use the fork maintenance guide:
+
+- [`docs/FORK_WORKFLOW.md`](./docs/FORK_WORKFLOW.md)
+
+This includes:
+- How to keep your fork's `main` branch synced with upstream
+- How to keep your feature branch rebased and push safely with `--force-with-lease`
+- Helper scripts in `scripts/sync-fork-main.sh` and `scripts/rebase-feature-branch.sh`
+
+## Getting Twitter Credentials
 
 Smaug uses the bird CLI which needs your Twitter session cookies.
 
@@ -91,37 +103,37 @@ If you don't want to use the wizard to make it easy, you can manually put your s
    - External articles (title, author, content)
    - X/Twitter long-form articles (full content via bird CLI)
    - Quote tweets and reply threads (full context)
-4. **Invokes Claude Code** to analyze and categorize each tweet
+4. **Invokes Z.ai** to analyze and categorize each tweet
 5. **Saves to markdown** organized by date with rich context
 6. **Files to knowledge library** - GitHub repos to `knowledge/tools/`, articles to `knowledge/articles/`
 
 ## Running Manually
 
 ```bash
-# Full job (fetch + process with Claude)
-npx smaug run
+# Full job (fetch + process with Z.ai)
+bunx smaug run
 
 # Fetch from bookmarks (default)
-npx smaug fetch 20
+bunx smaug fetch 20
 
 # Fetch ALL bookmarks (paginated - requires bird CLI from git)
-npx smaug fetch --all
-npx smaug fetch --all --max-pages 5  # Limit to 5 pages
+bunx smaug fetch --all
+bunx smaug fetch --all --max-pages 5  # Limit to 5 pages
 
 # Fetch from likes instead
-npx smaug fetch --source likes
+bunx smaug fetch --source likes
 
 # Fetch from both bookmarks AND likes
-npx smaug fetch --source both
+bunx smaug fetch --source both
 
 # Process already-fetched tweets
-npx smaug process
+bunx smaug process
 
-# Force re-process (ignore duplicates)
-npx smaug process --force
+# Force re-fetch even if already archived
+bunx smaug fetch --force
 
 # Check what's pending
-node -e "console.log(require('./.state/pending-bookmarks.json').count)"
+bun -e "const fs=require('fs'); console.log(JSON.parse(fs.readFileSync('./.state/pending-bookmarks.json','utf8')).count)"
 ```
 
 ### Fetching All Bookmarks
@@ -129,16 +141,16 @@ node -e "console.log(require('./.state/pending-bookmarks.json').count)"
 By default, Twitter's API returns ~50-70 bookmarks per request. To fetch more, use the `--all` flag which enables pagination:
 
 ```bash
-npx smaug fetch --all              # Fetch all (up to 10 pages)
-npx smaug fetch --all --max-pages 20  # Fetch up to 20 pages
+bunx smaug fetch --all              # Fetch all (up to 10 pages)
+bunx smaug fetch --all --max-pages 20  # Fetch up to 20 pages
 ```
 
 **Note:** This requires bird CLI built from git (not the npm release). See [Troubleshooting](#troubleshooting) for installation instructions.
 
-**Cost warning:** Processing large bookmark backlogs can consume significant Claude tokens. Each bookmark with content-heavy links (long articles, GitHub READMEs, etc.) adds to the context. Process in batches to control costs:
+**Cost warning:** Processing large bookmark backlogs can consume significant model tokens. Each bookmark with content-heavy links (long articles, GitHub READMEs, etc.) adds to context. Process in batches to control costs:
 
 ```bash
-npx smaug run --limit 50 -t    # Process 50 at a time with token tracking
+bunx smaug run --limit 50 -t    # Process 50 at a time with token tracking
 ```
 
 Use the `-t` flag to monitor usage. See [Token Usage Tracking](#token-usage-tracking) for cost estimates by model.
@@ -243,8 +255,8 @@ Run Smaug automatically every 30 minutes:
 ### Option A: PM2 (recommended)
 
 ```bash
-npm install -g pm2
-pm2 start "npx smaug run" --cron "*/30 * * * *" --name smaug
+bun add -g pm2
+pm2 start "bunx smaug run" --cron "*/30 * * * *" --name smaug
 pm2 save
 pm2 startup    # Start on boot
 ```
@@ -254,7 +266,7 @@ pm2 startup    # Start on boot
 ```bash
 crontab -e
 # Add:
-*/30 * * * * cd /path/to/smaug && npx smaug run >> smaug.log 2>&1
+*/30 * * * * cd /path/to/smaug && bunx smaug run >> smaug.log 2>&1
 ```
 
 ### Option C: systemd
@@ -331,6 +343,7 @@ Example `smaug.config.json`:
 ```json
 {
   "source": "bookmarks",
+  "includeMedia": false,
   "archiveFile": "./bookmarks.md",
   "pendingFile": "./.state/pending-bookmarks.json",
   "stateFile": "./.state/bookmarks-state.json",
@@ -339,10 +352,11 @@ Example `smaug.config.json`:
     "authToken": "your_auth_token",
     "ct0": "your_ct0"
   },
-  "autoInvokeClaude": true,
-  "claudeModel": "sonnet",
-  "claudeTimeout": 900000,
-  "allowedTools": "Read,Write,Edit,Glob,Grep,Bash,Task,TodoWrite",
+  "autoInvokeZai": true,
+  "zaiModel": "glm-4.7",
+  "zaiTimeout": 900000,
+  "zaiBin": "zai",
+  "projectRoot": null,
   "webhookUrl": null,
   "webhookType": "discord"
 }
@@ -353,17 +367,17 @@ Example `smaug.config.json`:
 | `source` | `bookmarks` | What to fetch: `bookmarks` (default), `likes`, or `both` |
 | `includeMedia` | `false` | **EXPERIMENTAL**: Include media attachments (photos, videos, GIFs) |
 | `archiveFile` | `./bookmarks.md` | Main archive file |
+| `pendingFile` | `./.state/pending-bookmarks.json` | Pending bookmark JSON before AI processing |
+| `stateFile` | `./.state/bookmarks-state.json` | Fetch/process state tracking |
 | `timezone` | `America/New_York` | For date formatting |
-| `cliTool` | `claude` | AI CLI to use: `claude` or `opencode` |
-| `autoInvokeClaude` | `true` | Auto-run Claude Code for analysis |
-| `claudeModel` | `sonnet` | Model to use (`sonnet`, `haiku`, or `opus`) |
-| `autoInvokeOpencode` | `true` | Auto-run OpenCode for analysis |
-| `opencodeModel` | `opencode/glm-4.7-free` | OpenCode model (see OpenCode docs) |
-| `claudeTimeout` | `900000` | Max processing time (15 min) |
-| `parallelThreshold` | `8` | Min bookmarks before parallel processing kicks in |
+| `autoInvokeZai` | `true` | Auto-run Z.ai for analysis after fetch |
+| `zaiModel` | `glm-4.7` | Z.ai model used for processing |
+| `zaiTimeout` | `900000` | Max Z.ai processing time (15 min) |
+| `zaiBin` | `zai` | Z.ai binary name/path |
+| `projectRoot` | `null` | Working directory for Z.ai invocation |
 | `webhookUrl` | `null` | Discord/Slack webhook for notifications |
 
-Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `TIMEZONE`, `CLI_TOOL`, `CLAUDE_MODEL`, `OPENCODE_MODEL`, etc.
+Environment variables also work: `AUTH_TOKEN`, `CT0`, `SOURCE`, `INCLUDE_MEDIA`, `ARCHIVE_FILE`, `PENDING_FILE`, `STATE_FILE`, `TIMEZONE`, `AUTO_INVOKE_ZAI`, `ZAI_MODEL`, `ZAI_TIMEOUT`, `ZAI_BIN`, `PROJECT_ROOT`, etc.
 
 ### Experimental: Media Attachments
 
@@ -371,7 +385,7 @@ Media extraction (photos, videos, GIFs) is available but disabled by default. To
 
 ```bash
 # One-time with flag
-npx smaug fetch --media
+bunx smaug fetch --media
 
 # Or in config
 {
@@ -390,53 +404,26 @@ When enabled, the `media[]` array is included in the pending JSON with:
 1. **Requires bird with media support** - PR [#14](https://github.com/steipete/bird/pull/14) adds media extraction. Until merged, you'll need a fork with this PR or wait for an upstream release. Without it, `--media` is a no-op (empty array).
 2. **Workflow still being refined** - Short screengrabs (< 30s) don't need transcripts, but longer videos might. We're still figuring out the best handling.
 
-## AI CLI Integration
+## Z.ai Integration
 
-Smaug supports multiple AI CLI tools for intelligent bookmark processing:
+Smaug uses Z.ai (`zai`) for intelligent bookmark processing. It invokes the CLI with the processing playbook in `.claude/commands/process-bookmarks.md`.
 
-- **Claude Code** (default) - Anthropic's Claude CLI
-- **OpenCode** - Alternative AI CLI with support for multiple models
+Install and verify Z.ai:
 
-### Using OpenCode (Alternative to Claude)
+```bash
+which zai
+zai --help
+```
 
-To use OpenCode instead of Claude Code:
+Tune behavior in `smaug.config.json`:
 
 ```json
 {
-  "cliTool": "opencode",
-  "opencodeModel": "opencode/glm-4.7-free",
-  "autoInvokeOpencode": true
+  "autoInvokeZai": true,
+  "zaiModel": "glm-4.7",
+  "zaiTimeout": 900000,
+  "zaiBin": "zai"
 }
-```
-
-Available OpenCode models include:
-- `opencode/glm-4.7-free` (free tier)
-- `opencode/kimi-k2.5-free` (free tier)
-- `opencode/claude-sonnet-4-5` (Claude via OpenCode)
-- `opencode/gpt-5.2` (GPT via OpenCode)
-
-Set via environment variable:
-```bash
-export CLI_TOOL=opencode
-export OPENCODE_MODEL=opencode/kimi-k2.5-free
-```
-
-### Claude Code Integration
-
-Smaug uses Claude Code by default for intelligent bookmark processing. The `.claude/commands/process-bookmarks.md` file contains instructions for:
-
-- Generating descriptive titles (not generic "Article" or "Tweet")
-- Filing GitHub repos to `knowledge/tools/`
-- Filing articles to `knowledge/articles/`
-- Handling quote tweets with full context
-- Processing reply threads with parent context
-- Parallel processing for large batches (configurable threshold, default 8 bookmarks)
-
-You can also run processing manually:
-
-```bash
-claude
-> Run /process-bookmarks
 ```
 
 ### Token Usage Tracking
@@ -444,9 +431,9 @@ claude
 Track your API costs with the `-t` flag:
 
 ```bash
-npx smaug run -t
+bunx smaug run -t
 # or
-npx smaug run --track-tokens
+bunx smaug run --track-tokens
 ```
 
 This displays a breakdown at the end of each run:
@@ -455,29 +442,16 @@ This displays a breakdown at the end of each run:
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📊 TOKEN USAGE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Main (sonnet):
+Main (glm-4.7):
   Input:               85 tokens  <$0.01
-  Output:           5,327 tokens  $0.08
-  Cache Read:     724,991 tokens  $0.22
-  Cache Write:     62,233 tokens  $0.23
+  Output:           5,327 tokens  <$0.01
+  Cache Read:     724,991 tokens  <$0.01
+  Cache Write:     62,233 tokens  <$0.01
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💰 TOTAL COST: $0.53
+💰 TOTAL COST: unavailable for this model
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
-
-### Cost Optimization: Haiku Subagents
-
-For large batches (8+ bookmarks by default), Smaug spawns parallel subagents. By default, these use Haiku instead of Sonnet, which cuts costs nearly in half:
-
-| Configuration | 20 Bookmarks | Time |
-|---------------|--------------|------|
-| Sonnet subagents | $1.00 | 4m 12s |
-| **Haiku subagents** | **$0.53** | 4m 18s |
-
-Same speed, ~50% cheaper. The categorization and filing tasks don't require Sonnet-level reasoning, so Haiku handles them well.
-
-This is configured in `.claude/commands/process-bookmarks.md` with `model="haiku"` in the Task calls.
 
 ## Troubleshooting
 
@@ -491,7 +465,7 @@ To start fresh:
 ```bash
 rm -rf .state/ bookmarks.md knowledge/
 mkdir -p .state knowledge/tools knowledge/articles
-npx smaug run
+bunx smaug run
 ```
 
 ### Bird CLI 403 errors
@@ -500,8 +474,9 @@ Your Twitter cookies may have expired. Get fresh ones from your browser.
 
 ### Processing is slow
 
-- Try `haiku` model instead of `sonnet` in config for faster (but less thorough) processing
-- Make sure you're not re-processing with `--force` (causes edits instead of appends)
+- Increase `--limit` only in small steps for large backlogs
+- Use a faster/lower-cost Z.ai model via `zaiModel` if available in your environment
+- Avoid `fetch --force` unless you explicitly want to re-process archived bookmarks
 
 ### Only ~50-70 bookmarks fetched
 
@@ -512,7 +487,7 @@ The npm release of bird CLI (v0.5.1) doesn't support pagination. To fetch all bo
 cd /tmp
 git clone https://github.com/steipete/bird.git
 cd bird
-pnpm install    # or: npm install -g pnpm && pnpm install
+pnpm install    # or: bun add -g pnpm && pnpm install
 pnpm run build:dist
 
 # Link globally (may need sudo or --force)
@@ -523,12 +498,12 @@ bird --version  # Should show a newer commit hash
 bird bookmarks --help  # Should show --all flag
 ```
 
-Then use `npx smaug fetch --all` to fetch all bookmarks with pagination.
+Then use `bunx smaug fetch --all` to fetch all bookmarks with pagination.
 
 ## Credits
 
 - [bird CLI](https://github.com/steipete/bird) by Peter Steinberger
-- Built with Claude Code
+- Built with Z.ai
 
 ## License
 
