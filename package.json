@@ -8,18 +8,19 @@
     "smaug": "src/cli.js"
   },
   "scripts": {
-    "fetch": "node src/cli.js fetch",
-    "process": "node src/cli.js process",
-    "start": "node src/cli.js",
-    "test": "node --test"
+    "fetch": "bun src/cli.js fetch",
+    "process": "bun src/cli.js process",
+    "start": "bun src/cli.js",
+    "test": "bun test"
   },
+  "packageManager": "bun@1.3.8",
   "keywords": [
     "twitter",
     "x",
     "bookmarks",
     "archive",
     "markdown",
-    "claude-code"
+    "zai"
   ],
   "author": "",
   "license": "MIT",

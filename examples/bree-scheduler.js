@@ -5,10 +5,10 @@
  * and graceful handling of long-running jobs.
  *
  * Setup:
- *   npm install bree
+ *   bun add bree
  *
  * Run:
- *   node examples/bree-scheduler.js
+ *   bun examples/bree-scheduler.js
  */
 
 import Bree from 'bree';

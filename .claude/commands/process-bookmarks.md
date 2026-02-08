@@ -22,7 +22,7 @@ This applies to BOTH sequential processing AND the merge step in parallel proces
 **Check parallelThreshold from config** (default: 8). Use parallel processing only when bookmark count >= threshold. For smaller batches, sequential processing is faster due to subagent overhead.
 
 ```bash
-node -e "console.log(require('./smaug.config.json').parallelThreshold ?? 8)"
+bun -e "const fs=require('fs'); const c=JSON.parse(fs.readFileSync('./smaug.config.json','utf8')); console.log(c.parallelThreshold ?? 8)"
 ```
 
 **For bookmarks below threshold (sequential):**
@@ -59,11 +59,11 @@ TodoWrite({ todos: [
 **CRITICAL for parallel processing:** Spawn ALL subagents in ONE message, each writing to a batch file:
 ```javascript
 // Send ONE message with multiple Task calls - they run in parallel
-// Use model="haiku" for cost-efficient parallel processing (~50% cost savings)
+// Use model="glm-4.7" for consistent behavior with Smaug defaults
 // Each subagent writes to .state/batch-N.md, NOT to bookmarks.md!
-Task(subagent_type="general-purpose", model="haiku", prompt="Process batch 0: write to .state/batch-0.md: {json for bookmarks 0-4}")
-Task(subagent_type="general-purpose", model="haiku", prompt="Process batch 1: write to .state/batch-1.md: {json for bookmarks 5-9}")
-Task(subagent_type="general-purpose", model="haiku", prompt="Process batch 2: write to .state/batch-2.md: {json for bookmarks 10-14}")
+Task(subagent_type="general-purpose", model="glm-4.7", prompt="Process batch 0: write to .state/batch-0.md: {json for bookmarks 0-4}")
+Task(subagent_type="general-purpose", model="glm-4.7", prompt="Process batch 1: write to .state/batch-1.md: {json for bookmarks 5-9}")
+Task(subagent_type="general-purpose", model="glm-4.7", prompt="Process batch 2: write to .state/batch-2.md: {json for bookmarks 10-14}")
 // ... all batches in the SAME message
 ```
 
@@ -87,7 +87,7 @@ Use this format for date section headers (e.g., "Thursday, January 2, 2026").
 
 **Load paths and categories from config:**
 ```bash
-node -e "const c=require('./smaug.config.json'); console.log(JSON.stringify({archiveFile:c.archiveFile, pendingFile:c.pendingFile, stateFile:c.stateFile, categories:c.categories}, null, 2))"
+bun -e "const fs=require('fs'); const c=JSON.parse(fs.readFileSync('./smaug.config.json','utf8')); console.log(JSON.stringify({archiveFile:c.archiveFile, pendingFile:c.pendingFile, stateFile:c.stateFile, categories:c.categories}, null, 2))"
 ```
 
 This gives you:
@@ -140,7 +140,7 @@ Categories define how different bookmark types are handled. Each category has:
 Read from the `pendingFile` path specified in config. If the path starts with `~`, expand it to the home directory:
 ```bash
 # Get pendingFile from config and expand ~ (cross-platform)
-PENDING_FILE=$(node -e "const p=require('./smaug.config.json').pendingFile; console.log(p.replace(/^~/, process.env.HOME || process.env.USERPROFILE))")
+PENDING_FILE=$(bun -e "const fs=require('fs'); const p=JSON.parse(fs.readFileSync('./smaug.config.json','utf8')).pendingFile; console.log(p.replace(/^~/, process.env.HOME || process.env.USERPROFILE))")
 cat "$PENDING_FILE"
 ```
 
@@ -278,9 +278,9 @@ git add knowledge/
 # Commit with descriptive message
 git commit -m "Process N Twitter bookmarks from $DATE
 
-🤖 Generated with [Claude Code](https://claude.com/claude-code)
+🤖 Generated with Z.ai
 
-Co-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>"
+Co-Authored-By: Z.ai <noreply@z.ai>"
 
 # Push immediately
 git push
@@ -427,10 +427,10 @@ status: needs_transcript
 Spawn multiple Task subagents in ONE message. Each writes to a separate temp file:
 
 ```
-Task 1: model="haiku", "Process batch 0" → writes to .state/batch-0.md
-Task 2: model="haiku", "Process batch 1" → writes to .state/batch-1.md
-Task 3: model="haiku", "Process batch 2" → writes to .state/batch-2.md
-Task 4: model="haiku", "Process batch 3" → writes to .state/batch-3.md
+Task 1: model="glm-4.7", "Process batch 0" → writes to .state/batch-0.md
+Task 2: model="glm-4.7", "Process batch 1" → writes to .state/batch-1.md
+Task 3: model="glm-4.7", "Process batch 2" → writes to .state/batch-2.md
+Task 4: model="glm-4.7", "Process batch 3" → writes to .state/batch-3.md
 ```
 
 **Subagent prompt template:**
@@ -495,7 +495,7 @@ Processed 4 bookmarks:
    → Quote tweet endorsing @jordienr's UI pattern
    → Captured with quoted context
 
-4. @CasJam: Claude Code Video Post-Production
+4. @CasJam: Video Post-Production Automation
    → Plain tweet (video content)
    → Captured only, flagged for transcript
 ```
