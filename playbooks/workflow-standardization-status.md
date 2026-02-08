@@ -13,7 +13,7 @@ Last verified: 2026-02-08
 | Item | Status | Notes |
 |---|---|---|
 | 0.1 Save prompts to dotfiles | Done | `trevoraspencer/dotfiles/playbooks/*` contains the three core playbook files. |
-| 0.2 Create repo template | Done | `AMTA-Management/repo-template` exists and is marked `is_template=true`. |
+| 0.2 Create repo template | Done | `trevoraspencer/repo-template` exists and is marked `is_template=true`. |
 | 0.3 Org-level review tooling | In progress | Copilot org review settings are deferred; Greptile setup is pending. |
 
 ## Phase 1 (Per Repo) Status
@@ -30,7 +30,7 @@ Legend:
 | `AMTA-Management/spiderweb-tools` | Done | Done | Pending | Done | Done | Pending | Branch protection is implemented via classic branch-protection API (equivalent outcome to rulesets, no ruleset object). |
 | `AMTA-Management/spiderweb-infra` | Done | Done | Pending | Done | Done | Pending | Branch protection is implemented via classic branch-protection API (equivalent outcome to rulesets, no ruleset object). |
 | `AMTA-Management/spiderweb-ecosystem` | Done | Done | Pending | Done | Done | Pending | Branch protection is implemented via classic branch-protection API (equivalent outcome to rulesets, no ruleset object). |
-| `AMTA-Management/repo-template` | Done | Done | Pending | Done | Done | Pending | Template repo is active and standardized. |
+| `trevoraspencer/repo-template` | Done | Done | Pending | Done | Done | Pending | Template repo is active and standardized. |
 | `trevoraspencer/smaug` | Done | Done | Pending | Done | Done | Pending | Public fork; code scanning default setup is configured. |
 | `trevoraspencer/webweaver-bot` | Done | Partial | Pending | Done | Done | Pending | Secret scanning and code scanning remain unavailable without GitHub Advanced Security. |
 | `trevoraspencer/dotfiles` | Done | Partial | Pending | Done | Done | Pending | Secret scanning and code scanning remain unavailable without GitHub Advanced Security. |
