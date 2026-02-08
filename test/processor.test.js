@@ -4,7 +4,7 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { isPaywalled, stripQuerystring, fetchXArticleContent } from '../src/processor.js';
+import { isPaywalled, stripQuerystring, fetchXArticleContent, isLikelyMdFilename } from '../src/processor.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -619,5 +619,67 @@ describe('X article integration tests (requires bird credentials)', { skip: !BIR
     // Should return structure without failing
     assert.ok(result.articleId, 'should have articleId');
     assert.strictEqual(result.articleId, '9999999999999999999');
+  });
+});
+
+describe('isLikelyMdFilename', () => {
+  describe('filters bare .md root domains', () => {
+    test('known dev filenames are detected', () => {
+      for (const name of ['claude', 'readme', 'plan', 'todo', 'memory']) {
+        assert.strictEqual(isLikelyMdFilename(`https://${name}.md/`), true, `${name}.md should be filtered`);
+      }
+    });
+
+    test('unknown bare .md domains are also filtered', () => {
+      assert.strictEqual(isLikelyMdFilename('https://banana.md/'), true);
+      assert.strictEqual(isLikelyMdFilename('https://xyz.md'), true);
+    });
+
+    test('URL spec lowercases hostnames before function runs', () => {
+      assert.strictEqual(isLikelyMdFilename('https://CLAUDE.md/'), true);
+    });
+
+    test('query params on root path are still filtered', () => {
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/?utm_source=twitter'), true);
+    });
+
+    test('hash fragments on root path are still filtered', () => {
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/#section'), true);
+    });
+
+    test('http:// works same as https://', () => {
+      assert.strictEqual(isLikelyMdFilename('http://plan.md/'), true);
+    });
+  });
+
+  describe('does not filter legitimate .md URLs', () => {
+    test('allows obsidian.md and subdomains', () => {
+      assert.strictEqual(isLikelyMdFilename('https://obsidian.md/'), false);
+      assert.strictEqual(isLikelyMdFilename('https://help.obsidian.md/Getting+Started'), false);
+      assert.strictEqual(isLikelyMdFilename('https://forum.obsidian.md/t/some-thread'), false);
+    });
+
+    test('does not filter subdomained .md domains', () => {
+      assert.strictEqual(isLikelyMdFilename('https://www.plan.md/'), false);
+      assert.strictEqual(isLikelyMdFilename('https://app.something.md/'), false);
+    });
+
+    test('does not filter .md domains with a path', () => {
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/about/us'), false);
+      assert.strictEqual(isLikelyMdFilename('https://some.md/blog/post-123'), false);
+      assert.strictEqual(isLikelyMdFilename('https://plan.md/pricing?ref=123'), false);
+    });
+  });
+
+  describe('ignores non-.md URLs', () => {
+    test('non-.md domains return false', () => {
+      for (const url of ['https://github.com/user/repo', 'https://example.com/', 'https://x.com/user/status/123']) {
+        assert.strictEqual(isLikelyMdFilename(url), false, `${url} should not be filtered`);
+      }
+    });
+
+    test('handles invalid URLs gracefully', () => {
+      assert.strictEqual(isLikelyMdFilename('not-a-url'), false);
+    });
   });
 });
