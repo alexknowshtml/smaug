@@ -18,6 +18,14 @@ import dayjs from 'dayjs';
 import utc from 'dayjs/plugin/utc.js';
 import timezone from 'dayjs/plugin/timezone.js';
 import { loadConfig } from './config.js';
+import { 
+  validateNumericString, 
+  validatePositiveInteger, 
+  validateBinaryPath,
+  generateSecureTempFile,
+  TIMEOUTS,
+  LIMITS
+} from './validators.js';
 
 dayjs.extend(utc);
 dayjs.extend(timezone);
@@ -28,13 +36,15 @@ dayjs.extend(timezone);
  */
 function searchForArticleTweet(articleId, config) {
   try {
+    // Validate articleId to prevent injection (already validated by caller's regex, but defense in depth)
+    const validatedArticleId = validateNumericString(articleId, 'articleId');
+    
     const env = buildBirdEnv(config);
-    const birdCmd = config.birdPath || 'bird';
-    // articleId is validated as digits-only by caller's regex
-    const searchQuery = `url:x.com/i/article/${articleId}`;
+    const birdCmd = validateBinaryPath(config.birdPath || 'bird', 'birdPath');
+    const searchQuery = `url:x.com/i/article/${validatedArticleId}`;
     const output = execSync(`${birdCmd} search "${searchQuery}" -n 5 --json`, {
       encoding: 'utf8',
-      timeout: 30000,
+      timeout: TIMEOUTS.BIRD_SEARCH,
       env
     });
     const parsed = JSON.parse(output);
@@ -69,7 +79,7 @@ export async function fetchXArticleContent(articleUrl, config, sourceTweetId = n
 
   const articleId = articleIdMatch[1];
   const env = buildBirdEnv(config);
-  const birdCmd = config.birdPath || 'bird';
+  const birdCmd = validateBinaryPath(config.birdPath || 'bird', 'birdPath');
 
   const extractArticle = (tweetData, source, tweetId) => {
     let articleContent = tweetData.text || '';
@@ -121,9 +131,10 @@ export async function fetchXArticleContent(articleUrl, config, sourceTweetId = n
   // Try the bookmarked tweet first - fastest path when it contains the article directly
   if (sourceTweetId) {
     try {
-      const output = execSync(`${birdCmd} read ${sourceTweetId} --json`, {
+      const validatedTweetId = validateNumericString(sourceTweetId, 'sourceTweetId');
+      const output = execSync(`${birdCmd} read ${validatedTweetId} --json`, {
         encoding: 'utf8',
-        timeout: 30000,
+        timeout: TIMEOUTS.BIRD_READ,
         env
       });
       const tweetData = JSON.parse(output);
@@ -152,9 +163,10 @@ export async function fetchXArticleContent(articleUrl, config, sourceTweetId = n
     // Search result truncated - need full tweet data
     try {
       console.log(`  Found original article tweet: ${originalTweet.id}, fetching full content...`);
-      const output = execSync(`${birdCmd} read ${originalTweet.id} --json`, {
+      const validatedTweetId = validateNumericString(originalTweet.id, 'originalTweet.id');
+      const output = execSync(`${birdCmd} read ${validatedTweetId} --json`, {
         encoding: 'utf8',
-        timeout: 30000,
+        timeout: TIMEOUTS.BIRD_READ,
         env
       });
       const tweetData = JSON.parse(output);
@@ -267,33 +279,51 @@ function buildBirdEnv(config) {
 export function fetchBookmarks(config, count = 10, options = {}) {
   try {
     const env = buildBirdEnv(config);
-    const birdCmd = config.birdPath || 'bird';
+    const birdCmd = validateBinaryPath(config.birdPath || 'bird', 'birdPath');
+    
+    // Validate count
+    const validatedCount = validatePositiveInteger(count, 'count');
+    if (validatedCount > LIMITS.MAX_COUNT) {
+      throw new Error(`count cannot exceed ${LIMITS.MAX_COUNT}, got: ${validatedCount}`);
+    }
 
     // Use --all for large fetches (> 50) or when explicitly requested
-    const useAll = options.all || count > 50;
+    const useAll = options.all || validatedCount > 50;
     const folderId = options.folderId;
 
     let cmd;
     if (useAll) {
       // Paginated fetch - use longer timeout
       // Calculate maxPages from count (bird returns ~20 per page, use 25 as buffer)
-      const estimatedPagesNeeded = Math.ceil(count / 20);
+      const estimatedPagesNeeded = Math.ceil(validatedCount / 20);
       const maxPages = options.maxPages || Math.max(estimatedPagesNeeded, 10);
-      cmd = folderId
-        ? `${birdCmd} bookmarks --folder-id ${folderId} --all --max-pages ${maxPages} --json`
-        : `${birdCmd} bookmarks --all --max-pages ${maxPages} --json`;
+      const validatedMaxPages = validatePositiveInteger(maxPages, 'maxPages');
+      
+      if (validatedMaxPages > LIMITS.MAX_PAGES) {
+        throw new Error(`maxPages cannot exceed ${LIMITS.MAX_PAGES}, got: ${validatedMaxPages}`);
+      }
+      
+      if (folderId) {
+        const validatedFolderId = validateNumericString(folderId, 'folderId');
+        cmd = `${birdCmd} bookmarks --folder-id ${validatedFolderId} --all --max-pages ${validatedMaxPages} --json`;
+      } else {
+        cmd = `${birdCmd} bookmarks --all --max-pages ${validatedMaxPages} --json`;
+      }
     } else {
-      cmd = folderId
-        ? `${birdCmd} bookmarks --folder-id ${folderId} -n ${count} --json`
-        : `${birdCmd} bookmarks -n ${count} --json`;
+      if (folderId) {
+        const validatedFolderId = validateNumericString(folderId, 'folderId');
+        cmd = `${birdCmd} bookmarks --folder-id ${validatedFolderId} -n ${validatedCount} --json`;
+      } else {
+        cmd = `${birdCmd} bookmarks -n ${validatedCount} --json`;
+      }
     }
 
     console.log(`  Running: ${cmd.replace(/--json/, '').trim()}`);
 
-    // Use temp file to work around bird CLI pipe buffering bug
-    const tmpFile = path.join(os.tmpdir(), `smaug-bookmarks-${Date.now()}.json`);
+    // Use cryptographically secure temp file to prevent prediction attacks
+    const tmpFile = generateSecureTempFile('smaug-bookmarks');
     execSync(`${cmd} > "${tmpFile}"`, {
-      timeout: useAll ? 180000 : 60000, // 3 min for --all, 60s otherwise
+      timeout: useAll ? TIMEOUTS.BIRD_FETCH_ALL : TIMEOUTS.BIRD_FETCH,
       env,
       shell: true
     });
@@ -306,9 +336,9 @@ export function fetchBookmarks(config, count = 10, options = {}) {
 
     // Respect the count parameter - truncate if we fetched more than requested
     // (paginated mode may return more bookmarks than asked for)
-    if (bookmarks.length > count) {
-      console.log(`  Fetched ${bookmarks.length} bookmarks, limiting to requested ${count}`);
-      bookmarks = bookmarks.slice(0, count);
+    if (bookmarks.length > validatedCount) {
+      console.log(`  Fetched ${bookmarks.length} bookmarks, limiting to requested ${validatedCount}`);
+      bookmarks = bookmarks.slice(0, validatedCount);
     }
 
     return bookmarks;
@@ -320,11 +350,17 @@ export function fetchBookmarks(config, count = 10, options = {}) {
 export function fetchLikes(config, count = 10) {
   try {
     const env = buildBirdEnv(config);
-    const birdCmd = config.birdPath || 'bird';
-    // Use temp file to work around bird CLI pipe buffering bug
-    const tmpFile = path.join(os.tmpdir(), `smaug-likes-${Date.now()}.json`);
-    execSync(`${birdCmd} likes -n ${count} --json > "${tmpFile}"`, {
-      timeout: 60000,
+    const birdCmd = validateBinaryPath(config.birdPath || 'bird', 'birdPath');
+    const validatedCount = validatePositiveInteger(count, 'count');
+    
+    if (validatedCount > LIMITS.MAX_COUNT) {
+      throw new Error(`count cannot exceed ${LIMITS.MAX_COUNT}, got: ${validatedCount}`);
+    }
+    
+    // Use cryptographically secure temp file to prevent prediction attacks
+    const tmpFile = generateSecureTempFile('smaug-likes');
+    execSync(`${birdCmd} likes -n ${validatedCount} --json > "${tmpFile}"`, {
+      timeout: TIMEOUTS.BIRD_FETCH,
       env,
       shell: true
     });
@@ -410,10 +446,11 @@ export function fetchFromFolders(config, count = 10, options = {}) {
 export function fetchTweet(config, tweetId) {
   try {
     const env = buildBirdEnv(config);
-    const birdCmd = config.birdPath || 'bird';
-    const output = execSync(`${birdCmd} read ${tweetId} --json`, {
+    const birdCmd = validateBinaryPath(config.birdPath || 'bird', 'birdPath');
+    const validatedTweetId = validateNumericString(tweetId, 'tweetId');
+    const output = execSync(`${birdCmd} read ${validatedTweetId} --json`, {
       encoding: 'utf8',
-      timeout: 15000,
+      timeout: TIMEOUTS.BIRD_READ,
       env
     });
     return JSON.parse(output);
