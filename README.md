@@ -508,3 +508,11 @@ Then use `bunx smaug fetch --all` to fetch all bookmarks with pagination.
 ## License
 
 MIT
+
+### Scratch directory
+
+This repo uses `.scratch/` as a local-only working directory for temporary files
+(plans, analysis, drafts, debugging notes). It is gitignored and will not exist
+after a fresh clone. Create it when you need it:
+
+    mkdir -p .scratch

@@ -1,0 +1,67 @@
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check for version tags
+        id: check-tag
+        run: |
+          if git describe --tags --abbrev=0 >/dev/null 2>&1; then
+            latest_tag=$(git describe --tags --abbrev=0)
+            commit_count=$(git rev-list "${latest_tag}..HEAD" --count)
+          else
+            latest_tag="v0.0.0"
+            commit_count=$(git rev-list HEAD --count)
+          fi
+
+          echo "latest_tag=$latest_tag" >> "$GITHUB_OUTPUT"
+          echo "commit_count=$commit_count" >> "$GITHUB_OUTPUT"
+
+      - name: Compute next version
+        if: steps.check-tag.outputs.commit_count != '0'
+        id: version
+        run: |
+          latest_tag="${{ steps.check-tag.outputs.latest_tag }}"
+          version="${latest_tag#v}"
+          IFS='.' read -r major minor patch <<< "$version"
+          patch=$((patch + 1))
+          echo "next_version=v${major}.${minor}.${patch}" >> "$GITHUB_OUTPUT"
+
+      - name: Generate changelog
+        if: steps.check-tag.outputs.commit_count != '0'
+        id: changelog
+        run: |
+          latest_tag="${{ steps.check-tag.outputs.latest_tag }}"
+          {
+            echo "changelog<<EOF"
+            echo "## Changes since ${latest_tag}"
+            echo
+            git log "${latest_tag}..HEAD" --pretty=format:"- %s (%h)" 2>/dev/null || git log --pretty=format:"- %s (%h)" -20
+            echo
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create GitHub Release
+        if: steps.check-tag.outputs.commit_count != '0'
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.next_version }}
+          name: ${{ steps.version.outputs.next_version }}
+          body: ${{ steps.changelog.outputs.changelog }}
+          generate_release_notes: true

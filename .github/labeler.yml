@@ -1,0 +1,53 @@
+ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '.github/**'
+
+docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/*.md'
+
+dependencies:
+  - changed-files:
+      - any-glob-to-any-file:
+          - '**/package.json'
+          - '**/bun.lock'
+          - '**/bun.lockb'
+          - '**/package-lock.json'
+          - '**/yarn.lock'
+          - '**/pnpm-lock.yaml'
+          - '**/requirements*.txt'
+          - '**/pyproject.toml'
+          - '**/go.mod'
+          - '**/Cargo.toml'
+
+'service:docs':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'docs/**'
+
+'service:examples':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'examples/**'
+
+'service:knowledge':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'knowledge/**'
+
+'service:scripts':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'scripts/**'
+
+'service:src':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'src/**'
+
+'service:test':
+  - changed-files:
+      - any-glob-to-any-file:
+          - 'test/**'
