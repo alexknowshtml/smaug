@@ -3,10 +3,10 @@
  *
  * Full two-phase workflow:
  * 1. Fetch bookmarks, expand links, extract content
- * 2. Invoke Claude Code or OpenCode CLI for analysis and filing
+ * 2. Invoke Z.ai CLI (cc-mirror variant) for analysis and filing
  *
  * Can be used with:
- * - Cron: "0,30 * * * *" (every 30 min) - node /path/to/smaug/src/job.js
+ * - Cron: "0,30 * * * *" (every 30 min) - bun /path/to/smaug/src/job.js
  * - Bree: Import and add to your Bree jobs array
  * - systemd timers: See README for setup
  * - Any other scheduler
@@ -18,6 +18,7 @@ import path from 'path';
 import os from 'os';
 import { fetchAndPrepareBookmarks } from './processor.js';
 import { loadConfig } from './config.js';
+import { validateBinaryPath, TIMEOUTS } from './validators.js';
 
 const JOB_NAME = 'smaug';
 const LOCK_FILE = path.join(os.tmpdir(), 'smaug.lock');
@@ -88,12 +89,11 @@ const HOARD_DESCRIPTIONS = {
   ]
 };
 
-// Token pricing per million tokens (as of 2024)
+// Known pricing data per million tokens (set to 0 when unavailable)
 const PRICING = {
-  'sonnet': { input: 3.00, output: 15.00, cacheRead: 0.30, cacheWrite: 3.75 },
-  'haiku': { input: 0.25, output: 1.25, cacheRead: 0.025, cacheWrite: 0.30 },
-  'opus': { input: 15.00, output: 75.00, cacheRead: 1.50, cacheWrite: 18.75 }
+  'glm-4.7': { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 }
 };
+const ZERO_PRICING = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 };
 
 // ============================================================================
 // Shared Helper Functions - Display & Progress
@@ -159,7 +159,7 @@ async function showDragonReveal(totalBookmarks) {
   }
 
   process.stdout.write('\r                    \r');
-  process.stdout.write(`  Wait... that's not Claude... it's
+  process.stdout.write(`  Forged through Z.ai... behold
 
   🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥  🔥
        _____ __  __   _   _   _  ____
@@ -183,7 +183,7 @@ function buildTokenDisplay(tokenUsage, trackTokens) {
     return '';
   }
 
-  const mainPricing = PRICING[tokenUsage.model] || PRICING.sonnet;
+  const mainPricing = PRICING[tokenUsage.model] || ZERO_PRICING;
   const subPricing = PRICING[tokenUsage.subagentModel || tokenUsage.model] || mainPricing;
 
   const mainInputCost = (tokenUsage.input / 1_000_000) * mainPricing.input;
@@ -197,6 +197,8 @@ function buildTokenDisplay(tokenUsage, trackTokens) {
 
   const formatNum = (n) => n.toLocaleString();
   const formatCost = (c) => c < 0.01 ? '<$0.01' : `$${c.toFixed(2)}`;
+
+  const hasPricing = mainPricing.input > 0 || mainPricing.output > 0 || mainPricing.cacheRead > 0 || mainPricing.cacheWrite > 0;
 
   let display = `
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -219,7 +221,7 @@ function buildTokenDisplay(tokenUsage, trackTokens) {
 
   display += `
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-  💰 TOTAL COST: ${formatCost(totalCost)}
+  💰 TOTAL COST: ${hasPricing ? formatCost(totalCost) : 'unavailable for this model'}
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 `;
 
@@ -227,67 +229,66 @@ function buildTokenDisplay(tokenUsage, trackTokens) {
 }
 
 // ============================================================================
-// Claude Binary Detection (exported for testing)
+// Z.ai Binary Detection (exported for testing)
 // ============================================================================
 
 /**
- * Find the claude binary path, with cross-platform support for Windows and Unix.
+ * Find the zai binary path, with cross-platform support for Windows and Unix.
  * @param {Object} options - Override options for testing
  * @param {string} options.platform - Override process.platform (e.g., 'win32', 'darwin')
  * @param {Object} options.env - Override environment variables
  * @param {Function} options.existsSync - Override fs.existsSync for testing
  * @param {Function} options.execSyncFn - Override execSync for testing
- * @returns {string} Path to claude binary
+ * @returns {string} Path to zai binary
  */
-export function findClaude(options = {}) {
+export function findZai(options = {}) {
   const platform = options.platform || process.platform;
   const env = options.env || process.env;
   const existsSync = options.existsSync || fs.existsSync;
   const execSyncFn = options.execSyncFn || execSync;
 
   const isWindows = platform === 'win32';
-  let claudePath = 'claude';
+  let zaiPath = 'zai';
 
   const possiblePaths = [
     // Unix/macOS paths
-    '/usr/local/bin/claude',
-    '/opt/homebrew/bin/claude',
-    path.join(env.HOME || '', '.claude/local/claude'),
-    path.join(env.HOME || '', '.local/bin/claude'),
-    path.join(env.HOME || '', 'Library/Application Support/Herd/config/nvm/versions/node/v20.19.4/bin/claude'),
+    '/usr/local/bin/zai',
+    '/opt/homebrew/bin/zai',
+    path.join(env.HOME || '', '.local/bin/zai'),
+    path.join(env.HOME || '', '.bun/bin/zai'),
   ];
 
   // Add Windows-specific paths
   if (isWindows) {
     possiblePaths.push(
-      path.join(env.APPDATA || '', 'npm', 'claude.cmd'),
-      path.join(env.LOCALAPPDATA || '', 'npm', 'claude.cmd'),
-      path.join(env.USERPROFILE || '', 'AppData', 'Roaming', 'npm', 'claude.cmd'),
-      path.join(env.PROGRAMFILES || '', 'Claude', 'claude.exe'),
-      path.join(env.LOCALAPPDATA || '', 'Programs', 'claude', 'claude.exe'),
+      path.join(env.APPDATA || '', 'npm', 'zai.cmd'),
+      path.join(env.LOCALAPPDATA || '', 'npm', 'zai.cmd'),
+      path.join(env.USERPROFILE || '', 'AppData', 'Roaming', 'npm', 'zai.cmd'),
+      path.join(env.PROGRAMFILES || '', 'zai', 'zai.exe'),
+      path.join(env.LOCALAPPDATA || '', 'Programs', 'zai', 'zai.exe'),
     );
   }
 
   for (const p of possiblePaths) {
     if (existsSync(p)) {
-      claudePath = p;
+      zaiPath = p;
       break;
     }
   }
 
   // Also check via which (Unix) or where (Windows) if we haven't found it
-  if (claudePath === 'claude') {
+  if (zaiPath === 'zai') {
     try {
-      const findCmd = isWindows ? 'where claude' : 'which claude';
+      const findCmd = isWindows ? 'where zai' : 'which zai';
       const result = execSyncFn(findCmd, { encoding: 'utf8' }).trim();
       // 'where' on Windows may return multiple lines, take the first
-      claudePath = result.split('\n')[0] || 'claude';
+      zaiPath = result.split('\n')[0] || 'zai';
     } catch {
-      // Command failed, stick with 'claude'
+      // Command failed, stick with 'zai'
     }
   }
 
-  return claudePath;
+  return zaiPath;
 }
 
 /**
@@ -299,32 +300,95 @@ export function getPathSeparator(platform = process.platform) {
   return platform === 'win32' ? ';' : ':';
 }
 
+/**
+ * Resolve which Z.ai binary to execute.
+ * The default config value "zai" should still go through auto-detection.
+ * @param {string | undefined | null} configZaiBin - Binary/path from config
+ * @param {Function} finder - Binary discovery function (for testing)
+ * @returns {string} Resolved executable path or command
+ */
+export function resolveZaiBinary(configZaiBin, finder = findZai) {
+  const configured = typeof configZaiBin === 'string' ? configZaiBin.trim() : '';
+  const resolved = !configured || configured === 'zai' ? finder() : configured;
+  
+  // Validate the resolved path to prevent command injection
+  return validateBinaryPath(resolved, 'zaiBin');
+}
+
 // ============================================================================
 // Lock Management - Prevents overlapping runs
+// Uses atomic file operations to prevent TOCTOU race conditions
 // ============================================================================
 
 function acquireLock() {
-  if (fs.existsSync(LOCK_FILE)) {
+  const lockData = JSON.stringify({ 
+    pid: process.pid, 
+    timestamp: Date.now() 
+  });
+  
+  try {
+    // Try to create lock file exclusively (fails if exists)
+    // This is atomic and prevents race conditions
+    fs.writeFileSync(LOCK_FILE, lockData, { flag: 'wx' });
+    return true;
+  } catch (error) {
+    if (error.code !== 'EEXIST') {
+      // Unexpected error
+      console.error(`[${JOB_NAME}] Failed to acquire lock: ${error.message}`);
+      return false;
+    }
+    
+    // Lock file exists - check if it's stale
     try {
       const { pid, timestamp } = JSON.parse(fs.readFileSync(LOCK_FILE, 'utf8'));
+      const age = Date.now() - timestamp;
+      
+      // Check if the process is still running
       try {
-        process.kill(pid, 0); // Check if process exists
-        const age = Date.now() - timestamp;
-        if (age < 20 * 60 * 1000) { // 20 minute timeout
+        process.kill(pid, 0); // Signal 0 checks if process exists without killing it
+        
+        if (age < TIMEOUTS.LOCK_STALE) {
           console.log(`[${JOB_NAME}] Previous run still in progress (PID ${pid}). Skipping.`);
           return false;
         }
+        
         console.log(`[${JOB_NAME}] Stale lock found (${Math.round(age / 60000)}min old). Overwriting.`);
       } catch (e) {
+        // Process doesn't exist
         console.log(`[${JOB_NAME}] Removing stale lock (PID ${pid} no longer running)`);
       }
-    } catch (e) {
-      // Invalid lock file
+      
+      // Remove stale lock and try again
+      try {
+        fs.unlinkSync(LOCK_FILE);
+      } catch (e) {
+        // File might have been removed by another process
+      }
+      
+      // Try one more time to acquire the lock atomically
+      try {
+        fs.writeFileSync(LOCK_FILE, lockData, { flag: 'wx' });
+        return true;
+      } catch (retryError) {
+        if (retryError.code === 'EEXIST') {
+          console.log(`[${JOB_NAME}] Another process acquired the lock. Skipping.`);
+          return false;
+        }
+        throw retryError;
+      }
+    } catch (parseError) {
+      // Invalid or corrupted lock file - remove it
+      console.log(`[${JOB_NAME}] Removing invalid lock file`);
+      try {
+        fs.unlinkSync(LOCK_FILE);
+        fs.writeFileSync(LOCK_FILE, lockData, { flag: 'wx' });
+        return true;
+      } catch (e) {
+        console.error(`[${JOB_NAME}] Failed to recover from invalid lock: ${e.message}`);
+        return false;
+      }
     }
-    fs.unlinkSync(LOCK_FILE);
   }
-  fs.writeFileSync(LOCK_FILE, JSON.stringify({ pid: process.pid, timestamp: Date.now() }));
-  return true;
 }
 
 function releaseLock() {
@@ -342,33 +406,13 @@ function releaseLock() {
 // Unified AI CLI Invocation
 // ============================================================================
 
-function findOpenCode() {
-  const possiblePaths = [
-    path.join(process.env.APPDATA || '', 'Roaming', 'npm', 'opencode.cmd'),
-    path.join(process.env.LOCALAPPDATA || '', 'npm', 'opencode.cmd'),
-    path.join(process.env.USERPROFILE || '', 'AppData', 'Roaming', 'npm', 'opencode.cmd'),
-    path.join(process.env.LOCALAPPDATA || '', 'Programs', 'opencode.exe'),
-    path.join(process.env.PROGRAMFILES || '', 'OpenCode', 'opencode.exe'),
-    path.join(process.env.USERPROFILE || '', 'AppData', 'Local', 'Programs', 'opencode.exe'),
-    '/usr/local/bin/opencode',
-    '/opt/homebrew/bin/opencode',
-    path.join(process.env.HOME || '', '.local/bin/opencode'),
-  ];
-
-  for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
-      return p;
-    }
-  }
-
-  return 'opencode';
-}
-
-function getCLISettings(cliType, config, bookmarkCount) {
+function getZaiSettings(config, bookmarkCount) {
   const isWindows = process.platform === 'win32';
-  const pathSep = isWindows ? ';' : ':';
-  const prompt = `Process the ${bookmarkCount} bookmark(s) in ./.state/pending-bookmarks.json following the instructions in ./.claude/commands/process-bookmarks.md. Read that file first, then process each bookmark.`;
-  
+  const pathSep = getPathSeparator(process.platform);
+  const pendingFile = config.pendingFile || './.state/pending-bookmarks.json';
+  const playbookPath = './.claude/commands/process-bookmarks.md';
+  const prompt = `Process the ${bookmarkCount} bookmark(s) in ${pendingFile} following the instructions in ${playbookPath}. Read that file first, then process each bookmark.`;
+
   const nodePaths = [
     '/usr/local/bin',
     '/opt/homebrew/bin',
@@ -378,33 +422,15 @@ function getCLISettings(cliType, config, bookmarkCount) {
     path.join(process.env.HOME || '', '.bun/bin'),
   ];
   const enhancedPath = [...nodePaths.filter(Boolean), process.env.PATH || ''].join(pathSep);
-  const apiKey = config.anthropicApiKey || process.env.ANTHROPIC_API_KEY;
-
-  if (cliType === 'opencode') {
-    const model = config.opencodeModel || 'opencode/glm-4.7-free';
-    return {
-      binary: findOpenCode(),
-      model,
-      args: ['run', '--format', 'json', '--model', model, prompt],
-      env: {
-        ...process.env,
-        PATH: enhancedPath,
-        ...(apiKey ? { ANTHROPIC_API_KEY: apiKey } : {}),
-        OPENCODE_MODEL: model
-      },
-      shell: false,
-      stdin: 'ignore'
-    };
-  }
-
-  const model = config.claudeModel || 'sonnet';
-  const allowedTools = config.allowedTools || 'Read,Write,Edit,Glob,Grep,Bash,Task,TodoWrite';
+  const model = config.zaiModel || 'glm-4.7';
+  const binary = resolveZaiBinary(config.zaiBin);
+  const allowedTools = 'Read,Write,Edit,Glob,Grep,Bash,Task,TodoWrite';
   const cleanEnv = { ...process.env };
   delete cleanEnv.CLAUDECODE;
   delete cleanEnv.CLAUDE_CODE_ENTRYPOINT;
 
   return {
-    binary: findClaude(),
+    binary,
     model,
     args: [
       '--print', '--verbose', '--output-format', 'stream-json',
@@ -413,7 +439,7 @@ function getCLISettings(cliType, config, bookmarkCount) {
     env: {
       ...cleanEnv,
       PATH: enhancedPath,
-      ...(apiKey ? { ANTHROPIC_API_KEY: apiKey } : {})
+      ZAI_MODEL: model
     },
     shell: isWindows,
     stdin: 'ignore'
@@ -421,12 +447,10 @@ function getCLISettings(cliType, config, bookmarkCount) {
 }
 
 async function invokeAICLI(config, bookmarkCount, options = {}) {
-  const timeout = config.claudeTimeout || 900000;
+  const timeout = config.zaiTimeout || 900000;
   const trackTokens = options.trackTokens || false;
-  const cliType = config.cliTool || 'claude';
-  
-  const settings = getCLISettings(cliType, config, bookmarkCount);
-  
+  const settings = getZaiSettings(config, bookmarkCount);
+
   await showDragonReveal(bookmarkCount);
 
   return new Promise((resolve) => {
@@ -603,10 +627,11 @@ async function invokeAICLI(config, bookmarkCount, options = {}) {
                   tokenUsage.subagentInput += parseInt(usageMatch[1], 10);
                   tokenUsage.subagentOutput += parseInt(usageMatch[2], 10);
                 }
-                if (!tokenUsage.subagentModel && content.includes('haiku')) {
-                  tokenUsage.subagentModel = 'haiku';
-                } else if (!tokenUsage.subagentModel && content.includes('sonnet')) {
-                  tokenUsage.subagentModel = 'sonnet';
+                if (!tokenUsage.subagentModel) {
+                  const modelMatch = content.match(/\b(glm-[\w.-]+|haiku|sonnet|opus)\b/i);
+                  if (modelMatch) {
+                    tokenUsage.subagentModel = modelMatch[1].toLowerCase();
+                  }
                 }
               }
             }
@@ -811,13 +836,11 @@ export async function run(options = {}) {
     // Track IDs we're about to process
     const idsToProcess = pendingData.bookmarks.map(b => b.id);
 
-    // Phase 2: AI analysis (Claude or OpenCode based on cliTool config)
-    const shouldInvoke = config.cliTool === 'opencode'
-      ? config.autoInvokeOpencode !== false
-      : config.autoInvokeClaude !== false;
+    // Phase 2: AI analysis (Z.ai via cc-mirror)
+    const shouldInvoke = config.autoInvokeZai !== false;
 
     if (shouldInvoke) {
-      console.log(`[${now}] Phase 2: Invoking ${config.cliTool || 'Claude'} for analysis...`);
+      console.log(`[${now}] Phase 2: Invoking Z.ai for analysis...`);
 
       const aiResult = await invokeAICLI(config, bookmarkCount, {
         trackTokens: options.trackTokens
@@ -875,7 +898,7 @@ export async function run(options = {}) {
           console.log(`[${now}] Restored full pending file for retry`);
         }
 
-        console.error(`[${now}] ${config.cliTool || 'Claude'} failed:`, aiResult.error);
+        console.error(`[${now}] Z.ai failed:`, aiResult.error);
 
         await notify(
           config,
