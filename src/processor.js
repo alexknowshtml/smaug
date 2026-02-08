@@ -217,6 +217,37 @@ export async function fetchXArticleContent(articleUrl, config, sourceTweetId = n
   }
 }
 
+/**
+ * Detects when a URL is likely a filename that Twitter auto-linked to a
+ * Moldova (.md) ccTLD domain, rather than an intentional URL.
+ *
+ * @param {string} expandedUrl - Fully expanded URL (after t.co redirect)
+ * @returns {boolean}
+ */
+export function isLikelyMdFilename(expandedUrl) {
+  let url;
+  try {
+    url = new URL(expandedUrl);
+  } catch {
+    return false;
+  }
+
+  if (!url.hostname.endsWith('.md')) return false;
+
+  // Allowlist: obsidian.md is the only known legitimate .md domain in tech Twitter
+  if (url.hostname === 'obsidian.md' || url.hostname.endsWith('.obsidian.md')) return false;
+
+  // Subdomained .md domains (e.g., www.plan.md) are more likely real websites
+  if (url.hostname.split('.').length > 2) return false;
+
+  // URLs with a meaningful path are likely intentional links to real pages
+  if (url.pathname.replace(/\/$/, '').length > 0) return false;
+
+  // Bare .md root domain — overwhelmingly an auto-linked filename in tech Twitter
+  // TODO: ALL_CAPS detection needs bird CLI's entities.urls[].display_url
+  return true;
+}
+
 // Sites that typically require paywall bypass
 const PAYWALL_DOMAINS = [
   'nytimes.com',
@@ -684,10 +715,14 @@ export async function fetchAndPrepareBookmarks(options = {}) {
       for (const { original: link, expanded } of expandedResults) {
         console.log(`  Expanded: ${link} -> ${expanded}`);
 
+        // Setting type based on URL patterns - this can be expanded with more patterns as needed
         let type = 'unknown';
         let content = null;
 
-        if (expanded.includes('github.com')) {
+        if (isLikelyMdFilename(expanded)) {
+          type = 'filename-reference';
+          console.log(`  Skipping .md filename auto-link: ${expanded}`);
+        } else if (expanded.includes('github.com')) {
           type = 'github';
         } else if (expanded.includes('youtube.com') || expanded.includes('youtu.be')) {
           type = 'video';
