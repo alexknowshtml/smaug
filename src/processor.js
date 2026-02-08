@@ -7,7 +7,7 @@
  * - Extracting content from linked pages (articles, GitHub repos)
  * - Optional: Bypassing paywalls via archive.ph
  *
- * Outputs a JSON bundle for AI analysis (Claude Code, etc.)
+ * Outputs a JSON bundle for AI analysis (Z.ai workflow)
  */
 
 import { execSync, spawn } from 'child_process';
