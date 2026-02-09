@@ -10,6 +10,8 @@ Last verified: 2026-02-09
 - Phase 1.4 explicit `test/verify-workflow` PRs have been completed across all target repos.
 - `greptile.json` has been merged in all 9 target repos.
 - Greptile activation verification succeeded in all 9 target repos using `@greptile` smoke PR triggers.
+- GHAS purchase for private personal repos is deferred for now (exceptions accepted).
+- Greptile merge-blocking policy decision is deferred for now (non-blocking mode retained).
 
 ## Phase 0 (Once) Status
 
@@ -39,7 +41,7 @@ Legend:
 | `trevoraspencer/webweaver-bot` | Done | Partial | Done | Done | Done | Done | Secret scanning and code scanning remain unavailable without GHAS; Greptile verified on smoke PR `#21` via `@greptile`. |
 | `trevoraspencer/dotfiles` | Done | Partial | Done | Done | Done | Done | Secret scanning and code scanning remain unavailable without GHAS; Greptile verified on smoke PR `#10` via `@greptile`. |
 
-## Remaining Work
+## Deferred Decisions
 
-1. Decide whether to purchase GitHub Advanced Security for private personal repos, or accept the two security exceptions.
-2. After a short stability window, decide whether to make the Greptile status check merge-blocking.
+1. GHAS purchase for private personal repos is deferred; current security exceptions remain accepted.
+2. Greptile merge-blocking policy is deferred; `Greptile Review` remains non-blocking for now.
