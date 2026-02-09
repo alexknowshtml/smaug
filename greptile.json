@@ -1,0 +1,8 @@
+{
+  "$schema": "https://schema.greptile.com/schema.json",
+  "statusCheck": true,
+  "triggerOnUpdates": true,
+  "notifications": {
+    "slack": false
+  }
+}
