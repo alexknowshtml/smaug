@@ -1,0 +1,50 @@
+name: Tech Debt Tracker
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Scan for TODO/FIXME/HACK/XXX comments
+        run: |
+          echo "## Tech Debt Report" >> "$GITHUB_STEP_SUMMARY"
+          echo >> "$GITHUB_STEP_SUMMARY"
+          echo "| File | Line | Type | Comment |" >> "$GITHUB_STEP_SUMMARY"
+          echo "|------|------|------|---------|" >> "$GITHUB_STEP_SUMMARY"
+
+          results=$(rg -n --no-heading "TODO|FIXME|HACK|XXX" \
+            -g '!node_modules' \
+            -g '!dist' \
+            -g '!build' \
+            -g '!coverage' \
+            || true)
+
+          if [[ -z "$results" ]]; then
+            echo "| _none_ | - | - | No tech debt markers found |" >> "$GITHUB_STEP_SUMMARY"
+            echo >> "$GITHUB_STEP_SUMMARY"
+            echo "**Total tech debt markers found: 0**" >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          while IFS= read -r line; do
+            file=${line%%:*}
+            rest=${line#*:}
+            lineno=${rest%%:*}
+            content=${rest#*:}
+            marker=$(printf '%s' "$content" | rg -o "TODO|FIXME|HACK|XXX" | head -1)
+            clean_content=$(printf '%s' "$content" | sed 's/|/\\|/g' | cut -c1-100)
+            echo "| $file | $lineno | $marker | $clean_content |" >> "$GITHUB_STEP_SUMMARY"
+          done <<< "$results"
+
+          total=$(printf '%s\n' "$results" | wc -l | tr -d ' ')
+          echo >> "$GITHUB_STEP_SUMMARY"
+          echo "**Total tech debt markers found: ${total}**" >> "$GITHUB_STEP_SUMMARY"
