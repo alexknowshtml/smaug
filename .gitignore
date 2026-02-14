@@ -21,6 +21,10 @@ Thumbs.db
 .idea/
 .vscode/
 
+# Environment files
+.env
+.env.*
+
 # Logs
 *.log
 
