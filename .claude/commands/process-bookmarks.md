@@ -160,13 +160,14 @@ For each bookmark (or batch):
 
 #### a. Determine the best title/summary
 
-Don't use generic titles like "Article" or "Tweet". Based on the content:
+Don't use generic titles like "Article" or "Tweet". The title appears after `## @author - ` and must be descriptive enough to scan in a list. Based on the content:
 - GitHub repos: Use the repo name and brief description
 - Articles: Use the article headline or key insight
 - Videos: Note for transcript, use tweet context
-- Quote tweets: Capture the key insight being highlighted
+- Quote tweets: Capture the key insight being highlighted, NOT the reaction (e.g., "JC_builds: Local Calorie Estimation Model Beating GPT-4o" not "Retweet: Are you guys starting to catch on?")
 - Reply threads: Include parent context in the summary
 - Plain tweets: Use the key point being made
+- Image/video-only with no context: Use `@{author} - [Media] {best guess from author's bio/context}` — never just "Video post" or the raw t.co URL
 
 #### b. Categorize using the categories config
 
@@ -184,6 +185,8 @@ Match each bookmark's links against category patterns (check `match` arrays). Us
 #### c. Add bookmark entry to archive (USE EDIT TOOL)
 
 **Use the Edit tool** to insert entries into the `archiveFile` (expand `~` to home directory). NEVER use Write - it will destroy existing entries.
+
+**DEDUPLICATION CHECK (CRITICAL):** Before inserting ANY entry, search bookmarks.md for the tweet URL (`x.com/{author}/status/{id}`). If it already exists, SKIP it — do not create a duplicate. Log: `Skipping duplicate: @{author} {id}`.
 
 **CRITICAL ordering rules for bookmarks.md:**
 
@@ -216,8 +219,26 @@ The file must be in **descending chronological order** (newest dates at TOP, old
 - **Link:** {expanded_url}
 - **Tags:** [[tag1]] [[tag2]] (if bookmark has tags from folders)
 - **Filed:** [{filename}](./knowledge/tools/{slug}.md) (if filed)
-- **What:** {1-2 sentence description of what this actually is}
+- **What:** {1-2 sentence synthesis — see What Field Rules below}
 ```
+
+### What Field Rules (CRITICAL — apply to every entry)
+
+The **What** field is the most important metadata. It must be a **synthesis**, not a label or echo.
+
+**Minimum bar:** 80+ characters, written as a complete sentence describing what the bookmark contains and why it matters. Descriptions under 80 characters are almost always lazy echoes or category labels — rewrite them until they actually say something.
+
+**NEVER write:**
+- Category labels: "Tool or resource share", "Commentary/perspective", "Claude Code insights/comparison"
+- Echo of the tweet text: If the tweet says "karpathy really is the fucking goat", the What must explain *what about Karpathy* — don't parrot the reaction
+- Generic placeholders: "Video content post", "Social media image bookmark", "Chart showing interesting data trend"
+- Raw URLs: Never put a t.co or any URL as the What
+
+**For quote tweets / replies:** The What MUST synthesize BOTH the author's commentary AND the quoted/parent content. The quoted content often contains the actual substance — a reaction tweet like "Are you guys starting to catch on?" is worthless without explaining what the quoted tweet actually describes.
+
+**For thin-content tweets (image-only, short with no link):** Write what you CAN infer from the author, text, and any visible context, prefixed with `THIN:` so downstream tools can flag these for manual review. Example: `THIN: @calebporzio reacting to an unspecified Chrome feature — tweet is image/video only, no text context available.`
+
+**For failed link expansion (raw t.co links):** Write `LINK_FAILED: Could not expand link from @{author} — original t.co URL did not resolve.`
 
 **Tags format:** Use wiki-link style `[[TagName]]` for each tag. Only include the **Tags:** line if the bookmark has tags in its `tags` array (from folder configuration). Example: `- **Tags:** [[AI]] [[Coding]]`
 
@@ -448,7 +469,16 @@ DATE: {bookmark.date}
 
 - **Tweet:** {url}
 - **Tags:** [[tag1]] [[tag2]] (if tags exist)
-- **What:** {description}
+- **What:** {1-2 sentence synthesis, 80+ chars minimum}
+
+**What field rules (MUST follow):**
+- Write a SYNTHESIS, not a category label or echo of the tweet
+- NEVER write generic labels like "Tool or resource share" or "Commentary/perspective"
+- NEVER just echo the tweet text as the What — explain what the content IS and why it matters
+- For quote tweets: synthesize BOTH the commentary AND the quoted content (the quote often has the substance)
+- For image/video-only tweets with no text context: prefix with "THIN:" and describe what you can infer
+- For failed link expansion (raw t.co URLs): write "LINK_FAILED: Could not expand link from @{author}"
+- Minimum 80 characters. If you can't hit 80, something is wrong with your analysis.
 
 Also create knowledge files (./knowledge/tools/*.md, ./knowledge/articles/*.md) as needed.
 DO NOT touch bookmarks.md - only write to .state/batch-{N}.md
