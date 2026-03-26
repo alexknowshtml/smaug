@@ -1,0 +1,25 @@
+{
+  "events": [
+    {
+      "segs": [{"utf8": "Hello and welcome to this video."}]
+    },
+    {
+      "segs": [{"utf8": "Today we'll be talking about"}]
+    },
+    {
+      "segs": [{"utf8": "Today we'll be talking about"}]
+    },
+    {
+      "segs": [{"utf8": " artificial intelligence."}]
+    },
+    {
+      "segs": [{"utf8": "Let's dive right in."}]
+    },
+    {
+      "tStartMs": 5000
+    },
+    {
+      "segs": [{"utf8": "First, let's define what AI means."}]
+    }
+  ]
+}

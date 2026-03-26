@@ -154,9 +154,10 @@ Categories define how different bookmark types are handled. Smaug comes with sen
 | **github** | github.com | file | `./knowledge/tools/` |
 | **article** | medium.com, substack.com, dev.to, blogs | file | `./knowledge/articles/` |
 | **x-article** | x.com/i/article/* | file | `./knowledge/articles/` |
+| **podcast** | podcasts.apple.com, spotify.com/episode, overcast.fm | transcribe | `./knowledge/podcasts/` |
+| **youtube** | youtube.com, youtu.be | transcribe | `./knowledge/videos/` |
+| **video** | vimeo.com, loom.com | transcribe | `./knowledge/videos/` |
 | **tweet** | (fallback) | capture | bookmarks.md only |
-
-🔜 _Note: Transcription is flagged but not yet automated. PRs welcome!_
 
 ### X/Twitter Long-Form Articles
 
@@ -177,11 +178,56 @@ Example X article bookmark:
 - **What:** Deep dive into patterns from scaling CrewAI to billions of agent executions.
 ```
 
+### Video & Podcast Transcription
+
+Smaug automatically extracts transcripts from YouTube videos, podcasts, and other video content using a tiered strategy:
+
+1. **Captions (fast)**: yt-dlp downloads existing subtitles — no audio processing needed
+2. **Whisper (fallback)**: If no captions exist, yt-dlp extracts audio and Whisper transcribes it locally
+3. **Placeholder**: If neither tool is installed, bookmarks are flagged with `status: needs_transcript`
+
+Both tools are **optional** — install what you need:
+
+```bash
+# For caption extraction (recommended — handles most YouTube videos)
+pip install yt-dlp
+# or: brew install yt-dlp
+
+# For audio transcription when captions aren't available
+pip install openai-whisper
+
+# Required for Whisper (Tier 2) — ffmpeg handles audio extraction and decoding
+# Not needed if you only use caption extraction (Tier 1)
+sudo apt-get install ffmpeg   # Debian/Ubuntu
+# or: brew install ffmpeg     # macOS
+```
+
+**Supported platforms:** YouTube (excellent), Vimeo (good), SoundCloud (audio only), direct video URLs. Spotify and Apple Podcasts are not supported by yt-dlp — these produce placeholder files.
+
+**Configuration** (all optional, in `smaug.config.json`):
+
+```json
+{
+  "ytdlpPath": "/custom/path/to/yt-dlp",
+  "whisperPath": "/custom/path/to/whisper",
+  "whisperModel": "small.en",
+  "transcribeTimeouts": {
+    "subtitle": 30000,
+    "audio": 300000,
+    "whisper": 600000
+  }
+}
+```
+
+**How transcripts are stored:** Full transcripts are written to `.state/transcripts/{tweet_id}.txt` — they never bloat the pending JSON, even for 6-hour podcasts. During processing, Claude reads only the first ~20K characters needed for summarization.
+
+Environment variables: `YTDLP_PATH`, `WHISPER_PATH`, `WHISPER_MODEL`.
+
 ### Actions
 
 - **file**: Create a separate markdown file with rich metadata
 - **capture**: Add to bookmarks.md only (no separate file)
-- **transcribe**: Flag for future transcription *(auto-transcription coming soon! PRs welcome)*
+- **transcribe**: Extract transcript via yt-dlp captions or Whisper, then create a rich knowledge file. Falls back to a placeholder if tools are not installed
 
 ### Custom Categories
 

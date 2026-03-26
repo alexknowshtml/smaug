@@ -34,6 +34,23 @@ const DEFAULT_CONFIG = {
   // Path to bird CLI (if not in PATH)
   birdPath: null,
 
+  // Path to yt-dlp CLI (if not in PATH)
+  ytdlpPath: null,
+
+  // Path to whisper CLI (if not in PATH)
+  whisperPath: null,
+
+  // Whisper model to use (default: small.en)
+  whisperModel: 'small.en',
+
+  // Transcription timeouts (ms)
+  transcribeTimeouts: {
+    subtitle: 30000,    // 30s for subtitle download
+    audio: 300000,      // 5min for audio extraction
+    whisper: 600000     // 10min for whisper transcription
+  },
+
+
   // Twitter credentials (can also use AUTH_TOKEN and CT0 env vars)
   twitter: {
     authToken: null,
@@ -221,6 +238,15 @@ export function loadConfig(configPath) {
   if (process.env.BIRD_PATH) {
     config.birdPath = process.env.BIRD_PATH;
   }
+  if (process.env.YTDLP_PATH) {
+    config.ytdlpPath = process.env.YTDLP_PATH;
+  }
+  if (process.env.WHISPER_PATH) {
+    config.whisperPath = process.env.WHISPER_PATH;
+  }
+  if (process.env.WHISPER_MODEL) {
+    config.whisperModel = process.env.WHISPER_MODEL;
+  }
   if (process.env.SOURCE) {
     config.source = process.env.SOURCE;
   }
@@ -268,6 +294,8 @@ export function loadConfig(configPath) {
   config.pendingFile = expandTilde(config.pendingFile);
   config.stateFile = expandTilde(config.stateFile);
   config.birdPath = expandTilde(config.birdPath);
+  config.ytdlpPath = expandTilde(config.ytdlpPath);
+  config.whisperPath = expandTilde(config.whisperPath);
   config.projectRoot = expandTilde(config.projectRoot);
 
   // Expand ~ in category folders

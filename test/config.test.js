@@ -63,4 +63,37 @@ describe('loadConfig', () => {
     // Default paths don't use ~, but the function should work
     assert.ok(!config.archiveFile.includes('~'));
   });
+
+  test('transcription config keys have correct defaults', () => {
+    const config = loadConfig('./nonexistent.json');
+    assert.strictEqual(config.ytdlpPath, null);
+    assert.strictEqual(config.whisperPath, null);
+    assert.strictEqual(config.whisperModel, 'small.en');
+    assert.ok(config.transcribeTimeouts);
+    assert.strictEqual(config.transcribeTimeouts.subtitle, 30000);
+    assert.strictEqual(config.transcribeTimeouts.audio, 300000);
+    assert.strictEqual(config.transcribeTimeouts.whisper, 600000);
+  });
+
+  test('env var overrides work for transcription config', () => {
+    const origYtdlp = process.env.YTDLP_PATH;
+    const origWhisper = process.env.WHISPER_PATH;
+    const origModel = process.env.WHISPER_MODEL;
+    try {
+      process.env.YTDLP_PATH = '/custom/yt-dlp';
+      process.env.WHISPER_PATH = '/custom/whisper';
+      process.env.WHISPER_MODEL = 'tiny.en';
+      const config = loadConfig('./nonexistent.json');
+      assert.strictEqual(config.ytdlpPath, '/custom/yt-dlp');
+      assert.strictEqual(config.whisperPath, '/custom/whisper');
+      assert.strictEqual(config.whisperModel, 'tiny.en');
+    } finally {
+      if (origYtdlp === undefined) delete process.env.YTDLP_PATH;
+      else process.env.YTDLP_PATH = origYtdlp;
+      if (origWhisper === undefined) delete process.env.WHISPER_PATH;
+      else process.env.WHISPER_PATH = origWhisper;
+      if (origModel === undefined) delete process.env.WHISPER_MODEL;
+      else process.env.WHISPER_MODEL = origModel;
+    }
+  });
 });

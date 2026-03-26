@@ -4,7 +4,16 @@ import fs from 'fs';
 import path from 'path';
 import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
-import { isPaywalled, stripQuerystring, fetchXArticleContent } from '../src/processor.js';
+import {
+  isPaywalled,
+  stripQuerystring,
+  fetchXArticleContent,
+  findYtDlp,
+  findWhisper,
+  parseJson3Transcript,
+  parseVttTranscript,
+  fetchTranscriptContent
+} from '../src/processor.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -576,6 +585,194 @@ describe('fetchBookmarks count truncation', () => {
     assert.strictEqual(shouldUseAll(51, false), true);
     assert.strictEqual(shouldUseAll(100, false), true);
     assert.strictEqual(shouldUseAll(10, true), true); // explicit --all flag
+  });
+});
+
+// Check if yt-dlp is available for integration tests
+function hasYtDlp() {
+  try {
+    execSync('which yt-dlp', { encoding: 'utf8', timeout: 5000, stdio: 'pipe' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function hasWhisper() {
+  try {
+    execSync('which whisper', { encoding: 'utf8', timeout: 5000, stdio: 'pipe' });
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+const YT_DLP_AVAILABLE = hasYtDlp();
+const WHISPER_AVAILABLE = hasWhisper();
+
+describe('findYtDlp', () => {
+  test('returns null when tool is not installed (mocked)', () => {
+    const result = findYtDlp({
+      execSyncFn: () => { throw new Error('not found'); },
+      configPath: null
+    });
+    assert.strictEqual(result, null);
+  });
+
+  test('returns configured path when it exists', () => {
+    const result = findYtDlp({
+      configPath: '/usr/bin/env'
+    });
+    assert.strictEqual(result, '/usr/bin/env');
+  });
+
+  test('returns null for non-existent configured path', () => {
+    const result = findYtDlp({
+      execSyncFn: () => { throw new Error('not found'); },
+      configPath: '/nonexistent/path/yt-dlp'
+    });
+    assert.strictEqual(result, null);
+  });
+});
+
+describe('findWhisper', () => {
+  test('returns null when tool is not installed (mocked)', () => {
+    const result = findWhisper({
+      execSyncFn: () => { throw new Error('not found'); },
+      configPath: null
+    });
+    assert.strictEqual(result, null);
+  });
+
+  test('returns configured path when it exists', () => {
+    const result = findWhisper({
+      configPath: '/usr/bin/env'
+    });
+    assert.strictEqual(result, '/usr/bin/env');
+  });
+});
+
+describe('parseJson3Transcript', () => {
+  test('produces clean text from fixture', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.json3'), 'utf8');
+    const result = parseJson3Transcript(content);
+    assert.ok(result.includes('Hello and welcome to this video.'));
+    assert.ok(result.includes('artificial intelligence.'));
+    assert.ok(result.includes("Let's dive right in."));
+    assert.ok(result.includes("First, let's define what AI means."));
+  });
+
+  test('deduplicates adjacent identical lines', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.json3'), 'utf8');
+    const result = parseJson3Transcript(content);
+    const lines = result.split('\n');
+    const talkingAbout = lines.filter(l => l === "Today we'll be talking about");
+    assert.strictEqual(talkingAbout.length, 1, 'duplicate adjacent lines should be removed');
+  });
+
+  test('skips events without segs', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.json3'), 'utf8');
+    const result = parseJson3Transcript(content);
+    assert.ok(!result.includes('undefined'));
+  });
+
+  test('returns empty string for malformed content', () => {
+    assert.strictEqual(parseJson3Transcript('not json'), '');
+    assert.strictEqual(parseJson3Transcript(''), '');
+    assert.strictEqual(parseJson3Transcript('{}'), '');
+  });
+});
+
+describe('parseVttTranscript', () => {
+  test('produces clean text from fixture', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.vtt'), 'utf8');
+    const result = parseVttTranscript(content);
+    assert.ok(result.includes('Hello and welcome to this video.'));
+    assert.ok(result.includes('artificial intelligence.'));
+    assert.ok(result.includes("Let's dive right in."));
+  });
+
+  test('strips VTT formatting tags', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.vtt'), 'utf8');
+    const result = parseVttTranscript(content);
+    assert.ok(!result.includes('<c.colorCCCCCC>'), 'color tags should be stripped');
+    assert.ok(!result.includes('<00:'), 'inline timestamps should be stripped');
+  });
+
+  test('decodes HTML entities', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.vtt'), 'utf8');
+    const result = parseVttTranscript(content);
+    assert.ok(result.includes('&s define'), 'should decode &amp; to &');
+    assert.ok(result.includes("Let's"), 'should decode &#39; to apostrophe');
+  });
+
+  test('excludes WEBVTT header and timestamp lines', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.vtt'), 'utf8');
+    const result = parseVttTranscript(content);
+    assert.ok(!result.includes('WEBVTT'), 'header should be excluded');
+    assert.ok(!result.includes('-->'), 'timestamps should be excluded');
+    assert.ok(!result.includes('Kind:'), 'metadata should be excluded');
+  });
+
+  test('deduplicates adjacent lines', () => {
+    const content = fs.readFileSync(path.join(__dirname, 'fixtures/sample-subtitles.vtt'), 'utf8');
+    const result = parseVttTranscript(content);
+    const lines = result.split('\n');
+    for (let i = 1; i < lines.length; i++) {
+      assert.notStrictEqual(lines[i], lines[i - 1], `adjacent lines should not be identical: "${lines[i]}"`);
+    }
+  });
+
+  test('returns empty string for null/empty input', () => {
+    assert.strictEqual(parseVttTranscript(null), '');
+    assert.strictEqual(parseVttTranscript(''), '');
+    assert.strictEqual(parseVttTranscript(undefined), '');
+  });
+});
+
+describe('fetchTranscriptContent', () => {
+  test('returns null with log when no tools available', async () => {
+    const result = await fetchTranscriptContent(
+      'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      { transcribeTimeouts: {} },
+      { ytdlp: null, whisper: null }
+    );
+    assert.strictEqual(result, null);
+  });
+
+  test('returns null when toolPaths is undefined', async () => {
+    const result = await fetchTranscriptContent(
+      'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+      {},
+      undefined
+    );
+    assert.strictEqual(result, null);
+  });
+});
+
+describe('podcast URL classification', () => {
+  test('Apple Podcasts URL is detected as podcast type', () => {
+    const url = 'https://podcasts.apple.com/us/podcast/episode-name/id123456';
+    assert.ok(url.includes('podcasts.apple.com'));
+  });
+
+  test('Spotify episode URL is detected as podcast type', () => {
+    const url = 'https://open.spotify.com/episode/abc123';
+    assert.ok(url.includes('spotify.com/episode'));
+  });
+
+  test('Overcast URL is detected as podcast type', () => {
+    const url = 'https://overcast.fm/+abc123';
+    assert.ok(url.includes('overcast.fm'));
+  });
+
+  test('YouTube URL is NOT classified as podcast', () => {
+    const url = 'https://www.youtube.com/watch?v=abc123';
+    assert.ok(!url.includes('podcasts.apple.com'));
+    assert.ok(!url.includes('spotify.com/episode'));
+    assert.ok(!url.includes('overcast.fm'));
+    assert.ok(!url.includes('pocketcasts.com'));
+    assert.ok(!url.includes('castro.fm'));
   });
 });
 

@@ -541,6 +541,244 @@ export async function fetchArticleContent(url) {
   }
 }
 
+// ---- Video/Podcast Transcript Extraction ----
+
+/**
+ * Locate yt-dlp binary. Returns path or null if not installed.
+ * Accepts options for dependency injection (testability).
+ */
+export function findYtDlp(options = {}) {
+  const execSyncFn = options.execSyncFn || execSync;
+  const configPath = options.configPath || null;
+
+  if (configPath) {
+    try {
+      if (fs.existsSync(configPath)) return configPath;
+    } catch {}
+  }
+
+  try {
+    return execSyncFn('which yt-dlp', { encoding: 'utf8', timeout: 5000, stdio: 'pipe' }).trim();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Locate whisper binary. Returns path or null if not installed.
+ * Accepts options for dependency injection (testability).
+ */
+export function findWhisper(options = {}) {
+  const execSyncFn = options.execSyncFn || execSync;
+  const configPath = options.configPath || null;
+
+  if (configPath) {
+    try {
+      if (fs.existsSync(configPath)) return configPath;
+    } catch {}
+  }
+
+  try {
+    return execSyncFn('which whisper', { encoding: 'utf8', timeout: 5000, stdio: 'pipe' }).trim();
+  } catch {
+    return null;
+  }
+}
+
+/**
+ * Parse YouTube json3 subtitle format into plain text.
+ * json3 contains events with segs[].utf8 text segments.
+ */
+export function parseJson3Transcript(content) {
+  try {
+    const data = JSON.parse(content);
+    const events = data.events || [];
+    const lines = [];
+    let lastLine = '';
+
+    for (const event of events) {
+      if (!event.segs) continue;
+      const text = event.segs.map(s => s.utf8 || '').join('').trim();
+      if (text && text !== lastLine) {
+        lines.push(text);
+        lastLine = text;
+      }
+    }
+
+    return lines.join('\n');
+  } catch {
+    return '';
+  }
+}
+
+/**
+ * Parse VTT (WebVTT) subtitle format into plain text.
+ * Strips headers, timestamps, tags, and deduplicates adjacent lines.
+ */
+export function parseVttTranscript(content) {
+  if (!content || typeof content !== 'string') return '';
+
+  const lines = content.split('\n');
+  const textLines = [];
+  let lastLine = '';
+
+  for (const raw of lines) {
+    const line = raw.trim();
+
+    // Skip WEBVTT header, NOTE blocks, and empty lines
+    if (!line || line === 'WEBVTT' || line.startsWith('NOTE') || line.startsWith('Kind:') || line.startsWith('Language:')) continue;
+
+    // Skip timestamp lines (00:00:00.000 --> 00:00:05.000)
+    if (/^\d{2}:\d{2}/.test(line) && line.includes('-->')) continue;
+
+    // Skip cue identifiers (numeric lines before timestamps)
+    if (/^\d+$/.test(line)) continue;
+
+    // Strip VTT formatting tags: <c>, </c>, <00:00:01.234>, <c.colorCCCCCC>, etc.
+    let cleaned = line
+      .replace(/<\/?c[^>]*>/g, '')           // color/class tags
+      .replace(/<\d{2}:\d{2}[\d:.]*>/g, '')  // inline timestamps
+      .replace(/<\/?[a-z][^>]*>/g, '')        // other HTML-like tags
+      .trim();
+
+    // Decode common HTML entities
+    cleaned = cleaned
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "'")
+      .replace(/&apos;/g, "'")
+      .replace(/&nbsp;/g, ' ');
+
+    if (cleaned && cleaned !== lastLine) {
+      textLines.push(cleaned);
+      lastLine = cleaned;
+    }
+  }
+
+  return textLines.join('\n');
+}
+
+/**
+ * Fetch transcript for a video/podcast URL using tiered strategy:
+ *   Tier 1: yt-dlp captions (subtitle-only, no download)
+ *   Tier 2: yt-dlp audio extraction + Whisper transcription
+ *   Tier 3: return null (placeholder behavior)
+ *
+ * @param {string} url - The video/podcast URL
+ * @param {object} config - App config (timeouts, whisperModel)
+ * @param {object} toolPaths - { ytdlp: string|null, whisper: string|null }
+ * @returns {Promise<{text: string, source: string}|null>}
+ */
+export async function fetchTranscriptContent(url, config, toolPaths) {
+  const { ytdlp, whisper } = toolPaths || {};
+  const timeouts = config.transcribeTimeouts || {};
+  const subtitleTimeout = timeouts.subtitle || 30000;
+  const audioTimeout = timeouts.audio || 300000;
+  const whisperTimeout = timeouts.whisper || 600000;
+  const whisperModel = config.whisperModel || 'small.en';
+
+  if (!ytdlp) {
+    console.log('  yt-dlp not available — install yt-dlp for video/podcast transcripts');
+    return null;
+  }
+
+  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'smaug-transcript-'));
+
+  try {
+    // ---- Tier 1: Subtitle extraction ----
+    const isYouTube = /youtube\.com|youtu\.be/.test(url);
+    const subFormat = isYouTube ? 'json3' : 'vtt/best';
+    const outputTemplate = path.join(tmpDir, '%(id)s.%(ext)s');
+
+    try {
+      execSync(
+        `"${ytdlp}" --write-subs --write-auto-subs --sub-langs "en.*,-live_chat" --sub-format "${subFormat}" --skip-download --no-warnings -o "${outputTemplate}" "${url}"`,
+        { timeout: subtitleTimeout, stdio: 'pipe', encoding: 'utf8', shell: true }
+      );
+    } catch {
+      // yt-dlp may exit non-zero even when subtitle files were written
+      // (e.g., 429 on one variant while others succeeded). Check files below.
+    }
+
+    // Check for subtitle output files (yt-dlp exits non-zero even with no subs)
+    const files = fs.readdirSync(tmpDir);
+    const subFile = files.find(f => f.endsWith('.json3')) ||
+                    files.find(f => f.endsWith('.vtt')) ||
+                    files.find(f => f.endsWith('.srt'));
+
+    if (subFile) {
+      const subContent = fs.readFileSync(path.join(tmpDir, subFile), 'utf8');
+      let text;
+
+      if (subFile.endsWith('.json3')) {
+        text = parseJson3Transcript(subContent);
+      } else {
+        text = parseVttTranscript(subContent);
+      }
+
+      if (text && text.length > 0) {
+        console.log(`  Transcript extracted via captions (${text.length} chars)`);
+        return { text, source: 'yt-dlp-captions' };
+      }
+    }
+
+    // ---- Tier 2: Audio extraction + Whisper ----
+    if (!whisper) {
+      console.log('  No captions available — install whisper for audio transcription');
+      return null;
+    }
+
+    console.log('  No captions found, extracting audio for Whisper...');
+    const audioFile = path.join(tmpDir, 'audio.mp3');
+
+    try {
+      execSync(
+        `"${ytdlp}" -x --audio-format mp3 --audio-quality 5 -o "${audioFile}" "${url}"`,
+        { timeout: audioTimeout, stdio: 'pipe', encoding: 'utf8', shell: true }
+      );
+    } catch (err) {
+      console.log(`  Audio extraction failed: ${err.message?.split('\n')[0]}`);
+      return null;
+    }
+
+    if (!fs.existsSync(audioFile)) {
+      console.log('  Audio extraction produced no output');
+      return null;
+    }
+
+    console.log(`  Transcribing with Whisper (model: ${whisperModel})...`);
+    try {
+      execSync(
+        `"${whisper}" "${audioFile}" --model ${whisperModel} --output_format txt --output_dir "${tmpDir}"`,
+        { timeout: whisperTimeout, stdio: 'pipe', encoding: 'utf8', shell: true }
+      );
+    } catch (err) {
+      console.log(`  Whisper transcription failed: ${err.message?.split('\n')[0]}`);
+      return null;
+    }
+
+    // Whisper outputs audio.txt
+    const txtFiles = fs.readdirSync(tmpDir).filter(f => f.endsWith('.txt'));
+    if (txtFiles.length > 0) {
+      const text = fs.readFileSync(path.join(tmpDir, txtFiles[0]), 'utf8').trim();
+      if (text.length > 0) {
+        console.log(`  Transcript extracted via Whisper (${text.length} chars)`);
+        return { text, source: 'whisper' };
+      }
+    }
+
+    console.log('  Whisper produced no output');
+    return null;
+  } finally {
+    // Clean up temp directory
+    try {
+      fs.rmSync(tmpDir, { recursive: true, force: true });
+    } catch {}
+  }
+}
+
 export async function fetchContent(url, type, config) {
   // Use GitHub API for GitHub URLs
   if (type === 'github') {
@@ -640,6 +878,13 @@ export async function fetchAndPrepareBookmarks(options = {}) {
     return { bookmarks: [], count: 0 };
   }
 
+  // Detect transcription tools once per run
+  const ytdlpPath = findYtDlp({ configPath: config.ytdlpPath });
+  const whisperPath = findWhisper({ configPath: config.whisperPath });
+  const toolPaths = { ytdlp: ytdlpPath, whisper: whisperPath };
+  if (ytdlpPath) console.log(`  yt-dlp found: ${ytdlpPath}`);
+  if (whisperPath) console.log(`  whisper found: ${whisperPath}`);
+
   console.log(`Preparing ${toProcess.length} tweets...`);
 
   const prepared = [];
@@ -738,6 +983,14 @@ export async function fetchAndPrepareBookmarks(options = {}) {
           }
         } else if (expanded.match(/\.(jpg|jpeg|png|gif|webp)$/i)) {
           type = 'image';
+        } else if (
+          expanded.includes('podcasts.apple.com') ||
+          expanded.includes('spotify.com/episode') ||
+          expanded.includes('overcast.fm') ||
+          expanded.includes('pocketcasts.com') ||
+          expanded.includes('castro.fm')
+        ) {
+          type = 'podcast';
         } else {
           type = 'article';
         }
@@ -770,6 +1023,30 @@ export async function fetchAndPrepareBookmarks(options = {}) {
           } catch (error) {
             console.log(`  Could not fetch content: ${error.message}`);
             content = { error: error.message };
+          }
+        }
+
+        // Fetch transcript for video and podcast links
+        if (type === 'video' || type === 'podcast') {
+          try {
+            const transcriptResult = await fetchTranscriptContent(expanded, config, toolPaths);
+            if (transcriptResult && transcriptResult.text) {
+              // Write full transcript to separate file to keep pending JSON small
+              const transcriptsDir = path.join(path.dirname(config.pendingFile), 'transcripts');
+              if (!fs.existsSync(transcriptsDir)) {
+                fs.mkdirSync(transcriptsDir, { recursive: true });
+              }
+              const transcriptFile = path.join(transcriptsDir, `${bookmark.id}.txt`);
+              fs.writeFileSync(transcriptFile, transcriptResult.text);
+              content = {
+                source: transcriptResult.source,
+                transcriptFile,
+                chars: transcriptResult.text.length
+              };
+              console.log(`  Transcript: ${content.chars} chars (${content.source}) → ${transcriptFile}`);
+            }
+          } catch (error) {
+            console.log(`  Transcript extraction failed: ${error.message}`);
           }
         }
 
