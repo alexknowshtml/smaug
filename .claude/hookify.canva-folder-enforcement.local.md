@@ -1,0 +1,1 @@
+/Users/dillon.w/Projects/Dillons Project/.claude/rules/hookify/hookify.canva-folder-enforcement.local.md

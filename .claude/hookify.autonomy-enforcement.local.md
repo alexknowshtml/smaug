@@ -1,0 +1,1 @@
+/Users/dillon.w/Projects/Dillons Project/.claude/rules/hookify/hookify.autonomy-enforcement.local.md
