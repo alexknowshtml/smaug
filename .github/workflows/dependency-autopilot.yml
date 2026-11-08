@@ -31,10 +31,14 @@ jobs:
     # third-party action pins match their upstream release tags; untrusted values
     # reach shell only through env; the identity, same-repo and run-provenance
     # gates run before any checkout or write; the one checkout sets
-    # persist-credentials: false. Nothing bumps this pin (shared-workflows has no
-    # tags, Renovate's github-actions manager is off), so re-pin by hand after
-    # reviewing the diff.
-    uses: StartupBros-com/shared-workflows/.github/workflows/dependency-autopilot.yml@26c7b0400d82d67671021a68d7c4d7e420e73b6b # main 2026-09-29
+    # persist-credentials: false. Re-pinned 2026-11-08 to shared-workflows#29,
+    # the only commit after 26c7b04: for bot accounts it reads gh's
+    # `app/dependabot` and REST's `dependabot[bot]` (likewise the autopilot App)
+    # as one identity, so a Dependabot PR is no longer `stale_rejected` on a
+    # login spelling; the checks listed above are unchanged. Nothing bumps this
+    # pin (shared-workflows has no tags, Renovate's github-actions manager is
+    # off), so re-pin by hand after reviewing the diff.
+    uses: StartupBros-com/shared-workflows/.github/workflows/dependency-autopilot.yml@1f4dfb6fe79e84f5e21f512c9811548513959b74 # main 2026-11-08 (#29)
     with:
       ci_conclusion: ${{ github.event.workflow_run.conclusion }}
       pr_branch:     ${{ github.event.workflow_run.head_branch }}
