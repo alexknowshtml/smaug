@@ -12,14 +12,39 @@ permissions:
   actions: read
 jobs:
   autopilot:
+    # workflow_run runs with this repo's write token even when the CI run came
+    # from a fork, and a fork chooses its own branch name. The head_repository
+    # check drops fork runs before the reusable workflow starts (it rejects them
+    # again itself). Deliberately no `actor == 'dependabot[bot]'` or
+    # `conclusion == 'success'` clause: auto-fix pushes as the GitHub App, so the
+    # CI run after a fix carries the App as its actor, and a red run is exactly
+    # what routes to auto-fix. Either clause would cut that loop.
     if: >-
       github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.head_repository.full_name == github.repository &&
       startsWith(github.event.workflow_run.head_branch, 'dependabot/')
-    uses: StartupBros-com/shared-workflows/.github/workflows/dependency-autopilot.yml@main
+    # Pinned to a reviewed commit, not @main. shared-workflows' main merges with
+    # no required approval and takes Dependabot action bumps, and whatever it
+    # holds runs here with this repo's write token. Reviewed 2026-11-07 (main
+    # since 2026-09-29, the code this repo's autopilot runs through 2026-11-03
+    # executed): the five
+    # third-party action pins match their upstream release tags; untrusted values
+    # reach shell only through env; the identity, same-repo and run-provenance
+    # gates run before any checkout or write; the one checkout sets
+    # persist-credentials: false. Nothing bumps this pin (shared-workflows has no
+    # tags, Renovate's github-actions manager is off), so re-pin by hand after
+    # reviewing the diff.
+    uses: StartupBros-com/shared-workflows/.github/workflows/dependency-autopilot.yml@26c7b0400d82d67671021a68d7c4d7e420e73b6b # main 2026-09-29
     with:
       ci_conclusion: ${{ github.event.workflow_run.conclusion }}
       pr_branch:     ${{ github.event.workflow_run.head_branch }}
       ci_run_id:     ${{ github.event.workflow_run.id }}
       ecosystem:     npm
       mode:          automerge
-    secrets: inherit
+    # Named, not `secrets: inherit`: the reusable workflow declares exactly these
+    # three (all optional, used only by Codex auto-fix), and inherit would hand
+    # it every secret this repo is ever given.
+    secrets:
+      APP_ID:          ${{ secrets.APP_ID }}
+      APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
+      CODEX_AUTH:      ${{ secrets.CODEX_AUTH }}
