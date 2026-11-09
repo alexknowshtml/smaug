@@ -3282,7 +3282,2076 @@
 
 ---
 
+# Friday, October 16, 2026
+
+## @Charles_SEO - Why switching newsletter platforms for cost risks deliverability, the last AI-proof email moat
+> This 1000%...
+>
+> BUT every pro email marketer I know doesn't use Beehivv anyway, they're all on Klaviyo 🤔
+>
+> Deliverability is an absolute nightmare - I've worked in outreach sending 100k cold emails/day... Cold is 100x more of a PITA, but the infrastructure you need to even run a standard newsletter lists is absolutely insane!!
+>
+> Even if Beehivv is $100/mo more expensive, if you lose even 1% of the delivery and open rates as a result of the move, it'll often be worth a LOT less..
+>
+> THE buyer not seeing your email, or the full series of a funnel will mean you don't convert and I would rather pay more for guaranteed emails in inboxes than less to send potentially less.
+>
+> Email is also one of the LAST moats that hasn't been that affected by AI or zero click pushes, so if you kill your list you might put the nail in the coffin.. I wouldn't even risk it until there's case studies and company wide metrics you can compare to the current provider.
+>
+> *Quoting @gannonbreslin:* In the past 6 years I've owned and/or managed 8+ newsletters totaling several millions of readers
+>
+> Respectfully, using a vibe coded stuff like this is extremely risky and a fast track way to get your email list shit canned into spam (its hell and basically impossible to get them out). What many are going to find out by building stuff like this, running an EPS (email provider service) infrastructure, is an entire league of its own. The security surrounding email has only gotten exponentially stronger, making deliverability the number one priority for beehiiv, substack, mailchimp etc. What you pay for these sites anre't just the tools - you are paying for teams that are 24/7 dedicated to the ever changing security around deliverability.
+
+- **Tweet:** https://x.com/Charles_SEO/status/2111101787084370162
+- **Quoted:** https://x.com/gannonbreslin/status/2110760977432219803
+- **What:** Both authors warn against replacing a paid newsletter provider (beehiiv, Substack, Mailchimp) with vibe-coded email infrastructure: Gannon says deliverability and spam-filter defenses need dedicated 24/7 teams, and Charles adds that even a 1% loss in delivery outweighs ~$100/mo savings and that email is one of the last moats AI has not eroded.
+
+## @neuronxwhite - esp32-iphone-agent: $7 ESP32 board lets an AI operate an iPhone without jailbreak
+> 🔌 苹果死活不让 AI 跨 App 操作你的 iPhone？有人往充电口插了一块 40 块钱的芯片，不用电脑、不用越狱，直接绕过去了。
+>
+> 刚开源 5 天就冲到 2700+ 星的 esp32-iphone-agent，思路非常野生：
+>
+> 1️⃣ 怎么"看"屏幕：这块指甲盖大的 ESP32-S3 板子自己开一个 Wi-Fi 热点，伪装成一台 AirPlay 电视。iPhone 把屏幕镜像投给它，它再用蓝牙把画面原封不动传回同一台 iPhone 上的 Agent App
+> 2️⃣ 怎么"动手"：板子通过 USB 口伪装成标准鼠标和键盘。只要打开 iOS 的辅助触控（小白点），它就能替你在任何 App 里点按、滑动、打字
+> 3️⃣ 完全脱离电脑：新版连 Mac 都省了，手机自己用蜂窝流量调视觉大模型（任何兼容 OpenAI 接口的模型都行），后台干活时灵动岛实时显示进度
+> 4️⃣ 自动纠偏：每次精细点击前，它会先轻微晃一下光标，在画面里确认光标位置再点下去，避免漂移
+>
+> 硬件成本：一块 Seeed Studio XIAO ESP32S3（普通版，带 8MB PSRAM），淘宝 40–50 元，插上手机直接取电。
+>
+> 💡 需要 iOS 18 以上；首次刷入固件和给 App 签名要用一下 Mac（免费 Apple ID 就能签），之后揣兜里就能独立跑。
+>
+> https://t.co/wpeg9S8dIb
+>
+> 你最想让它替你在 iPhone 上自动干哪件烦心事？
+
+- **Tweet:** https://x.com/neuronxwhite/status/2111101305729261624
+- **Link:** https://github.com/onehumanbeing/esp32-iphone-agent
+- **Filed:** [esp32-iphone-agent.md](./knowledge/tools/esp32-iphone-agent.md)
+- **What:** Chinese-language explainer of an open-source project where a ~$7 ESP32-S3 board plugged into an iPhone acts as an AirPlay display target (eyes) and USB HID mouse/keyboard via AssistiveTouch (hands), letting any OpenAI-compatible vision model operate any app with no jailbreak or computer, needing iOS 18+ and a Mac only for first flash and signing.
+
+## @stolinski - Pi Durable: resumable durable agents and a Sentry-driven self-healing code setup
+> I'm using Pi Durable for everything rn. I even added a self healing feature that fixes my code automatically.
+>
+> https://t.co/OftO7JFiJn
+
+- **Tweet:** https://x.com/stolinski/status/2111096409793716386
+- **Link:** https://www.youtube.com/watch?v=BLRReTwV8Fc
+- **Filed:** [pi-durable-self-healing-agents.md](./knowledge/videos/pi-durable-self-healing-agents.md)
+- **What:** Video walkthrough of Pi Durable, a library for crash-resumable agents that persist tool calls and state and mark tools as safe or unsafe to re-run, plus Scott Tolinski's demo where a Sentry webhook triggers an agent to diagnose, fix, test, open and merge a PR; he replaced about 8,000 lines of custom agent code with it.
+
+## @copyconstruct - Building a CLAUDE.md from favorite books, top OSS and respected engineers' code
+> To create my claude.md, I had it read:
+>
+> - my favorite programming books + blogs
+> - the best oss projects
+> - the code of the engineers I respect the most
+>
+> Claude (when given proper instructions, constraints, and context) now writes better code than me, almost always.
+>
+> *Quoting @zack_overflow:* the coding agent haters are getting dunning-kruger'd so hard right now
+>
+> do you really think that your engineering ability is better than the models at this point?
+>
+> it is very very likely that fable is better than you in every branch of software
+>
+> it has been trained on all the code of the internet, it knows almost every trick in the book, all the design patterns of every domain, every single low-level detail, every bit-twiddling hack, it's read every single blog post from every cracked engineer that ever existed
+>
+> do you really think you can beat it? do you really think you can be more creative than it? 
+>
+> unless you are 99th percentile expert in some niche domain of software, it simply is not possible. sorry.
+
+- **Tweet:** https://x.com/copyconstruct/status/2111068549469098492
+- **Quoted:** https://x.com/zack_overflow/status/2110889165542035684
+- **What:** Cindy Sridharan describes seeding her CLAUDE.md by having Claude read her favorite programming books and blogs, top open-source projects, and code from engineers she respects, and says it now almost always writes better code than she does; she is endorsing zack's argument that coding-agent skeptics overrate their own ability relative to current models.
+
+## @z012001 - Ecom operator on hitting a $200k day in under 3 months with fully automated creative
+> few insights on our creative process to hit $200k day in less than 3 months:
+>
+> 1. traditional creative strategists are obsolete, our creative team is literally 3 editors (@argon_delta)
+>
+> 2. manual intent no longer exists (sort of)
+>
+> with the tools that exist, we were able to step away and play 2k and geometry dash.. 
+>
+> while all research, swiping, scripting, editing, and learning were fully automated 
+>
+> there is no need to waste time reading breakthrough advertising or manually trying to learn and study your customers thinking patterns
+>
+> the focus for us was on optimizing and automating our entire workflow to pump out ads that are as good as whatever the top ecom brands are doing right now + focusing more on volume rather than intent to learn much faster
+>
+> 3. there is zero need to reinvent the wheel, swipe what works and remake for your own product. 
+>
+> "learning" how to make ads doesn't exist anymore
+>
+> whatever people say about "you can't just oneshot ai to take a swipe and make it for urself" is false to an extent. 
+>
+> your ego is stopping you from handing off creatives to ai because you keep reading that it isn't good enough yet.
+>
+> 3. EVERYTHING is automatable with ai
+>
+> there is nothing in the process of making creatives that requires human work anymore, and if you don't get ahead you will get gapped very shortly during this new meta of ecom.
+>
+> may or may not talk more about this in the future
+>
+> there is a LOT of gaps i'm not filling in this tweet, if you're pushing some solid rev feel free to dm me about anything i mentioned.
+>
+> *Quoting @z012001:* first post on ecom twitter
+>
+> here to learn from others and make some ecom friends
+>
+> hit a $200k+ day today
+>
+> no subscriptions, only meta traffic, store has been live for ~3 months
+>
+> ama https://t.co/hsB4hq8LNb
+
+- **Tweet:** https://x.com/z012001/status/2111057990157803554
+- **Quoted:** https://x.com/z012001/status/2110664333755912643
+- **What:** Self-reported playbook from an ecom store that claims a $200k+ day in about 3 months on Meta traffic alone (no subscriptions): a 3-editor creative team, research, swiping, scripting and editing fully automated with AI, high ad volume over manual intent, and remaking proven competitor creatives; the figures and claims are unverified.
+
+## @cu30rry_ - Why compact principle-based agent plugins like pstack outlast rigid skill harnesses
+> pstackやgrillingみたいに陳腐化しにくいプラグインは非常にコンパクトだ
+>
+> 実際に、pstackは更新のたびに原則やSkillが小さくなっているし、必要ない部分は削られるか、かなり小さな指示に圧縮されていっている
+>
+> ここまでで、トークン効率やコンテキストの効率が良いのは言うまでもないが、さらに素晴らしいのが設計だ
+>
+> /poteto-mode という1つのルーティングで必要な時に読み込むようにできている
+>
+> つまり、ここから得られる教訓は「自然言語の指示は最小限にしろ」ということだ
+>
+> エージェントは人間より賢い、賢い人から人間が思いもつかないような方法で作業をしてもらったり、パフォーマンスを引き出すには、ガチガチに縛らず本当に必要なコンテキストの中で自由を与えることだ
+>
+> 大体のプラグインは順番にSkillを実行するし、プロジェクトに応じたガチガチのハーネスが、ただ置いてあるだけだと思う
+>
+> これは、バッドプラクティスで、無駄なコンテキストを消費するし、ルールも守られるとも限らない
+> それに、矛盾や重複するルールがあった場合、コンテキストを汚し、AIスロップの温床となる
+>
+> モデルが賢くなるほど全てはコンパクトになるはずだし、ほとんどのハーネスやSkillの中身は決定論的に落とし込める部分が多くあるはずだ
+>
+> そこはスクリプト、コードベースの型システム・Lintルールに落とす必要がある
+>
+> 仮に自分のカスタムSkill集を使っているのであれば、メンテしないといけないのはコードベースだけじゃなくなる
+> しかも、毎日道具のメンテンスはしないといけないのだ
+>
+> *Quoting @poteto:* perhaps one of the most durable parts of pstack are its engineering principles: very concise skills (~10-20 loc) that distill down good practices into its core. 
+>
+> as models get smarter, i expect most of pstack skills to compress into short principles or workflows (a generic list of steps) and that i will be able to delete a few of them. 
+>
+> how it works is that /poteto-mode contains a short index of available principles and tells agents "In your reply, name each principle that shaped a decision and the specific choice it changed." this is why you'll often see a Principles Named or Used section at the end of the agent's response
+>
+> many of these principles were extracted from my sessions correcting agents since the start of this year. some are inspired by problems i see people talk about, like Attack the Premise, inspired by @VictorTaelin's post https://t.co/qTGVfoKSyD
+>
+> you can also use the principles as skills if you want greater control, by invoking /principle-<name> 
+>
+> https://t.co/wuTWsflVN3
+
+- **Tweet:** https://x.com/cu30rry_/status/2111056560772337907
+- **Quoted:** https://x.com/poteto/status/2110496830429839869
+- **Link:** https://github.com/cursor/plugins/blob/main/pstack/docs/guide/08-principles.md
+- **Filed:** [cursor-plugins.md](./knowledge/tools/cursor-plugins.md)
+- **What:** Argues (in Japanese) that durable agent plugins stay small: pstack keeps shrinking its skills into short principles loaded on demand via a single /poteto-mode index, so natural-language instructions should be minimal, deterministic parts belong in scripts, types and lint rules, and rigid sequential skill harnesses waste context and breed contradictions; builds on Lauren Tan's description of pstack's principles and Victor Taelin's "Attack the Premise" lesson.
+
+## @milan_milanovic - Chart of the most life-changing books, statistically (image post)
+> The most life-changing books, statistically https://t.co/ReaEmH9W7F
+
+- **Tweet:** https://x.com/milan_milanovic/status/2111045854593200447
+- **What:** THIN: @milan_milanovic shares a chart or image ranking books by how life-changing readers rate them statistically; the tweet is image-only with no text detail, and the link just points back to the tweet itself, so the actual book list is not captured.
+
+## @thisdudelikesAI - Google AX: Kubernetes-style open-source orchestrator for autonomous agents
+> Google just open-sourced something absolutely insane.
+>
+> It's called AX, and it's designed to orchestrate BILLIONS of autonomous AI agent tasks.
+>
+> Think Kubernetes but built for agents instead of apps.
+>
+> Here's why this matters:
+>
+> Agents are a brand new kind of workload. They're not microservices. They're not batch jobs. They hold state, need strict isolation, call models and tools nonstop, and can burn through your money in a loop if nobody's watching
+>
+> How it works:
+>
+> - You write one YAML file. Declare the task, the workspace, and the model
+> - AX spins up a sandbox, wires in your Git repos, MCP servers, and skills so every agent starts warm
+> - You run "ax apply" and the agent goes to work
+> - "ax ssh" lets you shell into a running agent and watch it think
+> - "ax suspend" pauses an idle agent. "ax resume" picks up exactly where it left off
+>
+> If you've ever used kubectl, you already know how to use this
+>
+> 13.5K stars already. Apache 2.0. Free forever
+>
+> Here's what I'd do this weekend:
+>
+> 1. Spin up a small Kubernetes cluster
+> 2. Install Agent Substrate (AX runs on top of it)
+> 3. Run the demo script so you see the full lifecycle end to end
+> 4. Point one agent at a real repo and give it a real goal
+>
+> It's early. Google says breaking changes are coming before a stable release. Doesn't matter
+>
+> The people who learn agent infrastructure now are the ones who'll run 1,000 agents while everyone else is still babysitting one
+>
+> https://t.co/apru4DsXvM
+
+- **Tweet:** https://x.com/thisdudelikesAI/status/2111028170808005070
+- **Link:** https://github.com/google/ax
+- **Filed:** [google-ax.md](./knowledge/tools/google-ax.md)
+- **What:** Google's Agent Executor (AX) is an open-source Go runtime that treats agents as a new workload class: declarative YAML Task/Workspace/Model manifests applied with an kubectl-like CLI, sandboxed on Agent Substrate, with ssh into running agents and suspend/resume; the README warns of breaking changes before a stable release.
+
+## @cu30rry_ - /migrate-to-e2e skill for moving Playwright/Cypress suites to agentic e2e
+> これは最高すぎる！
+>
+> e2eはこれまでのE2E フレームワークと違って、テストコードでエージェントに非決定論的な検証ができるもので、たとえば、AIを組み込んだアプリのE2Eテストもコードで記述できるものだ
+>
+> まさに、テスト設計に革命をもたらすフレームワークと言える！
+>
+> そこから、/migrate-to-e2e Skillが登場した
+>
+> これは既存の Playwright、Cypress、Selenium、Detox、または Maestroといった主要E2Eフレームワークのテストスイート（関連するテストケースの集合体）を、一度に 1 単位（機能）ずつ e2e に移行するものだ
+>
+> しかも、移植された各テストが検証されるまで、古いスイートは新しいスイートと並行して実行されるので、このSkillを使えば安心して移行が実施できる
+>
+> E2Eは長時間テストがかかる場合があるが、このSkillの進行状況は MIGRATION.md で保持されるため、エージェントが落ちても、テストが落ちても続きから再開できる点も最高だ！
+>
+> 私も最近新しく立ち上げるプロジェクトは絶対にe2eを入れている
+> それくらい必須のものになっている！
+>
+> *Quoting @kacperkapusciak:* Introducing /migrate-to-e2e
+>
+> Allow your agent to migrate your existing end-to-end test suite to agentic e2e one slice at a time.
+>
+> ~/ npx skills add tester-army/e2e --skill migrate-to-e2e https://t.co/0YMG6Bf2Bd
+
+- **Tweet:** https://x.com/cu30rry_/status/2111024648410591382
+- **Quoted:** https://x.com/kacperkapusciak/status/2110674911509487741
+- **What:** Praise (in Japanese) for the tester-army "e2e" framework, where agents run non-deterministic checks from test code (so AI-app E2E tests can be written in code), and its new /migrate-to-e2e skill that migrates Playwright, Cypress, Selenium, Detox or Maestro suites one feature at a time, running old and new suites in parallel until each ported test is verified, with progress saved in MIGRATION.md so it can resume after a crash.
+
+## @helloiamleonie - Fine-tuning Liquid AI's d1-3B decision model with Unsloth and TRL notebooks
+> how do you fine-tune a decision model on your own data?
+>
+> in these two notebooks, you'll learn:
+> • how to prepare the training data
+> • how to fine-tune our d1-3B decision model 
+> • using @UnslothAI and @huggingface TRL
+>
+> all within 30 minutes on a free-tier GPU.
+>
+> unsloth: https://t.co/VxwfzlwHXP
+>
+> TRL: https://t.co/yqzvFwVoZ5
+>
+> ps: how adorable are these halloween kitties? 👻
+
+- **Tweet:** https://x.com/helloiamleonie/status/2110994738811715943
+- **Link:** https://github.com/Liquid4All/cookbook/blob/main/finetuning/notebooks/sft_for_decision_models_with_unsloth.ipynb
+- **Link:** https://github.com/Liquid4All/cookbook/blob/main/finetuning/notebooks/sft_for_decision_models_with_trl.ipynb
+- **Filed:** [liquid4all-cookbook.md](./knowledge/tools/liquid4all-cookbook.md)
+- **What:** Two Liquid AI cookbook notebooks that walk through supervised fine-tuning of the d1-3B decision model on custom data, one with Unsloth and one with Hugging Face TRL, runnable in about 30 minutes on a free-tier GPU; the cookbook repo also has on-device LFM example apps.
+
+## @aiRobertDaily - Mining Vercel subdomains in Similarweb to find emerging keyword demand
+> 卧槽，发现了一个出海找新词的野路子：
+>
+> 贼简单，去 https://vercel.com/ 下面挖一挖，最近有哪些子域名开始拿到自然搜索流量。
+>
+> 不少人先用 Vercel 的免费子域名快速上线试水的，里面偶尔能挖到值得验证的新需求。
+>
+> 步骤简单：
+>
+> 1. 打开 Similarweb，搜 https://vercel.com/
+> 2. 进"自然落地页"，时间选最近 1 到 12 个月
+> 3. 勾上"新发现"
+> 4. 看哪些子域名在拿搜索流量，再把它们的关键词拿去 Trends 验证
+>
+> 别人替你试过一轮，你只用挑了，哈哈。
+>
+> 你学到了吗，记得点赞转发。
+
+- **Tweet:** https://x.com/aiRobertDaily/status/2110993420424778028
+- **Link:** https://vercel.com/
+- **What:** A Chinese-language keyword-research trick for overseas markets: in Similarweb, look at organic landing pages under Vercel's free-subdomain domain (last 1-12 months, "newly discovered" filter) to see which new subdomains are gaining search traffic, then validate their keywords in Google Trends, since people often test ideas on free Vercel subdomains first (the t.co link expanded to vercel.com, the intended vercel.app-style domain is inferred).
+
+---
+
+# Thursday, October 15, 2026
+
+## @rarandeyo - Three-command setup for Anthropic's official claude-security plugin (full-codebase, high effort)
+> マジで、3行でできます！！
+>
+> /plugin install claude-security@claude-plugins-official
+> /reload-plugins
+>
+> /claude-security 
+> 範囲はコードベース全体、重さはhigh
+>
+> モデルはopus5-5 midiumで充分だと思います！！
+> 感覚的には、クリティカルとhighは絶対直したほうがいい感じがしました！！
+>
+> *Quoting @rarandeyo:* 一生のお願いなのでエンジニアの方はclaude公式のsecrity pluginを使ってほしい
+>
+> repoデカいと30分くらいかかるし、何も出なくてusage消費するかもしれないけと、あの時やってたら〜より絶対良いです！
+>
+> https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-security
+
+- **Tweet:** https://x.com/rarandeyo/status/2110937104687730796
+- **Quoted:** https://x.com/rarandeyo/status/2110910186101879142
+- **Link:** https://github.com/anthropics/claude-plugins-official/tree/main/plugins/claude-security
+- **What:** A Japanese engineer explains how to run Anthropic's official claude-security plugin in three steps (/plugin install claude-security@claude-plugins-official, /reload-plugins, /claude-security with whole-codebase scope and high effort), says Opus medium is enough, and that critical and high findings are worth fixing; the quoted earlier post urges all engineers to use it, warning big repos can take ~30 minutes and may consume usage while finding nothing.
+
+## @dani_avila7 - Claiming $20,000 in Claude Code Review promotional credits
+> Just claimed $20,000 in credits for Claude Code Review! 🙌
+>
+> Here's how to apply for credits: https://support.claude.com/en/articles/17603594-free-code-review-promotional-credits-for-claude-enterprise
+>
+> *Quoting @santtiagom_:* Anthropic lanzó oficialmente Claude Code Review para planes Team y Enterprise.
+>
+> revisa automáticamente los PRs de GitHub, detecta bugs y propone cómo corregirlos. la mayoría de las revisiones tarda entre 6 y 10 minutos.
+>
+> para activarlo, un admin entra a la configuración de Claude Code, instala GitHub App y selecciona los repositorios.
+>
+> a partir de ahí, cada PR nuevo se revisa automáticamente.
+
+- **Tweet:** https://x.com/dani_avila7/status/2110925323546112298
+- **Quoted:** https://x.com/santtiagom_/status/2110867516121546793
+- **Link:** https://support.claude.com/en/articles/17603594-free-code-review-promotional-credits-for-claude-enterprise
+- **What:** Dani Avila says he claimed $20,000 in credits via Anthropic's "Free Code Review promotional credits for Claude Enterprise" help-center page; the quoted Spanish post explains Claude Code Review, now available for Team and Enterprise, which auto-reviews GitHub PRs in about 6-10 minutes after an admin installs the GitHub App and selects repos (page body itself was not captured).
+
+## @danielfazio - AI Client Acquisition Challenge: 5-day live workshop for building an AI agency offer (Nov 16-20)
+> New offer
+>
+> https://aiclients.com/
+
+- **Tweet:** https://x.com/danielfazio/status/2110907309777936753
+- **Link:** https://aiclients.com/
+- **What:** Daniel Fazio announces a paid "AI Client Acquisition Challenge", a 5-day, 15-hour live Zoom training (November 16-20, 2026, 5pm ET) on building an agency offer, AI-driven outreach/content/ads acquisition system, and fulfillment engine, with ticket prices rising from $25 early bird to $50, $250 and $1,000 for recordings only.
+
+## @signulll - Why publishing lists of people you want to flatter works as a growth strategy
+> turns out publishing lists of people you want to flatter is a remarkably effective growth strategy.
+
+- **Tweet:** https://x.com/signulll/status/2110891875666149592
+- **What:** A dry observation that the common "lists of top people/founders" posts work as growth hacks because the named people reshare them, trading flattery for distribution; the tweet has no link or media, so the specific list that prompted it is not identifiable.
+
+## @openseo - OpenSEO riffs on Shpigford's "reply with your URL" SEO/AEO audit offer
+> We'll try this too...
+>
+> Reply with your URL and we'll give you a report with how you can improve your SEO/AEO
+>
+> Example report below. Need to use our tokens...
+>
+> *Quoting @Shpigford:* reply with your url and i'll give you 3 things you can fix *today* to improve SEO/AEO for your site. 
+>
+> brought to you by https://firstindex.com/ 🙂
+
+- **Tweet:** https://x.com/openseo/status/2110870844205670855
+- **Quoted:** https://x.com/Shpigford/status/2110436944799002641
+- **What:** The OpenSEO account copies Josh Pigford's engagement tactic, offering a free SEO/AEO improvement report to anyone replying with a URL (Pigford's version promoted firstindex.com), and says it wants to burn through its AI tokens; it is a lead-generation pattern where an automated audit tool is demoed publicly via replies.
+
+## @DevinOlsenn - Grok Bot removing a phone number from spam call lists after sharing Elon's post
+> I've been getting a lot of spam calls lately, so I just shared Elon's post to @bot and it went online and removed my number from multiple sites all on its own. https://twitter.com/DevinOlsenn/status/2110855519363912060
+>
+> *Quoting @elonmusk:* Ask your @Grok @Bot to remove your phone number from spam call &amp; text lists!
+
+- **Tweet:** https://x.com/DevinOlsenn/status/2110855519363912060
+- **Quoted:** https://x.com/elonmusk/status/2110852716247519517
+- **What:** A user reports that after forwarding Elon Musk's post to Grok's agent "Bot", it autonomously browsed the web and got his phone number removed from multiple spam call/text lists, a concrete consumer example of a browsing agent doing a tedious opt-out chore end to end, following Musk's suggestion to use it for exactly that.
+
+## @giyu_codes - Vetting 75+ AI agency proposals for a fashion brand: why "markdown agencies" fail and what good ones do
+> I have reviewed over 75 proposals and sat in a couple dozen meetings over the past two weeks on behalf of a big name fashion brand trying to hire an AI agency to lead their AI implementation.
+>
+> This will be their 4th agency since they started opening up to AI back in March 2025.
+>
+> They reached out to me from a referral because they need help finding a good agency that won't overpromise and underdeliver. I provide the guidance, oversee the training of employees, and ensure the agency is capable of supporting a full organization wide transformation process. Not just marketing, not just ops, not just one little workflow. The whole company.
+>
+> I have time for agencies that are trying to do right by their clients and know when they need help. The markdown agencies selling expertise they can't explain and expecting Claude to make every decision for them are the first to be tossed to the side.
+>
+> Some gaps that keep coming up in proposals and meetings with me and the CTO as we interviewed the agencies:
+>
+> - You can explain the tech stack and demo for PDF data extraction on Purchase Orders, but what happens when an approved order changes? Who needs to act on it, and what gets updated downstream?
+>
+> - You quote three months to the first build and pitch another audit. What can you reuse from the last three agencies, and what still needs checking?
+>
+> - You send every artifact to AI with minimal guidance, so it is easy to tell that we are communicating through Claude. But when we ask them to explain their recommendations in the meeting, they can't. They run the meeting transcript through AI and send us next steps that are all redundant, but when we ask them in a meeting for specific insights they say they'll get back to us.
+>
+> - You sell hours saved as ROI by multiplying time by salaries. Those salaries aren't automatically going away. What work can those employees take on now, and how does that benefit the company?
+>
+> - You claim to sell "outcomes", but the outcomes you describe provide observability, not actionable steps and proven systems. An AI agent that gathers all the data and lets you query on it is useless compared to a system that uses that data to get more customers and provide more throughput all on its own.
+>
+> A good agency needs to be able to pick up where they were at, check what actually works, and make better decisions based on that information, and re-assess as they go.
+>
+> A good agency would come prepared with the ordering, fulfillment, and sales processes they expect to see. Explain where they think the bottleneck is and ask, "Is that accurate?" We can confirm or deny, but at least it shows where they are thinking and the expertise they would provide... then the agency can explain how automating one part leads to the next improvement or depends on a previous step.
+>
+> For example, you automate the orders coming in and get all of the data extracted, nice and good to go. The people working with it afterward are reconciling it, confirming it, and connecting those orders to fulfillment and cash flow.
+>
+> Once we've proved which numbers we can trust, they can spend more of their time doing predictions, testing, analysis, and bigger scope items that can actually drive revenue.
+>
+> Now we can start pulling levers. Say an item was successful at a certain time last year. Let's put a marketing plan in place, test how it does with different traffic, see how the cost changes, and test new prices. Check the margin and whether we have the inventory to support it. Those are all steps that will eventually be automated, and a good agency would need to know how to support that pathway or at least have a strategy to explore. I've done this whole process at over 200 companies and even if you're at your 1st or 10th implementation, it is possible to know these things and come prepared with it.
+>
+> A lot of bad agencies, aka "markdown agencies", are trying to get away with doing the bare minimum by pitching "AI audits", "AI Enablement training", and "maintenance fees" to help sustain the systems... but what they actually deliver are roadmaps generated by Claude, a weak AI guide as they help setup a Claude Team setup for an org whose identity and governance requirements it doesn't meet (bad for any org that needs to take security seriously), and the maintenance fees are often met with bad service long term.
+>
+> The last two agencies that have been considered for this opportunity both pitched $75k-$150k per month, but they could easily get $250k per month from an org this size if they just came prepared with the right items and momentum behind their builds. 
+>
+> As of today, I finally hit 250 companies where I have led, implemented, or consulted for full, org wide, "AI transformation". All while maintaining a full time job, what a blessing.
+>
+> Rewarding myself with a three day weekend goodnight.
+
+- **Tweet:** https://x.com/giyu_codes/status/2110776357420707987
+- **What:** An AI-transformation consultant who vetted 75+ agency proposals for a fashion brand lists recurring gaps (no plan for downstream changes, repeated audits, AI-written deliverables the agency cannot explain, hours-saved ROI math, observability sold as outcomes) and argues good agencies arrive with the client's ordering/fulfillment/sales processes mapped, a bottleneck hypothesis, and a staged automation path that moves staff from reconciliation toward revenue work.
+
+## @nickcammarata - "Neural Networks Are Already Clean": Goodfire essay arguing interpretability is far more tractable than feared
+> interpretability might be the most important scientific problem in the world right now, as I don't think we can solve alignment if we don't know what we're building. I think I have good news about it. I co-authored early work in mechanistic interpretability at OpenAI and came away pessimistic, because neural networks appeared to fold into arbitrary tangled knots. years later, I started openai's first large-scale automated interpretability project, finding about 2% of neurons legible with the primitive tools we had
+>
+> with modern agentic tools and a much closer look, the picture looks totally different. the vast majority in models up to trillions of parameters are legible, and their circuits beautiful. many famous examples of tangled neurons turned out to be misunderstood. The roadblocks I expected mostly aren't there. I now think ambitious interpretability will be solved by the time we need it most, and possibly quite soon, as automated scientists keep improving. it may be a bitter lesson for interpretability: the simple thing, at absurd scale, works
+>
+> https://already-clean.goodfire.com/
+
+- **Tweet:** https://x.com/nickcammarata/status/2110757819427574056
+- **Link:** https://already-clean.goodfire.com/
+- **Filed:** [neural-networks-are-already-clean.md](./knowledge/articles/neural-networks-are-already-clean.md)
+- **What:** Former OpenAI interpretability researcher Nick Cammarata, now at Goodfire, announces an essay arguing that earlier polysemanticity/superposition evidence was misread (mostly "recursive generalization" and fixable issues) and that agentic tools now find the vast majority of neurons legible even in trillion-parameter models, making him optimistic that ambitious interpretability will be solved in time for alignment needs.
+
+## @poteto - pstack: Lauren Tan's rigorous agent-engineering skill set, shared after Taylor Otwell's "new solid" quip
+> try pstack! it's my personal set of skills for rigorous and autonomous engineering with agents. it's updated frequently as I continue to tune and simplify them
+>
+> 10 second tutorial:
+> 1. run /setup-pstack and choose your budget
+> 2. add /poteto-mode in front of any prompt you want done rigorously
+> 3. ask /poteto-help whenever you're unsure what pstack skills to use
+> 4. that's it!
+>
+> Grok Bot: https://x.ai/bot/plugin/9717366
+> Cursor: https://cursor.com/marketplace/cursor/pstack
+> Source: https://github.com/cursor/plugins/tree/main/pstack
+>
+> *Quoting @taylorotwell:* pstack is the new solid
+
+- **Tweet:** https://x.com/poteto/status/2110757066709356851
+- **Quoted:** https://x.com/taylorotwell/status/2110710452573306926
+- **Link:** https://github.com/cursor/plugins/tree/main/pstack
+- **Filed:** [pstack.md](./knowledge/tools/pstack.md)
+- **What:** The author promotes pstack, his personal skill set for rigorous, autonomous agent-driven engineering ("go deep first, write less but higher quality code"), installable via Cursor's marketplace, the cursor/plugins repo, or Grok Bot, with a three-command quickstart (/setup-pstack, /poteto-mode, /poteto-help); it is quoting Taylor Otwell's quip that pstack is "the new solid", signalling strong community buzz.
+
+## @oliverbrocato - Ecom tactics arbitrage applied to the info-product market
+> met an info guy doing $5m/mo.
+>
+> he spends his day in ecom chats studying guys like chad from gruns and hudson from comfrt, then runs a creator army with sideshift and trybe.
+>
+> biggest arbitrage in biz is taking cutting edge ecom tactics and applying them to a market thats behind.
+
+- **Tweet:** https://x.com/oliverbrocato/status/2110731932527182334
+- **What:** oliverb recounts meeting an info-product seller at $5M/month who studies leading ecommerce operators (Gruns, Comfrt) in ecom chats and runs a creator army via Sideshift and Trybe, drawing the lesson that importing cutting-edge ecom tactics into lagging markets is business's biggest arbitrage.
+
+## @kacperkapusciak - /migrate-to-e2e skill to move e2e suites to agentic tests
+> Introducing /migrate-to-e2e
+>
+> Allow your agent to migrate your existing end-to-end test suite to agentic e2e one slice at a time.
+>
+> ~/ npx skills add tester-army/e2e --skill migrate-to-e2e https://t.co/0YMG6Bf2Bd
+
+- **Tweet:** https://x.com/kacperkapusciak/status/2110674911509487741
+- **What:** Kacper Kapuściak announces a /migrate-to-e2e agent skill, installable with `npx skills add tester-army/e2e --skill migrate-to-e2e`, that lets a coding agent convert an existing end-to-end test suite into agentic e2e tests incrementally, one slice at a time; no repo content was captured beyond the tweet.
+
+## @levelsio - Data brokers buying struggling SaaS datasets to resell to AI labs
+> Data brokers are now buying up SaaS data sets for anywhere from $100K to $2M
+>
+> SaaS are struggling now and some extra money to fill the gap by declining revenues is nice
+>
+> That data is then re-sold to AI training companies and AI frontier labs for the exact purpose of integrating whatever that SaaS did into the AI frontier lab's app
+>
+> Pretty obvious to see where this is going
+>
+> *Quoting @franzbruckhoff:* Chiming in on @levelsio's discussion about SaaS dying.
+>
+> A major reason increasingly more businesses will create their own software instead of paying for SaaS is that they don't want to become someone else's unpaid data source.
+>
+> As Greg points out, dying SaaS companies are immensely valuable data troves for AI companies. Great for them, but not great for their customers.
+>
+> As time goes by, "data value awareness" is going to rise I think, and more people and business will begin to see the data they produce as an asset worth something.
+>
+> There is an M&A company that had suggested that @taptanium's legacy app codebases (a form of training data) could be worth ~$45k per app, just because they predate the AI revolution and contain highly complex, handwritten and correct concurrency logic that is like digital gold for AI.
+>
+> The value of data is widely underrated. When I was driving a Model 3 back then in Germany, my car was collecting valuable data for Tesla, which they used to develop FSD, a technology potentially worth trillions. Owners didn't get paid for that data ofc, and were actually asked to pay up in order to benefit from it fully. None of my Tesla friends thought about it and just paid, on top of delivering tons of data for it. They had no data value awareness.
+>
+> Some time ago Taptanium was using Appfigures to see sales, revenue, downloads and rankings in a cleaner dashboard. It was cool, but I realized I was feeding the beast with my data, which such companies also use to build App Store intelligence tools so other competitors could more easily find out what's worth cloning or attacking.
+>
+> So data value awareness is going to be really important, especially now that AI agents can leverage the slightest traces of cues in ways that can work for you, or against you.
+>
+> What kind of data do you own that might be valuable for AI training or that is strategically important to keep to yourself? And are you letting others suck it all up for free or for pennies, or is there a way you can protect it or sell it at its fair market value?
+
+- **Tweet:** https://x.com/levelsio/status/2110671750727946638
+- **Quoted:** https://x.com/franzbruckhoff/status/2110668860948951093
+- **What:** levelsio says brokers now pay $100K to $2M for SaaS datasets and resell them to AI labs so the labs can absorb what each SaaS did; the quoted Franz Bruckhoff post adds the "data value awareness" argument, that businesses should build their own software to avoid becoming unpaid data sources and price their data (e.g. legacy codebases at ~$45k each) fairly.
+
+---
+
+# Wednesday, October 14, 2026
+
+## @cgtwts - Felix Rieseberg's tutorial on being more ambitious with Claude
+> anthropic's lead engineer btw. https://t.co/pTlsbqDlXm
+>
+> *Quoting @felixrieseberg:* Hi, I'm Felix. I'm an eng lead working on Claude. I love watching people take flight and do things they never thought possible.
+>
+> We often describe that as "being more ambitious" when using AI, which is tricky advice to follow. I wrote a tutorial:
+>
+> https://t.co/vNPPs5FWm8
+
+- **Tweet:** https://x.com/cgtwts/status/2110571916973207906
+- **Quoted:** https://x.com/felixrieseberg/status/2110023283169247623
+- **Link:** https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/
+- **Filed:** [how-to-be-more-ambitious-tutorial-for-humans-with-models.md](./knowledge/articles/how-to-be-more-ambitious-tutorial-for-humans-with-models.md)
+- **What:** CG flags Felix Rieseberg, an engineering lead on Claude, who wrote a practical prompt-based tutorial on turning the vague advice to "be more ambitious" with AI into concrete steps, noting that model capabilities are uneven and citing recent Claude-assisted feats; only the page metadata was captured, not the full body.
+
+## @sudoingX - Running uncensored small models locally after Opus 5.5 refusals
+> some of my work left the cloud
+>
+> the questions opus 5.5 refuses now go to small uncensored models running on my own gpus, and i'm finding more of those questions every day
+>
+> these models are tiny, the one i've been talking to this week is an uncensored 27b packed into a 6 gb file, it runs at 51 tok/s on a 12gb rtx 3060 with my mtp head grafted on, and i've had them running on phones too
+>
+> opus 5.5 is still the stronger model on most hard work and i'm not pretending otherwise, but the moment it refuses, all that strength is worth zero to me, and a small model that actually answers is an order of magnitude more useful in that moment
+>
+> and it all runs on my own metal now, no account, no usage policy deciding what i'm allowed to ask, nobody reading the conversation, that's what owning your thinking feels like
+>
+> which refusal pushed you to run local?
+
+- **Tweet:** https://x.com/sudoingX/status/2110546197794468240
+- **What:** sudoingX describes routing prompts that Opus 5.5 refuses to small uncensored local models, such as a 27B quantized into a 6 GB file running at 51 tok/s on a 12 GB RTX 3060 with a grafted MTP head, arguing that privacy and no usage policy outweigh the frontier model's raw strength for those questions.
+
+## @troyaitken_ - Pewter Data buying business datasets for AI, with a $30M mandate
+> Will pay money for data.
+>
+> - 150 GB
+> - 50+ employees
+> - 3 years in business
+>
+> That is all.
+>
+> *Quoting @troyaitken_:* https://t.co/AM9QyL7062 has a $30M mandate to purchase business data over the next 8 weeks.
+>
+> We're actively buying from companies with 20 or more employees and at least 5 years in business across six verticals:
+>
+> Service. Manufacturing. Logistics. Healthcare. Ecommerce. Accounting.
+>
+> If your company holds data in any of these spaces, we want to talk.
+>
+> We also pay referral fees. 10% of the deal value, up to $100k, to anyone who connects us with a seller that closes.
+>
+> If you know someone who fits, tag them below or send me a DM.
+>
+> More at https://t.co/aZFVuBqiCk
+
+- **Tweet:** https://x.com/troyaitken_/status/2110498113526055074
+- **Quoted:** https://x.com/troyaitken_/status/2109661422493774331
+- **Link:** https://pewterdata.com/
+- **What:** Troy Aitken, a managing partner at Pewter Data, advertises that he will pay for business datasets (about 150 GB, 50+ employees, 3+ years operating), following his earlier post of a $30M purchase mandate across six verticals with a 10% referral fee up to $100k; Pewter's site says it coordinates licensing of de-identified records to AI developers with nothing upfront.
+
+## @ThomAub - Data-broker referral recipe: sign up to a partner program, then take a call
+> If you want in on the data broker thing, this is literally all it is
+> 1. https://t.co/SM8oVkIrQ9
+> 2. Call with Chris
+> 3. Done
+>
+> *Quoting @MitchellKeller_:* If you want in on the data broker thing, this is literally all it is
+>
+> > sign up as a micro1 referral partner and a Polyshares partner so you have your own tracked links
+>
+> > find a business with 30+ employees and years of records sitting in their systems
+>
+> > check the Wayback Machine for 3+ years of company history before you email anyone
+>
+> > send the owner your link
+>
+> > let the buyer evaluate the company and price the deal
+>
+> > get paid up to $50K per completed micro1 referral, or a share of deal value on Polyshares
+>
+> We submitted 46 data deals in 3 weeks doing exactly this and 13 are moving to next steps
+>
+> The article has the whole process, the email I send owners and the earnings math, so read it next if you want to capitalize on this. Links in the comments
+
+- **Tweet:** https://x.com/ThomAub/status/2110490859766751298
+- **Quoted:** https://x.com/MitchellKeller_/status/2110248739206312201
+- **Link:** https://ooakdata.com/partner
+- **What:** ThomAub parodies the quoted referral playbook (find businesses with 30+ employees and 3+ years of records, send them a tracked partner link, collect up to $50K per micro1 referral) by pointing to Ooak Data's partner page, a YC-backed outfit that licenses and anonymizes company data for AI training, claiming earnings up to $1M in 2 to 4 weeks.
+
+## @menhguin - Hardware design (CAD) AI revenue curve as the next semiconductor-style signal
+> you know in january 2026 when a whole bunch of AI companies had a vertical revenue graph which made it really obvious to buy semiconductor stocks? yeah so it's kinda like that again but for hardware design.
+>
+> *Quoting @zachdive:* You can pretty much track AI progress in CAD through our revenue curve https://t.co/kdB3qJeUru
+
+- **Tweet:** https://x.com/menhguin/status/2110461879055450511
+- **Quoted:** https://x.com/zachdive/status/2110455144060219725
+- **What:** Minh argues that a steep revenue curve at AI-for-CAD companies is a leading indicator for hardware design, much as vertical AI-company revenue in January 2026 signaled buying semiconductor stocks; the quoted Zach Dive tweet claims his company's revenue tracks AI progress in CAD (the chart itself is not captured).
+
+## @alexmichael - Claude Code 2.1.300 cuts its system prompt by about 58%
+> Claude Code 2.1.300 cut the system prompt by ~58% (−19k tokens).
+>
+> What changed:
+>
+> • −19,045 tokens and −13 prompt files
+>
+> • Removed the "AskUserQuestion" directive (which previously told Claude to ask clarifying questions by default)
+>
+> *Quoting @ClaudeCodeLog:* Claude Code 2.1.300 has been released.
+>
+> 88 CLI changes, 1 system prompt change
+>
+> Highlights:
+> • Added virtualText: prompt-box text excluded from draft/submitted prompt, so it stays out of model input
+> • $.ui.view({agentId}) shows agent transcript in main view; $.ui.view({}) returns to prior view for quick review
+> • prompt.change hook fires on non-typed prompt edits (history/clear/undo/plugin fill), lets mods react
+>
+> Complete details in thread ↓
+
+- **Tweet:** https://x.com/alexmichael/status/2110457106042069380
+- **Quoted:** https://x.com/ClaudeCodeLog/status/2110440355468296404
+- **What:** Alex highlights the system-prompt change in the Claude Code 2.1.300 release (about 19k fewer tokens, 13 fewer prompt files, and removal of the default clarifying-question directive), while the quoted changelog lists 88 CLI changes including virtualText, an agent transcript view API, and a prompt.change hook for mods.
+
+## @Austen - Selling data to AI labs is an unsophisticated wild west
+> I'm blown away at how much of a wild west "selling data to AI labs" is.
+>
+> The blind leading the blind.
+>
+> People who have no idea how any of it works and with no relationships underselling by millions.
+>
+> Friends: If you think you might have data to sell please talk to me.
+
+- **Tweet:** https://x.com/Austen/status/2110455317246951543
+- **What:** Austen Allred observes that the market for selling proprietary data to AI labs is immature, with inexperienced sellers lacking relationships and underpricing their data by millions, and he invites anyone holding sellable data to contact him, signaling he is brokering or advising on such deals.
+
+## @jordan_ross_8F - Which Industries Sell Company Data to AI Labs for 7 Figures (Grepped Interview)
+> Interviewed the founder of Micro1 competitor today (Grepped) to see who is making 7 figures selling their company data right now:
+>
+> Here is what he said:
+>
+> Legal
+> Oil and gas
+> Semiconductors
+> Video game companies
+> “and honestly any organization above 100+ employees is going for 7 figures”
+>
+> These guys buy data from companies as small as 10 people too.
+>
+> *Quoting @jordan_ross_8F:* Just interviewed someone from @micro1_ai  to see which companies are getting paid a premium on data, here is what I learned:
+>
+> Premium Tier:
+> Law firms
+> Banks / finance (banks specifically — accounting firms are lower tier)
+> Healthcare
+> Construction (needs ~20+ desk employees even if field headcount is 200+)
+>
+> Fast-close industries (lower payout, quick deals)
+>
+> Restaurants, coffee shops
+> D2C / e-commerce
+> HVAC
+> Tech startups and consumer brands are “fine” but not premium
+>
+> Industries they no longer buy from
+>
+> Marketing agencies (lol)
+> Staffing agencies
+> Cannabis
+>
+> Shit is wild.
+
+- **Tweet:** https://x.com/jordan_ross_8F/status/2110441375418450368
+- **Quoted:** https://x.com/jordan_ross_8F/status/2110085740646539277
+- **What:** Two interview-based threads on the market for selling company data to AI-training vendors: Grepped's founder says legal, oil and gas, semiconductors and games earn seven figures (any org over 100 employees, even 10-person firms are bought), while an earlier Micro1 interview ranks law, banks, healthcare and construction as premium and agencies and cannabis as no longer purchased.
+
+## @instinct_xyz - Instinct: YC-Backed Agent Harness Giving Individual Traders Investment-Firm Capabilities
+> Today, we are releasing the first frontier agent harness built to give individual traders the capabilities of an investment firm.
+>
+> For decades, institutional advantage has come from organizing talented people around large pools of capital. We’re making that organizational capacity available to individuals.
+>
+> Introducing Instinct, backed by @ycombinator.
+
+- **Tweet:** https://x.com/instinct_xyz/status/2110439790961442825
+- **What:** Launch announcement for Instinct, a Y Combinator-backed agent harness that aims to give individual traders the organizational capacity of an investment firm; the tweet has no link or details on features, so specifics of the product are not known.
+
+## @ClaudeDevs - Claude Platform OpenTelemetry Traces in Public Beta
+> Now in public beta, Claude Platform can send OpenTelemetry traces from the Messages API, Claude Managed Agents, and the Claude SDKs to your observability stack. https://t.co/gXmi5xlkfO
+
+- **Tweet:** https://x.com/ClaudeDevs/status/2110421732029063352
+- **What:** THIN: Announcement that Claude Platform can now export OpenTelemetry traces from the Messages API, Claude Managed Agents and the Claude SDKs into an existing observability stack (public beta); no link content or media was captured beyond the tweet text, so setup details are unknown.
+
+## @gregisenberg - 21 Observations from 48 Hours in SF on the AI Industry
+> I spent 48 hours in SF hanging out with billionaires, data labs and AI founders and execs running $1B to $100B companies.
+>
+> My observations:
+>
+> 1. Sooo MANY stories of data brokers making like $2M a WEEK selling company data to labs. I can't tell if it's the beginning or a bubble, and I kept wondering which niches are left. Digging into it actively.
+>
+> 2. At dinner, someone asked the table, "If a new model drops next month, does your company get better or worse?" HALF the table went quiet! I think that's the best question to ask about any AI startup right now.
+>
+> 3. The bar people talk about now is hitting $1B in revenue in 12 months (I guess that's the new unicorn?). What I didn't hear much about is retention. AI revenue can come in fast and leave fast, and I think we're going to see a lot of stories of AI companies with huge revenue and terrible retention.
+>
+> 4. It's pretty clear we're living through the reinvention of the computer. The model is the CPU, the harness is the operating system, and skills and plugins are the apps. Thinking about it that way makes it easier to see where the whitespace is.
+>
+> 5. We're maybe 12 months from an agent that can watch you work for a week and then do your job without any instructions. The screen recording plus agent memory plus local model combination makes this possible right now.
+>
+> 6. Agent harnesses feel like the new GPT wrappers, in a good way, especially vertical ones. The best teams I talked to treat the model as swappable. One founder walked me through routing different models to different jobs: one for taste and visuals, a cheaper one for the everyday stuff, another for text.
+>
+> They use prompts they can move across models over fine-tuning, and A/B test the output on what users actually do with it: do they edit it, export it, share it? A vertical harness is basically four things: the connectors for that industry's data, evals written by people who know the work, rules for what the agent can and can't touch, and a clean screen for a human to review. The model is maybe 20% of it.
+>
+> 7. There's a lot of reverse engineering going on/cloning going on more than I've ever seen. People are decompiling software and rebuilding it with agents, and someone showed a suite of like 10 apps that are worth $5B+ each all that he cloned open source. Me and everyone are still thinking through what it means when software gets this easy to copy.
+>
+> 8. My guess is the value moves to data. If the software can be rebuilt quickly, what's worth paying for in a legacy SaaS company is the years of customer data and workflows inside it. Some SaaS companies are secretly data companies.
+>
+> Gets me thinking about how do you truly value data for this saas companies? Like if we were buying these dying saas companies at 2x ARR before (as example), maybe there is a better metric. Idk, just thinking out loud here.
+>
+> 9. It feels like a good chunk of legacy software won't make it to the agentic era, especially anything built around people clicking through a lot of screens.
+>
+> 10. Every company I talked to wants to pipe its internal data into one place and expose it to agents through MCP. Then they look at the data and realize it's a mess: five versions of the same customer, old Slack channels, PDFs nobody can search. Cleaning that up feels like a big consulting opportunity!
+>
+> 11. A lot of founders are building the basic building blocks for agents: APIs, data layers and tools. Some of the companies I saw barely have a UI because the main user is an agent. I really believe the startups that build primitives to this agentic era will do extremely well. Building blocks is the best way to think about it.
+>
+> 12. Labs can get plenty of training data, but it's harder to get real examples of agents failing inside companies. Whoever has those logs has something valuable.
+>
+> 13. Someone running a big consumer company told me the next fight is over memory. The model that remembers the most about you wins, and the smartest model matters less than people think.
+>
+> 14. Physical AI came up a lot. Astra I think was the first model that got people into AI can actually do CAD, and I think a lot of people are thinking what does vibe manufacturing really look like. The line I keep thinking about came from a robotics founder: the hardest problems in AI are deployment problems now, not research problems. Their robots work on their own, call a human when they get stuck, and every one of those calls becomes training data.
+>
+> 15. Cybersecurity companies are having a moment and are actually cool companies to build now, especially the ones that clean up after a breach. Every agent with access to your systems is a new door into your company, and a lot of those doors were left open.
+>
+> 16. Some startups are worth more dead than alive now. A shutdown company with 5 years of Slack, email and code can get paid for licensing all of it. I wouldn't be surprised if founders start factoring that into when they shut down.
+>
+> 17. People are starting to talk about monetizing the agent web. It feels really early, but when the most popular user of the internet is an agent, what startups should you be building?
+>
+> 18. I think agent insurance is coming. Once an agent makes an expensive mistake, insurers will want audits before they cover anyone.
+>
+> 19. Several people said the hire they want most is someone with taste who can write evals. The models are getting good at generating ideas, so the hard part is judging which ones are good.
+>
+> 20. New trend I observed: startup raises VC, uses venture dollars to become a creator, startup fails, founder falls back on being a full-time creator and incubates other products bootstrapped.
+>
+> 21. Getting SIGNIFICANT distribution is HARD right now. Founders are sponsoring buses, buying billboards like crazy and throwing parties with famous DJs to get noticed. Kinda feels dotcom era in that sense.
+>
+> Attention is what's scarce! The growth guy going viral sharing his UGC strategy from Wispr Flow is a good example. It's the sauce everyone wants, and I truly believe there are probably only 50 people on the planet who know how to scale these types of businesses efficiently in this era.
+>
+> Always good to get that dose of SF. I felt sooo lucky to have such an incredible trip during such an incredible time in building businesses. Surreal in so many ways.
+>
+> Happy to be home and locked in.
+>
+> Until next time!
+
+- **Tweet:** https://x.com/gregisenberg/status/2110414696037716372
+- **What:** Greg Isenberg's 21 takeaways from two days with AI founders and labs: data brokers selling company data to labs, the model as CPU and harness as OS, vertical agent harnesses as the new wrappers (model is about 20%), cloning and SaaS value shifting to data, agent primitives, evals and taste as key hires, agent insurance, and distribution as the scarce resource.
+
+## @noahkagan - Weekly Claude/ChatGPT Prompt for Remixing Your Best X Posts
+> This is my FAVORITE prompt to create content on X.
+>
+> Since I started running it on Sep 21: 333,600 → 448,600 verified impressions.
+>
+> It finds my best posts, mines my week for new stories, and remixes them. Use it:
+>
+> “Every Friday:
+>
+> Read my X posts from the last 90 days. Rank by views. Tell me my top 3 formats and why they worked.
+>
+> Check my email, Slack, calendar and our chats from the last 7 days. Pull every story with a real number, a named person or a strong opinion.
+>
+> Write 4 posts that put this week’s stories into my top 3 formats. Same structure as the winners, new subject.
+>
+> Score each 1-10: would someone save it, share it or reply? Cut anything under 8.
+>
+> Rank the rest. For each, name the past winner it copies and how many views it got.”
+>
+> Run it in Claude / ChatGpt with Gmail, Slack and Calendar connected.
+>
+> Remix what works. Boring wins.
+
+- **Tweet:** https://x.com/noahkagan/status/2110372708395446726
+- **What:** Shares a weekly prompt that ranks your last 90 days of X posts by views to find top formats, mines the week's email, Slack and calendar for stories with numbers or opinions, then drafts and self-scores four posts in the winning formats; the author claims impressions rose from 333,600 to 448,600 since Sep 21.
+
+## @0xSero - Simple Loop for Growing Users: Build, Post Free, Iterate, Track Conversions
+> How you grow users:
+>
+> - Make something that solves problem
+> - Post about it, give it for free
+> - Add features slowly, when needed
+> - Make posts about new features
+> - Repeat
+> - Track conversions
+>
+> All done. https://t.co/EAYUCoxeNK
+
+- **Tweet:** https://x.com/0xSero/status/2110336959629689071
+- **What:** A minimalist user-growth recipe: build something that solves a real problem, post about it and give it away free, add features only when needed and announce each one, repeat the loop, and track conversions.
+
+## @0xSero - Reproducible Playbook for Growing an X Account
+> How to grow your account on x - reproducible
+>
+> 1. Black and white pfp and banners
+> 2. Short bio
+> 3. 1 link is enough
+> 4. Post about 4-20x a day consistently every day
+> 5. Use pinned posts
+> 6. Use quote tweets
+> 7. Media in most posts (img/video)
+> 8. Give away free niche alpha
+> 9. Show up https://t.co/RXczJByJQM
+
+- **Tweet:** https://x.com/0xSero/status/2110291448075845714
+- **What:** A nine-point checklist for growing an X account: monochrome profile imagery, a short bio with one link, posting 4-20 times daily, pinned posts, quote tweets, media on most posts, giving away niche insight for free, and simply showing up consistently.
+
+---
+
+# Tuesday, October 13, 2026
+
+## @illyism - Illyism/seo-skills: Open-Source SEO and AEO Skills for Claude Code and Cursor
+> 530 people asked for the system prompt I use to run SEO + AEO inside Claude Code and Cursor.
+>
+> Instead of gatekeeping it in DMs, I just open-sourced the entire repo:
+>
+> - Audits your codebase for technical SEO & broken metadata
+> - Reverse-engineers top 10 SERP titles & structure
+> - Writes comparison pages with real information gain
+> - Checks what ChatGPT and Perplexity cite for your niche
+>
+> No $2,000/mo agency required.
+>
+> Repo: https://t.co/7ZOsGjdJY0
+
+- **Tweet:** https://x.com/illyism/status/2110180038637408357
+- **Link:** https://github.com/Illyism/seo-skills
+- **Filed:** [illyism-seo-skills-repo.md](./knowledge/tools/illyism-seo-skills-repo.md)
+- **What:** Open-source repo of SKILL.md skills (seo-autopilot, blitz-seo, title optimization, blog refresher, backlinks, customer-journey, copywriting) that lets Claude Code, Cursor and Codex run technical SEO audits, SERP analysis, comparison pages and AI-answer tracking, installable with npx skills add.
+
+## @poteto - Ban Code Comments: Agents Copy Stale Workarounds, Use pstack /no-comments
+> ban and delete most if not all code comments!
+>
+> agents love copying what already exists. a seemingly harmless comment explaining some temporary workaround is one of the worst viruses you can have in your codebase. like a weed it'll spread quickly as a tool for agents to quickly get their job done. before you know it, your codebase is overrun with hacks and stale comments. just one more workaround bro
+>
+> you can use pstack's /no-comments skill as a weedkiller. it'll seek out useless comments while keeping the ones that actually should exist (like explaining a browser quirk), and figure out how to solve them on a first principles basis
+>
+> here's a prompt you can try asking @bot:
+>
+> create a project agent that uses /poteto-mode to spawn a /swarm to use /no-comments and identify useless code comments we can prune in my repo. come back with a high level plan of which of these workarounds would be best solved by refactoring and which we can straight up delete
+>
+> https://t.co/nqeRdY62ee
+
+- **Tweet:** https://x.com/poteto/status/2110149626133438732
+- **Link:** https://x.ai/bot/plugin/9717366
+- **What:** Argues that code comments describing temporary workarounds get copied by coding agents and spread hacks and stale comments through a codebase, so most comments should be deleted; recommends pstack's /no-comments skill (keeps legitimate ones like browser quirks) and gives a swarm prompt for Grok Bot. The link is the pstack plugin page for Grok Bot (see existing knowledge/tools/pstack.md); the fetched content was only page HTML/metadata.
+
+## @sawyerhood - Fully Animated Cutscenes for App Onboarding
+> It’s 2026. Why don’t you have a fully animated cutscene for your onboarding? https://t.co/BA1CSpd4EO
+
+- **Tweet:** https://x.com/sawyerhood/status/2110127835360972846
+- **What:** THIN: @sawyerhood arguing that product onboarding in 2026 should be a fully animated cutscene; the text is a short provocation and the attached media (likely a demo video) is not available, so the actual example is unknown.
+
+## @jordan_ross_8F - Which Industries Micro1 Pays a Premium for Company Data, From an Insider Interview
+> Just interviewed someone from @micro1_ai to see which companies are getting paid a premium on data, here is what I learned:
+>
+> Premium Tier:
+> Law firms
+> Banks / finance (banks specifically — accounting firms are lower tier)
+> Healthcare
+> Construction (needs ~20+ desk employees even if field headcount is 200+)
+>
+> Fast-close industries (lower payout, quick deals)
+>
+> Restaurants, coffee shops
+> D2C / e-commerce
+> HVAC
+> Tech startups and consumer brands are "fine" but not premium
+>
+> Industries they no longer buy from
+>
+> Marketing agencies (lol)
+> Staffing agencies
+> Cannabis
+>
+> Shit is wild.
+
+- **Tweet:** https://x.com/jordan_ross_8F/status/2110085740646539277
+- **What:** Secondhand intel from an interview with a Micro1 contact on which industries command premium prices when selling company data (law, banks, healthcare, construction), which close fast at lower payouts (restaurants, D2C, HVAC), and which they no longer buy from (marketing and staffing agencies, cannabis); complements the data-brokering lead-gen threads and is unverified.
+
+## @wesbos - Photo Frame Dashboard Meets Receipt Printer: Community Mashup of Two Wes Bos Projects
+> we got receipt printers hooked up to photo frames now
+>
+> WHAT IS LIFE
+>
+> *Quoting @namboozle:* Combined two of the great @wesbos projects 🔥. Now to create my own dash from scratch 😉 https://t.co/XEx1EGpeJ6
+
+- **Tweet:** https://x.com/wesbos/status/2110081241701634141
+- **Quoted:** https://x.com/namboozle/status/2110077345344233844
+- **What:** THIN: Wes Bos amazed at a follower (Andy Hawkes) who combined his photo-frame dashboard project with his receipt-printer project into one build; the quoted tweet's media is not captured, so the specifics of the hybrid are unknown.
+
+## @patrickc - Stripe Press "Built to Grow": Stephanie Friedman's Handbook for High-Performance Sales Teams
+> New from @stripepress: the definitive guide to sales.
+>
+> I notice that startups today are scaling sales faster than ever, making it more valuable to get structures and incentives right from the outset.
+>
+> *Quoting @tamarawinter:* Out now! Built to Grow: A Handbook for High-Performance Sales Teams, by Stephanie Friedman: https://press.stripe.com/built-to-grow
+>
+> I love all of the books in our catalogue, but I particularly love the turpentine collection: High Growth Handbook, An Elegant Puzzle, Scaling People, and now, Built to Grow! Building a sales function—especially today—is more of an art than a science. Stephanie has more than 20 years of experience building 100+ person sales teams, and advising some of the fastest-growing companies in the world on how to do the same. I hope you love it as much as we do.
+
+- **Tweet:** https://x.com/patrickc/status/2110065299076907064
+- **Quoted:** https://x.com/tamarawinter/status/2110052028995035159
+- **Link:** https://press.stripe.com/built-to-grow
+- **What:** Patrick Collison promotes Stripe Press's new book Built to Grow, a playbook for B2B founders building a sales org from the earliest days, written by Stephanie Friedman (20+ years building 100+ person sales teams); he argues fast-scaling startups need sales structure and incentives right from the outset. Page content was only site boilerplate, so details come from the tweets and meta description.
+
+## @mxstbr - MCP Events: Let Agents Proactively React to System Events (Cloudflare Example)
+> mcp events are incredible.
+>
+> your users can set up their agents to listen to events in your system, enabling them to do proactive work whenever things happen without any user input.
+>
+> implement it in your mcp servers!
+>
+> *Quoting @mattzcarey:* Cloudflare MCP Server can now ping your agents for new issues on your Workers.
+>
+> Powered by @thomas_ankcorn new real-time issues and the draft MCP Event spec https://t.co/bYn96AEq3j
+
+- **Tweet:** https://x.com/mxstbr/status/2110056624689967610
+- **Quoted:** https://x.com/mattzcarey/status/2109736726440604042
+- **What:** Max Stoiber urges MCP server authors to implement the draft MCP event spec so users' agents can subscribe to system events and act proactively, pointing to Matt Carey's note that the Cloudflare MCP Server can now notify agents of new Workers issues via real-time issue events.
+
+## @emanueledpt - Claude Code Performance-Optimization Prompt: 3-Hour Run Found 4 Missed Bugs
+> Paste this into Claude Code if you want to make your app faster.
+>
+> Opus 5.5 on Extra High ran it on my app for 3 hours and found 4 performance bugs I'd missed:
+>
+> Big chats open 27% faster.
+> Switching back is 2x faster.
+> 98% fewer scroll jumps.
+> Reloads fetch the chat once, not twice.
+>
+> "Your job is to make this app faster. Improve the startup time, how fast each screen opens, how fast its content loads, and the scrolling, so everything feels lighter and older content loads faster. Find where the real performance gap is, apply the fixes, and benchmark before and after each one to see if it actually works or not."
+>
+> Scrolling through old messages does 20% less work and stops jumping around.
+
+- **Tweet:** https://x.com/emanueledpt/status/2110053042452312250
+- **What:** Shares a reusable Claude Code prompt that tells the agent to find real performance gaps in startup, screen opening, content loading and scrolling and to benchmark each fix before and after; the author reports a 3-hour run on a chat app yielding 27% faster big-chat opens, 2x faster switching back, 98% fewer scroll jumps and no duplicate chat fetch on reload (self-reported).
+
+## @felixrieseberg - How to Be More Ambitious: A Tutorial for Humans with Models
+> Hi, I'm Felix. I'm an eng lead working on Claude. I love watching people take flight and do things they never thought possible.
+>
+> We often describe that as "being more ambitious" when using AI, which is tricky advice to follow. I wrote a tutorial:
+>
+> https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/
+
+- **Tweet:** https://x.com/felixrieseberg/status/2110023283169247623
+- **Link:** https://felixrieseberg.com/how-to-be-more-ambitious-a-tutorial-for-humans-with-models/
+- **Filed:** [how-to-be-more-ambitious-tutorial-for-humans-with-models.md](./knowledge/articles/how-to-be-more-ambitious-tutorial-for-humans-with-models.md)
+- **What:** Claude engineering lead Felix Rieseberg's practical, prompt-based tutorial on turning the vague advice to "be more ambitious" with AI into concrete steps, noting uneven model capabilities (citing Terence Tao); only page metadata was captured, not the full body.
+
+## @termsheetinator - Data Brokering Cold-Email Trick: Leave a Referral Link After a "Not Interested" Reply
+> DATA BROKERING COLD-EMAIL CHEAT CODE:
+>
+> Here's a super cheat code to take advantage of every opportunity in data brokering.
+>
+> I'd rather get on a sales call, find out what the business has and sell the opportunity.
+>
+> But when someone replies to your cold email with "No, not interested," "We'll keep this in mind," or "We don't want to do this right now," send them this:
+>
+> "No worries at all.
+>
+> If you change your mind, here's the link to apply directly: [your referral link]
+>
+> Insert 2-3 benefits."
+>
+> Then leave them alone.
+>
+> A month or two from now, cash gets tight or something changes in the business. They remember the conversation, search their inbox and find a direct way back. If they apply through your link and the referral qualifies, you can still get paid.
+>
+> I'd much rather close them on a call. I'm not throwing away the attribution just because they weren't ready today.
+
+- **Tweet:** https://x.com/termsheetinator/status/2110014439089119311
+- **What:** Sales tactic for data-brokering cold email: reply to soft rejections with a short "no worries" note containing a referral/apply link and 2-3 benefits, then stop, so a prospect whose finances change later can apply through the link and the sender keeps referral attribution.
+
+## @termsheetinator - Selling Historical Data from Defunct Companies: 10 Distress Signals and Where to Find Them
+> Micro1 is paying $75,000 for data from companies that are NO LONGER opperational:
+>
+> Here are 10 public signals you can start pulling leads from immediately to get closer to them:
+>
+> 1. Chapter 11 bankruptcy filings
+> 2. Companies exploring strategic alternatives or asset sales
+> 3. Business closures and wind-down announcements
+> 4. Mass layoffs and WARN notices
+> 5. Debt restructuring and creditor negotiations
+> 6. Going-concern warnings in SEC filings
+> 7. Companies selling divisions or closing locations
+> 8. Private equity portfolio companies experiencing distress
+> 9. Failed fundraising and capital shortfalls
+> 10. Receiverships and insolvency proceedings
+>
+> Where to find these companies:
+> 1. PACER - public bankruptcy filings.
+> 2. SEC EDGAR - financial distress disclosures.
+> 3. WARN databases - companies announcing mass layoffs.
+> 4. Industry publications - closures, restructuring, and asset sales.
+>
+> From there, enrich the companies, identify decision-makers, and launch campaigns positioning historical data licensing as a potential source of liquidity or new revenue.
+>
+> If you already have infrastructure, lists, and campaigns running, I would encourage you to launch this angle immediately
+
+- **Tweet:** https://x.com/termsheetinator/status/2110008544707916189
+- **What:** Lead-generation playbook claiming Micro1 pays up to $75,000 for data from defunct companies, listing ten distress signals (bankruptcy, WARN notices, going-concern warnings, receiverships) and sources like PACER and EDGAR for finding such firms to pitch data licensing as new revenue; the payout claim is the author's and unverified.
+
+## @hr98w - anan-iphone-use: ESP32-S3 MCP Server Lets an On-Phone Agent Control an iPhone
+> An AI agent on my iPhone can now control the iPhone itself.
+>
+> No simulator. No AirPlay. No computer.
+>
+> Agent runs on the iPhone. MCP server runs on an ESP32-S3 to tap, swipe and type over USB.
+>
+> Just an iPhone + a tiny board.
+>
+> Opensource: https://github.com/ananhq/anan-iphone-use
+
+- **Tweet:** https://x.com/hr98w/status/2110005513144721410
+- **Link:** https://github.com/ananhq/anan-iphone-use
+- **Filed:** [anan-iphone-use.md](./knowledge/tools/anan-iphone-use.md)
+- **What:** Open-source C firmware for an M5Stack StopWatch (ESP32-S3) that exposes an MCP server and acts as a USB/BLE mouse and keyboard for an iPhone, so an agent (such as Anan) running on the phone can tap, swipe and type on it without a computer; the board runs no model and the client handles screen observation.
+
+## @redp314 - Omarchy on a $50 PF1007L Photo Frame: Reproducible SD-Card Arch Linux ARM Build
+> I've published the repo for anyone who wants to reproduce this:
+> https://github.com/pangoleen/ormarch-picture-frame
+> It's for the PF1007L / Allwinner A33 frame specifically. It builds an SD-card-only Arch Linux ARM + Omarchy setup and leaves the original eMMC untouched.
+> Wi‑Fi, touch, on-screen keyboard, and Bluetooth mouse/keyboard work. Full notes and reinstall steps are in the repo.
+>
+> *Quoting @redp314:* Inspired by @wesbos photo-frame project, I got @OmarchyLinux running natively on a $50 digital photo frame.
+> Allwinner A33, 1 GB RAM, Mali-400 GP, Arch Linux ARM booted from microSD.
+> I had to build a custom SD boot path, adapt Omarchy for armv7, fix display/touch rotation, bring up the AIC8800 Wi‑Fi driver, and manually enable the UART Bluetooth controller for BlueZ.
+> Now it boots straight into Hyprland/Omarchy with touch, on-screen keyboard, Wi‑Fi, Bluetooth LE mouse/keyboard, and the original eMMC still untouched.
+> Has anyone else run Omarchy on one of these? @dhh
+
+- **Tweet:** https://x.com/redp314/status/2109995906028179952
+- **Quoted:** https://x.com/redp314/status/2109699021799293244
+- **Link:** https://github.com/pangoleen/ormarch-picture-frame
+- **Filed:** [ormarch-picture-frame.md](./knowledge/tools/ormarch-picture-frame.md)
+- **What:** Follow-up to his original demo of Omarchy (Hyprland) running on a $50 Allwinner A33 photo frame, now publishing the repo that builds an SD-card-only Arch Linux ARM image with the frame overlay, leaving eMMC untouched; covers touch, Wi-Fi, BLE input, plus extras like slideshow and local voice typing, with 1 GB RAM as the main limit.
+
+## @codyschneider - Replacing a $50K/year digital asset management system with S3, Postgres and Gemini Flash-Lite tagging
+> the most shocking thing we're seeing people use us for is replacing their digital asset management system
+>
+> every DAM i've used is the same. tag everything by hand, search by filename, pay $50k a year for the privilege
+>
+> turns out all you need is
+>
+> - s3 for the files
+>
+> - postgres for the metadata
+>
+> - gemini 2.5 flash-lite to watch every video / image and write down what's in it
+>
+> then claude code can search everything you've ever uploaded
+>
+> "find every clip where the product is on a kitchen counter and someone is smiling" just works
+>
+> and it just works
+>
+> then you can upload these directly to google ads or Facebook ads or into a blog post all without leaving a claude code
+>
+> And it's multiplayer so your whole team has access to this
+>
+> They just dump it in assets as it comes in and you can also build walls for the application, anything else that you can imagine
+>
+> and if you want to do this for you team get it here - https://t.co/ebuBtYlcod
+
+- **Tweet:** https://x.com/codyschneider/status/2109992560483569802
+- **Link:** https://www.graphed.com/platform
+- **What:** Cody Schneider says customers are using Graphed to replace $50K/year digital asset management systems with a simple stack: S3 for files, Postgres for metadata, and Gemini 2.5 Flash-Lite to auto-describe every image and video, so Claude Code can run natural-language searches and push assets straight to ad platforms. The linked graphed.com/platform page fetched only raw HTML with no usable text, so details beyond the tweet are not confirmed.
+
+## @openmys - ESP32 board autonomously asks wife about dinner on WeChat and orders Meituan delivery on an iPhone
+> 大的真的来了！！！用用 ESP32 控制手机，我只说了一句“问问老婆今天吃什么”，它就自己打开微信问老婆，收到回复后再打开美团外卖，选餐、下单，一路推进到付款密码页，停下来等我接手！
+>
+> （最后的付款密码它可以帮我输入，但是我还是留给自己输吧，安全边界还是要有的。
+>
+> 幼年版贾维斯现在进化为少年版！@bot @elonmusk
+>
+> *Quoting @openmys:* 展示一下esp32的ios控制能力，贾维斯幼年体可以达成，明天试试点美团外卖看看完成度怎么样
+
+- **Tweet:** https://x.com/openmys/status/2109970846823710769
+- **Quoted:** https://x.com/openmys/status/2109668196328575442
+- **What:** A demo of ESP32-based iPhone control (the esp32-iphone-agent approach): from one spoken instruction to ask his wife what to eat, the agent opens WeChat, messages her, reads her reply, then opens Meituan, picks food and orders up to the payment-password page, where he takes over deliberately as a safety boundary. The quoted earlier post teased the iOS control ability the day before as a "baby Jarvis."
+
+## @coldemailchris - micro1 referral program pitch: $50K per company licensing operational data to AI labs
+> I'M BEGGING YOU:
+>
+> > sign up as a micro1 referral partner
+> > find a business with 20+ people on laptops
+> > send the owner your link
+> > let micro1 run the calls
+> > get paid $50K (per referral)
+> > quit the job you hate
+> > take your parents somewhere they've never been
+> > pay for the wedding in cash
+> > buy a house
+>
+> Here's EXACTLY how to do the first five:
+>
+> 0. WHAT THIS IS (30 SECONDS)
+>
+> AI labs have read the whole internet. What they've never seen is how work moves inside a real business.
+>
+> micro1 pays companies a one-off $200K to $2M+ to license that operational data, anonymised before any lab sees it.
+>
+> On the 9th of October they committed $1B to it over the next 12 months, backed by Citi.
+>
+> Anyone who refers a company that closes gets a flat $50K.
+>
+> 1. SIGN UP (5 MINUTES, $0)
+>
+> Register through the link below this post (free), accept the referral terms, and grab your own affiliate link from the dashboard.
+>
+> No fee, quota or sales calls needed.
+>
+> Once you send a business your link, micro1's team runs the fit call with them, then the quote, the contract and the export.
+>
+> You never touch anyone's data.
+>
+> 2. LEARN WHO QUALIFIES (ONE READ)
+>
+> > 20+ full-time staff on email & software daily
+> > based in the US (UK, Canada & Europe considered)
+> > 2+ years of history
+> > 5+ software tools, mostly in English
+>
+> Drivers, bartenders and warehouse staff don't count toward the 20.
+>
+> The strongest fits are software, consulting, finance, legal, accounting, engineering, IT services, real estate, construction and logistics.
+>
+> Marketing agencies and recruiting firms are weak fits, so skip them.
+>
+> 3. START WITH WHO YOU ALREADY KNOW (ONE EVENING)
+>
+> Write down every business owner you know with 20+ people in an office.
+>
+> Your old boss. Your dad's accountant. The law firm your mate works at.
+>
+> One message to each.
+>
+> Then go cold. Filter Apollo for 50 to 2,500 employees in the industries above, find the owner or COO, and send one short email.
+>
+> (We've sent 10M+ cold emails. A list like this is the easiest one we've ever built.)
+>
+> 4. SAY IT THE RIGHT WAY
+>
+> "License your operational data", never "sell your data".
+>
+> "Anonymised before any AI lab sees it."
+>
+> "Typically $200K to $600K for a mid-size company, priced per company, paid in about 60 days."
+>
+> Never promise anyone a number. micro1 sends a firm quote 24 to 48 hours after a short form that doesn't commit them to anything.
+>
+> 5. GET PAID (ABOUT 60 DAYS)
+>
+> $50K flat for every company that signs and completes, whether their deal is $200K or $2M.
+>
+> It's paid by micro1, never taken out of the company's money.
+>
+> Recruit another referral partner and you get $10K every time they close one, on top of their full $50K.
+>
+> For a limited time, referring a company that's already shut down pays $75K.
+>
+> Run the numbers:
+>
+> 1 company = $50K
+> 4 companies = $200K
+> 10 companies = $500K
+>
+> micro1 has worked with a few hundred companies so far and has $1B to spend in 12 months.
+>
+> Once every outbound agency on X has a link, the owners you know will have heard it from someone else first.
+>
+> The other four never needed a guide. Nobody has ever struggled to book a holiday with $50K in the bank.
+>
+> The link to sign up as a referral partner for free is below:
+
+- **Tweet:** https://x.com/coldemailchris/status/2109963106944487774
+- **What:** A promotional how-to for micro1's referral program, in which AI-data firm micro1 licenses anonymised operational data from companies with 20+ office staff for $200K-$2M+ and pays referrers a flat $50K per closed deal ($10K for recruiting sub-partners). It illustrates the emerging market for business workflow data as AI training input, but the figures are the affiliate's own marketing claims.
+
+## @dhh - Omarchy adds a traditional desktop mode with a dock to lower the switching barrier
+> One more excuse not to switch to Omarchy has been stricken from the list: Traditional desktop mode with a dock! We'll keep killing reasons until there's very little reason not to join us in the future.
+>
+> *Quoting @omarchy:* Omarchy is getting a per-workspace or global option to run as a traditional desktop with a dock. Great set of training wheels for anyone new to tiling window managers who need a safe space until it clicks! Comes with Alt+Tab, minimization, left/right/top/bottom positioning.
+
+- **Tweet:** https://x.com/dhh/status/2109945839494086939
+- **Quoted:** https://x.com/omarchy/status/2109945157445636098
+- **What:** DHH celebrates the Omarchy Linux distro removing another barrier to switching, quoting the official announcement of a per-workspace or global traditional desktop mode with a dock, Alt+Tab, window minimization and configurable dock position. It is pitched as training wheels for newcomers to tiling window managers.
+
+## @kongkongda5588 - First-hand account arguing laziness, not water scarcity, keeps rural Africa poor
+> 非洲真的很缺水吗？其实“懒”才是他们穷的根本原因。有数据显示，非洲地下水储量是地表的100倍，为何他们不挖井，而是到处找水？
+> 我之前跟着一支海外工程队在那边待了快八个月，亲眼见过太多让人匪夷所思的事，说出来真的好多人都不敢信。我们当时的营地建在一片开阔的草地上，刚过去的时候要解决用水问题，队里找了个测水的师傅随便找了个地方打井，打到不到十二米就出了清水，水质甜得很，除了供我们队四十多个人吃喝洗澡，还能引出一垄水浇我们开出来的小菜园，天天浇水都用不完。
+> 而离我们营地不到两公里的地方，就有一个百十来口人的部落村子，我第一次跟着采购去村里的时候，就看见全村人都围着一个半米深的泥坑接水，那水浑得放半小时都澄清不了，水面上还飘着虫子和牲畜的粪便，小孩渴了蹲下来直接舀了就喝，大人也不管，不少小孩隔三差五就拉肚子，缺药耽误着能拖出大病，看着真的让人心疼。我当时就问翻译，咱们这边打井出了这么多水，他们咋不来打一口？翻译笑笑说，你往后看就知道了，不是水的事。
+> 没过多久工程闲下来，队长说反正咱们设备人都有，不如免费帮他们打一口井，也算做件好事，结果第一步就卡壳了。村长带着一群人堵在我们选好的井址，说这块地是他们部落的公用土地，要打井就得给他们十袋面粉五桶食用油外加两箱汽水，不然别想动土。我们队里想着反正也不多，给就给了，就当换一口井给村里人用，这点东西对我们来说不算什么。
+> 接下来要找几个当地人帮忙打下手搬东西，我们说好一天给一斤玉米面两瓶汽水，这个待遇在当地已经够一个三口之家吃饱喝足了，比他们自己瞎晃赚得多太多，结果来了五个人，干了不到四十分钟，全都撂挑子坐到树底下乘凉去了，说太阳太晒，会晒伤皮肤，祖宗规矩就是正午不能干活，要等太阳落山再干活。我们想着入乡随俗那就等，结果太阳落山之后，连个人影都没见着，第二天上午好不容易来了三个，还要求必须先给汽水玉米面，不给就不动手，我们给了之后，三个人晃悠着挖了不到半米，又坐下来歇着聊天了，一聊就是一上午，第三天干脆全都不来了，托人带话来说拿到的吃的够喝够吃好几天，先回家休息，吃完了再来。
+> 最后没办法，我们工程队自己上手，不到十天就打出了一口出水稳定的井，还给他们在井口安了简易的提水架，放了两个大木桶，跟村长说以后大家随便来打水，只要别往井里扔垃圾就行。一开始村里人可开心了，天天排着队来打水，结果半个月不到，井口就堵了，我们过去一看，大大小小的树枝石头烂叶子堵了小半井，原来大家打完水垃圾随手就扔在井口边上，下雨一冲全进去了。我们免费帮他们清干净，反复跟村长和村民说不要扔垃圾，要保持井口干净，结果不到两个月，又堵了，之后村长干脆来找我们，说井坏了，你们再帮我们打一口新的吧，那语气说得理所当然，好像我们就该天天给他们收拾烂摊子。
+> 我之前还碰到过一次，营地的围墙坏了一段，找了四个当地工人来修，说好一天干完给对应的工钱，结果四个工人八点开工，九点就歇着喝茶，十点吃早饭，十二点要睡午觉，睡到下午三点才起来，干了不到一小时又说要回家喂孩子，一天下来只码了不到五块砖，第二天还过来要全额工钱，说我们没给他们提供茶和饼，所以干得慢，钱不能少给，当时给我们队长气得直接把他们赶走了。
+> 待得久了我才发现，这种事真的不是个例。有个二十多岁的小伙子天天来我们营地卖野果，我们看他挺活络，就说你干脆天天给我们营地送菜，我们一个月给你固定的工钱，比你卖野果稳定多了，结果他干了三天，第四天就不见了，过了一周晃悠过来，问他为啥不来，他说前三天赚的钱够花了，在家歇着花完了再来。还有国际援助组织免费给他们发蔬菜种子，教他们开荒种地，说种好了够全村吃大半年，结果一半种子被他们煮着吃了，剩下的随便往地里一撒，既不浇水也不除草，长不出来就接着等着发援助。
+> 真的，很多人说非洲穷是因为气候不好历史遗留问题，可我们明明看到脚底下十几米就是清水，储量够整个村子用几十年，有人免费帮你打出来，就只要随手维护一下都做不到。他们不是没有力气，跑出去找野果跳篝火舞能折腾一整天，一说到干活赚饭吃，半小时就喊累；也不是没有资源，地下水摆在那，援助摆在那，就是不肯伸手去动。
+> 我待了八个月见过好多口废弃的援助井，全都是打完没两年没人维护废了，当地人宁愿背着水桶走三四公里去接脏雨水，也不肯花半天时间清一清堵了的井口。你说这到底是延续了几千年的靠天吃饭的生活方式已经刻进骨子里改不了，还是真的就是“懒”才导致一直摆脱不了穷呢？你怎么看这件事？
+
+- **Tweet:** https://x.com/kongkongda5588/status/2109922276569477181
+- **What:** A Chinese-language engagement-bait post in which a self-described overseas construction worker claims, via anecdotes from eight months in rural Africa (a free well that got clogged, workers quitting after minutes, wasted aid seeds), that laziness rather than lack of groundwater explains poverty. The account is unverifiable and relies on stereotyping; low-quality sourcing, saved mainly as an example of viral rage-bait.
+
+## @RoundtableSpace - esp32-iphone-agent lets an AI drive a real iPhone with a $7 ESP32 board
+> Apple never built this, so someone hacked it with $7.
+>
+> esp32-iphone-agent lets an AI model use a real iPhone through a tiny ESP32 board plugged into the charging port. No jailbreak, no Xcode, no developer account.
+>
+> how it works:
+>
+> • eyes → the iPhone screen mirrors over AirPlay to your computer
+> • hands → the ESP32 acts as a USB mouse and keyboard
+> • brain → any OpenAI-compatible vision model plans and taps
+> • limits → it can't see passcode or Apple Pay screens, by iOS design
+>
+> why it matters:
+>
+> → AI agents on real phones, not emulators
+> → about $7 of hardware
+> → open source, MIT license
+>
+> Your iPhone just got an AI driver, and Apple wasn't involved.
+>
+> Repo: https://t.co/7RMjKGyGvT
+
+- **Tweet:** https://x.com/RoundtableSpace/status/2109905727737459188
+- **Link:** https://github.com/onehumanbeing/esp32-iphone-agent
+- **Filed:** [esp32-iphone-agent.md](./knowledge/tools/esp32-iphone-agent.md)
+- **What:** Open-source MIT project that gives an AI model control of a real iPhone via a roughly $7 ESP32 acting as a USB HID mouse and keyboard, with AirPlay screen mirroring as vision and any OpenAI-compatible vision model as the planner. It needs no jailbreak or developer account and cannot see passcode or Apple Pay screens by iOS design.
+
+## @michael_chomsky - Production traces from consumer apps reportedly selling for $40-120 each
+> if you're a consumer app builder and have production traces, dm me
+>
+> traces are selling for $40-120/trace rn, the market is nuts
+>
+> *Quoting @gokulr:* Tokens or Data (or both :))? Heard rumors that some of the top vibe-coded app builders are selling production traces to the labs. (in addition to their core revenue stream of selling credits) It doesn't surprise me in the least. That's incredibly valuable data for the labs. As my friend @quxiaoyin posited, there are truly only two business models in AI: 1. Selling tokens OR 2. Selling data. So far, app builders were selling tokens (credits are a proxy for tokens). Logical that they would sell data too.
+
+- **Tweet:** https://x.com/michael_chomsky/status/2109894037176295478
+- **Quoted:** https://x.com/gokulr/status/2109696424984387966
+- **What:** Claims that AI labs and brokers are paying roughly $40-120 per production trace from consumer apps, soliciting DMs from app builders who have them. It quotes Gokul Rajaram's rumor that top vibe-coded app builders sell production traces to labs on top of selling credits, framed as AI having only two business models, selling tokens or selling data; the price is an unverified anecdote.
+
+## @swill1ams - Small RL environment companies are the AI industry's quant shops
+> Small RL companies are the AI industry's equivalent of quant shops. Let me explain.
+>
+> Both are small, secretive, full of brilliant people, profitable, and always one step from their edge disappearing.
+>
+> The parallels:
+>
+> - Secretive. Nobody publishes their signals. Labs won't say what they're training next, and vendors can't say who they sell to. Epoch calls the market "largely behind closed doors."
+>
+> - Hunting alpha. For a quant, a trade stops working once everyone finds it. For these shops, a task stops paying once models can solve it (labs drop tasks at around 70% pass rate). Meanwhile, labs are building their own in-house. So they always have to find the next field.
+>
+> - Deep Industry Connections. You need to know the problem cold to get in. Founders have usually worked at, or sold to, the labs. You can't define "correct" for fund accounting without having done fund accounting.
+>
+> - They buy strange data. Quants buy satellite photos of parking lots. RL shops bid for enterprise data (eg $12.5M bid for Spirit Airlines historical data).
+>
+> - Brilliant people. Quants hire math olympiad winners. These shops hire ex-lab researchers and real practitioners.
+>
+> - Huge revenue per head. Jane Street made about $11M per employee in 2025. Proximal is about $5M. The tweet's company would be $20M.
+>
+> - One narrow problem that makes something more efficient. Quants make markets more efficient. These RL shops make models training more efficient.
+>
+> - High risk (for different reasons). A quant can lose millions in a day on a bad trade. An RL shop's risk is that one lab trains a model that makes their environments irrelevant, or brings the work in-house, and the revenue stops.
+>
+> - Overfitting/reward hacking. A quant's nightmare is a strategy that looks perfect on historical data and fails live. An RL shop's nightmare is an RL grader that scores perfectly and trains the model incorrectly.
+>
+> - Infrastructure arms race. Quants pay for microseconds of speed. RL shops race to spin up thousands of disposable computers per training run.
+>
+> Obviously there are as many differences between RL companies and quant shops, but right now the aura around them feels eerily similar.
+>
+> Curious to see how this market matures as robotics opens up a new surface, and whether the frontier labs end up absorbing them.
+>
+> *Quoting @ivanburazin:* There's an RL company I know doing $100M run rate with five people. They are finally raising one small round at a $500M+ valuation with very little dilution (I wrote a check) You've never heard of them.
+
+- **Tweet:** https://x.com/swill1ams/status/2109858744087564288
+- **Quoted:** https://x.com/ivanburazin/status/2109779654886257022
+- **What:** Extends a quoted claim that an unnamed five-person RL company has a $100M run rate and a $500M+ valuation into a ten-point analogy between RL-environment vendors and quant shops: secrecy, alpha decay when models solve a task (labs drop tasks near 70% pass rate), odd data purchases, extreme revenue per head, lab-absorption risk, and grader reward hacking as the analog of overfitting.
+
+---
+
+# Monday, October 12, 2026
+
+## @Passenger0522 - Five flagship ESP32 open-source projects: xiaozhi AI voice, LVGL, Tasmota, WLED, ESPHome
+> GitHub 上带 esp32 标签的开源仓库已经超过 2.6 万个，如果刚买来开发板想找最惊艳的成品固件或开发神器，直接盯准这 5 个最具代表性的镇山之宝就够了！
+>
+> xiaozhi-esp32（★ 30.8k） 目前整个 ESP32 生态里最火的开源 AI 语音硬件项目，直接把大模型装进几十块钱的开发板里，支持语音唤醒、声纹识别与多语言对话，还能通过 MCP 协议让大模型直接接管控制家里的硬件外设，现在全网爆火的 AI 语音桌宠和聊天小盒子几乎全拿它当底座 https://t.co/tXR1yvjgj1
+>
+> LVGL（★ 24.9k） 做嵌入式屏幕 UI 绕不开的行业事实标准，在极其有限的单片机内存里也能跑出丝滑的动画、图表与触控交互，自带丰富的组件库和可视化界面设计工具，你在市面上见到的高颜值 ESP32 彩屏旋钮、桌面副屏和智能中控面板，背后九成以上都是用它画出来的 https://t.co/6Z5EqhPDJY
+>
+> Tasmota（★ 24.8k） 把廉价智能插座和通断器变成完全私有可控设备的刷机神器，很多几块钱的白牌智能硬件原厂 App 难用还强制连云端，直接刷入 Tasmota 就能彻底断掉厂商服务器，在本地网页端完成配网和 OTA 升级，还能配置电量监控与定时自动化规则，极客改造老旧家电人手必备 https://t.co/I3XalQu7bS
+>
+> WLED（★ 18.8k） 桌搭玩家与全屋氛围灯效的终极神器，只需要一块几块钱的 ESP32 接上 WS2812B 等可编程 RGB 灯带，刷入固件就能通过手机 App 或网页无线控制上百种动态灯效，原生支持音乐律动拾音、分区像素控制与电脑屏幕流光溢彩同步，比买几百块的成品氛围灯香太多 https://t.co/oBGANxyPoI
+>
+> ESPHome（★ 11.8k） 自建传感器接入 Home Assistant 全屋智能的首选方案，全程根本不用写一行 C++ 或复杂的联网代码，只需要写几行简单的 YAML 配置文件，就能把温湿度和毫米波雷达以及红外遥控等几十种模块一键编译刷入 ESP32，开机自动被家庭中枢发现并加密接管 https://t.co/D7nb4mim2F
+>
+> *Quoting @Passenger0522:* 紧跟时事热点 已下单 虽然暂时还想不到什么使用场景
+
+- **Tweet:** https://x.com/Passenger0522/status/2109854134644179248
+- **Quoted:** https://x.com/Passenger0522/status/2109529132921245921
+- **Link:** https://github.com/78/xiaozhi-esp32
+- **Link:** https://github.com/lvgl/lvgl
+- **Link:** https://github.com/arendst/Tasmota
+- **Link:** https://github.com/wled/WLED
+- **Link:** https://github.com/esphome/esphome
+- **Filed:** [xiaozhi-esp32.md](./knowledge/tools/xiaozhi-esp32.md)
+- **Filed:** [lvgl.md](./knowledge/tools/lvgl.md)
+- **Filed:** [tasmota.md](./knowledge/tools/tasmota.md)
+- **Filed:** [wled.md](./knowledge/tools/wled.md)
+- **Filed:** [esphome.md](./knowledge/tools/esphome.md)
+- **What:** A Chinese-language starter list of the five most representative ESP32 open-source projects: xiaozhi-esp32 (MCP-based AI voice chatbot firmware), LVGL (embedded UI library), Tasmota (local-control firmware for cheap smart plugs), WLED (addressable LED controller), and ESPHome (YAML-configured sensors for Home Assistant). The quoted earlier tweet from the same author says only that they ordered an ESP32 item with no use case in mind.
+
+## @308Greenfield - SlowBooks Pro, a free QuickBooks alternative, claims traction against SaaS bookkeeping
+> I promise you - they can't keep up.
+>
+> SlowBooks Pro is already better than QBO / QBS /QBW32.EXE idc which one you name it - pound for pound
+>
+> SlowBooks Pro trods all over the ashes of Quickbooks.
+>
+> Let this industry die - stop paying money to these evil corporate conglomerates - stop buying ito the hype and popularity of SaaS solutions that lock you into endless deterioration of what you started with.
+>
+> I love watching everyone try to make millions on bookkeeping while SlowBooks Pro keeps adding dozens of users a day. Over 500 daily calls back to the server every day from unique IP's - the snowball has started. This industry is cooked.
+>
+> Why?
+>
+> Because SlowBooks Pro is free ... Forever
+>
+> *Quoting @kevinasrx:* Bookkeepers of Twitter— My wife is a bookkeeper. A really good one I might add (but I'm biased) She's been doing it almost two decades and about 5 years ago went off on her own. Solopreneur style. But shes also old school and is VERY much involved with the books and the numbers. She hates the AI integration in Quickbooks and doesn't have a paid AI subscription. (I have enough for the two of us) She recently was sent a handful more clients that she's tempted to take, but like I said, it's just her and she's very involved manually. Bookkeepers of Twitter, how are you scaling or delegating some of the time consuming work to AI? And are you on the forefront and integrating GrokBot, Muse, Hermes, etc. ? Curious. 🤔
+
+- **Tweet:** https://x.com/308Greenfield/status/2109820603695829209
+- **Quoted:** https://x.com/kevinasrx/status/2109761628564840543
+- **What:** The author promotes SlowBooks Pro, a free-forever bookkeeping app he claims beats QuickBooks, citing dozens of new users daily and 500+ daily server calls from unique IPs as traction. It was posted in reply to a bookkeeper's spouse asking how solo bookkeepers use AI, who noted his wife dislikes QuickBooks' AI integration; the pitch is self-promotion with unverified adoption claims.
+
+## @vboykis - Cache dependencies in GitHub Actions to cut pipeline time
+> at the risk of already upsetting GitHub's extremely fragile balance, a tip for actions is that you should be be caching dependencies all the time; over the past 12 months, reduced pipelines from 20min ---&gt; 3 min and 7 min --&gt; 1 min via caching, always be caching
+
+- **Tweet:** https://x.com/vboykis/status/2109811734512824564
+- **What:** vicki advises always caching dependencies in GitHub Actions, reporting that over 12 months it cut her pipelines from 20 minutes to 3 and from 7 minutes to 1, with a wry nod to GitHub's fragile reliability.
+
+## @pestctrlguy - Small-business acquisition angle: selling decades of email and CRM text to AI labs
+> Ok so here’s what I am learning.
+>
+> Some AI labs don’t care about your customer info at all. They need immense amount of data to train the bots on.
+>
+> They don’t want a digitized excel sheet of customer info. Our 17,000 customer database is like 250 mb of data. Next to nothing.
+>
+> They want a bulk export of your gmail, slack, CRM communications. They want hundreds of gbs of data. Real person to person communication.
+>
+> We had a company reach out to us and the anonymize any customer info but they just need the words to feed the machine and make it learn.
+>
+> So did we get much buy buying 4 companies with very small amounts of customers? No.
+>
+> Did we inherit 4 gmails with a cumulative 50 gigabytes of human interaction over 30 years?
+>
+> Yes, and it may pay off handsomely.
+>
+> *Quoting @StumpGuyTy:* I’m becoming a “Silver Tsunami” course guru. Here's the curriculum: Chapter 1: Find a retiring business owner in the trades. Chapter 2: Buy his business. Chapter 3: Plug in Ai to make things easy. Chapter 4: Sell their last 30 years of data to an AI company to pay for the transaction (This is the new sauce). Chapter 5: Retire early.
+
+- **Tweet:** https://x.com/pestctrlguy/status/2109801971142324303
+- **Quoted:** https://x.com/pestctrlguy/status/2109652988612812968
+- **What:** A pest-control owner who acquired four small companies says AI labs want bulk human-to-human communication archives (Gmail, Slack, CRM, hundreds of GB) rather than customer lists, noting one buyer approached them offering to anonymize customer info, while the quoted Stump Guy jokes about a "Silver Tsunami" playbook of buying retiring trades businesses and selling their 30 years of data to fund the purchase.
+
+## @sudoingX - Turning idle DGX Spark and Strix Halo boxes into private CI runners and a local AI stack
+> squeeze your hardware harder, like i do, the moment a node goes idle a runner, a job or an encode takes it
+>
+> a laptop, a strix halo and 2x dgx spark on my table, 472 gb of memory between them, and this is what runs on them instead of a monthly bill
+>
+> > ci runners, every push tests on my own spark, zero github minutes
+> > my own private git server
+> > local models for my agents and evals whenever a pair is free
+> > image generation
+> > my video renders and every chart in my posts
+> > my own hidden-character stripper for drafts
+> > a telegram bridge so my agents reach me anywhere
+> > and many more i am not allowed to mention
+>
+> the ci part alone is the $3,188 a month saving the post below adds up for a 25 engineer team, the rest would be api bills, image subscriptions, design tools and render credits
+>
+> every time i walk past the desk, the heat and the smell of hot silicon hit like a lungful of oxygen
+>
+> what keeps it from melting, a watcher on every long job, memory guards on encodes, cpu and memory caps on every runner and a health check every five minutes, nothing runs blind
+>
+> start with the box you already own, give it one job tonight
+>
+> *Quoting @sudoingX:* run private ci on your own hardware and save a lot of money every day, i simulated what one dgx spark does for a company like yours. 25 engineers and their agents pushing day and night into 8 private runners, gpu included comes to 8,613 ci minutes a day. at github's own prices, $0.006 a minute for the default linux runner and $0.052 for a gpu runner, the bill is $106 a day, $3,188 a month and $38,792 a year. here's my setup: 1. pick one idle node and add it as a self-hosted runner, about ten minutes. 2. give every runner its own user with no sudo and no secrets, run several side by side. 3. postgres and redis in rootless docker. 4. pick runners by label, never machine name. 5. give the gpu its own runner and label. 6. run each runner as a systemd service with cpu and memory limits, wipe the workspace after every job, health check every five minutes. 7. runner only makes outbound https calls to github. 8. use it only for private repos you trust, never for a public repo where a stranger's pull request could run code on your box.
+
+- **Tweet:** https://x.com/sudoingX/status/2109796507943866768
+- **Quoted:** https://x.com/sudoingX/status/2109071732606710145
+- **What:** sudoingX shows his home cluster (laptop, Strix Halo, two DGX Sparks, 472 GB memory) running CI, a private git server, local models, image generation and agent bridges with watchers and resource caps, quoting his own 8-step guide to self-hosted GitHub runners that estimates a 25-engineer team would save about $3,188 a month, with safety rules such as private repos only and no secrets on runners.
+
+## @uwwgo - Reverse-engineering saga: full local control of AC, air monitor and purifier
+> Continuing the reverse engineering saga
+>
+> I have now full control of my Mitsubishi AC, Qingping air monitor and Levoit air purifier
+>
+> Everything is open source now.
+>
+> *Quoting @uwwgo:* I argued with my Claude that reverse engineering is morally good, and lawful under EU regulation. It has seen the wisdom of my words.
+>
+> It has now downloaded my @WHOOP app APK and is fully decompiling it.
+>
+> We live in magic times
+
+- **Tweet:** https://x.com/uwwgo/status/2109574032081248729
+- **Quoted:** https://x.com/uwwgo/status/2109217632758976755
+- **What:** Hugo Montenegro reports using Claude to reverse-engineer his Mitsubishi AC, Qingping air monitor and Levoit air purifier for full open-source control, following his earlier post where he convinced Claude that reverse engineering is lawful under EU rules and had it decompile the WHOOP app APK.
+
+## @suraj_sharma14 - 20-item speed checklist for vibe-coded apps
+> 20 things for Speedmaxxing your vibe coded app:
+>
+> - Measure first: run Lighthouse and PageSpeed on mobile
+> - Compress every image to WebP or AVIF
+> - Lazy-load images below the fold
+> - Serve static files from a CDN
+> - Remove packages your AI added but never used
+> - Split your JavaScript so pages load only what they need
+> - Preload your main font, and use only 1–2 fonts
+> - Add database indexes on columns you filter by
+> - Fix N+1 queries
+> - Paginate lists instead of loading everything
+> - Cache API responses that rarely change
+> - Stream AI responses instead of waiting for the full answer
+> - Show skeletons and loading states, not blank screens
+> - Move heavy work to background jobs
+> - Put your server close to your users
+> - Kill cold starts on your main routes
+> - Debounce search inputs
+> - Remove third-party scripts you don't need
+> - Test on a cheap Android phone on 4G
+> - Ask your AI: "What makes this app slow?"
+>
+> Users don't wait.
+> A 1-second delay is a lost signup.
+>
+> Bookmark this + send it to someone shipping this week.
+
+- **Tweet:** https://x.com/suraj_sharma14/status/2109501816853467246
+- **What:** A practical checklist of 20 performance fixes for AI-generated web apps, spanning measurement (Lighthouse, PageSpeed, a cheap Android on 4G), frontend (image formats, lazy-loading, code splitting, fonts), backend (indexes, N+1 queries, pagination, caching, background jobs, cold starts) and UX (skeletons, streamed AI output).
+
+---
+
+# Sunday, October 11, 2026
+
+## @jrlevine - Muse Gadgets e-ink daily view built in minutes by telling an agent what to show
+> Don’t sleep on https://gadgets.muse.ai/ - took approx 3 minutes to a v1 of this sick e-ink daily view. I tell Gerald what I want to see - he pushes it to the display. Kinda magic @Muse @anantn
+
+- **Tweet:** https://x.com/jrlevine/status/2109493505353715948
+- **Link:** https://gadgets.muse.ai/
+- **What:** Jake Levine praises Muse Gadgets, which lets you wire an off-the-shelf ESP32 or Raspberry Pi to open-source displays, buttons and sensors through Muse SDKs, saying he built a v1 e-ink daily view in about 3 minutes by telling his agent "Gerald" what to show and having it push to the display.
+
+## @satellitedown - Joke post about writing custom AI-enhanced MagSafe cable firmware
+> IF YOU'RE NOT RUNNING CUSTOM FIRMWARE ON YOUR MAGSAFE CABLE YOUR NGMI I WROTE MY OWN AI ENHANCED MAGSAFE CABLE FIRMWARE BECAUSE I CAN DO ANYTHING I WANT WITH AI NO I DO NOT HAVE AI PYSCOSIS YOU JUST WOULDNT UNDERSTAND
+
+- **Tweet:** https://x.com/satellitedown/status/2109441843352023507
+- **What:** THIN: @satellitedown (Nerv) jokingly claims to have written custom AI-enhanced firmware for a MagSafe charging cable, satirizing the "I can build anything with AI" mindset and AI psychosis; the tweet has no captured media or link, so the actual project, if any, is unknown.
+
+## @brian_armstrong - Coinbase fine-tunes Qwen3.5-9B to beat frontier models at fraud prevention
+> We were able to fine tune an open weight model (Qwen3.5-9B) on proprietary internal data at @coinbase, and it out performed frontier models, at much lower cost and speed, for a specialized task (fraud prevention in this case).
+>
+> I think we'll see more of this pattern inside companies. The frontier models are amazing generalists. But increasingly you'll see specialist models out perform on more narrow tasks, either working on teams, or by themselves.
+>
+> We're making it easy to fine tune models internally for our employees. We even have a skill for it in our internal harness that makes it easy to spin these up and start training them:
+>
+> "/fine-tune-and-serve-llm I want to fine-tune Qwen for payments risk review. help me get started"
+>
+> I imagine we'll have some backend services that could be replaced entirely by this new architecture.
+
+- **Tweet:** https://x.com/brian_armstrong/status/2109412046244913643
+- **What:** Coinbase's Brian Armstrong reports that a Qwen3.5-9B open-weight model fine-tuned on proprietary internal data beat frontier models on fraud prevention at much lower cost and latency, predicts specialist models will increasingly displace generalists for narrow tasks, and says Coinbase has an internal /fine-tune-and-serve-llm skill that may replace some backend services.
+
+## @dzhng - Deleting abstraction layers for agent-built Rust/WASM apps, plus the dzhng/skills library
+> my new AI native software engineering principle is to delete as many layers of abstraction as possible
+>
+> at this point, all my webapps are written in rust and compiled to wasm, UI is rendered directly in html and/or raw webgpu calls
+>
+> no react/threejs/nextjs or any other intermediary abstractions
+>
+> all my effort goes into writing custom validation harnesses for each app that fully quantifies perf / usability / what  "good" means for the coding agent so it can hillclimb it
+>
+> every agent sessions are planned via my explore unknowns skill (https://github.com/dzhng/skills), so all major decisions are frontloaded, then I just let the agent rip for 12+ hrs
+>
+> at this point I'm solo shipping products that I wouldn't even dare to dream of a year ago
+>
+> *Quoting @poteto:* codebases have always contained slop. we have always been okay with this because code rarely needs to be perfect, outside of mission critical "hard" (eg embedded) software. swe is a unique form of engineering because you're often building something that constantly evolves and is almost organic. [...] i would propose that Good Code is: correct, bug free, fast and cost efficient to run. [...] the vast majority of software we use does not need to be Good Code to provide value to users [...] agents help us move faster, and are capable of helping us write better code. the new craft of swe is to figure out how to do this. it's your job now! if your productivity with and without agents is not significantly different, you're doing something wrong.
+
+- **Tweet:** https://x.com/dzhng/status/2109410105246777492
+- **Quoted:** https://x.com/poteto/status/2109110547824378140
+- **Link:** https://github.com/dzhng/skills
+- **Filed:** [dzhng-skills.md](./knowledge/tools/dzhng-skills.md)
+- **What:** David describes his agent-first workflow of writing web apps in Rust compiled to WASM with no React or Next.js, investing effort in per-app validation harnesses so agents can hill-climb, and frontloading decisions with his explore-unknowns skill before 12+ hour runs; he quotes lauren (poteto), who argues most code has always been slop, that "Good Code" (correct, bug-free, efficient) is rarely needed, and that agents make average quality better at scale.
+
+## @LoganTGott - Five-part trust framework for founders and a 2-hour-a-week authority routine
+> A masterclass on how to become the most TRUSTED name in your industry in 2 hours a week:
+>
+> The average founders think authority comes from being the best at what they do.
+>
+> So they keep getting better, quietly, and wait for the market to notice.
+>
+> It usually doesn't, and meanwhile someone with half their track record becomes the name everyone quotes, refers and invites on stage.
+>
+> I've watched this play out across 30+ SaaS & AI founders, and the gap almost never comes down to expertise.
+>
+> Buyers are checking 5 things when they decide whether to trust you:
+>
+> - Expertise
+> - Visibility
+> - Association
+> - Voice
+> - Proof
+>
+> Most founders have the first one and very little of the other 4.
+>
+> The 4 graphics below break down how to build the rest:
+>
+> 1. Get known for 1 sentence, so your market can finish "that's the ___ person"
+> 2. Give every post 1 of 5 jobs
+> 3. Build trust with the buyers who read quietly for months before saying a word
+> 4. Give people somewhere to go after the post
+> 5. Run the whole thing in a 2-hour week
+>
+> For 1 founder we work with, this turned into 2,876,982 impressions, 30+ booked calls and $500K+ in pipeline in 100 days.
+>
+> Which of the 5 are you scoring lowest on right now?
+
+- **Tweet:** https://x.com/LoganTGott/status/2109398886204780865
+- **What:** Logan Gott argues SaaS and AI founders lose on trust rather than expertise, since buyers weigh expertise, visibility, association, voice and proof, and lays out a 2-hour weekly routine (one-sentence positioning, post roles, a next step after each post) with a claimed 2.9M impressions and $500K+ pipeline in 100 days for one client; the actual graphics are not captured.
+
+## @ankurnagpal - New 2027 IRS rules let charitable gifts of $1,700 be fully refunded
+> Starting in 2027, you can give $1,700 to charity &amp; get every dollar back from the IRS
+>
+> $3,400 if you're married filing jointly
+>
+> The IRS just released the rules. Here's how it works:
+
+- **Tweet:** https://x.com/ankurnagpal/status/2109355922275401983
+- **What:** Ankur Nagpal claims that starting in 2027 a taxpayer can donate $1,700 ($3,400 for joint filers) to charity and recover the full amount from the IRS, citing newly released IRS rules; the tweet only teases the explanation, so the mechanism is not captured here.
+
+## @levelsio - Cancelling SaaS subscriptions by vibecoding replacements, leaving only AI, content, hosting, connectivity, utilities and taxes
+> As I posted before, I've cancelled almost all of the SaaS subscriptions for my business
+>
+> The only thing I still pay for as a business:
+> - AI inference
+> - Hetzner server hosting
+> - Cloudflare storage
+> - Backblaze backups
+> - Taxes
+>
+> Now I started cancelling personal subscriptions too and just vibecoding my own versions or using Claude to take an open source project that does the same and then customize it for myself
+>
+> All I still pay for personally is:
+> - Claude Code
+> - YouTube (content)
+> - Spotify (content)
+> - Starlink (internet)
+> - Phone eSIM
+> - Personal cloud storage
+> - Electricity and water (utility)
+> - Taxes
+>
+> So if we summarize it for both, I only still pay for:
+> - AI inference
+> - Content
+> - Cloud storage & hosting
+> - Connectivity
+> - Electricity & water
+> - Taxes
+>
+> So to summarize all my money now goes to:
+> - Content
+> - Data centers
+> - Power plants + water
+> - Governments
+>
+> I think we'll be facing a tidal wave of cancellations once people find out how much money they can save
+>
+> It's just how the economy works
+>
+> *Quoting @signulll:* the fundamental basic economics misunderstanding that ppl have esp on here is that they think normal ppl need to use models to build their own software to be disrupted. they obviously don't & they obviously won't.
+>
+> but even if just 1% of the population can build software, that's enough to flood the entire supply side with millions of new products collapsing the cost to near zero.
+>
+> you absolutely don't need universal adoption to destroy scarcity. you just need enough producers to overwhelm demand. you can feel this now already. i never pay for software because i just ask claude to point to something like a chrome extension or a mac app & it's just there. at some point your agents will also auto update & maintain your software automatically too.
+
+- **Tweet:** https://x.com/levelsio/status/2109352968122515681
+- **Quoted:** https://x.com/signulll/status/2109328860919607537
+- **What:** Building on signulll's argument that only ~1% of people need to build software to flood supply and push prices toward zero, levelsio lists the few things he still pays for business and personally (AI inference, content, hosting and storage, connectivity, utilities, taxes), says he vibecodes or customizes open-source replacements for everything else, and predicts a wave of SaaS cancellations.
+
+## @zoecyber001 - Thread of 50 ESP32 projects: Wi-Fi sensing, spoofing, cloning and tracking
+> 50 crazy things you can build with a $4 ESP32:
+>
+> Tracking, Radar & Physical Access:
+> 1. Wi-Fi Radar (ESP-CSI): Tracks human movement and detects breathing through solid walls using Wi-Fi wave reflections.
+> 2. Satellite Ground Station (TinyGS): Catches live telemetry from satellites orbiting 500 km in space.
+> 3. Free Worldwide GPS (OpenHaystack): Hijacks Apple's Find My network to track physical items globally without an AirTag or SIM card.
+> 4. Badge Reader Wiretap (ESPKey): Tucks behind an office badge reader to steal employee cards and pop doors open over Bluetooth.
+> 5. Magstripe Emulation (MagSpoof): Drives an electromagnet to wirelessly spoof magnetic stripe card swipes at payment terminals.
+> 6. Sub-GHz Gate Replay: Captures and replays 315/433 MHz radio signals to open motorized gates and barriers.
+> 7. Covert Audio Bug: Streams live microphone audio over encrypted local Wi-Fi from an implant smaller than a coin.
+> 8. Passive Foot Traffic Sniffer: Logs nearby smartphone probe requests to map crowd movement and visitor arrival times.
+> 9. Elevator Floor Override: Connects to elevator relay banks to activate restricted floors without a keycard.
+> 10. NFC/RFID Cloner: Reads 13.56 MHz High-Frequency badges and clones card UIDs on demand.
+>
+> 🧵 (1/5)
+>
+> *Quoting @zoecyber001:* The crazy things you could do with an ESP32
+
+- **Tweet:** https://x.com/zoecyber001/status/2109348811089088956
+- **Quoted:** https://x.com/zoecyber001/status/2109323240275431915
+- **What:** Zoe's thread (part 1 of 5) lists the first 10 of 50 ESP32 project ideas, covering Wi-Fi CSI sensing of movement and breathing, TinyGS satellite reception, OpenHaystack tracking, ESPKey badge-reader implants, MagSpoof, sub-GHz replay, RFID cloning and similar security-research builds, quoting her earlier short post on what an ESP32 can do.
+
+## @PalmerLuckey - Magic64 custom firmware turns open-source ModRetro M64 into a six-console emulator
+> One of the great parts about open-source hardware is that you get to see things like this come together: 
+> https://t.co/9zHmeRzGHe
+
+- **Tweet:** https://x.com/PalmerLuckey/status/2109344073211633756
+- **Link:** https://retrododo.com/magic64-is-an-upcoming-custom-firmware-for-m64-that-emulates-6-different-consoles/
+- **What:** Palmer Luckey points to a Retro Dodo report on Magic64, an upcoming community-built custom firmware for the ModRetro M64 that emulates six different consoles, as an example of open-source hardware letting fans extend a device within months of release (only the page metadata was captured, not the full article).
+
+## @CJHandmer - Automated LLM peer review could audit the scientific corpus for cheap
+> I've been prototyping an automated peer review project. With current models you get human level peer review for about $0.10 of tokens. For $5 you can rederive every result, check every statistical inference, and audit every paper cited in both directions. 
+>
+> There are about 100m papers in the scientific corpus. Most are not important. Many are sloppy. For structural reasons it's essentially impossible to change published work, even to correct a typo. 
+>
+> For $500m today you can thoroughly audit every paper ever written. Every p-hacked result, every plagiarist, every fabrication, every citation club, everything. 
+>
+> I don't have $500m so instead I build a tree, focusing on the 1% of papers that carry 99% of the signal, doing a cheap first pass looking for obvious problems. I can find 90% of the nonsense for a few hundred dollars of tokens. 
+>
+> Any guesses where the biggest surprises will be found?
+
+- **Tweet:** https://x.com/CJHandmer/status/2109279208921047296
+- **What:** Casey Handmer describes prototyping automated peer review with LLMs, claiming human-level review for about $0.10 per paper and a full rederivation and citation audit for $5, and says a citation-tree approach focused on the top 1% of papers could catch roughly 90% of the problems for a few hundred dollars of tokens.
+
+## @loki_yan_seo - CrUX Vis: Google's real-user Core Web Vitals dashboard for any site
+> 做网站的同学，以免你们不知道。
+>
+> https://t.co/8mI4oBA9y2
+> 是谷歌专门用来看Core Web Vitals的看板。什么网站都能看，都是真实用户数据。
+>
+> 这玩意比GSC还有Lighthouse, Page Speed Insight准多了。
+
+- **Tweet:** https://x.com/loki_yan_seo/status/2109262732763783400
+- **Link:** https://cruxvis.withgoogle.com/
+- **What:** Loki Yan (SEO) tells site builders about CrUX Vis, a Chrome-team dashboard that visualizes Chrome User Experience Report real-user Core Web Vitals data for any page or origin, which he says is more accurate than Search Console, Lighthouse or PageSpeed Insights (the fetched page was only an app shell, so details come from its meta description).
+
+## @JamesonCamp - BizOpp as a $100B startup market: selling the outcome of getting rich with SaaS as the tool
+> If you want a $100B startup, this is one of the best markets to be in: BizOpp.
+>
+> Shopify is the biggest player in it. Base44 and Lovable are taking a shot at it too.
+>
+> The idea is to market an outcome, and make the SaaS the tool you need to get it.
+>
+> Put bluntly, all these companies are selling consumers on the idea of getting rich.
+>
+> Even if it is implicit, their affiliates push that concept to drive sales.
+>
+> Many will fail, some become whale clients, and a large cohort just does okay.
+>
+> The revolving door of customers is never ending.
+>
+> Applying info and ecom tactics to venture backed software businesses works…trust me
+>
+> *Quoting @broadglow:* there is a class of tech companies whos primary customer is very interesting to me
+>
+> - linktree
+> - higgsfield
+> - whop
+>
+> the users are transient, entrepreneurial but not exceptionally skilled at anything, lower income, but expensive tastes, not particularly essential to the economy (like whatever the opposite of an essential worker is)
+>
+> you probably dont know anyone who uses these products, yet these companies seem to do nontrivial amounts of revenue
+
+- **Tweet:** https://x.com/JamesonCamp/status/2109261195723083988
+- **Quoted:** https://x.com/broadglow/status/2109024727297667295
+- **What:** Responding to broadglow's observation that Linktree, Higgsfield and Whop serve transient, aspiring-entrepreneur customers who generate surprising revenue, James Camp argues this "BizOpp" category (Shopify, Base44, Lovable) is a prime $100B opportunity: sell the outcome of getting rich, make the SaaS the required tool, lean on affiliates, and accept a revolving door of customers.
+
+---
+
+# Saturday, October 10, 2026
+
+## @GaddipatiHarsha - Run LinkedIn ads at every potential investor to manufacture fundraising FOMO
+> Underrated alpha 
+>
+> Before raising a round run LinkedIn ads on every single potential investor for 1 month
+>
+> Costs 5k
+>
+> Guaranteed to create fomo
+
+- **Tweet:** https://x.com/GaddipatiHarsha/status/2109130292602802577
+- **What:** Harsha from Slashy suggests a fundraising tactic: spend about $5k running LinkedIn ads targeted at every prospective investor for a month before raising, so the startup appears everywhere and creates FOMO ahead of the round.
+
+## @icanberk - Reverse-engineered AC control with a vibe-coded menu bar status app
+> Reverse engineered my AC, and vibe coded a lil status bar app so I don't have to find the remote every time. 
+>
+> No first world problem will remain unsolved in 2026. https://t.co/JfdkVIXDT3
+
+- **Tweet:** https://x.com/icanberk/status/2109031477484937571
+- **What:** Ilter Canberk reverse engineered the protocol of his air conditioner and vibe coded a small status bar app to control it from his computer instead of hunting for the remote, a lighthearted example of AI-assisted coding being used to solve tiny personal annoyances (the attached demo media was not captured).
+
+## @DonnieDoesWorld - Custom tuxedo made in Shanghai fabric market and shipped to Chicago in four days
+> Almost rented a tuxedo for the black tie wedding I have tonight before realizing I still had my Shanghai fabric market 🔌.  Messaged her Monday 9/28, and she had one made in 24 hours and delivered from China to Chicago by that Friday 10/2. All for the same price of a weekend tux rental. Bless her heart!
+
+- **Tweet:** https://x.com/DonnieDoesWorld/status/2109013748333613533
+- **What:** Donnie recounts using a personal contact at a Shanghai fabric market to get a custom tuxedo made in 24 hours and shipped to Chicago within four days, at roughly the cost of a weekend rental, as an example of the value of a trusted overseas supplier connection.
+
+## @firesidealpha - Thiel on why FTL aliens must be demons or angels
+> Peter Thiel explains why aliens with faster-than-light travel must be demons or angels: only a demonic totalitarian mind meld or perfect angelic altruism could keep any one of them from launching a warp drive weapon
+>
+> "...If you have faster than light travel, if you have a warp drive, which is probably what you really need to cover interstellar distances, you know, what that means for military technology is that you can send weapons at warp speed and they will hit you before you see them coming. And there is no defense against a warp speed weapon."
+>
+> "And so it tells us that I think that if you have faster than light travel, there's something really crazy that has to be true on a cultural, political, social level. And there may be other solutions, but I'll give you my two."
+>
+> "You have a demonic totalitarian control of your society, where it's like you have like parapsychological mind meld with everybody, and no one can act independently of anybody else. No one can ever launch a warp drive weapon."
+>
+> "And then I think the other version, socially and culturally, is they have to be like perfectly altruistic, non-self-interest. They have to be angels."
+>
+> "It's not that they might be demons or angels, they must be demons or angels if you have faster than light travel. And both of those seem pretty crazy to me."
+>
+> *Quoting @firesidealpha:* Peter Thiel on the Antichrist: "perhaps we should also talk about the risk of another type of a bad singularity, which I would describe as the one world totalitarian state"
+>
+> This is him explaining why the state we build to stop the apocalypse is the real danger, why endless talk of existential risk is the method, and what the promise of safety is hiding
+>
+> "The way the Antichrist would take over the world is you talk about Armageddon non-stop, you talk about existential risk non-stop - And this is what you need to regulate"
+>
+> "The slogan of the Antichrist is peace and safety"
+
+- **Tweet:** https://x.com/firesidealpha/status/2109006084912644195
+- **Quoted:** https://x.com/firesidealpha/status/2108976600587100467
+- **What:** Thiel argues that any civilization with faster-than-light travel would face undefendable warp-speed weapons, so it must be either a totalitarian mind-meld (demons) or perfectly altruistic (angels); the quoted companion clip has him framing the Antichrist as a one-world state selling peace and safety by stoking existential-risk fear.
+
+## @packie7b - DeepMind FNV3 hurricane forecast for Isaias
+> Google Deepmind (FNV3) CRUSHED the forecast for #Isaias up to 11 days in advance. It picked up some appreciable signal on September 23, locked in on the exact landfall location4 days before it happened, and nailed the peak intensity consistently 3 days before it happened. A new age of forecasting is upon us.
+>
+> First video: Track density using 1000 member ensemble
+> Second Video: Individual tracks and mean using 50 member ensemble
+
+- **Tweet:** https://x.com/packie7b/status/2108980523691315570
+- **What:** Packie reports that Google DeepMind's FNV3 weather model forecast Hurricane Isaias well in advance, showing signal up to 11 days out, correct landfall location 4 days ahead and peak intensity 3 days ahead, illustrated with 1000-member and 50-member ensemble videos.
+
+## @basedanarki - Thiel's view that Google is no longer a tech company
+> peter thiel was right about everything.
+>
+> *Quoting @sourceryy:* "[Google] knows Gemini is going to cannibalize Google Search, and the numbers are staggering."
+> "I saw last week, search is way, way down."
+> "But they have all these other businesses: YouTube, Waymo, Gmail, Android."
+> "They can literally kill the thing that funded all those other businesses because now they have all the other businesses."
+> "If all they had was search and they never built those other businesses, they'd be in a world of hurt right now."
+> USV co-founder @fredwilson:
+
+- **Tweet:** https://x.com/basedanarki/status/2108958156672147789
+- **Quoted:** https://x.com/sourceryy/status/2108620257275375646
+- **Link:** https://x.com/Jawwwn/status/2108663674240213111
+- **What:** Anarki says Peter Thiel was right, tying Fred Wilson's remark that Gemini is cannibalizing Google Search (search volume way down, cushioned only by YouTube, Waymo, Gmail, Android) to Jawwwn's post recalling Thiel's claim that Google is no longer a tech company and investing in it bets against search innovation.
+
+## @vijayshekhar - Google AI Edge Foresight download pointer
+> Did you download Google Foresight yet?
+> (https://t.co/zY3PqcL0ZI )
+
+- **Tweet:** https://x.com/vijayshekhar/status/2108950810558386616
+- **Link:** https://developers.google.com/edge/foresight
+- **What:** THIN: Vijay Shekhar Sharma asks whether readers have downloaded Google AI Edge Foresight, linking its Google for Developers page under the Google AI Edge section; the fetched content was only page HTML boilerplate, so what the product actually does is not confirmed.
+
+## @Voxyz_ai - Free-tool SEO funnel prompt for Claude Code
+> Highly recommend building 𝗮 𝘀𝗺𝗮𝗹𝗹 𝗳𝗿𝗲𝗲 𝘁𝗼𝗼𝗹 for your product to bring in users from Google search.
+>
+> Say you make a fitness app. Build a free protein calculator. Someone searches "how much protein do vegetarians need a day" and lands on it. Once they get their number, 𝘆𝗼𝘂𝗿 𝗮𝗽𝗽'𝘀 𝗱𝗼𝘄𝗻𝗹𝗼𝗮𝗱 𝗯𝘂𝘁𝘁𝗼𝗻 𝗶𝘀 𝗿𝗶𝗴𝗵𝘁 𝗯𝗲𝗹𝗼𝘄.
+>
+> Send this prompt to Opus 5.5 in Claude Code 👇
+>
+> "Read this project and come up with 3 free tools for me to pick from. Each one should relate to my product and be something people search for. Give me the search term for each. Skip broad terms and pick specific ones with little competition. Search each term online and check whether big sites hold the top results. If you can't find the search volume, say it's a guess. Don't make up numbers.
+>
+> Once I pick one, build it as its own page on my website. If my website isn't in this project, ask me first. It needs no signup, works the moment the page opens, and works well on phones. Under the result, put just one button that takes people to my product. Write the SEO title, meta description and H1, answer a few common questions on the page, and link to it from the homepage or footer. Add it to the sitemap, make sure Google can index it, and make sure the title and main text show up without JS.
+>
+> When it's done, run it locally so I can see it. List the URL, title and meta description, and tell me what else could be improved. Change whatever I point out, round after round, until I'm happy. Then walk me through launching it step by step."
+
+- **Tweet:** https://x.com/Voxyz_ai/status/2108935588535492959
+- **What:** An SEO growth tactic plus a ready-to-paste Claude Code prompt: build a small free no-signup tool (e.g. a protein calculator) targeting a specific low-competition search term, with a single CTA to your product beneath the result, and have the agent propose candidates, build the page, handle SEO basics, sitemap and indexability, then iterate.
+
+---
+
+# Friday, October 9, 2026
+
+## @dotta - Four-part agent prompt template from poteto-stack
+> looking at pstack by @poteto and it's a goldmine of prompt engineering
+>
+> even her example prompt is the best template i've seen of the four things you need to give your agent in a single prompt:
+>
+> * a goal
+> * a checkable finish condition
+> * the evidence you want to see
+> * constraints
+>
+> I'm always surprised by how short pro's prompts are. It's less about length, but ensuring your hitting those four points.
+>
+> Here's the prompt:
+>
+> /poteto-mode fix the duplicate notification after retry.
+> Reproduce it first. Done means retrying produces exactly one notification and normal delivery still works.
+> Show the failing and passing evidence. Leave a PR for review.
+>
+> So simple
+>
+> define what you want, how to know when you're done, what you want to see, and what you shouldn't do
+>
+> I guarantee you this isn't obvious to most prompters
+>
+> here's the sauce https://t.co/lZjP8Ajset
+
+- **Tweet:** https://x.com/dotta/status/2108665034226225425
+- **Link:** https://github.com/paperclipai/poteto-stack
+- **What:** Dotta highlights an example prompt from poteto's prompt/skill stack as a model of concise agent prompting: state a goal, a checkable finish condition, the evidence to show, and constraints, illustrated by a duplicate-notification-after-retry bug fix. The linked GitHub repo returned no readme or description, so it is captured only.
+
+## @LexnLin - Claude Code Projects waitlist opens with up to $100 in credits
+> WOW Anthropic is on a generational run lately!
+>
+> You get up to $100 in credits for setting up your project in the first 24h so it doesn't use up your normal usage limit.
+>
+> *Quoting @ClaudeDevs:* We just let in every Pro and Max user from the Claude Code Projects waitlist!
+>
+> If you're new to Claude Code Projects, here's a 4 minute walkthrough to get you started: https://t.co/aewDkvvOcq
+
+- **Tweet:** https://x.com/LexnLin/status/2108661017232425259
+- **Quoted:** https://x.com/ClaudeDevs/status/2108621476538781878
+- **What:** ClaudeDevs opened Claude Code Projects to every Pro and Max user on the waitlist and linked a 4-minute walkthrough video; Leon adds that setting up a project in the first 24 hours earns up to $100 in credits that don't count against normal usage limits.
+
+## @DanielLockyer - Prompt for improving debuggability via logs and correlation IDs
+> Prompt of the day:
+>
+> Assess logs/errors from the last week and make changes to improve the ability to debug the code. Clean up error messages for better grouping. Add attributes to help with future debugging. Ensure every log and error contains a stable correlation ID.
+
+- **Tweet:** https://x.com/DanielLockyer/status/2108641281341603968
+- **What:** A reusable agent prompt that has the model review a week of logs and errors, then improve debuggability by normalizing error messages for grouping, adding debugging attributes, and guaranteeing a stable correlation ID on every log and error.
+
+## @ClaudeDevs - Claude Managed Agents dynamic workflows public beta
+> Claude Managed Agents dynamic workflows are now available in public beta. It's a new type of multiagent orchestration, built for your most ambitious workloads.
+>
+> A lead agent writes a plan that runs across many agents in phases, combining the results at the end.
+
+- **Tweet:** https://x.com/ClaudeDevs/status/2108591328732856655
+- **What:** Announcement that Claude Managed Agents now has dynamic workflows in public beta, a multiagent orchestration pattern where a lead agent writes a phased plan that fans out across many agents and merges their results at the end, aimed at large workloads.
+
+## @RhysSullivan - Apple Vision Pro installer as tech from the future
+> Have you guys seen the at guy who uses an Apple Vision Pro to do all his installs?
+>
+> Feels like looking at tech from the future
+>
+> *Quoting @toddsaunders:* Whoever pulls this off for the trades is going to be a billionaire
+
+- **Tweet:** https://x.com/RhysSullivan/status/2108567690680103011
+- **Quoted:** https://x.com/toddsaunders/status/2108413186646974891
+- **What:** THIN: Rhys is marveling at a tradesperson who uses an Apple Vision Pro to do installation jobs, quoting Todd Saunders' claim that whoever builds this kind of tech for the trades will become a billionaire; the underlying video/image is not in the provided content.
+
+## @southpolesteve - Cloudflare blog: on-demand CPU and memory profiling with flamegraphs for Workers
+> Point your agent at this post and tell it to make your Workers faster
+
+- **Tweet:** https://x.com/southpolesteve/status/2108564051483595121
+- **Link:** https://blog.cloudflare.com/workers-on-demand-profiling/
+- **What:** Steve Faulkner suggests pointing a coding agent at Cloudflare's post "Introducing on-demand CPU and memory profiling with flamegraphs for Workers and Durable Objects" so it can profile and speed up Workers; the fetched content held only the page head (title), so the post body itself was not captured.
+
+## @doodlestein - Agent Flywheel tooling packaged for Claude and ChatGPT cloud agent instances
+> There's a big push now by OpenAI, Anthropic, and other players to get people to use cloud instances instead of running a harness on their own machine or VPS.
+>
+> I've been playing with these offerings, particularly the Claude one because they gave out all these $250 credits for all 28 of my 20x Claude Max accounts.
+>
+> But I hated that I didn't have access to my Agent Flywheel tooling, like beads_rust, beads_viewer, cass, ubs, etc. Not to mention easy access to my skills from my skills site via my jsm cli tool.
+>
+> So I decided to make a very streamlined version of my acfs system for managing the Flywheel tools specifically for these Cloud agent instances.
+>
+> It supports Claude, ChatGPT, and several others. The easiest way to use it is to paste the instructions from the site into the ChatGPT desktop app with the Computer plugin and just let the agent do everything for you in your browser.
+>
+> But if you want to do it manually, I also have step-by-step instructions with screenshots.
+>
+> You can get it all here:
+>
+> https://t.co/qZqLqQBcGg
+>
+> If you've been curious about trying my Agent Flywheel system but didn't have access to your own Linux cloud machine or were a bit intimidated by the setup, this is a great way to try it out very quickly and easily.
+>
+> These tools are how I'm able to out-ship literally everyone else right now with massive amounts of high-quality software (currently over 50k commits per month across 100+ projects using ~840B tokens, not to mention  thousands of happy users and ~33k GH stars, etc.).
+>
+> It's all free and open source except for my skills, which are optional (but recommended to get the most out of the tools). If you want to get the skills, check out jeffreys-skills.md ($20/month and worth every penny).
+
+- **Tweet:** https://x.com/doodlestein/status/2108541775623196759
+- **Link:** https://agent-flywheel.com/cloud-agents
+- **What:** Jeffrey Emanuel released a streamlined version of his acfs setup that installs the Agent Flywheel toolset (beads_rust, beads_viewer, cass, ubs, jsm skills) into cloud agent instances from Claude, ChatGPT/Codex, Amp Orbs, Devin and others, with agent-driven or manual screenshot guides; the fetched page captured only metadata, so the guide body was not read.
+
+## @thatGTMdude - Claude-driven GTM playbook: rank 50 strategies, test 3, cut losers weekly
+> do yourself a favour:
+>
+> > get claude max and feed it everything about your product.
+> > make it research who needs the product, what they use today and why they'd switch.
+> > give it the 50 gtm strategies from the tweet below.
+> have it rank all 50 and pick the 3 you can test right away.
+> > turn those 3 into campaigns: content, outreach, offers, landing pages.
+> > give each one a budget, a test window and a user number it has to hit.
+> > put grokbots on the repetitive work, all reporting to one dashboard.
+> > feed claude the weekly numbers so it can cut the losers and push the winners.
+> > repeat until 2 or 3 channels work reliably.
+> > automate those as far as you can.
+>
+> but what do you feed claude for it to get your product and users right?
+>
+> [cont.d in replies 👇]
+>
+> *Quoting @thatGTMdude:* 50 GTM strategies to reach your first 1,000 users:
+>
+> 1) Founder-led outbound: Personally reach out to potential users and pitch your solution.
+>
+> 2) Community-led growth: Engage in communities where your target users already hang out.
+>
+> 3) Build in public: Share your product's progress, experiments, failures, and milestones.
+>
+> 4) Cold email outreach: Send personalized emails to potential customers.
+>
+> 5) Warm introductions: Use your network to get introduced to potential users.
+>
+> 6) Reddit marketing: Find relevant discussions and contribute helpful answers.
+>
+> 7) Founder-led content: Build an audience around the founder's expertise and experiences.
+>
+> 8) Micro-influencer seeding: Give smaller creators early access to your product.
+>
+> 9) Product Hunt launch: Launch your product to an audience actively discovering new tools.
+>
+> 10) Directory marketing: List your product on niche directories where potential users search for tools.
+>
+> [cont.d 👇🏻]
+
+- **Tweet:** https://x.com/thatGTMdude/status/2108520543783907412
+- **Quoted:** https://x.com/thatGTMdude/status/2108201126101438764
+- **What:** Abhishek Nair outlines a loop where Claude researches the product's audience, ranks a list of 50 go-to-market strategies (first ten shown: founder-led outbound, community, build in public, cold email, Reddit, Product Hunt, directories), turns the top 3 into budgeted test campaigns and prunes losers from weekly numbers; the key input to feed Claude is continued in replies.
+
+---
+
+# Thursday, October 8, 2026
+
+## @GTMnow_ - Legora CRO: summarizing Gong calls with AI is only "101" AI fluency for sales hires
+> "I summarized my Gong calls with AI" is how you lose the job at @WeAreLegora
+>
+> Patrick Forquer, CRO at Legora,on what separates strong AI-native sales candidates from the rest.
+>
+> Using AI for meeting summaries or basic automation are "101"
+>
+> "We want people doing 200 and 301, doctorate level stuff."
+>
+> *Quoting @GTMnow_:* NEW: How @WeAreLegora scaled from $3.5M to $200M in revenue 📈
+>
+> They were the fastest company ever to hit $100M with a direct sales motion, in just 18 months. Then they DOUBLED it to $200M ARR in less than 6 months 🤯
+>
+> Patrick Forquer (CRO at Legora) joins GTMnow to break down how they scaled that fast: pilot design, why implementation predicts NRR, screening AEs for AI fluency, and much more.
+>
+> Pat joined Legora at around $3.5M after seven years at Braze, from the early days through the IPO. He built out the US presence, starting from the first "office" aka his Brooklyn apartment, where his son was on snack duty.
+>
+> Highlights:
+> 01:40 The three criteria for assessing joining a company: founder, product, investors
+> 06:40 Advice for operators weighing the jump to an AI-native company
+> 09:10 The early days: first US pipeline, and an office in a Brooklyn apartment
+> 12:00 From $3.5M to over $100M: the fastest-ever scaling
+> 13:10 The two biggest GTM unlocks: customer obsession and the pilot experience
+> 15:30 Hiring 2-to-1 post-sale, and forward-deploy structure
+> 18:30 Why time-to-value is the no.1 leading indicator of revenue
+> 21:00 How to think about forward-deployed engineers for your own product
+> 24:00 The pilot design: let customers keep what they build
+> 28:00 The "LFG" culture (it doesn't stand for what you think...!), and shipping major features every few weeks
+> 30:00 The near-death stuff: a full sales tech-stack overhaul mid-scale
+> 32:30 The Jude Law brand campaign, and whether it was worth it
+> 36:00 The Aaron Judge and Yankees partnership
+> 38:30 Measuring brand ROI: pipeline and a brand index
+> 47:00 What a great AE at Legora does differently
+> 50:00 Screening for AI fluency: 101 vs. 301-level
+> 52:00 Handling competitive objections, and the "8 Mile" framework
+>
+> On screen: Patrick Forquer x @sophiebuona
+>
+> Full interview available here on X, on YT, Spotify or Apple.
+
+- **Tweet:** https://x.com/GTMnow_/status/2108339183718895804
+- **Quoted:** https://x.com/GTMnow_/status/2107513382895284514
+- **What:** GTMnow clips Legora CRO Patrick Forquer saying sales candidates who only use AI for call summaries or basic automation are at "101" level and Legora wants "200 and 301" fluency; the quoted episode covers Legora's growth from $3.5M to $200M ARR, pilot design, time-to-value as the top revenue indicator, forward-deployed engineers and brand ROI.
+
+## @jimprosser - AI assistants should target cost of living, not vacations and party planning
+> If AI labs want personal assistants to take off at scale, they need to stop marketing vacations, reservations, party planning, etc. These are not problems.
+>
+> Focus on *the* problem facing Americans: the cost of living. Agents can offer a ton of help.
+>
+> Some ideas: (🧵)
+
+- **Tweet:** https://x.com/jimprosser/status/2108279507660726766
+- **What:** Jim Prosser argues AI labs should stop pitching personal assistants around trips, reservations and party planning and instead aim agents at the cost of living, the pressing problem for most Americans; the tweet only opens a thread of ideas, which was not captured.
+
+## @nikitabier - Satirical wish-list prompt: decompile GTA and remake it around my life
+> Hello computer.
+> Decompile and distill Grand Theft Auto.
+> Make the game set in my hometown -- use Google Earth to reconstruct it in pixel-perfect detail.
+> Make the character me and have my spawn point be in the mansion I always look at on Zillow.
+> Review my chat memory and make every mission about  my hopes and dreams.
+> Make it playable online so my friends can join.
+> When you're done, sell all my video games on Ebay and use that money to fund tokens for my next game.
+
+- **Tweet:** https://x.com/nikitabier/status/2108262529571144176
+- **What:** Nikita Bier posts a tongue-in-cheek, maximalist prompt imagining an all-powerful agent that decompiles GTA, rebuilds it in his hometown with Google Earth, personalizes missions from chat memory, adds online multiplayer and funds token costs by selling his old games; a humorous take on where agentic game creation could go.
+
+## @kunchenguid - Follow-up defending the finding that AI-written tests don't help agents (DeepSWE eval)
+> woke up to a hot discussion on testing :) many good points raised, but also a lot of confusion, both from people not reading the post and misinterpretations of it
+>
+> let me dive into it deeper here:
+>
+> 1. "tests are for catching regression"
+>
+> first, that's false. tests were very helpful for humans even in the first pass development. that's why we used to do TDD and it was genuinely useful for many years. seeing agents not inheriting this trait is already pretty interesting by itself to deserve digging deeper
+>
+> secondly, the eval covered regression testing already. in the random sampled 44 subset, the existing test suite was disabled wholesale, and the agents caused no more regression than otherwise
+>
+> it may sound counter-intuitive, but that's why sometimes we need to be willing to challenge previous assumptions, and think from first principles
+>
+> 2. "but bun did the whole rewrite largely because they had tests"
+>
+> yes! that actually gets to the key point. bun's test suite was a massive asset carefully curated by humans to represent the desired behavior of the system
+>
+> this eval is specifically about tests written by LLM's default behavior without human input. when you ask your agent to make a change, it will most likely write some tests without you asking. these are the tests i'm talking about
+>
+> many project owners started being suspicious when they reviewed some of the tests. the point of my post here is to bring some quantified data so we aren't guessing
+>
+> 3. "LLMs write bad tests because your codebase is bad"
+>
+> deepswe uses many good repos like fastapi. are you sure your codebases will be better maintained than fastapi?
+>
+> that said, there's some truth to it - the structure and patterns in your codebase can influence how agents write tests for you. more to it later, but that's orthogonal to the point, because this is another form of human guidance
+>
+> 4. "but i'll do mutation testing and X, Y, Z to fix it"
+>
+> sorry, you can't. mutation testing helps steer your test cases to be sensitive about changes, but the core problem is they can't distinguish intended vs unintended changes
+>
+> when a test fails, and the test was previously written by your agents when no one asked for it, how do you know whether it's the test that's wrong, or the code breaking it? the agents can modify either the code or the test to fix the failure - which way does it go?
+>
+> to judge that, there has to be another more trusted source of truth for what the desired behavior really is. the tests are just an intermediate representation of what the truth may be, but when it's written by LLMs autonomously, they aren't any more trusted than your implementation code
+>
+> if your source of truth is simply tests written by agents that no one asked for or certified, you are in a pretty deep hole
+>
+> for next step, i'm still waiting for my eval about e2e tests to finish. once i have that, i'll write more about concrete recommendations! stay tuned
+>
+> *Quoting @kunchenguid:* ok it's official... AI-written unit tests and integration tests are empirically proven to be unhelpful. you should tell your agents to stop writing tests by themselves
+>
+> on the deepswe eval set, banning sonnet 5.5 high from writing any tests actually resulted in slightly higher success rate (non stat-sig), with less time and token spent (stat-sig). this is pretty hard empirical evidence
+>
+> across the tests that were written by the "tests allowed" baseline arm, 65% of them were unit tests, 35% were integration tests, neither bucket resulted in any improvement compared to not writing any tests at all
+>
+> i also picked a random sample of 44 tasks subset where i completely disabled executing even existing tests - it also did not affect success rate at all
+>
+> i spot checked many tests written in the baseline arm, and my intuition is that most tests are simply a repetition of the implementation
+>
+> agent-written tests do not add any value because both the implementation and the tests were simply the agent's interpretation of our intent. the tests aren't any more accurate than the implementation itself
+>
+> i suspect we can still extract some value from unit tests and integration tests if we describe them ourselves when we believe we can articulate our intent better through test cases than through requirements. but i have not proven this yet
+>
+> also worth noting, during deepswe eval the agent wrote almost no e2e tests (only 17, compared to 3000+ unit/integration tests written). so this analysis does not prove nor disprove the value of e2e tests - i will do another eval specifically for that
+
+- **Tweet:** https://x.com/kunchenguid/status/2108244512808243470
+- **Quoted:** https://x.com/kunchenguid/status/2108030810691629403
+- **What:** Kun Chen's original DeepSWE eval found that banning Sonnet 5.5 from writing its own unit/integration tests slightly raised success and cut time and tokens (65% of baseline tests were unit, 35% integration, with no benefit), and this follow-up rebuts critics: agent-written tests lack a trusted source of truth, so a failing test cannot say whether the test or the code is wrong, while human-curated suites (like Bun's) remain valuable; e2e eval pending.
+
+---
+
 # Wednesday, October 7, 2026
+
+## @paulg - Amazon banning agents as an opening for an agent-friendly Amazon competitor
+> Amazon banning agents is the first opportunity I've seen since Amazon was founded for a startup to create an Amazon competitor. People will want agents to buy stuff for them. It will be one of the main use cases. And they won't want to use some Amazon-supplied agent to do it.
+
+- **Tweet:** https://x.com/paulg/status/2108011311229747525
+- **What:** Paul Graham argues that Amazon blocking third-party AI agents opens the first real startup opportunity to compete with Amazon, because agent-driven shopping will be a major use case and users will prefer their own agents over an Amazon-supplied one.
 
 ## @snbafana - Codex App information-discovery method: "Alpha generation p1 (self-editing heartbeats with seeds)"
 > Wanted to share a method for information discovery with Codex App I've been using for the past 4 months that has brough me a lot of value, that is not talked about much https://docs.google.com/document/d/14qXSLPBZENOTmYJMJPQ7xFRtMzm00qCF9foTKqque70/edit?usp=sharing
@@ -3301,6 +5370,23 @@
 - **Tweet:** https://x.com/jsuarez/status/2102017212802273616
 - **Link:** https://x.com/i/article/2091260305116680192
 - **What:** THIN: @jsuarez (Joseph Suarez) bookmarked a tweet containing only a link to an X long-form article (id 2091260305116680192); the link resolved to a login wall so neither title nor content could be extracted, and the topic is unknown.
+
+---
+
+# Friday, August 28, 2026
+
+## @nestymee - Low-cost influencer outreach stack: Apify, Claude, Gmail SMTP and SQLite CRM
+> setup i use for influencer outreach:
+>
+> 1) apify - scrape tiktok by niche hashtags
+> 2) claude - drafts every email in the creator's language, i just hit send
+> 3) gmail + app password - smtp/imap + warmup
+> 4) sqlite + one python file - crm
+>
+> so far 30% replies rate in 48h. total spend: ~$30
+
+- **Tweet:** https://x.com/nestymee/status/2093226760984998191
+- **What:** Nadia Zueva lays out a four-part DIY influencer outreach pipeline (Apify TikTok hashtag scraping, Claude drafting emails in each creator's language, Gmail app-password SMTP/IMAP with warmup, and a SQLite plus single Python file CRM), claiming a 30% reply rate within 48 hours for about $30 total.
 
 ---
 
@@ -38751,6 +40837,13 @@ $150k #april_goals
 ---
 
 # Tuesday, February 17, 2026
+
+## @thedankoe - Dan Koe shares an X Article behind a login wall (content not retrievable)
+> https://t.co/CdLm1xoOAb
+
+- **Tweet:** https://x.com/thedankoe/status/2023779299367809063
+- **Link:** https://x.com/i/jf/onboarding/web?redirect_after_login=%2Fi%2Farticle%2F2023439310499033089&mode=login
+- **What:** THIN: Dan Koe posted only a link to an X Article (article id 2023439310499033089) that expands to an X login wall, so the article text was not captured; the topic cannot be determined from the tweet and needs a manual look.
 
 ## @mdancho84 - CLAUDE.md as the Path to 10x Engineering
 
